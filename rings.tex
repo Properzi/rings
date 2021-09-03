@@ -1,1 +1,40 @@
 \chapter{Rings}
+
+\begin{definition}
+\index{Ring}
+A \textbf{ring} is a set $R$ with two binary operations, the addition
+$R\times R\to R$, $(x,y)\mapsto x+y$, and the multiplication
+$R\times R\to R$, $(x,y)\mapsto xy$, such that
+the following properties hold:
+\begin{enumerate}
+    \item $(R,+)$ is an abelian group.
+    \item $(xy)z=x(yz)$ for all $x,y,z\in R$.
+    \item $x(y+z)=xy+xz$ for all $x,y,z\in R$.
+    \item $(x+y)z=xz+yz$ for all $x,y,z\in R$.
+    \item There exists $e\in R$ such that $xe=ex=x$ for all $x\in R$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\index{Ring!commutative}
+A ring $R$ is said to be \textbf{commutative} if $xy=yx$ for all $x,y\in R$. 
+\end{definition}
+
+\begin{example}
+$\Z$, $\Q$, $\R$ and $\C$ are commutative rings.
+\end{example}
+
+\begin{example}
+    If $R$ is a commutative ring, then the set 
+    \[
+    R[X]=\left\{\sum_{i=0}^na_iX^i:n\in\N_0,\,a_1,\dots,a_n\in R\right\}
+    \]
+    of polynomials is a commutative ring with the usual operations. 
+    \item If $A$ is an abelian group, then $\End(A)$ is a ring with
+    \[
+    (f+g)(x)=f(x)+g(x),\quad
+    (fg)(x)=f(g(x)),\quad f,g\in\End(A)\text{ and }x\in A.
+    \]
+\end{example}
+
+Some facts 
