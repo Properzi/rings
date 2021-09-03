@@ -1,1 +1,26 @@
 \chapter{Chinese remainder theorem}
+
+Note that if $R$ is a commutative ring and $I$ and $J$ are ideals of $R$, then
+\[
+I+J=\{u+v:u\in I,\,v\in J\}
+\]
+is an ideal of $R$. 
+
+\begin{definition}
+	Let $R$ be a commutative ring. The ideals $I$ and $J$ of $R$ are said to be
+	\textbf{coprime} if $R=I+J$.  
+\end{definition}
+
+The terminology is motivated by the following example. If $I$ and $J$ are
+ideals of $\Z$, then $I=(a)$ and $J=(b)$ for some $a,b\in\Z$. Then
+\begin{align*}
+\text{$a$ and $b$ are coprime}
+\Longleftrightarrow 1=ra+sb\text{ for some $r,s\in\Z$}
+\Longleftrightarrow\text{ $I$ and $J$ are coprime.}
+\end{align*}
+
+If $I$ and $J$ are ideals of $R$, then 
+\[
+IJ=\left\{\sum_{i=1}^mu_iv_i:m\in\N_0,\,u_1,\dots,u_m\in I,\,v_1,\dots,v_m\in J\right\}
+\]
+is an ideal of $R$. Note that $IJ\subseteq I\cap J$. 
