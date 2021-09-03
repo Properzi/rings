@@ -30,11 +30,85 @@ $\Z$, $\Q$, $\R$ and $\C$ are commutative rings.
     R[X]=\left\{\sum_{i=0}^na_iX^i:n\in\N_0,\,a_1,\dots,a_n\in R\right\}
     \]
     of polynomials is a commutative ring with the usual operations. 
-    \item If $A$ is an abelian group, then $\End(A)$ is a ring with
+\end{example}
+
+\begin{example}
+    If $A$ is an abelian group, then $\End(A)$ is a ring with
     \[
     (f+g)(x)=f(x)+g(x),\quad
     (fg)(x)=f(g(x)),\quad f,g\in\End(A)\text{ and }x\in A.
     \]
 \end{example}
 
-Some facts 
+Let $R$ be a ring. 
+Some facts:
+\begin{enumerate}
+    \item $x0=0x=x$ for all $x\in R$.
+    \item $x(-y)=-xy$ for all $x,y\in R$.
+    \item If $1=0$, then $|R|=1$. 
+\end{enumerate}
+
+\begin{example}
+    The real vector space $H(\R)=\{a1+bi+cj+dk:a,b,c,d\in\R\}$ with basis $\{1,i,j,k\}$ 
+    is a ring with the multiplication induced by
+    the formulas 
+    \[
+    i^2=j^2=k^2=-1,
+    \quad ij=k,
+    \quad jk=i,
+    \quad ki=j.
+    \]
+    As an example, let us perform a calculation in $H(\R)$: 
+    \[
+    (1+i+j)(i+k)=i+k-1+ik+ji+jk=i+k-1-j-k+i=-1+2i-j,
+    \]
+    as $ij=i(ij)=-j$. 
+\end{example}
+
+\begin{example}
+    Let $n\geq2$. 
+    The abelian group $\Z/n=\{0,1,\dots,n\}$ of integers modulo $n$ is a ring 
+    with the usual multiplication modulo $n$. 
+\end{example}
+
+\begin{example}
+    Let $n\geq1$. 
+    The set $M_n(\R)$ of real $n\times n$ matrices is a ring with the usual matrix operations. Recall
+    that if $a=(a_{ij})$ and $b=(b_{ij})$, the multiplication $ab$ is given by
+    \[
+    (ab)_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.
+    \]
+\end{example}
+
+\begin{example}
+    Real polynomials in two commuting variables form a ring. This ring will be denoted by $\R[X,Y]$. 
+\end{example}
+
+\begin{definition}
+\index{Subring}
+    Let $R$ be a ring. A \textbf{subring} $S$ of $R$ is a subset $S$ such that
+    $(S,+)$ is a subgroup of $(R,+)$ such that $1\in S$ and 
+    if $x,y\in S$, then $xy\in S$. 
+\end{definition}
+
+\begin{example}
+    Clearly $\Z$ is a subring of $\Z$. 
+\end{example}
+
+\begin{example}
+    $\Z\subseteq\Q\subseteq\R\subseteq\C$ is a chain of subrings. 
+\end{example}
+
+\begin{example}
+    \index{Gauss integers}
+    $\Z[i]=\{a+bi:a,b\in\Z\}$ is a subring of $\C$. This is known as the ring of \textbf{Gauss integers}.  
+\end{example}
+
+\begin{example}
+    $\Q[\sqrt{2}]=\{a+b\sqrt{2}:a,b\in\Q\}$ is a subring of $\R$. 
+\end{example}
+
+\begin{example}
+    \index{Center!of ring}
+    If $R$ is a ring, then the \textbf{center} $Z(R)=\{x\in R:xy=yx\text{for all $y\in R$}\}$ is a subring of $R$. 
+\end{example}
