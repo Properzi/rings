@@ -128,8 +128,56 @@ satisfies the following properties:
 			If $N(\alpha)=9$, then $N(\beta)=1$ and hence $\beta\in\mathcal{U}(R)$ by the lemma. Finally, 
 			if $N(\alpha)=3$, then $a^2+b^2=3$, which is a contradiction since $a,b\in\Z$. 
 		\item $2$ is not irreducible in $R$. In fact, $2=(1+i)(1-i)$ and
-			since $N(1+i)=N(1-i)=2$, it follows that $1+i\not\in\mathcal{U}(R)$ 
+			since \[
+			N(1+i)=N(1-i)=2,
+			\]
+			it follows that $1+i\not\in\mathcal{U}(R)$ 
 			and $1-i\not\in\mathcal{U}(R)$. 
 	\end{enumerate}	
 \end{example}
+
+\begin{exercise}
+	Let $R=\Z[\sqrt{-5}]$. 
+	\begin{enumerate}
+		\item Prove that $1+\sqrt{-5}$ and $1-\sqrt{-5}$ are irreducible in $R$. 
+		\item Prove that $2,3,1+\sqrt{-5}$ and $1-\sqrt{-5}$ are not associate in $R$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{example}
+	Let $R=\Z[\sqrt{-3}]$ and $x=1+\sqrt{-3}$. 
+	\begin{enumerate}
+		\item $x$ is irreducible. 
+	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
+	$4=N(x)=N(\alpha)N(\beta)$. Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. Then
+	$N(\alpha)=a^2+3b^2\ne 2$. If $N(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
+	both have the same parity. 
+	
+	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
+	some $k,l\in\Z$, then 
+	\[
+	2=a^2+3b^2=4k^2+12l^2
+	\]
+	is divisible by 4, a contradiction.  
+	
+	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
+	\[
+	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
+	\]
+	is divisible by 4, a contradiction. 
+		\item $x$ is not prime. Note that $(1+\sqrt{-3})(1-\sqrt{-3})=4$, then 
+		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
+		\[
+		(a-3b)+(a+b)\sqrt{3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
+		\]
+		implies that $a-3b=2$ and $a+b=0$, which yields 
+		$a=1/2\not\in\Z$, a contradiction.
+	\end{enumerate}
+\end{example}
+
+\begin{exercise}
+	Let $R=\Z[\sqrt{5}]$. Prove that $1+\sqrt{5}$ is irreducible and not prime in $R$. 	
+\end{exercise}
+
+
 
