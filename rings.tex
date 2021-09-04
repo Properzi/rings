@@ -180,7 +180,8 @@ is a field. What is the inverse of $x+y\sqrt[3]{2}+z\sqrt[3]{4}$?
 	i.e. $ry\in I$ for all $r\in R$ and $y\in I$. 
 \end{definition}
 
-Similarly one defines right ideals, one needs to replace the condition $RI\subseteq I$ by 
+Similarly one defines right ideals, one needs 
+to replace the condition $RI\subseteq I$ by 
 the inclusion 
 $IR\subseteq I$. 
 
@@ -238,6 +239,7 @@ where by convention the empty sum is equal to zero. If $X=\{x_1,\dots,x_n\}$ is 
 set, then we write $(X)=(x_1,\dots,x_n)$. 
 
 \begin{exercise}
+\label{xca:ideals_Z}
 Prove that every ideal of $\Z$ is of the form $n\Z$ for some $n\geq0$. 	
 \end{exercise}
 
@@ -247,6 +249,25 @@ Let $n\geq2$. Find the ideals of $\Z/n$.
 
 \begin{exercise}
 Find the ideals of $\R$.	
+\end{exercise}
+
+\begin{definition}
+Let $R$ be a ring and $I$ be an ideal of $R$. Then $I$ is \textbf{principal}
+if $I=(x)$ for some $x\in R$. 	
+\end{definition}
+
+The division algorithm shows that every ideal of $\Z$ is principal, see Exercise~\ref{xca:ideals_Z}.  
+
+\begin{exercise}
+	Prove that every ideal of $\R[X]$ is principal. 
+\end{exercise}
+
+If $K$ is a field, there is a division algorithm in the 
+polynomial ring $K[X]$. Then one proves that every ideal of $K[X]$ is principal.  
+
+\begin{exercise}
+	Let $R$ be a ring and $x\in R$. Prove that $x\in\mathcal{U}(R)$ if and only if
+	$(x)=R$. 	
 \end{exercise}
 
 One proves that a field has only two ideals. 
@@ -411,16 +432,33 @@ bijective ring homomorphism.
 
 \begin{example}
 	The evaluation map $\R[X]\to\C$, $f(X)\mapsto f(i)$, is a surjective ring
-	homomorphism with kernel $(X^2+1)$. Thus $\R[X]/(X^2+1)\simeq\C$ by the
-	first isomorphism theorem.   	
+	homomorphism with kernel $(X^2+1)$. Thus 
+	\[
+	\R[X]/(X^2+1)\simeq\C
+	\]
+	by the first isomorphism theorem. In practice, this is how it works. Let $f(X)\in\R[X]$. 
+	The division algorithm on $\R[X]$ allows us to write
+	\[
+	f(X)=(X^2+1)q(X)+r(X)
+	\]
+	for some $q(X),r(X)\in\R[X]$, where $r(X)=0$ or $\deg r(X)<2$. Thus
+	$r(X)=aX+b$ for some $a,b\in\R$. This implies that
+	\[
+	f(X)\equiv aX+b\bmod (X^2+1).
+	\] 
+	It is quite easy to describe the ring operation of 
+	$\R[X]/(X^2+1)$. Clearly 
+	\[
+	(aX+b)+(cX+d)\equiv (a+c)X+(b+d)\bmod (X^2+1),
+	\]
+	Since $X^2\equiv -1\bmod (X^2+1)$,   	
+	\[
+	(aX+b)(cX+d)\equiv X(ad+bc)+(bd-ac), 
+	\]
+	which reminds us the usual multiplication rule of the field of complex numbers. 
 \end{example}
 
-\begin{exercise}
-	Let $R$ be the ring of continuos maps $[0,2]\to\R$. Prove that
-	$I=\{f\in R:f(1)=0\}$ is an ideal of $R$ and that $R/I\simeq\R$.   	
-\end{exercise}
-
-\begin{exercise}
+\begin{example}
 Let 
 \[
 R=\left\{\begin{pmatrix}
@@ -428,12 +466,17 @@ a&b\\
 0&a
 \end{pmatrix}:a,b\in\Q\right\}
 \]
-Prove that the map $R\to\Q$, $\begin{pmatrix}a&b\\0&a\end{pmatrix}\mapsto a$, is a surjective 
-ring homomorphism with kernel 
-$I=\left\{\begin{pmatrix}
+A direct calculation shows that the map $R\to\Q$, $\begin{pmatrix}a&b\\0&a\end{pmatrix}\mapsto a$, is a surjective 
+ring homomorphism with  
+$\ker f=\left\{\begin{pmatrix}
 0&b\\
 0&0\end{pmatrix}:b\in\Q\right\}$. 	
-Thus $R/I\simeq\Q$. 	
+Thus $R/\ker f\simeq\Q$. 	
+\end{example}
+
+\begin{exercise}
+	Let $R$ be the ring of continuos maps $[0,2]\to\R$. Prove that the set 
+	$I=\{f\in R:f(1)=0\}$ is an ideal of $R$ and that $R/I\simeq\R$.   	
 \end{exercise}
 
 \begin{exercise}
