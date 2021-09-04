@@ -255,6 +255,25 @@ because $\Z$ is a principal domain.
 	$\Z[\sqrt{-3}]$ is not a principal domain.
 \end{example}
 
+\begin{definition}
+	Let $R$ be an integral domain. We say that $R$ is an \textbf{euclidean domain}
+	if there exists a map $\varphi\colon R\setminus\{0\}\to\N_0$ such that
+	for every $x,y\in R$ with $y\ne 0$ there exist $q,r\in R$ such that 
+	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
+\end{definition}
 
+Note that in the definition of euclidean domains we do not ask for uniqueness. In fact, 
+we will meet important examples of euclidean domains where uniqueness
+in the division algorithm is not achieved. 
 
+\begin{example}
+	$\Z$ is an euclidean domain with $\varphi(x)=|x|$. Do we have uniqueness here? 	
+\end{example}
+
+\begin{example}
+	$\R[X]$ is an euclidean domain with $\varphi(f(X))=\deg(f(X))$. 	
+\end{example}
+
+The previous examples shows why in the definition of an euclidean domain 
+we consider $\varphi\colon R\setminus\{0\}\to\N_0$. 
 
