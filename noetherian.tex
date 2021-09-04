@@ -1,0 +1,155 @@
+\chapter{Noetherian rings}
+
+In this chapter we will work with commutative rings. 
+
+\begin{definition}
+	A ring $R$ is said to be \textbf{noetherian} if every (increasing)
+	sequence $I_1\subseteq I_2\subseteq\cdots$ of ideals of $R$
+	stabilizes, that is $I_n=I_m$ for some $m\in\N$ and all $n\geq m$. 
+\end{definition}
+
+The ring $\Z$ of integers is noetherian.
+
+\begin{example}
+Let $R=\{f\colon [0,1]\to\R\}$ with 
+\[
+(f+g)(x)=f(x)+g(x),
+\quad
+(fg)(x)=f(x)g(x),
+\quad
+f,g\in R,\,x\in [0,1].
+\]
+For $n\in\N$ let
+$I_n=\{f\in R:f|_{[0,1/n]}=0\}$. Then each $I_n$ is an ideal of $R$ and 
+the sequence 
+$I_1\subsetneq I_2\subsetneq\cdots$ 
+does not stabilizes. Thus $R$ is not noetherian. 
+\end{example}
+
+\begin{definition}
+	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \textbf{finitely generated} if $I=(X)$ for some
+	finite subset $X$ of $R$. 
+\end{definition}
+
+The zero ideal is always finitely generated. 
+
+\begin{proposition}
+Let $R$ be a ring. Then $R$ is noetherian if and only 
+if every ideal of $R$ is finitely generated. 	
+\end{proposition}
+
+\begin{proof}
+	Assume first that $R$ is noetherian. Let $I$ be an ideal of $R$ that is not finitely generated. 
+	Thus $I\ne\{0\}$. Let $x_1\in I\setminus\{0\}$ and let $I_1=(x_1)$. Since $I$ is not finitely
+	generated, $I\ne I_1$ and hence   
+	$\{0\}\subsetneq I_1\subsetneq I$. Once I have the ideals $I_1,\dots,I_{k-1}$, let 
+	$x_k\in I\setminus I_{k-1}$ (such an element exists because $I_{k-1}$ is finitely generated
+	and $I$ is not) and $I_k=(I_{k-1},x_k)$. The sequence
+	$\{0\}\subsetneq I_1\subsetneq I_2\subsetneq\cdots$ does not stabilize.  
+	
+	Assume now that every ideal of $R$ is finitely generated and 
+	let $I_1\subseteq I_2\subseteq\cdots$ be a sequence of ideals of $R$. Then
+	$I=\cup_{i\geq1}I_i$ is an ideal of $R$, so it is finitely generated, sayç
+	$I=(x_1,\dots,x_n)$. We may assume that $x_j\in I_{i_j}$ for all $j$. Let 
+	$N=\max\{j_1,\dots,j_n\}$ and $n\geq N$. Then 
+	$I_N\subseteq I\subseteq I_N$ and therefore the seuqence stabilizes.  
+\end{proof}
+
+\begin{exercise}
+	Let $R=\C[X_1,X_2,\cdots]$ be the ring of polynomial in an infinite number of 
+	commuting variables. Prove that the ideal $I=(X_1,X_2,\dots)$ of polynomials 
+	with zero contant term is not finitely generated. 
+\end{exercise}
+
+
+The correspondence theorem and the previous proposition 
+allow us to prove easily the following result. 
+
+\begin{proposition}
+	Let $I$ be an ideal of $R$. If $R$ is noetherian, then $R/I$ is noetherian.
+\end{proposition}
+
+\begin{proof}
+	Let $\pi\colon R\to R/I$ be the canonical surjection and let $J$ be an ideal of $R/I$. 
+	Then $\pi^{-1}(J)$ is an ideal of $R$ containing $I$. Since 
+	$R$ is noetherian, $\pi^{-1}(J)$ is finitely generated, say 
+	$\pi^{-1}(J)=(x_1,\dots,x_k)$ for $x_1,\dots,x_k\in R$. Thus 
+	\[
+	J=\pi(\pi^{-1}(J))=(\pi(x_1),\dots,\pi(x_k))
+	\]
+	and hence $J$ is finitely generated. 
+\end{proof}
+
+Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$. 
+
+\begin{exercise}
+	Prove that $\R[X]$ is noetherian. 	
+\end{exercise}
+
+% usar qu ees principal
+% todo: agregar despues de la prueba de la principalidad para Z que tambien R[X] es principal
+
+\begin{theorem}[Hilbert]
+	Let $R$ be a commutative ring. If $R$ is noetherian ring, then $R[X]$ is noetherian.	
+\end{theorem}
+
+\begin{proof}
+	We need to show that every ideal of $R[X]$ is finitely generated. Assume that
+	there is an ideal $I$ of $R[X]$ that is not finitely generated. In particular, $I\ne\{0\}$. 
+	Let $f_1(X)\in I\setminus\{0\}$ be of minimal degree. For $i>1$ let 
+	$f_i(X)\in I$ be of minimal degree such that $f_i(X)\not\in(f_1(X),\dots,f_{i-1}(X))$ (note
+	that such an $f_i(X)$ exists because $I$ is not finitely generated). For each $i$ 
+	let $a_i$ be the leading coefficient of $f_i(X)$, that is
+	\[
+	f_i(X)=a_iX^{n_i}+\cdots,
+	\]
+	where the dots denote lowest degree terms. Note that 
+	$a_i\ne 0$.
+	Let $J=(a_1,a_2,\dots)$. Since $R$ is noetherian, the sequence
+	\[
+	(a_1)\subseteq (a_1,a_2)\subseteq\cdots(a_1,a_2,\dots,a_k)\subseteq\cdots
+	\]
+	stabilizes, so $J$ is finitely generated, say
+	$J=(a_1,\dots,a_m)$ for some $m\in\N$. 
+	There exist $u_1,\dots,u_m\in R$ such that 
+	\[
+	a_{m+1}=\sum_{i=1}^m u_ia_i.
+	\]
+	Let 
+	\[
+	g(X)=\sum_{i=1}^mu_if_i(X)X^{n_{m+1}-n_i}\in (f_1(X),\dots,f_m(X)).
+	\]
+	The leading coefficient of $g(X)$ is $\sum_{i=1}^mu_ia_i=a_{m+1}$ and, moreover, 
+	the degree of $g(X)$ is $n_{m+1}$. Thus $\deg(g(X))<n_{m+1}$. 
+	Since $f_{m+1}(X)\not\in (f_1(X)\dots,f_n(X))$, 
+	\[
+	g(X)-f_{m+1}(X)\not\in (f_1(X),\dots,f_n(X)),
+	\]
+	a contradiction to the minimality of the degree of $f_{m+1}$.  
+\end{proof}
+
+Since $R[X_1,\dots,X_n]=(R[X_1,\dots,X_{n-1}])[X_n]$, by induction 
+one proves that if $R$ is a commutative noetherian ring, 
+then $R[X_1,\dots,X_n]$ is noetherian. 
+ 
+\begin{example}
+	Since $\Z$ is noetherian, so is $\Z[X]$ by Hilbert's theorem. Now 
+	$\Z[\sqrt{N}]$ is noetherian, as $\Z[\sqrt{N}]\simeq\Z[X]/(X^2-N)$ and quotients
+	of noetherian rings are noetherian.  	
+\end{example}
+
+\begin{example}
+	The ring $\Z[X,X^{-1}]$ is noetherian, as $\Z[X,X^{-1}]\simeq\Z[X,Y]/(XY-1)$. 
+\end{example}
+ 
+ 
+\begin{exercise}
+	Prove that $R[[X]]$ is noetherian if $R$ is noetherian. 	
+\end{exercise}
+
+\begin{exercise}
+	Let $f\colon R\to R$ be surjective ring homomorphism. Prove that $f$ is an isomorphism
+	if $R$ is noetherian. 	
+\end{exercise}
+
+
