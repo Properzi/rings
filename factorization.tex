@@ -179,5 +179,40 @@ satisfies the following properties:
 	Let $R=\Z[\sqrt{5}]$. Prove that $1+\sqrt{5}$ is irreducible and not prime in $R$. 	
 \end{exercise}
 
+\begin{definition}
+	Let $R$ be an integral domain. Then $R$ is \textbf{principal} (or a principal domain) if
+	every ideal of $R$ is principal.  
+\end{definition}
+
+The rings $\Z$ and $\R[X]$ are both principal. 
+
+\begin{example}
+	The ring $\Z[X]$ is not principal. For example, the ideal
+	$I=(2,X)$ is not principal. 
+	
+	First note that $I\ne\Z[X]$. In fact, if $I=\Z[X]$, then 
+	$1=2f(X)+Xg(X)$ for some $f(X),g(X)\in\Z[X]$. Then
+	\[
+	0=\deg(1)=\deg(2f(X)+Xg(X))=\deg(f(X))+\deg(g(X))+1>0,
+	\]	
+	a contradiction. 
+	
+	If $I=(h(X))$ for some $h(X)\in\Z[X]$, then $2=h(X)g(X)$ for some $g(X)\in\Z[X]$. This
+	implies that $\deg(h(X))=0$, so $h(X)=h(1)\in\Z$. In particular, $2=h(1)g(1)$ and hence
+	$h(1)\in\{-1,1,2,2\}$. Since $I\ne\Z[X]$, it follows that $h(X)=h(1)\not\in\{-1,1\}$. Now      
+	$X=h(X)f(X)$ for some $f(X)\in\Z[X]$. In particular, $\deg(f(X))=1$, so
+	we may assume that $f(X)=a_0+a_1X$ for $a_0,a_1\in\Z$ and $a_1\ne 0$. 	
+	It follows that 
+	\[
+	X=\pm 2f(X)=\pm2(a_0+a_1X)
+	\]
+	and therefore $\pm1/2=a_1\in\Z$, a contradiction.
+\end{example}
+
+\begin{example}
+	Let $R=\Z[\sqrt{-5}]$.  
+	The ideal $I=(2,1+\sqrt{-5})$ is not principal, so $R$ is not principal. 
+\end{example}
+
 
 
