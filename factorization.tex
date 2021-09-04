@@ -212,7 +212,49 @@ The rings $\Z$ and $\R[X]$ are both principal.
 \begin{example}
 	Let $R=\Z[\sqrt{-5}]$.  
 	The ideal $I=(2,1+\sqrt{-5})$ is not principal, so $R$ is not principal. 
+	
+	We first note that $I\ne R$. If not, there exist $x,y,u,v\in\Z$ such that 
+	\[
+	1=2(x+y\sqrt{-5})+(1+\sqrt{-5})(u+v\sqrt{-5})=(2x+u-5v)+\sqrt{-5}(2y+u+v).
+	\]
+	This implies that $1=2x+u-5v$ and $0=2y+u+v$. These formulas imply that
+	$1=2(x+y+u-2v)$, a contradiction because $x+y+u-2v\in\Z$. 
+	
+	Now assume that $I=(\alpha)$. Then $\alpha\mid 2$ and $\alpha\mid 1+\sqrt{-5}$. Then
+	$N(\alpha)\mid 4$ and $N(\alpha)\mid 6$, because $N(2)=4$ and $N(1+\sqrt{-5})=6$. 
+	Thus $N(\alpha)\in\{1,2\}$. If we write
+	$\alpha=a+b\sqrt{-5}$ for $a,b\in\Z$, then it follows that 
+	$a^2+5b^2=N(\alpha)=1$ and hence $\alpha\in\mathcal{U}(R)$. 
+	Therefore $I=R$, a contradiction.   
 \end{example}
+
+Sometimes primes and irreducibles coincide. 
+
+\begin{proposition}
+	Let $R$ be a principal domain and $x\in R$. 
+	Then $x$ is irreducible if and only if $x$ is prime. 	
+\end{proposition}
+
+\begin{proof}
+	We only need to prove that if $x$ is irreducible, then $x$ is prime. Let us
+	assume that $x\mid yz$. Let $I=(x,y)$. Since $R$ is principal, $I=(a)$ for some $a\in R$. In particular, $x=ab$ for some $b\in R$. Since $x$ is irreducible, $a\in\mathcal{U}(R)$ or
+	$b\in\mathcal{U}(R)$. If $a\in\mathcal{U}(R)$, then $I=R$ and hence 
+	$1=xr+ys$ for some $r,s\in R$. Thus
+	\[
+	z=z1=z(xr+ys)=zxr+zys
+	\]
+	and therefore $x\mid z$. If $b\in\mathcal{U}(R)$, then $x$ and $a$ are associate, 
+	in $R$. Thus $I=(x)=(a)$ and hence $xt=y$ for some $t\in R$, that is $x\mid y$.  
+\end{proof}
+
+In the integers primes and irreducible coincide. This happens 
+because $\Z$ is a principal domain.
+
+\begin{example}
+	Since $\Z[\sqrt{-3}]$ have irreducible elements that are not prime, it follows that
+	$\Z[\sqrt{-3}]$ is not a principal domain.
+\end{example}
+
 
 
 
