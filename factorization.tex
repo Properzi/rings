@@ -262,13 +262,16 @@ because $\Z$ is a principal domain.
 	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
 \end{definition}
 
-Note that in the definition of euclidean domains we do not ask for uniqueness. In fact, 
+Note that in the definition of euclidean domains we do not ask for the uniqueness 
+of the quotient and the remainder. In fact, 
 we will meet important examples of euclidean domains where uniqueness
 in the division algorithm is not achieved. 
 
 \begin{example}
-	$\Z$ is an euclidean domain with $\varphi(x)=|x|$. Do we have uniqueness here? 	
+	$\Z$ is an euclidean domain with $\varphi(x)=|x|$.
 \end{example}
+
+Do we have uniqueness in the previous example? 	
 
 \begin{example}
 	$\R[X]$ is an euclidean domain with $\varphi(f(X))=\deg(f(X))$. 	
@@ -276,4 +279,99 @@ in the division algorithm is not achieved.
 
 The previous examples shows why in the definition of an euclidean domain 
 we consider $\varphi\colon R\setminus\{0\}\to\N_0$. 
+
+\begin{example}
+	Let $R=\Z[i]$. Then $R$ is an euclidean domain with $\varphi(\alpha)=N(\alpha)$. Let 
+	$\alpha=a+ib$ and $\beta=c+id\ne 0$. Then
+	\[
+	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
+	\]
+	for some $r,s\in\Z$. Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
+	$|s-n|\leq 1/2$. If $\delta=m+in$ and $\gamma=\alpha-\beta\delta$, then 
+	$\gamma\in R$, $\delta\in R$ and $\alpha=\beta\delta+\gamma$. If $\gamma\ne0$, then
+	\begin{align*}
+	\varphi(\gamma)&=\varphi\left(\beta\left(\frac{\alpha}{\beta}-\delta\right)\right)
+	=\varphi(\beta)\varphi\left(\frac{\alpha}{\beta}-\delta\right)\\
+	&=\varphi(\beta)\varphi((r-m)+i(s-n))
+	=\varphi(\beta)((r-m)^2+(s-n)^2)\\
+	&\leq\varphi(\beta)(1/4+1/4)\\
+	&<\varphi(\beta).
+	\end{align*}	
+\end{example}
+
+In $\Z[i]$ the division algorithm does not have uniqueness. In fact, 
+if $\alpha,\beta\in\Z[i]$ and $\alpha=\beta\delta+\gamma$ for some $\delta,\gamma\in\Z[i]$, 
+then there are up to four possibilities for the remainder $\gamma$.
+
+\begin{example}
+	Let $R=\Z[i]$ and 
+	$\alpha=-1+i$ and $\beta=1+2i$. First note that
+	\[
+	I=(\beta)=(1+2i)R=(1+2i)\Z+(1+2i)\Z i=(1+2i)\Z+(-2+i)\Z.
+	\]  
+	This allows us to draw the lattice of elements of $I$, 
+	that is the lattice formed by the multiples of $\beta$, see Figure~\ref{fig:Z[i]}. 
+	Since $\alpha-\gamma\in I$, there are at most four possibilites for writing
+	the division algorithm. 
+	In our particular case, we find for example the following cases:
+	\begin{enumerate}
+		\item If $\alpha-\gamma=0$, then $\gamma=\alpha=-1+i$ and 
+				\[
+				\alpha=\beta0+(-1+i)
+				\]
+				with $N(-1+i)=2<N(\beta)=5$. 
+		\item If $\alpha-\gamma=\beta_1=-2+i$, then 
+			$\gamma=-1$ and 
+			\[
+			\alpha=\beta i+(-1)
+			\]
+			with $N(-1)=1<N(\beta)=5$. 
+		\item If $\alpha-\gamma=\beta_2=-1+3i$, then $\gamma=2i$ and
+			hence 
+			\[
+			\alpha=\beta(...)+2i
+			\]
+			and $N(2i)=4<N(\beta)=5$. 
+		\item If $\alpha-\gamma=\beta$, then $\gamma=...$  
+	\end{enumerate}
+	\begin{figure}
+\[\begin{tikzcd}
+	\bullet & \beta_2 & \bullet & \bullet \\
+	\bullet & \bullet & \bullet & \beta \\
+	{\beta_1} & \alpha & i & \bullet \\
+	\bullet & -1 & {0} & 1
+	\arrow[dashed, no head, from=3-2, to=3-3]
+	\arrow[dashed, no head, from=3-3, to=2-3]
+	\arrow[dashed, no head, from=2-3, to=2-2]
+	\arrow[dashed, no head, from=2-2, to=3-2]
+	\arrow[dashed, no head, from=3-2, to=3-1]
+	\arrow[dashed, no head, from=3-1, to=2-1]
+	\arrow[dashed, no head, from=2-2, to=2-1]
+	\arrow[dashed, no head, from=1-1, to=2-1]
+	\arrow[dashed, no head, from=1-1, to=1-2]
+	\arrow[dashed, no head, from=1-2, to=2-2]
+	\arrow[dashed, no head, from=1-2, to=1-3]
+	\arrow[dashed, no head, from=1-3, to=2-3]
+	\arrow[no head, from=3-1, to=1-2]
+	\arrow[dashed, no head, from=1-3, to=1-4]
+	\arrow[dashed, no head, from=1-4, to=2-4]
+	\arrow[dashed, no head, from=2-3, to=2-4]
+	\arrow[dashed, no head, from=3-3, to=3-4]
+	\arrow[dashed, no head, from=3-4, to=2-4]
+	\arrow[no head, from=1-2, to=2-4]
+	\arrow[no head, from=3-1, to=4-3]
+	\arrow[no head, from=4-3, to=2-4]
+	\arrow[dashed, no head, from=3-1, to=4-1]
+	\arrow[dashed, no head, from=3-2, to=4-2]
+	\arrow[dashed, no head, from=3-3, to=4-3]
+	\arrow[dashed, no head, from=3-4, to=4-4]
+	\arrow[dashed, no head, from=4-4, to=4-3]
+	\arrow[dashed, no head, from=4-3, to=4-2]
+	\arrow[dashed, no head, from=4-2, to=4-1]
+\end{tikzcd}\]
+\label{fig:Z[i]}
+\caption{}
+\end{figure}
+\end{example}
+
 
