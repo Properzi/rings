@@ -507,10 +507,49 @@ one does for $\Z$.
 	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
 \end{example}
 
+We conclude the chapter with the following theorem.
+
 \begin{theorem}[Fermat]
-	
+	Let $p\in\Z$ be a prime number. the following statements are equivalent:
+	\begin{enumerate}
+	    \item $p=2$ or $p\equiv1\bmod 4$.
+	    \item There exists $a\in\Z$ such that $a^2\equiv1\bmod p$.
+	    \item $p$ is not irreducible in $\Z[i]$.
+	    \item $p=a^2+b^2$ for some $a,b\in\Z$.
+	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	
+    We first prove that $1)\implies 2)$. If $p=2$, take $a=1$. If $p=4k+1$ for some $k\in\Z$, then
+    by Fermat's little theorem, the polynomial 
+    $X^{p-1}-1\in(\Z/p)[X]$ has roots $1,2,\dots,p-1$. Write
+    \[
+    (X-1)(X-2)\cdots (X-(p-1))=X^{p-1}-1=X^{4k}-1=(X^{2k}+1)(X^{2k}-1)
+    \]
+    in $(\Z/p)[X]$. Since $p$ is prime, $/Z/p$ is a field and hence 
+    $(\Z/p)[X]$ is a unique factorization domain (because it is euclidean). Thus 
+    there exists $\alpha\in\Z/p$ such that $\alpha^{2k}+1=0$. To finish the proof
+    take $a=\alpha^k$. 
+    
+    We now prove that $2)\implies 3)$. If $a^2\equiv-1\bmod p$, then $a^2+1=kp$ 
+    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. We 
+    claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
+    $a-i=p(e+fi)$ for some $e,f\in\Z$ and this implies that $1=pf$, a contradiction. Similarly,
+    $p$ does not divide $a+i$. Thus $p$ is not prime in $\Z[i]$ 
+    and hence it is not irreducible in $\Z[i]$ (because in $\Z[i]$ primes and irreducible coincide). 
+    
+    We now prove that $3)\implies 4)$. If $p=(a+bi)(c+di)$ with $a+bi\not\in\mathcal{U}(\Z[i])$
+    and  $c+di\not\in\mathcal{U}(\Z[i])$, then
+    \[
+    p^2=N(p)=N(a+bi)N(c+di)=(a^2+b^2)(c^2+d^2)
+    \]
+    in $\Z$. Since $\Z$ has unique factorization, it follows that $p=a^2+b^2$. 
+    
+    Finally we prove that $4)\implies 1)$. 
+    The only possible remainders after division by four are $0,1,2$ and $3$.  
+    For all $a$, either $a^2\equiv 0\bmod 4$ or $a^2\equiv 1\bmod 4$. 
+    If $p\equiv3\bmod 4$, then $p$ is never a sum of two squares, as 
+    $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ or $a^2+b^2\equiv 2\bmod 4$. 
 \end{proof}
+
+

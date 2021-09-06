@@ -1,1 +1,82 @@
 \chapter{Zorn's lemma}
+
+\begin{definition}
+A non-empty set $R$ is said to be a \textbf{partially ordered set} (or poset, for short) 
+if there is a subset $X\subseteq R\times R$ such that
+\begin{enumerate}
+    \item $(r,r)\in X$ for all $r\in R$, 
+    \item if $(r,s)\in X$ and $(s,t)\in X$, then $(r,t)\in X$, and 
+    \item if $(r,s)\in X$ and $(s,r)\in X$, then $r+s$. 
+\end{enumerate}
+\end{definition}
+
+The set $X$ is a partial order relation on $R$.  
+We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreover, 
+$r<s$ if and only if $r\leq s$ and $r\ne s$. 
+
+\begin{definition}
+Let $R$ be a poset and $r,s\in R$. Then $r$ and $s$ are \textbf{comparable}
+if either $r<s$ or $s<r$.
+\end{definition}
+
+\begin{example}
+Let $U=\{1,2,3,4,5\}$ and $T$ be the set of subsets of $U$. Then $T$ is a poset
+with the usual inclusion, that is $C\leq D$ if and only if $C\subseteq D$. The subsets
+$\{1,2\}$ and $\{3,4\}$ of $U$ are elements of $T$ that are not comparable. 
+\end{example}
+
+\begin{definition}
+    Let $R$ be a poset and $r\in R$. Then $r$ is \textbf{maximal} in $R$ if 
+    such that $r\leq t$ implies $r=t$. 
+\end{definition}
+
+\begin{example}
+$\Z$ has no maximal elements. 
+\end{example}
+
+\begin{example}
+Let $R=\{(x,y)\in\R^2:y\leq0\}$ with $(x_1,y_1)\leq(x_2,y_2)$ if and only if $x_1=x_2$ and $y_1\leq y_2$. Then
+$R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal elements.
+\end{example}
+
+\begin{definition}
+    Let $R$ be a poset and $S$ be a non-empty subset of $R$. An \textbf{upper bound}
+    for $S$ is an element $u\in R$ such that $s\leq u$ for all $s\in S$. 
+\end{definition}
+
+\begin{example}
+    Let $S=\{6\Z,12\Z,24\Z\}$ be a subset of the set of subgroups of $\Z$. Then 
+    $6\Z=6\Z\cap 12\Z\cap 24\Z$ is an upper bound of $S$. 
+\end{example}
+
+\begin{definition}
+    Let $R$ be a poset. A \textbf{chain} is a non-empty subset $S$ of $R$ such that
+    any two elements of $S$ are comparable. 
+\end{definition}
+
+We now state Zorn's lemma. It is more an axiom that a lemma.
+
+\begin{quote}
+    ...
+\end{quote}
+
+We now turn into applications. First we discuss maximal ideals of rings. 
+
+\begin{exercise}
+Prove that every non-zero vector space has a basis.
+\end{exercise}
+
+The previous exercise can be used to solve the following exercises:
+
+\begin{exercise}
+    Prove that there exists a group homomorphism $f\colon\R\to\R$ that 
+    is not of the form $f(x)=\lambda x$ for some $\lambda\in\R$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that the abelian groups $\R^n$ and $\R$ are isomorphic.
+\end{exercise}
+
+\begin{exercise}
+    Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
+\end{exercise}
