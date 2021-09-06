@@ -54,16 +54,109 @@ $R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal
     any two elements of $S$ are comparable. 
 \end{definition}
 
-We now state Zorn's lemma. It is more an axiom that a lemma.
+We now state Zorn's lemma:
 
 \begin{quote}
-    ...
+Let $R$ be a poset such that 
+every chain in $R$ admits an upper bound in $R$. 
+Then $R$ contains a maximal element. 
 \end{quote}
 
-We now turn into applications. First we discuss maximal ideals of rings. 
+It is not intuitive, but it is logically equivalent to a more 
+intuitively statement in set theory, the Axiom of Choice, 
+which says every cartesian product of non-empty sets is non-empty. 
+It is more an axiom that a lemma. 
+The reason for calling Zorn’s lemma a lemma rather 
+than an axiom is purely historical.
+
+\begin{definition}
+	\index{Ideal!maximal}
+	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \textbf{maximal}
+	if $I\ne R$ and if $J$ is an ideal of $R$ such that $I\subseteq J$, then 
+	either $I=J$ or $J=R$. 
+\end{definition}
+
+If $p$ is a prime number, then $p\Z$ is a maximal ideal of $\Z$.
 
 \begin{exercise}
-Prove that every non-zero vector space has a basis.
+Let $R$ be a commutative ring. Prove that $R$ is a 
+field if and only if $\{0\}$ is a maximal ideal of $R$. 	
+\end{exercise}
+
+\begin{exercise}
+Let $R$ be a commutative ring and $I$ be an ideal of $R$. Prove that $I$ is maximal
+if and only if $R/I$ is a field.  	
+\end{exercise}
+
+The following application of Zorn's lemma uses 
+the identity of a ring. 
+
+\begin{theorem}
+	Let $R$ be a ring. Each proper ideal $I$ of $R$ 
+	is contained in a maximal ideal. 
+	In particular, all rings have maximal ideals. 	
+\end{theorem}
+
+\begin{proof}
+	Let $X=\{J\subseteq R:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
+	Since $I\in X$, it follows that $X$ is non-empty. Moreover, $X$ is a poset
+	with respect to the inclusion. If $C$ is a chain in $X$, then 
+	$\cup_{J\in C}J$ is an upper bound for $C$, as $\cup_{J\in C}J$ is an ideal and
+	$\cup_{J\in C}J\ne R$ because $1\not\in\cup_{J\in C}J$. 	Zorn's lemma implies that
+	there exists $M\in X$ maximal. We claim that $M$ is a maximal ideal of $R$. The definition
+	of $X$ implies that $M$ is a proper ideal of $R$. If $M_1$ is an ideal of $R$
+	such that $M\subseteq M_1$, it follows that $I\subseteq M_1$ and hence $M_1\in X$. The maximality
+	of $M$ implies that $M=M_1$.  
+\end{proof}
+
+\begin{exercise}
+	Compute the maximal ideals of $\R[X]$ and $\C[X]$. 	
+\end{exercise}
+
+One can also compute the maximal ideals of $K[X]$ for any field $K$. 
+
+\begin{exercise}
+	Let $R$ be a principal domain and $p\in R$. Then $p$ is irreducible 
+	if and only if $(p)$ is maximal.	
+\end{exercise}
+
+\begin{example}
+	The ideal $(X^2+2X+2)$ is maximal in $\Q[X]$ because
+	\[
+	X^2+2X+2=(X+1)^2+1
+	\]
+	has degree two and no rational roots. 
+	Hence $X^2+2X+2$ is irreducible in $\Q[X]$ and it generates 
+	a maximal ideal. 	
+\end{example}
+
+\begin{exercise}
+	Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then 
+	$I$ is maximal if and only if $R/I$ is a field. 
+\end{exercise}
+
+\begin{example}
+	Let $R=(\Z/2)[X]$ and $f(X)=X^2+X+1$. Since $f(X)$ is irreducible (because $\deg f(X)=2$ and
+	$f(X)$ has no roots in $\Z/2$, it follow that $(f(X))$ is a maximal ideal. 
+	Thus $R/I$ is a field. 
+\end{example}
+
+\begin{exercise}
+	Compute the maximal ideals of $\Z/n$. 	
+\end{exercise}
+
+\begin{exercise}
+	Let $R$ be a commutative ring and $J(R)$ be the intersection of all maximal ideals 
+	of $R$. Prove that $x\in J(R)$ 
+	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is proper
+	and it is known
+	as the \textbf{Jacobson radical} of $R$.  	
+\end{exercise}
+
+We conclude the chaper with a different application of Zorn's lemma.  
+
+\begin{exercise}
+	Prove that every non-zero vector space has a basis.
 \end{exercise}
 
 The previous exercise can be used to solve the following exercises:
