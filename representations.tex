@@ -61,6 +61,16 @@ representations of finite
 groups.  
 
 \begin{example}
+	If $G$ is a group, then $\rho\colon G\to\C^\times$, $g\mapsto 1$, is a representation. This representation is known as the \textbf{trivial representation} of $G$. 	
+\end{example}
+
+\begin{example}
+	The sign yields a representation of $\Sym_n$. It is the group homomorphism
+	$\Sym_n\to\C^\times$, $\sigma\mapsto\sgn(\sigma)$.  	
+\end{example}
+
+
+\begin{example}
 	Let $G=\langle g:g^6=1\rangle$ be the cyclic group of order six. Then
 	\[
 	\rho\colon G\to\GL_2(\C),
@@ -143,6 +153,20 @@ groups.
 
 If $\rho\colon G\to\GL(V)$ is a representation and $W\subseteq V$ is $G$-invariant, then
 the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation.
+
+\begin{example}
+	If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations
+	and $T\colon V\to W$ is an invariant map, then the \textbf{kernel} 
+	\[
+	\ker T=\{v\in V:T(v)=0\}
+	\]
+	is an invariant of $V$ and the \textbf{image} 
+	\[
+		T(V)=\{T(v):v\in V\}
+	\]
+	is an invariant subspace of $W$. 
+\end{example}
+
 
 \begin{definition}
     Let $\rho\colon G\to\GL(V)$
