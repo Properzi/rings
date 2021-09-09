@@ -1,0 +1,399 @@
+\chapter{Group representations}
+
+\begin{definition}
+	\index{Representation}
+	A \textbf{representation} (over the field $K$) of a group $G$ is a group homomorphism
+	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some vector space $V$ (over $K$).
+\end{definition}
+
+The \textbf{degree} of $V$ will be the dimension of $V$. Note that
+if $\dim V=n$, fixing a basis of $V$ we get a \textbf{matrix representation} 
+$\rho\colon G\to\GL(V)\simeq\GL_n(V)$ of $G$.  
+
+\begin{example}
+	We use group representations to show that 
+	$G=\langle x,y:x^2=y^2=1\rangle$ is infinite. Note that
+	\[
+	\rho\colon G\to\GL_2(\C),
+	\quad
+	x\mapsto\begin{pmatrix}
+		1&0\\
+		0&-1	
+	\end{pmatrix},\quad
+ 	y\mapsto\begin{pmatrix}
+		1&1\\
+		0&-1	
+	\end{pmatrix}
+ 	\]
+ 	is a group homomorphism, as $\rho_x^2=\rho_y^2=\begin{pmatrix}
+		1&0\\
+		0&1	
+	\end{pmatrix}$. We claim that the elements of the form $(xy)^n$ are
+	different for all $n$. It is enough to show that   
+	$(xy)^n=(xy)^m$, then $n=m$. Note that
+	\[
+	\rho_{xy}=\rho_x\rho_y=\begin{pmatrix}
+		1&0\\
+		0&-1	
+	\end{pmatrix}
+	\begin{pmatrix}
+		1&0\\
+		0&-1	
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&1\\
+		0&1	
+	\end{pmatrix}.
+	\]
+	Thus $\rho_{xy}^n=\begin{pmatrix}
+		1&n\\
+		0&1	
+	\end{pmatrix}$ and 
+	$\rho_{xy}^m=\begin{pmatrix}
+		1&m\\
+		0&1	
+	\end{pmatrix}$. From this the claim follows.
+\end{example}
+
+The previous example shows the power of group representations, even for infinite groups.   
+However, in this course we will work with complex finite-dimensional 
+representations of finite
+groups.  
+
+\begin{example}
+	Let $G=\langle g:g^6=1\rangle$ be the cyclic group of order six. Then
+	\[
+	\rho\colon G\to\GL_2(\C),
+	\quad 
+	g\mapsto\begin{pmatrix}1&1\\-1&0\end{pmatrix}
+	\] 
+	is a group representation. 
+\end{example}
+
+\begin{example}
+	
+\end{example}
+
+\begin{example}
+	
+\end{example}
+
+
+\begin{proposition}
+    Let $G$ be a finite group and $\rho\colon G\to\GL(V)$ be a representation. Then
+    each $\rho_g$ is diagonalizable.
+\end{proposition}
+
+\begin{proof}
+    Let $n=\dim V$. Fix a basis of the finite-dimensional vector space $V$ and consider
+    a matrix representation $\rho\colon G\to\GL_n(V)$.
+    Since $g$ is finite, $g^m=1$ for some $m\in\N$. This means that $\rho_g$ is a root of $X^m-1\in\C[X]$. Since
+    the roots of the polynomial $X^m-1$ are all different and $X^m-1$ factorizes linearly on $\C[X]$, it follows
+    that the minimal polynomial of $\rho_g$ also factorizes linearly in $\C[X]$. Hence $\rho_g$ is diagonalizable.
+\end{proof}
+
+\begin{definition}
+    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
+    representations of a finite group $G$. A linear map $T\colon V\to W$ is said to be $G$-invariant
+    if the diagram
+    \[\begin{tikzcd}
+	V & V \\
+	W & W
+	\arrow["{\rho_g}", from=1-1, to=1-2]
+	\arrow["T"', from=1-1, to=2-1]
+	\arrow["{\psi_g}"', from=2-1, to=2-2]
+	\arrow["T", from=1-2, to=2-2]
+\end{tikzcd}\]
+    commutes, i.e. $\psi_gT=T\rho_g$ for all $g\in G$.
+\end{definition}
+
+\begin{definition}
+    The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \textbf{equivalent}
+    if there exists a bijective $G$-invariant map $T\colon V\to W$.
+\end{definition}
+
+\begin{example}
+    Let $G=\Z/n$. The representations
+    \begin{align*}
+    &\rho\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        \cos(2\pi m/n) & -\sin(2\pi m/n)\\
+        \sin(2\pi m/n) & \cos(2\pi m/n)
+    \end{pmatrix}
+    \shortintertext{and}
+    &\psi\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        e^{2\pi im/n} & 0\\
+        0 & e^{-2\pi im/n}
+    \end{pmatrix}
+    \end{align*}
+    are equivalent, as $\rho_mT=T\psi_m$ for all $m\in G$ if $T=\begin{pmatrix}
+        i&-i\\
+        1&1
+    \end{pmatrix}$.
+\end{example}
+
+\begin{definition}
+    Let $\rho\colon G\to\GL(V)$
+    a representation. A subspace $W$ of $V$ is said to be $G$-invariant (with respect to $\rho$)
+    if $\rho_g(W)\subseteq W$ for all $g\in G$.
+\end{definition}
+
+If $\rho\colon G\to\GL(V)$ is a representation and $W\subseteq V$ is $G$-invariant, then
+the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation.
+
+\begin{definition}
+    Let $\rho\colon G\to\GL(V)$
+    a representation. A \textbf{subrepresentation} of $\rho$ is a representation
+    of the form $\rho|_W\colon G\to\GL(W)$ for some $G$-invariant subspace $W$ of $V$.
+\end{definition}
+
+\begin{example}
+    Let $G=\langle g:g^3=1\rangle$ be the
+    cyclic group of order three
+    and
+    \[
+    \rho\colon G\to\GL_3(\R),
+    \quad
+    g\mapsto\begin{pmatrix}
+        0&1&0\\
+        0&0&1\\
+        1&0&0
+    \end{pmatrix}.
+    \]
+    The subspace
+    \[
+    W=\left\{
+    \begin{pmatrix}
+    x\\
+    y\\
+    z
+    \end{pmatrix}\in\R^3:x+y+z=0\right\}
+    \]
+    is a $G$-invariant subspace of $\R^3$.
+\end{example}
+
+\begin{definition}
+    \index{Representation|irreducible}
+    A representation $\rho\colon G\GL(V)$ is \textbf{irreducible} if
+    $\{0\}$ and $V$ are the only $G$-invariant subspaces of $V$.
+\end{definition}
+
+Clearly, degree-one representations are irreducible.
+
+\begin{example}
+        Let $G=\langle g:g^3=1\rangle$ be the
+    cyclic group of order three
+    and
+    \[
+    \rho\colon G\to\GL_3(\R),
+    \quad
+    g\mapsto\begin{pmatrix}
+        0&1&0\\
+        0&0&1\\
+        1&0&0
+    \end{pmatrix}.
+    \]
+    We claim that the $G$-invariant subspace
+    \[
+    W=\left\{
+    \begin{pmatrix}
+    x\\
+    y\\
+    z
+    \end{pmatrix}\in\R^3:x+y+z=0\right\}\subseteq\R^3
+    \]
+    is irreducible. Let $S$ be a non-zero $G$-invariant subspace of $W$ and let $s=\begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}\in S$ be a non-zero element. Then
+    \[
+    t=\begin{pmatrix}y_0\\z_0\\x_0\end{pmatrix}
+    =\begin{pmatrix}
+        0&1&0\\
+        0&0&1\\
+        1&0&0
+    \end{pmatrix}
+    \begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}\in S.
+    \]
+    We claim that $\{s,t\}$ are linearly independent. If not, there exists $\lambda\in\R$ such that
+    $\lambda s=t$. Thus $\lambda x_0=y_0$, $\lambda y_0=z_0$ and $\lambda z_0=x_0$. This implies that
+    $\lambda^3x_0=x_0$. Since $x_0\ne 0$ (because if $x_0=0$, then $y_0=z_0=0$, a contradiction), it follows that
+    $\lambda=1$ and hence $x_0=y_0=z_0$, a contradiction because $x_0+y)0+z_0=0$.
+    Therefore $\dim S=2$ and hence $S=W$.
+\end{example}
+
+\begin{exercise}
+    Let $\rho\colon G\to\GL(V)$ be a degree-two representation. Prove that
+    $\rho$ is irreducible if and only if there is no common eigenvector for the $\rho_g$, $g\in G$.
+\end{exercise}
+
+The previous exercise can be used to show that the representation
+$\Sym_3\to\GL_2(\C)$
+of the symmetric group $\Sym_3$
+given by
+\[
+(12)\mapsto\begin{pmatrix}
+-1&1\\0&1
+\end{pmatrix},
+\quad
+(123)\mapsto\begin{pmatrix}
+1&0\\
+1&-1
+\end{pmatrix}
+\]
+is irreducible.
+
+\begin{definition}
+    \index{Representation|completely irreducible}
+    A representation $\rho\colon G\to\GL(V)$ is \textbf{completely irreducible}
+    if $V$ can be decomposed as
+    $V=V_1\oplus\cdots\oplus V_n$, where each $V_i$ is a $G$-invariant subspace of $V$ and
+    each $\rho|_{V_i}$ is irreducible.
+\end{definition}
+
+Since we are considering finite-dimensional vector spaces, our vector spaces are
+Hilbert spaces, so they have
+an inner product $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$.
+
+\begin{definition}
+    \index{Representation|unitary}
+    A representation $\rho\colon G\to\GL(V)$ is \textbf{unitary} if
+    $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
+\end{definition}
+
+\begin{definition}}
+A representation
+$\rho\colon G\to\GL(V)$ is \textbf{decomposable} if $V$ can be decomposed as $V=S\otimes T$
+where $S$ and $T$ are non-zero $G$-invariant subspaces of $V$.
+\end{definition}
+
+\begin{exercise}
+Let $\rho\colon G\to\GL(V)$ be a unitary representation. Prove that $\rho$ is either
+irreducible or decomposable.
+\end{exercise}
+
+\begin{example}
+Let $G$ be a finite group and $V=\C[G]$. The \textbf{left regular representation}
+of $G$ is the representation
+\[
+L\colon G\to\GL(V),
+\quad
+g\mapsto L_g,
+\]
+where $L_g(h)=gh$. With the inner product
+\[
+\left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g}
+\]
+the representation $L$ is unitary.
+\end{example}
+
+\begin{proposition}[Weyl's trick]
+    Every representation of a finite group is equivalent to a unitary representation.
+\end{proposition}
+
+\begin{proof}
+    Let $\rho\colon G\to\GL(V)$ and $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle_0$ be an inner
+    product on $V$. A straighforward calculation shows that
+    \[
+    \langle v,w\rangle=\sum_{g\in G}\langle\rho_gv,\rho_gw\rangle_0
+    \]
+    is an inner product of $V$. Since
+    \begin{align*}
+    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}\langle\rho_h\rho_gv,\rho_h\rho_gw\rangle_0\\
+    &=\sum_{h\in G}\langle\rho_{hg}v,\rho_{hg}w\rangle_0=\sum_{x\in G}\langle\rho_xv,\rho_xw\rangle_0=\langle v,w\rangle,
+    \end{align*}
+    the representation $\rho$ is unitary.
+\end{proof}
+
+Weyl's trick has several interesting corollaries. Let $\rho\colon G\to\GL(V)$ be a representation
+of a finite group $G$. Then 1) every non-zero representation is either
+irreducible or decomposable, and 2) every $\rho_g$ is diagonalizable
+(as unitary operators are diagonalizable).
+
+\begin{exercise}
+    If $G$ is an infinite group it is not longer true that every non-zero representation
+    is either irreducible or decomposable. Find an example.
+\end{exercise}
+
+Recall that we only consider finite-dimensional representations of finite groups.
+
+\begin{theorem}[Maschke]
+    Every representation of a finite group is completely reducible.
+\end{theorem}
+
+\begin{proof}
+    Let $G$ be a finite group and $\rho\colon G\to\GL(V)$ be a representation of $G$. We proceed
+    by induction on $\dim V$.
+    If $\dim V=1$, the result is trivial, as degree-one representations are irreducible. Assume that
+    the result holds for representations of degree $\leq n$. Let $\rho\colon G\to\GL(V)$ be a representation
+    of degree $n+1$. If $\rho$ is irreducible, we are done. If not, write $V=S\otimes T$, where $S$ and $T$
+    are non-zero $G$-invariant subspaces. Since $\dim S<\dim V$ and $\dim T<\dim V$, it follows from
+    the inductive hypothesis that
+    both $S$ and $T$ are completely irreducible. Thus $V$ is completely irreducible.
+\end{proof}
+
+\begin{example}
+    Let $G=\Sym_3$ and $\rho\colon G\to\GL_3(\C)$ be the representation given by
+    \[
+    (12)\mapsto\begin{pmatrix}
+    0&1&0\\
+    1&0&0\\
+    0&0&1
+    \end{pmatrix},\quad
+    (123)\mapsto\begin{pmatrix}
+    0&0&1\\
+    1&0&0\\
+    0&1&0
+    \end{pmatrix}
+    \]
+    Then $\rho_g$ is unitary for all $g\in G$ (because $\rho_{(12)}$ and $\rho_{(123)}$ are both
+    unitary). Moreover,
+    \[
+    S=\left\langle \begin{pmatrix}
+    1\\1\\1
+    \end{pmatrix}
+    \right\rangle,
+    \quad
+    T=S^{\perp}=\left\langle
+    \begin{pmatrix}
+    -1\\1\\0
+    \end{pmatrix},
+    \begin{pmatrix}
+    0\\-1\\1
+    \end{pmatrix}
+    \right\rangle,
+    \]
+    are irreducible $G$-invariant subspaces of $V=\C^3$. A direct calculation shows that
+    in the orthogonal basis $\left\{\begin{pmatrix}
+    1\\1\\1
+    \end{pmatrix},
+    \begin{pmatrix}
+    -1\\1\\0
+    \end{pmatrix},
+    \begin{pmatrix}
+    0\\-1\\1
+    \end{pmatrix}
+    \right\}$
+    the matrices $\rho_{(12)}$ and $\rho_{(123)}$ can be written as
+    \[
+    \rho_{(12)}=\begin{pmatrix}
+        1&0&0\\
+        0&-1&1\\
+        0&0&1
+    \end{pmatrix},
+    \quad
+    \rho_{(123)}=
+    \begin{pmatrix}
+        1&0&0\\
+        0&0&-1\\
+        0&1&-1
+    \end{pmatrix}.
+    \]
+\end{example}
+
+\begin{exercise}
+Let $G$ be a finite group.
+Prove that there is a bijection between degree-one representations of $G$ and
+degree-one representations of $G/[G,G]$.
+\end{exercise}
+
