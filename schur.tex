@@ -1,0 +1,35 @@
+\chapter{Schur's orthogonality relations}
+
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a finite group
+$G$. Since $V$ and $W$ are vector spaces, the set 
+\[
+\Hom(V,W)=\{T\colon V\to W:\text{$T$ is linear}\}
+\]
+is a vector space with 
+\begin{align*}
+&(\lambda T)(v)=\lambda T(v) && \text{for all $\lambda\in\C$ and all $v\in V$,}\\ 
+&(T+T_1)(v)=T(v)+T_1(v) &&\text{for all $v\in V$.}
+\end{align*}
+We claim that the set $\Hom_G(V,W)$ of invariant maps
+is a subspace of $\Hom(V,W)$. Indeed, the zero map is clearly invariant. If $T,T_1\in\Hom_G(V,W)$ 
+and $\lambda\in\C$, then
+\[
+(T+\lambda T_1)(\rho_g v)
+=T(\rho_gv)+\lambda T_1(\rho_gv)
+=\psi_gT(v)+\lambda \psi_gT_1(v)
+=\psi_g((T+\lambda T_1)(v))
+\]
+for all $v\in V$. 
+ 
+\begin{proposition}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations
+	and $T\colon V\to W$ be a linear map. Then
+	\[
+	T^{\#}=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\in\Hom_G(V,W).
+	\]
+	Moreover, the map $\Hom(V,W)\to\Hom_G(V,W)$, $T\mapsto T^{\#}$, is linear and surjective.  
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
