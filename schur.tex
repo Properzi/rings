@@ -31,5 +31,49 @@ for all $v\in V$.
 \end{proposition}
 
 \begin{proof}
-	
+  Let $h\in G$ and $v\in V$. Then 
+  \begin{align*}
+	T^{\#}\phi_h(v)
+	&=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\phi_g\phi_h(v)
+	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\phi_{gh}(v)\\
+	&=\frac{1}{|G|}\sum_{x\in G}\psi_{hx^{-1}}T\phi_x(v)
+	=\frac{1}{|G|}\sum_{x\in G}\psi_h\psi_{x^{-1}}T\phi_x(v)
+	=\psi_hT^{\#}(v).
+      \end{align*}
+
+	  If $T\in\Hom_{\C[G]}(V,V)$, then 
+      \[
+	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\phi_g(v)
+	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
+	=T(v)
+      \]
+      for all $v\in V$.
+\end{proof}
+
+If $\phi\colon G\to\GL(V)$ and $\psi\colon
+	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
+	V\to W$ is a linear map, then $T^{\#}=0$, as 
+	$T^{\#}\in\Hom_{\C[G]}(V,W)=\{0\}$ by the previous proposition and Schur's lemma.
+
+\begin{theorem}[ergodic theorem]
+  Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
+  If $T\colon V\to W$ is linear, then 
+  $T^{\#}=(\deg\phi)^{-1}\trace(T)\id$.
+\end{theorem}
+
+\begin{proof}
+  The previous proposition and Schur's lemma imply that
+  $T^{\#}=\lambda\id$ for some $\lambda\in\C$.
+  We now compute the trace of $T^{\#}$. On the one hand, 
+  \[
+	\trace(T^{\#})=\trace(\lambda\id)=(\dim V)\lambda.
+  \]
+  On the other hand.  
+  \[
+	\trace(T^{\#})
+	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho)
+	=\frac{1}{|G|}\sum_{g\in G}\trace(T)
+	=\trace(T).
+  \]
+  Hence $\trace(T^{\#})=(\dim V)^{-1}\trace(T)\id$.
 \end{proof}
