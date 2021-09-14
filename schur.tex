@@ -81,3 +81,58 @@ If $\phi\colon G\to\GL(V)$ and $\psi\colon
   \trace(T^{\#})=(\dim V)^{-1}\trace(T)\id.\qedhere 
   \]
 \end{proof}
+
+We now prove Schur's orthogonality relations. We need some preliminary material. First recall that 
+the matrix $E_{ij}$ is given by 
+\[
+(E_{ij})_{kl}=\delta_{ik}\delta_{jl},
+\qquad
+\delta_{xy}=\begin{cases}
+    1 & \text{if $x=y$},\\
+    0 & \text{otherwise}.
+\end{cases}
+\]
+If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation, then
+$\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
+\[
+\chi_\rho(g)=\sum_{i=1}^n\rho_{ii}(g).
+\]
+
+\begin{lemma}
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
+$(E_{ik}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
+\end{lemma}
+
+\begin{proof}
+  We compute
+  \begin{align*}
+      (E_{ki}^\#)_{lj} &= \frac{1}{|G|}\sum_{g\in G}(\psi_{g^{-1}}E_{ki}\rho_g)_{lj}\\
+      &=\frac{1}{|G|}\sum_{g\in G}\sum_{p,q}\psi_{lq}(g^{-1})(E_{ki})_{qp}(\rho_{ij}(g))_{pj}\\
+      &=\frac{1}{|G|}\sum_{g\in G}\psi_{lk}(g^{-1})\rho_{ij}(g)\\
+      &=\frac{1}{|G|}\sum_{g\in G}\overline{\psi_{kl}(g)}\rho_{ij}(g)=\langle \rho_{ij},\psi_{kl}\rangle.\qedhere
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[Schur]
+    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. 
+    Then the following statements hold:
+    \begin{enumerate}
+        \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ if $\rho$ and $\psi$ are not equivalent.
+        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{jl}}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Let us prove the first claim. Since 
+    $\rho$ and $\psi$ 
+    are not equivalent, it follows from Schur's lemma that $\Hom_G(V,W)=\{0\}$.
+    Thus $E_{ki}^\#\in\Hom_G(V,W)=\{0\}$ by the Ergodic theorem. 
+    
+    To prove the second claim, we use the previous lemma:
+    \[
+    (E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle
+    =\frac{1}{\dim V}(\trace E_{ki})\delta_{lj}
+    =\frac{1}{\dim V}\delta_{ki}\delta_{lj}.\qedhere
+    \]
+\end{proof}
+
