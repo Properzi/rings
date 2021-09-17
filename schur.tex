@@ -71,11 +71,15 @@ If $\phi\colon G\to\GL(V)$ and $\psi\colon
   On the other hand.  
   \[
 	\trace(T^{\#})
-	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho)
+	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho_g)
 	=\frac{1}{|G|}\sum_{g\in G}\trace(T)
-	=\trace(T).
+	=\trace(T),
   \]
-  Hence $\trace(T^{\#})=(\dim V)^{-1}\trace(T)\id$.
+  as $\trace(ABA^{-1})=\trace(B)$ for all $A$ and $B$. 
+  Hence 
+  \[
+  \trace(T^{\#})=(\dim V)^{-1}\trace(T)\id.\qedhere 
+  \]
 \end{proof}
 
 We now prove Schur's orthogonality relations. We need some preliminary material. First recall that 
