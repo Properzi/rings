@@ -55,10 +55,10 @@ If $\phi\colon G\to\GL(V)$ and $\psi\colon
 	V\to W$ is a linear map, then $T^{\#}=0$, as 
 	$T^{\#}\in\Hom_{\C[G]}(V,W)=\{0\}$ by the previous proposition and Schur's lemma.
 
-\begin{theorem}[ergodic theorem]
-  Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
-  If $T\colon V\to V$ is linear, then 
-  $T^{\#}=(\deg\phi)^{-1}\trace(T)\id$.
+\begin{theorem}[Ergodic theorem]
+  Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. 
+  If $T\colon V\to W$ is linear, then 
+  $T^{\#}=(\dim V)^{-1}\trace(T)\id$.
 \end{theorem}
 
 \begin{proof}
@@ -136,3 +136,252 @@ $(E_{ik}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
     \]
 \end{proof}
 
+Now we can prove Schur's first orthogonality relation.
+
+\begin{theorem}[Schur]
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
+\[
+\langle\chi_\rho,\chi_\psi\rangle=
+\begin{cases}
+1 & \text{if $\rho\simeq\psi$,}\\
+0 & \text{otherwise.}
+\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+    Let $n=\dim V$ and $m=\dim W$. We compute
+    \begin{align*}
+        \langle\chi_\rho,\chi_\psi\rangle
+        &=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\overline{\chi_\psi}(g)\\
+        %&=\frac{1}{|G|}\sum_{g\in G}\sum_{i=1}^n\sum_{j=1}^m\rho_{ii}(g)\overline{\psi_{jj}(g)}\\
+        &=\sum_{1=1}^n\sum_{j=1}^m\frac{1}{|G|}\rho_{ii}(g)\overline{\psi_{jj}(g)}
+        =\sum_{1=1}^n\sum_{j=1}^m\frac{1}{|G|}\langle \rho_{ii},\psi_{jj}\rangle
+        =\begin{cases}
+            1 & \text{if $\rho\simeq\psi$,}\\
+            0 & \text{otherwise.}
+        \end{cases}\qedhere
+    \end{align*}
+\end{proof}
+
+Schur's theorem has several important corollaries.
+
+If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
+\[
+\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
+\]
+is an orthonormal set.
+
+% \begin{corollary}
+%     If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
+%     $\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}$ is an orthonormal set.
+% \end{corollary}
+
+\begin{corollary}
+    A finite group has finitely many classes of irreducible representations. 
+\end{corollary}
+
+\begin{proof}
+    Let $G$ be a finite group. 
+    Every isomorphism class of representations of $G$ contains a unitary representation. Since $\dim L(G)=|G|$, 
+    it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
+    $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
+    irreducible representations of $G$. For each $k$ let $n_k=\deg\rho_k$. Since
+    the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
+    form an orthonormal set of $L(G)$, it follows that
+    $r\leq n_1^2+\cdots n_r^2\leq|G|$.
+\end{proof}
+
+Let $G$ be a finite group. Since $G$ has only finitely many non-equivalent 
+irreducible representation, we will often say
+that 
+\[
+\rho_1,\dots,\rho_r
+\]
+are \emph{the} irreducible representations of $G$, where it is assumed that
+the $\rho_i$ form a complete set of 
+representatives of irreducible representations of $G$. For each $i$ we write
+$\chi_i=\chi_{\rho_i}$. The set of irreducible characters will be denoted
+by 
+\[
+\Irr(G)=\{\chi_1,\dots,\chi_r\}.
+\]
+
+% If $G$ is a finite group, let $K(G)$ be the number of conjugacy classes of $G$. 
+% We want to know how many irreducible representations are there. For that purpose, 
+% we need to study the space of class functions. 
+
+Recall that $L(G)=\{f\colon G\to\C\}$ is a vector space with
+\[
+    (f+g)(x)=f(x)+g(x),
+    \quad
+    \lambda f)(x)=\lambda f(x),
+    \quad 
+    f,g\in L(G),\,\lambda\in\C,\,x\in G.
+\]
+Let $C(G)$ be the subspace of class functions. 
+We claim that $\dim C(G)=K(G)$, the number of conjugacy classes of $G$. If $C$ is a conjugacy class, 
+then 
+\[
+\delta_C\colon G\to\C,\quad
+\delta_C(x)=\begin{cases}
+    1 & \text{if $x\in C$,}\\
+    0 & \text{otherwise.}
+\end{cases}
+\]
+is a class function. Let us prove that the 
+set $\{\delta_C:C\text{ is a conjugacy class of $G$}\}$ is a basis of $C(G)$.  It is a generating set
+because each $f$ can be written as 
+\[
+f=\sum_{C}f(C)\delta_C.
+\]
+The $\delta_C$ are linearly independent because they are orthogonal: 
+If $C$ and $D$ 
+are conjugacy classes of $G$, then 
+\[
+\langle\delta_C,\delta_D\rangle=\frac{1}{|G|}\sum_{x\in G}\delta_C(x)\overline{\delta_D(x)}
+=\begin{cases}
+|C|/|G| & \text{if $C=D$},\\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{corollary}
+    Let $G$ be a finite group. There are at most $K(G)$ equivalence classes of irreducible representations of $G$.
+\end{corollary}
+
+\begin{proof}
+    Non-equivalent representations have different characters. 
+    Irreducible characters 
+    form an orthonormal set, thus they are linearly 
+    independent. Since irreducible characters
+    are class functions, it follows that there are at most $K(G)$ irreducible different characters.  
+\end{proof}
+
+Let $m\in\N$. If $V$ is a vector space, we 
+write $mV=V\oplus\cdots\oplus V$ ($m$-times). Similarly,
+if $\rho$ is a representation, 
+we write $m\rho=\rho\oplus\cdots\oplus\rho$ ($m$-times). 
+
+
+\begin{theorem}
+    Let $\rho_1,\dots,\rho_r$ be the irreducible representations of $G$. If 
+    $\rho=\sum_{i_1}^rm_j\rho_j$ where $m_1,\dots m_r\in\N_0$, then
+    $m_j=\langle \rho_\rho,\rho_j\rangle$ for all $j\in\{1,\dots,r\}$. 
+\end{theorem}
+
+\begin{proof}
+    Write $\chi_\rho=\sum_{j=1}^rm_j\chi_j$. Then
+    \[
+    \langle\chi_\rho,\chi_i\rangle=\sum_{j=1}^r\langle\chi_j,\chi_i\rangle=m_i
+    \]
+    for all $i\in\{1,\dots,r\}$.
+\end{proof}
+
+The theorem states that the decomposition of a representation $\rho$ into irreducibles 
+is unique and that it is determined (up to equivalence) by its character.
+
+\begin{corollary}
+    A representation $\rho$ is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
+\end{corollary}
+
+\begin{proof}
+    We first decompose $\rho$ as a sum of irreducibles, say $\rho=\sum_{j=1}^rm_j\rho_j$ with $m_1,\dots,m_r\geq0$. Then
+    $\langle\chi_\rho,\chi_\rho\rangle=\sum_{j=1}^rm_j^2$. Now $\langle\chi_\rho,\chi_\rho\rangle=1$ if and only if
+    there is exactly one $j$ such that $m_j=1$ and $m_i=0$ for all $i\ne j$.  
+\end{proof}
+
+% As an example, the representation of $\Sym_3$ given by
+
+\begin{exercise}
+    Let $\rho\colon H\to\GL(V)$ be an irreducible
+    representation of $H$ and 
+    $f\colon G\to H$ be a surjective group homomorphism. Prove that the composition $\rho\circ f\colon G\to\GL(V)$ is an irreducible representation. 
+\end{exercise}
+
+% is not irreducible. as $\chi($
+
+\begin{theorem}
+    Let $G$ be a finite group and $L$ be its regular representation. 
+    Then $L=\sum_{j=1}^rn_j\rho_j$, where $n_j=\deg\rho_j$. 
+\end{theorem}
+
+\begin{proof}
+    Let $G=\{g_1,\dots,g_n\}$, $n=|G|$. If $g\in G$, since
+    $L_g(g_i)=gg_i$ for all $i$, 
+    the matrix of $L_g$ in the basis $\{g_1,\dots,g_n\}$ is then
+    \begin{gather*}
+    (L_g)_{ij}=\begin{cases}
+        1 & \text{if $g_i=gg_j$},\\
+        0 & \text{otherwise}.
+    \end{cases}
+    \shortintertext{Then}
+    \chi_L(g)=\trace(L_g)=\sum_{i=1}^r(L_g)_{ii}=\begin{cases}
+        |G| & \text{if $g=1$},\\
+        0 & \text{otherwise}.
+    \end{cases}
+    \end{gather*}
+    In particular, 
+    \[
+    \langle\chi_L,\chi_i\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_L(g)\overline{\chi_i(g)}
+    =\frac{1}{|G|}|G|\overline{\chi_i(1)}=n_i
+    \]
+    for all $i\in\{1,\dots,n\}$. 
+\end{proof}
+
+Now several corollaries. 
+
+\begin{corollary}
+    Let $G$ be a finite group and $\rho_1,\dots,\rho_r$ be the irreducible representations of $G$. 
+    For each $k$ let $n_k=\deg\rho_k$. The following statements hold:
+    \begin{enumerate}
+        \item $|G|=n_1^2+\cdots+n_r^2$.
+        \item $\{\sqrt{n_k}(\rho_k)_{ij}:1\leq k\leq r,\,1\leq i,j\leq n_k\}$
+            is an orthonormal basis of $L(G)$. 
+        \item $r$ is equal to the number of conjugacy classes of $G$. 
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    Since $\chi_L=\sum_{j=1}^rn_j\chi_j$, the first claim follows. 
+    The second claim follows from the orthogonality relations. Let us prove the third claim. Let $f\in C(G)$ and write $f$ 
+    as a linear combination of the $(\rho_k)_{ij}$, say
+    \[
+    f=\sum_{i,j,k}\lambda_{ijk}(\rho_k)_{ij},\quad\lambda_{ijk}\in\C.
+    \]
+    If $x\in G$, then 
+    \begin{align*}
+    f(x)&=\frac{1}{|G|}\sum_{g\in G}f(g^{-1}xg)\\
+    &=\frac{1}{|G|}\sum_{g\in G}\sum_{i,j,k}\lambda_{ijk}(\rho_k)_{ij}(g^{-1}xg)
+    =\sum_{i,j,k}\lambda_{ijk} \frac{1}{|G|}\sum_{g\in G}(\rho_k)_{ij}(g^{-1}xg). 
+    \end{align*}
+    Let $T=(\rho_k)_x\colon V\to V$. Then
+    \[
+    T^{\#}=\frac{1}{|G|}\sum_{g\in G}(\rho_k)_{g^{-1}}(\rho_k)_x(\rho_k)_g
+    =\frac{1}{|G|}\sum_{g\in G}(\rho_k)(g^{-1}xg)
+    =\frac{1}{\dim V}\chi_k(x)\id
+    \]
+    by the Ergodic theorem and because 
+    $\rho_k$ is a group homomorphism. Thus 
+    \[
+    f(x)=\sum_{i,j,k}\lambda_{ijk} \left((\rho_k)_x\right)_{ij}
+    =\sum_{i,j,k}\lambda_{ijk}\frac{1}{\dim V}\chi_k(x)\delta_{ij}
+    =\sum_{i,k}\lambda_{ijk}\frac{1}{n_k}\chi_k(x).\qedhere 
+    \]
+    This implies that $\dim C(G)\leq r$ and the claim follows. 
+\end{proof}
+
+In the following exercise, the reader is asked to provide a proof of the second 
+Schur's ortoghonality relation. 
+
+\begin{exercise}
+    Let $G$ be a finite group and 
+    $C$ and $D$ be conjugacy classes of $G$. If $g\in C$ and $h\in D$, then
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}=
+    \begin{cases}
+    |G|/|C| & \text{if $C=D$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+\end{exercise}
