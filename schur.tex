@@ -160,7 +160,6 @@ Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible represent
     \end{align*}
 \end{proof}
 
-
 Schur's theorem has several important corollaries.
 
 If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
@@ -290,6 +289,11 @@ is unique and that it is determined (up to equivalence) by its character.
 
 % As an example, the representation of $\Sym_3$ given by
 
+\begin{exercise}
+    Let $\rho\colon H\to\GL(V)$ be an irreducible
+    representation of $H$ and 
+    $f\colon G\to H$ be a surjective group homomorphism. Prove that the composition $\rho\circ f\colon G\to\GL(V)$ is an irreducible representation. 
+\end{exercise}
 
 % is not irreducible. as $\chi($
 
@@ -362,3 +366,18 @@ Now several corollaries.
     \]
     This implies that $\dim C(G)\leq r$ and the claim follows. 
 \end{proof}
+
+In the following exercise, the reader is asked to provide a proof of the second 
+Schur's ortoghonality relation. 
+
+\begin{exercise}
+    Let $G$ be a finite group and 
+    $C$ and $D$ be conjugacy classes of $G$. If $g\in C$ and $h\in D$, then
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}=
+    \begin{cases}
+    |G|/|C| & \text{if $C=D$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+\end{exercise}

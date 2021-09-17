@@ -38,43 +38,50 @@ contains not only the values of the irreducible characters of the group.
 			\hline
 		\end{tabular}
 	\end{center}
-Let us see how to see this calculation in the computer:
-\begin{lstlisting}
-gap> C4 := CyclicGroup(4);;                       
-gap> T := CharacterTable(C4);;
-gap> Display(T);
-CT1
+% Let us see how to see this calculation in the computer:
+% \begin{lstlisting}
+% gap> C4 := CyclicGroup(4);;                       
+% gap> T := CharacterTable(C4);;
+% gap> Display(T);
+% CT1
 
-     2  2  2  2  2
+%      2  2  2  2  2
 
-       1a 4a 2a 4b
+%       1a 4a 2a 4b
 
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  A -1 -A
-X.4     1 -A -1  A
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  A -1 -A
+% X.4     1 -A -1  A
 
-A = E(4)
-  = Sqrt(-1) = i
-\end{lstlisting}
-We need some remarks
-\begin{enumerate}
-    \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
-    \item The function \lstinline{CharacterTable} computes some more information, not only the character table of the group. 
-    esta función calcula algunas otras cosas. Por ejemplo:
-\end{enumerate}
-\begin{lstlisting}
-gap> OrdersClassRepresentatives(T);
-[ 1, 4, 2, 4 ]
-gap> SizesCentralizers(T);
-[ 4, 4, 4, 4 ]
-gap> SizesConjugacyClasses(T);
-[ 1, 1, 1, 1 ]
-\end{lstlisting}
+% A = E(4)
+%   = Sqrt(-1) = i
+% \end{lstlisting}
+% We need some remarks
+% \begin{enumerate}
+%     \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
+%     \item The function \lstinline{CharacterTable} computes some more information, not only the character table of the group. 
+%     esta función calcula algunas otras cosas. Por ejemplo:
+% \end{enumerate}
+% \begin{lstlisting}
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 4, 2, 4 ]
+% gap> SizesCentralizers(T);
+% [ 4, 4, 4, 4 ]
+% gap> SizesConjugacyClasses(T);
+% [ 1, 1, 1, 1 ]
+% \end{lstlisting}
 \end{example}
 
-As an exercise, if $\lambda$ is a primitive root of 1 of order $n$, 
-the character table of the cyclic group of order $n$ is given by 
+\begin{exercise}
+Let $n\in\N$ be such that $n\geq2$. Let 
+$C_n=\langle g:g^n=1\rangle$ be the cyclic group of order $n$.
+\begin{enumerate}
+    \item Prove that the maps  
+        $\chi_i\colon C_n\to\C^\times$, $g^k\mapsto e^{2\pi ik/n}$, where $i\in\{0,1,\dots,n-1\}$, 
+        are the irreducible representations of $C_n$. 
+    \item Let $\lambda$ be a primitive root of 1 of order $n$. Prove that 
+        the character table of $C_n$ of order $n$ is given by 
 	\begin{center}
 		\begin{tabular}{|c|ccccc|}
 			\hline 
@@ -89,6 +96,21 @@ the character table of the cyclic group of order $n$ is given by
 			\hline
 		\end{tabular}
 	\end{center}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $A$ and $B$ be abelian groups. We write $\Irr(A)=\{\rho_1,\dots,\rho_r\}$ and 
+    $\Irr(B)=\{\phi_1,\dots,\phi_s\}$. Prove
+    that the maps 
+    \[
+    \varphi_{ij}\colon A\times B\to\C^\times,\quad
+    (a,b)\mapsto\rho_i(a)\phi_j(b),
+    \]
+    where $i\in\{1,\dots,r\}$ and $j\in\{1,\dots,s\}$, are the irreducible representations of $A\times B$. 
+\end{exercise}
+
+Let us show a particular example of the previous exercise. 
 
 \begin{example}
 	The character table of the group $C_2\times C_2=\{1,a,b,ab\}$ is 
@@ -105,20 +127,20 @@ the character table of the cyclic group of order $n$ is given by
 			\hline
 		\end{tabular}
 	\end{center}
-	Let us do this by computer:
-\begin{lstlisting}
-gap> Display(CharacterTable(AbelianGroup([2,2])));
-CT2
+% 	Let us do this by computer:
+% \begin{lstlisting}
+% gap> Display(CharacterTable(AbelianGroup([2,2])));
+% CT2
 
-     2  2  2  2  2
+%      2  2  2  2  2
 
-       1a 2a 2b 2c
+%       1a 2a 2b 2c
 
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  1 -1 -1
-X.4     1 -1 -1  1
-\end{lstlisting}
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  1 -1 -1
+% X.4     1 -1 -1  1
+% \end{lstlisting}
 \end{example}
 
 Clearly, the order in which the computer returns the irreducible characters is not necessarily the same we used! 
@@ -174,35 +196,35 @@ Clearly, the order in which the computer returns the irreducible characters is n
 		0&=\langle \chi_3,\chi_2\rangle=\frac16(2-3a+2b).
 	\end{align*}
 	
-	Let us use the computer:
-	\begin{lstlisting}
-gap> S3 := SymmetricGroup(3);;
-gap> T := CharacterTable(S3);;
-gap> Display(T);
-CT3
+% 	Let us use the computer:
+% 	\begin{lstlisting}
+% gap> S3 := SymmetricGroup(3);;
+% gap> T := CharacterTable(S3);;
+% gap> Display(T);
+% CT3
 
-     2  1  1  .
-     3  1  .  1
+%      2  1  1  .
+%      3  1  .  1
 
-       1a 2a 3a
-    2P 1a 1a 3a
-    3P 1a 2a 1a
+%       1a 2a 3a
+%     2P 1a 1a 3a
+%     3P 1a 2a 1a
 
-X.1     1 -1  1
-X.2     2  . -1
-X.3     1  1  1
-\end{lstlisting}
-As we did before, some extra information was computed:
-\begin{lstlisting}
-gap> SizesConjugacyClasses(T);
-[ 1, 3, 2 ]
-gap> SizesCentralizers(T);
-[ 6, 2, 3 ]
-gap> SizesConjugacyClasses(T);
-[ 1, 3, 2 ]
-gap> OrdersClassRepresentatives(T);
-[ 1, 2, 3 ]
-\end{lstlisting}
+% X.1     1 -1  1
+% X.2     2  . -1
+% X.3     1  1  1
+% \end{lstlisting}
+% As we did before, some extra information was computed:
+% \begin{lstlisting}
+% gap> SizesConjugacyClasses(T);
+% [ 1, 3, 2 ]
+% gap> SizesCentralizers(T);
+% [ 6, 2, 3 ]
+% gap> SizesConjugacyClasses(T);
+% [ 1, 3, 2 ]
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 2, 3 ]
+% \end{lstlisting}
 \end{example}
 
 %A challenging exercise: 
@@ -255,31 +277,31 @@ Compute the character table of $\Sym_4$.
 			\hline
 		\end{tabular}
 	\end{center}
-	Let us use the computer:
-\begin{lstlisting}
-gap> A4 := AlternatingGroup(4);;
-gap> T := CharacterTable(A4);;
-gap> Display(T);
-CT5
+% 	Let us use the computer:
+% \begin{lstlisting}
+% gap> A4 := AlternatingGroup(4);;
+% gap> T := CharacterTable(A4);;
+% gap> Display(T);
+% CT5
 
-     2  2  2  .  .
-     3  1  .  1  1
+%      2  2  2  .  .
+%      3  1  .  1  1
 
-       1a 2a 3a 3b
-    2P 1a 1a 3b 3a
-    3P 1a 2a 1a 1a
+%       1a 2a 3a 3b
+%     2P 1a 1a 3b 3a
+%     3P 1a 2a 1a 1a
 
-X.1     1  1  1  1
-X.2     1  1  A /A
-X.3     1  1 /A  A
-X.4     3 -1  .  .
+% X.1     1  1  1  1
+% X.2     1  1  A /A
+% X.3     1  1 /A  A
+% X.4     3 -1  .  .
 
-A = E(3)^2
-  = (-1-Sqrt(-3))/2 = -1-b3
-\end{lstlisting}
-The symbol \lstinline{E(3)} denotes a primitive cubic root of 1, say our $\omega$. 
-To save some space, the compute uses the symbol \lstinline{A} to denote the complex number $\omega^2$ (it is the same as \lstinline{E(3)^2}) and
-the symbol \lstinline{/A} to denote the complex number $\omega$, the multiplicative inverse of $\omega^2$. 
+% A = E(3)^2
+%   = (-1-Sqrt(-3))/2 = -1-b3
+% \end{lstlisting}
+% The symbol \lstinline{E(3)} denotes a primitive cubic root of 1, say our $\omega$. 
+% To save some space, the compute uses the symbol \lstinline{A} to denote the complex number $\omega^2$ (it is the same as \lstinline{E(3)^2}) and
+% the symbol \lstinline{/A} to denote the complex number $\omega$, the multiplicative inverse of $\omega^2$. 
 \end{example}
 
 \begin{example}
@@ -331,27 +353,29 @@ the symbol \lstinline{/A} to denote the complex number $\omega$, the multiplicat
 	It remains to compute $\chi_j(-1)$ for $j\in\{2,3,4\}$, these missing values are presented in shaded
     cells. To compute these values that $\langle\chi_i,\chi_j\rangle=0$ whenever $i\ne j$. The calculations
     are left as an exercise. 
-	
-	To check our character table we can use the computer. 
-\begin{lstlisting}
-gap> Q8 := QuaternionGroup(8);;
-gap> Display(CharacterTable(Q8));
-CT6
+% 	To check our character table we can use the computer. 
+% \begin{lstlisting}
+% gap> Q8 := QuaternionGroup(8);;
+% gap> Display(CharacterTable(Q8));
+% CT6
 
-     2  3  2  2  3  2
+%      2  3  2  2  3  2
 
-       1a 4a 4b 2a 4c
-    2P 1a 2a 2a 1a 2a
-    3P 1a 4a 4b 2a 4c
+%       1a 4a 4b 2a 4c
+%     2P 1a 2a 2a 1a 2a
+%     3P 1a 4a 4b 2a 4c
 
-X.1     1  1  1  1  1
-X.2     1 -1 -1  1  1
-X.3     1 -1  1  1 -1
-X.4     1  1 -1  1 -1
-X.5     2  .  . -2  .
-\end{lstlisting}
+% X.1     1  1  1  1  1
+% X.2     1 -1 -1  1  1
+% X.3     1 -1  1  1 -1
+% X.4     1  1 -1  1 -1
+% X.5     2  .  . -2  .
+% \end{lstlisting}
 \end{example}
 
 \begin{exercise}
     Compute the character table of the dihedral group of eight elements. 
 \end{exercise}
+
+
+
