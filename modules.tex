@@ -39,21 +39,21 @@ $r\cdot (x_1,\dots,x_n)=(rx_1,\dots,rx_n)$.
 If $R$ is a ring, then $M_{m,n}(R)$ is a module (over $R$) with usual matrix operations. 
 \end{example}
 
-%El siguiente ejemplo explica por qué es útil 
-%pedir que un morfismo $f$ 
-%de anillos cumpla con la condición $f(1)=1$. 
+%%El siguiente ejemplo explica por qué es útil 
+%%pedir que un morfismo $f$ 
+%%de anillos cumpla con la condición $f(1)=1$. 
+%%
+%%\begin{example}
+%%\label{exa:f(1)=1}
+%%Si $f\colon R\to S$ es un morfismo de anillos y $M$ es un $S$-módulo con la acción $(s,m)\mapsto sm$, entonces
+%%$M$ es un $R$-módulo con $r\cdot m=f(r)m$ para $r\in R$ y $m\in M$. En efecto,
+%%\begin{align*}
+%%&1\cdot m=f(1)m=1m=m,\\
+%%&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
+%%\end{align*}
+%%para todo $r_1,r_2\in R$ y $m\in M$.	  	
+%%\end{example}
 %
-%\begin{example}
-%\label{exa:f(1)=1}
-%Si $f\colon R\to S$ es un morfismo de anillos y $M$ es un $S$-módulo con la acción $(s,m)\mapsto sm$, entonces
-%$M$ es un $R$-módulo con $r\cdot m=f(r)m$ para $r\in R$ y $m\in M$. En efecto,
-%\begin{align*}
-%&1\cdot m=f(1)m=1m=m,\\
-%&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
-%\end{align*}
-%para todo $r_1,r_2\in R$ y $m\in M$.	  	
-%\end{example}
-
 \begin{example}
 Let $R=\R[X]$, $T\colon\R^n\to\R^n$ be a linear map and $M=\R^n$. Then
 $M$ is a module (over $R$) with  
@@ -63,67 +63,68 @@ $M$ is a module (over $R$) with
 \end{example}
 
 \begin{example}
-Si $\{M_i|i\in I\}$ es una familia de módulos, entonces  	
+If $\{M_i|i\in I\}$ is a family of modules, then  	
 \[
-\prod_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ para todo $i\in I$}\}
+\prod_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ for all $i\in I$}\}
 \]
-es un módulo con
-la operación 
+is a module with 
 $x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$, 
-donde el símbolo $(m_i)_{i\in I}$ denota a la función $I\to M_i$, $i\mapsto m_i$.
-Este módulo se conoce como el \textbf{producto directo} de los $M_i$.
+where $(m_i)_{i\in I}$ denotes the map $I\to M_i$, $i\mapsto m_i$.
+This module is the \textbf{direct product} of the family $\{M_i:i\in I\}$.
 \end{example}
-
+%
 \begin{example}
-Si $\{M_i|i\in I\}$ es una familia de módulos, entonces  	
+If $\{M_i|i\in I\}$ is family of modules, then   	
 \[
-\bigoplus_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ para todo $i\in I$ y $m_i=0$ salvo finitos $i\in I$}\}
+\bigoplus_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ for all $i\in I$ and $m_i=0$ except finitely many $i\in I$}\}
 \]
-es un módulo con la operación
+is a module with 
 $x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$. 
-Este módulo se conoce como la \textbf{suma directa} de los $M_i$. 
+This module is the \textbf{direct sum} of the family $\{M_i:i\in I\}$. 
 \end{example}
-
-\begin{exercise}
-Si $M$ es un módulo, entonces
-\begin{enumerate}
-\item $0\cdot m=0$ para todo $m\in M$,
-\item $x\cdot 0=0$ para todo $x\in R$ y además
-\item $-m=(-1)\cdot m$ para todo $m\in M$. 	
-\end{enumerate}
-\end{exercise}
-
-\begin{example}
-$M=\Z/6$ es un $\Z$-módulo tal que $3\cdot 2=0$ pero $3\ne 0$ (en $\Z$) y $2\ne 0$ (en $\Z/6$).  
-\end{example}
-
+%
+%\begin{exercise}
+%Si $M$ es un módulo, entonces
+%\begin{enumerate}
+%\item $0\cdot m=0$ para todo $m\in M$,
+%\item $x\cdot 0=0$ para todo $x\in R$ y además
+%\item $-m=(-1)\cdot m$ para todo $m\in M$. 	
+%\end{enumerate}
+%\end{exercise}
+%
+%\begin{example}
+%$M=\Z/6$ es un $\Z$-módulo tal que $3\cdot 2=0$ pero $3\ne 0$ (en $\Z$) y $2\ne 0$ (en $\Z/6$).  
+%\end{example}
+%
 \begin{definition}
-\index{Submódulo}
-	Sea $M$ un $R$-módulo. Un subconjunto $S$ de $M$ será un \textbf{submódulo} de $M$ si $(S,+)$ es un subgrupo de $(M,+)$ y además
-	$x\cdot s\in S$ para todo $x\in R$ y $s\in S$. 
+	Let $M$ be a module. A subset $N$ of $M$ is a \textbf{submodule} of $M$ if 
+	$(N,+)$ is a subgroup of $(M,+)$ and 
+	$x\cdot n\in N$ for all $x\in R$ and $n\in N$. 
 \end{definition}
 
-\begin{examples}
-Sea $M$ un $R$-módulo. 
-\begin{enumerate}
-\item $\{0\}$ y $M$ son submódulos de $M$.
-\item Si $R$ es un cuerpo, $S$ es un submódulo de $M$ si y sólo si $S$ es un subespacio de $M$.
-\item Si $R=\Z$, entonces $S$ es un submódulo si y sólo si $S$ es un subgrupo de $M$. 	
-\end{enumerate}
-\end{examples}
+Clearly, if $M$ is a module, then $\{0\}$ and $M$ are submodules of $M$. 
 
 \begin{example}
-Si $M=\prescript{}{R}R$, entonces $S\subseteq M$ es un submódulo si y sólo si $S$ es un ideal a izquierda de $R$
+Let $R$ be a field and $M$ be a module over $R$. Then
+$N$ is a submodule of $M$ if and only if $N$ is a subspace of $M$. 
 \end{example}
 
 \begin{example}
-Si $V$ es un espacio vectorial y $T\colon V\to V$ es una transformación lineal, entonces
-$V$ es un $K[X]$-módulo con 
+Let $R=\Z$ and $M$ be a module (over $R$). Then
+$N$ is a submodule of $M$ if and only if $N$ is a subgroup of $M$
+\end{example}
+
+\begin{example}
+If $M=\prescript{}{R}R$, then a subset $N\subseteq M$ is a submodule
+of $M$ if and only if $N$ is a left ideal of $R$. 
+\end{example}
+
+\begin{example}
+If $V$ is a vector space and $T\colon V\to V$ is a linear map, then
+$V$ is a module (over $K[X]$) with  
 \[
 \left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v).
 \]
-Un submódulo $W$ será entonces un subespacio $T$-invariante de $V$, es decir un subspacio vectorial de $V$ 
-tal que $T(W)\subseteq W$. 
+A submodule $W$ is a subspace $W$ 
+of $V$ such that $T(W)\subseteq W$. 
 \end{example}
- 
-
