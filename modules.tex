@@ -233,3 +233,32 @@ Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent:
 	a contradiction, as $f$ is injective.    
 \end{example}
 
+If $N$ and $N_1$ are submodules of $M$, we say that $M$ is the \textbf{direct sum} of $N$ and $N_1$
+if $M=N+N_1$ and $N\cap N_1=\{0\}$. In this case, we write $M=N\oplus N_1$. Note that if
+$M=N\oplus N_1$, then each $m\in M$ can be written uniquely as $m=n+n_1$ for some
+ $n\in N$ and $n_1\in N_1$. 
+Such a decomposition exists because $M=S+T$. If $m\in M$ can be written as 
+$m=n+n_1=n'+n_1'$ for some $n,n'\in N$ and $n_1,n_1'\in N_1$, then 
+$-n'+n=n_1'-n_1\in N\cap N_1=\{0\}$ and hence $n=n'$ and $n_1=n_1'$. If $M=N\oplus N_1$, the submodule
+$N$ (resp. $N_1$) is a \textbf{direct summand} of $M$ and the submodule $N_1$ (resp $N$) is a \textbf{complement} of $N$ 
+in $M$.   	
+
+\begin{example}
+If $M=\R^2$ as a vector space, then every subspace of $M$ is a direct summand of $M$.
+\end{example}
+
+Clearly, the submodules $\{0\}$ and $M$ are direct summands of $M$.
+
+\begin{example}
+If $M=\Z$ as a module over $\Z$, then $m\Z$ is a direct sum of $M$ if and only if 
+$m\in\{0,1\}$, as $n\Z\cap m\Z=\{0\}$ if and only if $nm=0$.
+\end{example}
+
+\begin{exercise}
+\label{xca:projector}
+Let $M$ be a module. 
+A module $N$ is isomorphic to a direct summand of $M$ if and only if
+there are module homomorphisms $i\colon N\to M$ and $p\colon M\to N$ 
+such that $p\circ i=\id_N$. In this case, $M=\ker p\oplus i(N)$.  
+\end{exercise}
+
