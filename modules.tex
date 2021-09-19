@@ -39,20 +39,20 @@ $r\cdot (x_1,\dots,x_n)=(rx_1,\dots,rx_n)$.
 If $R$ is a ring, then $M_{m,n}(R)$ is a module (over $R$) with usual matrix operations. 
 \end{example}
 
-%%El siguiente ejemplo explica por qué es útil 
-%%pedir que un morfismo $f$ 
-%%de anillos cumpla con la condición $f(1)=1$. 
-%%
-%%\begin{example}
+Students usually ask why in the definition of a ring homomorphism one needs
+the condition $1\mapsto 1$. The following example provides a good explanation. 
+
+\begin{example}
 %%\label{exa:f(1)=1}
-%%Si $f\colon R\to S$ es un morfismo de anillos y $M$ es un $S$-módulo con la acción $(s,m)\mapsto sm$, entonces
-%%$M$ es un $R$-módulo con $r\cdot m=f(r)m$ para $r\in R$ y $m\in M$. En efecto,
-%%\begin{align*}
-%%&1\cdot m=f(1)m=1m=m,\\
-%%&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
-%%\end{align*}
-%%para todo $r_1,r_2\in R$ y $m\in M$.	  	
-%%\end{example}
+If $f\colon R\to S$ is a ring homomorphism and $M$ is a module (over $S$) wih 
+$(s,m)\mapsto sm$, then 
+$M$ is also a module (over $R$) with $r\cdot m=f(r)m$ for all $r\in R$ and $m\in M$. In fact, 
+\begin{align*}
+&1\cdot m=f(1)m=1m=m,\\
+&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
+\end{align*}
+for all $r_1,r_2\in R$ and $m\in M$.	  	
+\end{example}
 %
 \begin{example}
 Let $R=\R[X]$ and $T\colon\R^n\to\R^n$ be a linear map. Then $M=\R^n$ with 
@@ -84,17 +84,13 @@ This module is the \textbf{direct sum} of the family $\{M_i:i\in I\}$.
 \end{example}
 %
 %\begin{exercise}
-%Si $M$ es un módulo, entonces
-%\begin{enumerate}
-%\item $0\cdot m=0$ para todo $m\in M$,
-%\item $x\cdot 0=0$ para todo $x\in R$ y además
-%\item $-m=(-1)\cdot m$ para todo $m\in M$. 	
-%\end{enumerate}
-%\end{exercise}
+If $M$ is a module, then $0\cdot m=0$ and $-m=(-1)\cdot m$ for all $m\in M$ and 
+$x\cdot 0=0$ for all $x\in R$. 
 %
-%\begin{example}
-%$M=\Z/6$ es un $\Z$-módulo tal que $3\cdot 2=0$ pero $3\ne 0$ (en $\Z$) y $2\ne 0$ (en $\Z/6$).  
-%\end{example}
+\begin{example}
+Let $M=\Z/6$ as a module (over $\Z$). Note that 
+$3\cdot 2=0$ but $3\ne 0$ (in $\Z$) and $2\ne 0$ (in $\Z/6$).  
+\end{example}
 %
 \begin{definition}
 	Let $M$ be a module. A subset $N$ of $M$ is a \textbf{submodule} of $M$ if 
@@ -129,4 +125,111 @@ A submodule is a subspace $W$
 of $V$ such that $T(W)\subseteq W$. 
 \end{example}
 
+Clearly, a subset $N$ of $M$ is a submodule if and only 
+if $r_1n_1+r_2n_2\in N$ for all
+$r_1,r_2\in R$ and $n_1,n_2\in N$. 	
+
+\begin{exercise}
+If $N$ and $N_1$ are submodules of $M$, then 
+\[
+N+N_1=\{n+n_1:n\in N,\,n_1\in N_1\}
+\]
+is a submodule of $M$.
+\end{exercise}
+
+\begin{definition}
+Let $M$ and $N$ be modules over $R$. 
+A map $f\colon M\to N$ is a \textbf{module homomorphism} if $f(x+y)=f(x)+f(y)$ and 
+$f(r\cdot x)=r\cdot f(x)$ for all $x,y\in M$ and $r\in R$. 
+\end{definition}
+
+We denote by $\Hom_R(M,N)$ the set of module homomorphisms $M\to N$. 
+
+\begin{exercise}
+Let $f\in\Hom_R(M,N)$.  
+\begin{enumerate}
+\item If $V$ is a submodule of $M$, then $f(V)$ is a submodule of $N$.
+\item If $W$ is a submodule of $N$, then $f^{-1}(W)$ is a submodule of $M$.
+\end{enumerate}
+\end{exercise}
+
+If $f\in\Hom_R(M,N)$, the \textbf{kernel} of $f$ is the submodule  
+\[
+\ker f=f^{-1}(\{0\})=\{m\in M:f(m)=0\}
+\]
+of $M$. We say that $f$ is a \textbf{monomorphism} (resp. \textbf{epimorphism}) 
+if $f$ is injective (resp. surjective). Moreover, $f$ is an \textbf{isomorphism} 
+if $f$ is
+bijective. 
+
+\begin{exercise}
+Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent:
+\begin{enumerate}
+\item $f$ is a monomorphism.
+\item $\ker f=\{0\}$.
+\item For every module $V$ and every $g,h\in\Hom_R(V,M)$, $f\circ g=f\circ h\implies g=h$.
+\item For every module $V$ and every $g\in\Hom(V,M)$, $f\circ g=0\implies g=0$.
+\end{enumerate}
+\end{exercise}
+
+
+\begin{example}
+	Let $R=
+		\begin{pmatrix}
+			\R & 0\\
+			0 & \R
+		\end{pmatrix}$. 
+	We claim that 
+	$\begin{pmatrix}
+			\R\\
+			0
+		\end{pmatrix}
+		\not\simeq\begin{pmatrix}
+			0\\
+			\R
+		\end{pmatrix}$
+	as modules over $R$, where the module structure is given by the usual matrix multiplication. 
+	Assume that they are isomorphic. 
+	Let $f\colon\begin{pmatrix}
+			0\\
+			\R
+		\end{pmatrix}
+		\to\begin{pmatrix}
+			\R\\
+			0
+		\end{pmatrix}$  
+	be an isomorphism of modules and let  
+	$x_0\in\R\setminus\{0\}$ be such that 
+	$f\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}x_0\\0\end{pmatrix}$. Thus 
+	\[
+	f\begin{pmatrix}
+	0\\
+	1\end{pmatrix}
+	=f\left(\begin{pmatrix}
+	0&0\\
+	0&1\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}
+	0\\
+	1
+	\end{pmatrix}\right)
+	=\begin{pmatrix}
+	0&0\\
+	0&1\end{pmatrix}\cdot f\begin{pmatrix}0\\1\end{pmatrix}
+	=\begin{pmatrix}
+	0&0\\
+	0&1
+	\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}		
+	x_0\\
+	0
+	\end{pmatrix}
+	=\begin{pmatrix}
+	0\\
+	0
+	\end{pmatrix},
+	\]	
+	a contradiction, as $f$ is injective.    
+\end{example}
 
