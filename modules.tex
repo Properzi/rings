@@ -172,6 +172,7 @@ Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent:
 \end{enumerate}
 \end{exercise}
 
+Later we will see a similar exercise for surjective module homomorphisms.
 
 \begin{example}
 	Let $R=
@@ -261,4 +262,189 @@ A module $N$ is isomorphic to a direct summand of $M$ if and only if
 there are module homomorphisms $i\colon N\to M$ and $p\colon M\to N$ 
 such that $p\circ i=\id_N$. In this case, $M=\ker p\oplus i(N)$.  
 \end{exercise}
+
+The \textbf{direct sum} of submodules can be defined for finitely many summands. 
+If $V_1,\dots,V_n$ are submodules of $M$, we say that $M=V_1\oplus\cdots\oplus V_n$ 
+if every $m\in M$ can be written uniquely as $m=v_1+\cdots+v_n$ for some $v_1\in V_1,\dots,v_n\in V_n$. 
+
+\begin{exercise}
+Prove that $M=V_1\oplus\cdots\oplus V_n$ if and only if 
+$M=V_1+\cdots+V_n$ and 
+\[
+V_i\cap\left(\sum_{j\ne i}V_j\right)=\{0\}
+\]	
+for all $i\in\{1,\dots,n\}$.
+\end{exercise}
+
+\begin{exercise}
+Si $\{S_i:i\in I\}$ es una familia de submódulos de $M$, entonces $\cap_{i\in I}S_i$ es un submódulo de $M$.
+\end{exercise}
+
+\begin{example}
+Sea $T\colon\R^2\to\R^2$, $T(x,y)=(0,y)$ y sea $M=\R^2$ con la estructura de $\R[X]$-módulo dada por
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y).
+\]
+Vamos a demostrar que
+$\{0\}$, $M$, $\R\times\{0\}$ y $\{0\}\times\R$ son los únicos submódulos de $M$. Si $N$ es un submódulo no nulo de $M$, sea
+$(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$ es tal que $xy\ne 0$, entonces
+\[
+\left(\frac{x}{x_0}+\left(\frac{y}{y_0}-\frac{x}{x_0}\right)X\right)\cdot (x_0,y_0)=(x,y) 
+\]
+y luego $N=M$. Si $y_0=0$, entonces $N=\R\times\{0\}$, pues $\frac{x}{x_0}\cdot (x_0,0)=(x,0)$. Si $x_0=0$, entonces
+$N=\{0\}\times\R$, pues 
+$\frac{y}{y_0}\cdot (0,y_0)=(0,y)$ 
+\end{example}
+
+
+\begin{example}
+Sea $M=\R^2$ como $\R[X]$-módulo con la acción
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y),
+\]
+donde $T\colon M\to M$, $T(x,y)=(y,x)$. 
+Vamos a calcular todos los submódulos de $M$. 
+Si $N\subseteq M$ es un submódulo entonces $N$ es un espacio vectorial real. Supongamos que $N\ne\{(0,0)\}$ y que $N\ne\R^2$. Como entonces $\dim N=1$, 
+sea $\{(a_0,b_0)\}$ una base de $N$. Como $N$ es un submódulo,
+$(b_0,a_0)=X\cdot (a_0,b_0)\in N$. En particular, existe $\lambda\in\R$ tal que $(b_0,a_0)=\lambda (a_0,b_0)$. Como $(a_0,b_0)\ne(0,0)$, sin perder generalidad
+podemos suponer que $a_0\ne 0$. Esto implica que
+$\lambda^2 a_0=\lambda (\lambda a_0)=\lambda b_0=a_0$ y entonces $\lambda^2=1$. Si $\lambda=1$, entonces
+$a_0=b_0$. Si $\lambda=-1$, entonces $a_0=-b_0$. En conclusión, $N$ está generado por $(1,1)$ o por $(1,-1)$.  
+\end{example}
+
+\begin{example}
+Si $V$ es un espacio vectorial y $T\colon V\to V$ es una transformación lineal, entonces
+$V$ es un $K[X]$-módulo con 
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
+\]
+Si $g\colon V\to V$ es un morfismo de $K[X]$-módulos, entonces $g$ conmuta con $T$, pues
+\[
+(g\circ T)(v)=g(T(v))=g(X\cdot v)=X\cdot g(v)=T(g(v))=(T\circ g)(v)
+\]
+para todo $v\in V$.x
+\end{example}
+
+\begin{exercise}
+\label{exa:Hom}
+Prove that $\Hom_R(M,N)$ is a module over $Z(R)$. 
+\end{exercise}
+
+\index{Módulo!cociente}
+\index{Epimorfismo!canónico de módulos}
+Si $M$ es un módulo y $N$ es un submódulo, entonces $M/N$ es un grupo abeliano y el morfismo
+canónico $\pi\colon M\to M/N$, $x\mapsto x+N$, es un morfismo sobreyectivo de grupos. Veamos que 
+el \textbf{cociente} $M/N$ es un módulo con 
+\[
+r\cdot (x+N)=(r\cdot x)+N,
+\]
+donde $r\in R$ y $x\in M$. Para esto, tenemos que ver la buena definición de la acción en $M/N$. Si $x+N=y+N$, entonces, como
+$x-y\in N$, se tiene que 
+\[
+r\cdot x-r\cdot y=r\cdot (x-y)\in N,
+\]
+es decir $r\cdot (x+N)=r\cdot (y+N)$. Dejamos como ejercicio demostrar que la función $\pi\colon M\to M/N$, $x\mapsto x+N$, es
+un morfismo sobreyectivo de módulos. 
+
+\begin{example}
+Si $R=M=\Z$ y $N=2\Z$, entonces $M/N\simeq\Z/2$. 
+\end{example}
+
+\begin{example}
+Sea $R$ un anillo conmutativo. Veamos que $M\simeq\Hom_R(\prescript{}{R}R,M)$. 
+Como $R$ es un anillo conmutativo, $\Hom_R(\prescript{}{R}R,M)$ es un módulo, ver ejemplo~\ref{exa:Hom}.
+Sea $\varphi\colon M\to\Hom_R(\prescript{}{R}R,M)$, $m\mapsto f_m$, donde $f_m\colon R\to M$, $r\mapsto r\cdot m$. Para ver que $\varphi$ está bien definida
+hay que observar que $\varphi(m)\in\Hom_R(\prescript{}{R}R,M)$, es decir 
+\[
+f_m(r+s)=(r+s)\cdot m=r\cdot m+s\cdot m,\quad
+f_m(rs)=(rs)\cdot m=r\cdot (s\cdot m)=r\cdot f_m(s).
+\]
+
+Para ver que $\varphi$ es morfismo primero vemos que $\varphi(m+n)=\varphi(m)+\varphi(n)$ para todo $m,n\in M$, pues 
+\begin{align*}
+\varphi(m+n)(r)&=f_{m+n}(r)=r\cdot (m+n)\\
+&=r\cdot m+r\cdot n=f_m(r)+f_n(r)=\varphi(m)(r)+\varphi(n)(r).
+\end{align*}
+Además $\varphi(r\cdot m)=r\cdot\varphi(m)$ para 
+todo $r\in R$ y $m\in M$, pues 
+\begin{align*}
+%\varphi(r\cdor m)(s)=f_{r\cdot m}(s)=(r\cdot \varphi(m))(s).
+%
+\varphi(r\cdot m)(s)&=f_{r\cdot m}(s)
+%(r\cdot f_m)(s)=f_m(rs)\\
+=s\cdot (r\cdot m)
+=(sr)\cdot m\\
+&=(rs)\cdot m=f_m(rs)=\varphi(m)(rs)=(r\cdot\varphi(m))(s).
+%&=(rs)\cdot m=(sr)\cdot m=s\cdot (r\cdot m)\\
+%&=f_{r\cdot m}(s)=\varphi(r\cdot m)(s)=(r\cdot \varphi)(m)(s). 
+\end{align*}
+
+Falta ver que $\varphi$ es un isomorfismo. 
+Veamos primero que $\varphi$ es monomorfismo. Si $\varphi(m)=0$, entonces $r\cdot m=\varphi(m)(r)=0$ para todo $r\in R$. En particular, 
+$m=1\cdot m=0$. 	Veamos ahora que $\varphi$ es epimorfismo. Si $f\in\Hom_R(\prescript{}{R}R,M)$, sea $m=f(1)$. Entonces $\varphi(m)=f$ pues
+$\varphi(m)(r)=r\cdot m=r\cdot f(1)=f(r)$.
+\end{example}
+
+Tal como hicimos con grupos, puede demostrarse que si $M$ es un módulo y $N$ es un submódulo de $M$, el par
+$(M/N,\pi\colon M\to M/N)$ tiene las siguientes propiedades:
+\begin{enumerate}
+\item $N\subseteq \ker \pi$.
+\item Si $f\colon M\to T$ es un morfismo tal que $N\subseteq \ker f$, entonces existe un único morfismo $\varphi\colon M/N\to T$ tal que $\varphi\circ\pi =f$.  
+\end{enumerate}
+
+\index{Teoremas de isomorfismos!para módulos}
+Recordemos que si $S$ y $T$ son submódulos de un módulo $M$, entonces
+$S\cap T$ y $S+T=\{s+t:s\in S,\,t\in T\}$ son ambos submódulos de $M$. 
+Se tienen entonces los teoremas de isomorfismos. 
+\begin{enumerate}
+	\item Si $f\in\Hom_R(M,N)$, entonces $M/\ker f\simeq f(M)$.
+	\item Si $T\subseteq N\subseteq M$ son submódulos, entonces 
+	\[
+	\frac{M/T}{N/T}\simeq M/N
+	\]
+	\item Si $S$ y $T$ son submódulos de $M$, entonces $(S+T)/S\simeq T/(S\cap T)$. 
+\end{enumerate}
+
+\begin{example}
+Si $R$ es un cuerpo y $V$ es un $R$-módulo, entonces $V$ es un espacio vectorial. 
+Si $S$ y $T$ son subespacios de $V$, entonces son submódulos de $V$. 
+El segundo teorema de isomorfismos nos dice que $(S+T)/T\simeq S/(S\cap T)$, 
+un isomorfismo de espacios vectoriales. Al aplicar dimensión, 
+\[
+\dim(S+T)-\dim T=\dim(S)-\dim(S\cap T).
+\]
+\end{example}
+
+\begin{example}
+Si $S$ es un sumando directo de $M$ y $T$ es un complemento para $S$, entonces $T\simeq M/S$, pues
+\[
+M/S=(S\oplus T)/S\simeq T/(S\cap T)=T/\{0\}\simeq T
+\]
+por el segundo teorema de isomorfismos. Luego todos los complementos
+de $S$ en $M$ serán isomorfos.  	
+\end{example}
+
+Puede demostrarse además el teorema de la correspondencia, que afirma que existe una correspondencia biyectiva 
+entre los submódulos de $M/N$ y los submódulos de $M$ que contienen a $N$. La correspondencia está dada
+por $S\mapsto \pi^{-1}(S)$ y $\pi(T)\mapsfrom T$. 
+
+
+\begin{exercise}
+Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent: 
+\begin{enumerate}
+\item $f$ is an epimorphism.
+\item $N/f(M)\simeq\{0\}$. 
+\item For every module $W$ and every $g,h\in\Hom_R(N,T)$, $g\circ f=h\circ f\implies g=h$.
+\item For every module $T$ and every $g\in\Hom_R(N,T)$, $g\circ f=0\implies g=0$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\label{xca:mod_iso_max}
+    Let $R$ be a ring and $M_1$ and $M_2$ be maximal ideals of $R$. Prove that
+    $R/M_1\simeq R/M_2$ as modules over $R$ if and only if there exists
+    $r\in R\setminus M_2$ such that $rM_1\subseteq M_2$. 
+\end{exercise}
+
+
 
