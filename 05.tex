@@ -1,4 +1,55 @@
-\chapter{Zorn's lemma}
+\chapter{}
+
+In this lecture we prove Fermat's theorem, which concludes our study of
+factorization in arbitrary commutative rings. Then we present Zorn's lemma
+and some applications. Finally, we introduce the (complex) group algebra and
+other basic examples of algebras. 
+
+\begin{theorem}[Fermat]
+	Let $p\in\Z$ be a prime number. the following statements are equivalent:
+	\begin{enumerate}
+	    \item $p=2$ or $p\equiv1\bmod 4$.
+	    \item There exists $a\in\Z$ such that $a^2\equiv1\bmod p$.
+	    \item $p$ is not irreducible in $\Z[i]$.
+	    \item $p=a^2+b^2$ for some $a,b\in\Z$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    We first prove that $1)\implies 2)$. If $p=2$, take $a=1$. If $p=4k+1$ for some $k\in\Z$, then
+    by Fermat's little theorem, the polynomial 
+    $X^{p-1}-1\in(\Z/p)[X]$ has roots $1,2,\dots,p-1$. Write
+    \[
+    (X-1)(X-2)\cdots (X-(p-1))=X^{p-1}-1=X^{4k}-1=(X^{2k}+1)(X^{2k}-1)
+    \]
+    in $(\Z/p)[X]$. Since $p$ is prime, $/Z/p$ is a field and hence 
+    $(\Z/p)[X]$ is a unique factorization domain (because it is euclidean). Thus 
+    there exists $\alpha\in\Z/p$ such that $\alpha^{2k}+1=0$. To finish the proof
+    take $a=\alpha^k$. 
+    
+    We now prove that $2)\implies 3)$. If $a^2\equiv-1\bmod p$, then $a^2+1=kp$ 
+    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. We 
+    claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
+    $a-i=p(e+fi)$ for some $e,f\in\Z$ and this implies that $1=pf$, a contradiction. Similarly,
+    $p$ does not divide $a+i$. Thus $p$ is not prime in $\Z[i]$ 
+    and hence it is not irreducible in $\Z[i]$ (because in $\Z[i]$ primes and irreducible coincide). 
+    
+    We now prove that $3)\implies 4)$. If $p=(a+bi)(c+di)$ with $a+bi\not\in\mathcal{U}(\Z[i])$
+    and  $c+di\not\in\mathcal{U}(\Z[i])$, then
+    \[
+    p^2=N(p)=N(a+bi)N(c+di)=(a^2+b^2)(c^2+d^2)
+    \]
+    in $\Z$. Since $\Z$ has unique factorization, it follows that $p=a^2+b^2$. 
+    
+    Finally we prove that $4)\implies 1)$. 
+    The only possible remainders after division by four are $0,1,2$ and $3$.  
+    For all $a$, either $a^2\equiv 0\bmod 4$ or $a^2\equiv 1\bmod 4$. 
+    If $p\equiv3\bmod 4$, then $p$ is never a sum of two squares, as 
+    $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ or $a^2+b^2\equiv 2\bmod 4$. 
+\end{proof}
+
+
+
 
 \begin{definition}
 A non-empty set $R$ is said to be a \textbf{partially ordered set} (or poset, for short) 
@@ -173,3 +224,114 @@ The previous exercise can be used to solve the following exercises:
 \begin{exercise}
     Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
 \end{exercise}
+
+\index{Group ring}
+\index{Group algebra}
+We now discuss an important family of examples. 
+Fix a field $K$. 
+For a finite group $G$ let $K[G]$ be the vector space (over $K$)
+with basis $\{g:g\in G\}$. Then $K[G]$ is a ring
+with
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\] 
+
+Thus $K[G]$ is a ring and also a vector space (over $K$) and these structures
+are somewhat compatible. Note that
+\[
+(\lambda a+\mu g=c=\lambda (ac)+\mu (bc),\quad
+a(\lambda b+\mu c)=\lambda (ab)+\mu (ac)
+\]
+for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
+
+\begin{definition}
+\index{Algebra}
+Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space
+and the map $K\to Z(A)$, $k\mapsto k1_A$, is an injective ring homomorphism.  
+\end{definition}
+
+Thus $K[G]$ is an algebra, as it is ring that contains $K$ in its center (or more precisely,
+the map $K\to Z(K[G])$, $k\mapsto k1$, is an injective ring homomorphism.  
+Other examples of algebras 
+are the polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.  
+
+\begin{example}
+	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
+\end{example}
+
+The ring $K[G]$ is commutative if and only if $G$ is abelian. Moreove,
+$K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
+
+\begin{example}
+	Let $G=\langle g:g^3=1\rangle=\{1,g,g^2\}\simeq C_3$ be the cyclic group of order three. 
+	If $\alpha=a_11+_2g+a_3g^2$ and $\beta=b_11+b_2g+b_3g^2$, then
+	\[
+		\alpha\beta=(a_1b_1+a_2b_3+a_3b_2)1+(a_1b_2+a_2b_1+a_3b_3)g+a_1b_3+a_2b_2+a_3b_1)g^2.
+	\]
+	One can check that $\C[G]\simeq\C[X]/(X^3-1)$. 
+\end{example}
+
+In general, one proves that $\C[C_n]\simeq\C[X]/(X^n-1)$ for $n\geq2$.
+
+\begin{example}
+	Let $K$ be a field and 
+	$G=\{1,g\}\simeq C_2$ be the cyclic group of order two. The product
+	of $K[G]$ is 
+	\[
+	(a1+bg)(c1+gd)=(ac+bd)1+(ad+bc)g.
+	\]
+	
+	If $K=\C$, then the map $K[G]\to K\times K$, $a1+bg\mapsto (a+b,a-b)$, 
+	is a linear isomorphism of rings. 
+	
+	If $K=\Z/2$, then the map $K[G]\to\begin{pmatrix}
+		K&K\\
+		0&K
+	\end{pmatrix}$, $a1+bg\mapsto\begin{pmatrix}
+		a+b&b\\
+		0&a+b		
+	\end{pmatrix}$, is a linear isomorphism of rings. 
+\end{example}
+
+\begin{exercise}
+	Prove that $\R[C_3]\simeq\R\times\C$. 	
+\end{exercise}
+
+The group ring has the following property, which is left as an exercise. 
+Let $R$ be a ring and
+$G$ be a finite group. If $f\colon G\to\mathcal{U}(R)$ is a group homomorphism, 
+then there exists a unique ring homomorphism $\varphi\colon K[G]\to R$ such that
+$\varphi|_G=f$. 
+
+\begin{example}
+	Let $\D_3=\langle r,s:r^3=s^2=1,\,srs^{-1}=r^{-1}\rangle$ be the dihedral
+	group of six elements. We claim that 
+	\[
+	\C[\D_3]\simeq\C\times\C\times M_2(\C).
+	\]
+	Let $\omega$ be a primitive root of one. Let 
+	\[
+	R=\begin{pmatrix}
+		\omega&0\\
+		0&\omega^2	
+	\end{pmatrix},
+	\quad
+	S=\begin{pmatrix}
+		0&1\\
+		1&0
+	\end{pmatrix}.
+ 	\]
+ 	One easily checks that $SRS^{-1}=R^{-1}$ and $R^3=S^2=\begin{pmatrix}
+		1&0\\
+		0&1	
+	\end{pmatrix}$. It follows that there exists a group homomorphism
+	$G\to\C\times\C\times M_2(\C)$ such that
+	$r\mapsto (1,1,R)$ and $s\mapsto (1,-1,S)$. This group homomorphism
+	is a ring isomorphism.  
+\end{example}
+
+
+
+
+ 
