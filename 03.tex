@@ -7,7 +7,7 @@ in commutative rings.
 \begin{definition}
 	A ring $R$ is said to be \textbf{noetherian} if every (increasing)
 	sequence $I_1\subseteq I_2\subseteq\cdots$ of ideals of $R$
-	stabilizes, that is $I_n=I_m$ for some $m\in\N$ and all $n\geq m$. 
+	stabilizes, that is $I_n=I_m$ for some $m\in\Z_{>0}$ and all $n\geq m$. 
 \end{definition}
 
 The ring $\Z$ of integers is noetherian.
@@ -21,7 +21,7 @@ Let $R=\{f\colon [0,1]\to\R\}$ with
 \quad
 f,g\in R,\,x\in [0,1].
 \]
-For $n\in\N$ let
+For $n\in\Z_{>0}$ let
 $I_n=\{f\in R:f|_{[0,1/n]}=0\}$. Then each $I_n$ is an ideal of $R$ and 
 the sequence 
 $I_1\subsetneq I_2\subsetneq\cdots$ 
@@ -112,7 +112,7 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	(a_1)\subseteq (a_1,a_2)\subseteq\cdots(a_1,a_2,\dots,a_k)\subseteq\cdots
 	\]
 	stabilizes, so $J$ is finitely generated, say
-	$J=(a_1,\dots,a_m)$ for some $m\in\N$. 
+	$J=(a_1,\dots,a_m)$ for some $m\in\Z_{>0}$. 
 	There exist $u_1,\dots,u_m\in R$ such that 
 	\[
 	a_{m+1}=\sum_{i=1}^m u_ia_i.
@@ -255,7 +255,7 @@ we need the following lemma.
 \begin{lemma}
 Let $N\in\Z$ be a square-free integer and $R=\Z[\sqrt{N}]$. The map 
 \[
-N\colon R\to\N,
+	N\colon R\to\Z_{>0},
 \quad a+b\sqrt{N}\mapsto 
 |a^2-Nb^2|,
 \]

@@ -80,7 +80,7 @@ because $\Z$ is a principal domain.
 
 \begin{definition}
 	Let $R$ be an integral domain. We say that $R$ is an \textbf{euclidean domain}
-	if there exists a map $\varphi\colon R\setminus\{0\}\to\N_0$ such that
+	if there exists a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$ such that
 	for every $x,y\in R$ with $y\ne 0$ there exist $q,r\in R$ such that 
 	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
 \end{definition}
@@ -101,7 +101,7 @@ Do we have uniqueness in the previous example?
 \end{example}
 
 The previous examples shows why in the definition of an euclidean domain 
-we consider $\varphi\colon R\setminus\{0\}\to\N_0$. 
+we consider $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$. 
 
 \begin{example}
 	Let $R=\Z[i]$. Then $R$ is an euclidean domain with $\varphi(\alpha)=N(\alpha)$. Let 
@@ -282,8 +282,8 @@ However, not all these rings with be euclidean domains.
 	Since $R$ is principal, each $I_j$ is principal, 
 	say $I_j=(a_j)$ for some $a_j\in R$, so the sequence is of the form
 	$(a_1)\subsetneq (a_2)\subsetneq\cdots$. Since $I=\cup_{i\geq1}(a_i)$ is an ideal of $R$, 
-	there exists $x\in R$ such that $I=(x)$. Since $x\in (a_n)$ for some $n\in\N$, 
-	it follows that $(a_k)\subseteq I=(x)\subseteq (a_n)$ for all $k\in\N$. 
+	there exists $x\in R$ such that $I=(x)$. Since $x\in (a_n)$ for some $n\in\Z_{>0}$, 
+	it follows that $(a_k)\subseteq I=(x)\subseteq (a_n)$ for all $k\in\Z_{>0}$. 
 	
 	\begin{claim}
 		$R$ admits factorizations. 	
