@@ -6,7 +6,7 @@ and some applications. Finally, we introduce the (complex) group algebra and
 other basic examples of algebras. 
 
 \begin{theorem}[Fermat]
-	Let $p\in\Z$ be a prime number. the following statements are equivalent:
+	Let $p\in\Z$ be a prime number. The following statements are equivalent:
 	\begin{enumerate}
 	    \item $p=2$ or $p\equiv1\bmod 4$.
 	    \item There exists $a\in\Z$ such that $a^2\equiv1\bmod p$.
@@ -22,7 +22,7 @@ other basic examples of algebras.
     \[
     (X-1)(X-2)\cdots (X-(p-1))=X^{p-1}-1=X^{4k}-1=(X^{2k}+1)(X^{2k}-1)
     \]
-    in $(\Z/p)[X]$. Since $p$ is prime, $/Z/p$ is a field and hence 
+    in $(\Z/p)[X]$. Since $p$ is prime, $\Z/p$ is a field and hence 
     $(\Z/p)[X]$ is a unique factorization domain (because it is euclidean). Thus 
     there exists $\alpha\in\Z/p$ such that $\alpha^{2k}+1=0$. To finish the proof
     take $a=\alpha^k$. 
@@ -114,8 +114,8 @@ Then $R$ contains a maximal element.
 
 It is not intuitive, but it is logically equivalent to a more 
 intuitively statement in set theory, the Axiom of Choice, 
-which says every cartesian product of non-empty sets is non-empty. 
-It is more an axiom that a lemma. 
+which says every Cartesian product of non-empty sets is non-empty. 
+It is more an axiom than a lemma. 
 The reason for calling Zorn’s lemma a lemma rather 
 than an axiom is purely historical.
 
@@ -180,14 +180,14 @@ One can also compute the maximal ideals of $K[X]$ for any field $K$.
 	a maximal ideal. 	
 \end{example}
 
-\begin{exercise}
-	Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then 
-	$I$ is maximal if and only if $R/I$ is a field. 
-\end{exercise}
+% \begin{exercise}
+% 	Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then 
+% 	$I$ is maximal if and only if $R/I$ is a field. 
+% \end{exercise}
 
 \begin{example}
 	Let $R=(\Z/2)[X]$ and $f(X)=X^2+X+1$. Since $f(X)$ is irreducible (because $\deg f(X)=2$ and
-	$f(X)$ has no roots in $\Z/2$, it follow that $(f(X))$ is a maximal ideal. 
+	$f(X)$ has no roots in $\Z/2$, it follows that $(f(X))$ is a maximal ideal. 
 	Thus $R/I$ is a field. 
 \end{example}
 
@@ -203,7 +203,7 @@ One can also compute the maximal ideals of $K[X]$ for any field $K$.
 	as the \textbf{Jacobson radical} of $R$.  	
 \end{exercise}
 
-We conclude the chaper with a different application of Zorn's lemma.  
+We conclude the lecture with a different application of Zorn's lemma.  
 
 \begin{exercise}
 	Prove that every non-zero vector space has a basis.
@@ -239,18 +239,18 @@ with
 Thus $K[G]$ is a ring and also a vector space (over $K$) and these structures
 are somewhat compatible. Note that
 \[
-(\lambda a+\mu g=c=\lambda (ac)+\mu (bc),\quad
+(\lambda a+\mu b=c=\lambda (ac)+\mu (bc),\quad
 a(\lambda b+\mu c)=\lambda (ab)+\mu (ac)
 \]
 for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
 
 \begin{definition}
 \index{Algebra}
-Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space
+Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space (over $K$) 
 and the map $K\to Z(A)$, $k\mapsto k1_A$, is an injective ring homomorphism.  
 \end{definition}
 
-Thus $K[G]$ is an algebra, as it is ring that contains $K$ in its center (or more precisely,
+Thus $K[G]$ is an algebra, as it is a ring that contains $K$ in its center (or more precisely,
 the map $K\to Z(K[G])$, $k\mapsto k1$, is an injective ring homomorphism.  
 Other examples of algebras 
 are the polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.  
@@ -259,7 +259,7 @@ are the polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.
 	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
 \end{example}
 
-The ring $K[G]$ is commutative if and only if $G$ is abelian. Moreove,
+The ring $K[G]$ is commutative if and only if $G$ is abelian. Moreover,
 $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
 
 \begin{example}

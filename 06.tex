@@ -13,9 +13,9 @@ Schur's orthogonality relations and appliations.
 	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some vector space $V$ (over $K$).
 \end{definition}
 
-The \textbf{degree} of $V$ will be the dimension of $V$. Note that
-if $\dim V=n$, fixing a basis of $V$ we get a \textbf{matrix representation} 
-$\rho\colon G\to\GL(V)\simeq\GL_n(V)$ of $G$.  
+The \textbf{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. Note that
+if $V$ is finite-dimensional, say $\dim V=n$, fixing a basis of $V$ we get a \textbf{matrix representation} 
+$\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$.  
 
 \begin{example}
 	We use group representations to show that 
@@ -85,11 +85,11 @@ groups.
 	\quad 
 	g\mapsto\begin{pmatrix}1&1\\-1&0\end{pmatrix}
 	\] 
-	is a group representation. 
+	is a group representation of degree two. 
 \end{example}
 
 \begin{proposition}
-    Let $G$ be a finite group and $\rho\colon G\to\GL(V)$ be a representation. Then
+    Let $G$ be a finite group and $\rho\colon G\to\GL(V)$ be a representation of finite degree. Then
     each $\rho_g$ is diagonalizable.
 \end{proposition}
 
@@ -100,6 +100,9 @@ groups.
     the roots of the polynomial $X^m-1$ are all different and $X^m-1$ factorizes linearly on $\C[X]$, it follows
     that the minimal polynomial of $\rho_g$ also factorizes linearly in $\C[X]$. Hence $\rho_g$ is diagonalizable.
 \end{proof}
+
+In page \pageref{rho_diagonalizable} we will see an alternative  
+proof of the previous proposition. 
 
 \begin{definition}
 	\index{Invariant map}
@@ -120,7 +123,7 @@ groups.
 \begin{definition}
 	\index{Representations!equivalence}
     The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \textbf{equivalent}
-    if there exists a bijective invariant map $T\colon V\to W$.
+    if there exists a bijective map $T\colon V\to W$ invariant with respect to $\rho$ and $\psi$.
 \end{definition}
 
 \begin{example}
@@ -350,6 +353,7 @@ the representation $L$ is unitary.
     the representation $\rho$ is unitary.
 \end{proof}
 
+\label{rho_diagonalizable}
 Weyl's trick has several interesting corollaries. Let $\rho\colon G\to\GL(V)$ be a representation
 of a finite group $G$. Then 1) every non-zero representation is either
 irreducible or decomposable, and 2) every $\rho_g$ is diagonalizable
@@ -372,7 +376,7 @@ Recall that we only consider finite-dimensional representations of finite groups
     by induction on $\dim V$.
     If $\dim V=1$, the result is trivial, as degree-one representations are irreducible. Assume that
     the result holds for representations of degree $\leq n$. Let $\rho\colon G\to\GL(V)$ be a representation
-    of degree $n+1$. If $\rho$ is irreducible, we are done. If not, write $V=S\otimes T$, where $S$ and $T$
+    of degree $n+1$. If $\rho$ is irreducible, we are done. If not, write $V=S\oplus T$, where $S$ and $T$
     are non-zero invariant subspaces. Since $\dim S<\dim V$ and $\dim T<\dim V$, it follows from
     the inductive hypothesis that
     both $S$ and $T$ are completely irreducible. Thus $V$ is completely irreducible.
