@@ -33,7 +33,7 @@ does not stabilizes. Thus $R$ is not noetherian.
 	finite subset $X$ of $R$. 
 \end{definition}
 
-The zero ideal is always finitely generated. 
+If $R$ is a ring, $\{0\}$ and $R$ are finitely generated. 
 
 \begin{proposition}
 Let $R$ be a ring. Then $R$ is noetherian if and only 
@@ -51,16 +51,16 @@ if every ideal of $R$ is finitely generated.
 	
 	Assume now that every ideal of $R$ is finitely generated and 
 	let $I_1\subseteq I_2\subseteq\cdots$ be a sequence of ideals of $R$. Then
-	$I=\cup_{i\geq1}I_i$ is an ideal of $R$, so it is finitely generated, sayç
+	$I=\cup_{i\geq1}I_i$ is an ideal of $R$, so it is finitely generated, say
 	$I=(x_1,\dots,x_n)$. We may assume that $x_j\in I_{i_j}$ for all $j$. Let 
 	$N=\max\{j_1,\dots,j_n\}$ and $n\geq N$. Then 
-	$I_N\subseteq I\subseteq I_N$ and therefore the seuqence stabilizes.  
+	$I_N\subseteq I\subseteq I_N$ and therefore the sequence stabilizes.  
 \end{proof}
 
 \begin{exercise}
 	Let $R=\C[X_1,X_2,\cdots]$ be the ring of polynomial in an infinite number of 
 	commuting variables. Prove that the ideal $I=(X_1,X_2,\dots)$ of polynomials 
-	with zero contant term is not finitely generated. 
+	with zero constant term is not finitely generated. 
 \end{exercise}
 
 
@@ -146,6 +146,7 @@ then $R[X_1,\dots,X_n]$ is noetherian.
  
  
 \begin{exercise}
+    Let $R$ be a ring and $R[[X]]$ be the ring of formal power series with the usual operations.  
 	Prove that $R[[X]]$ is noetherian if $R$ is noetherian. 	
 \end{exercise}
 
@@ -159,8 +160,11 @@ then $R[X_1,\dots,X_n]$ is noetherian.
 
 \begin{definition}
 \index{Integral domain}
-	A commutative ring $R$ is said to be an \textbf{integral domain}
-	if $xy=0$ implies $x=0$ or $y=0$.  	
+\index{Domain}
+    A \textbf{domain} $R$ is a ring such that $xy=0$ implies $x=0$ or $y=0$. 
+    An \textbf{integral} domain is a commutative ring that is also a domain. 
+% 	A commutative ring $R$ is said to be an \textbf{integral domain}
+% 	if $xy=0$ implies $x=0$ or $y=0$.  	
 \end{definition}
 
 The rings $\Z$ and $\Z[i]$ are both integral domains. 
@@ -214,7 +218,7 @@ and there is no principal ideal $(y)$ such that
 $(x)\subsetneq (y)\subsetneq R$.
 
 \begin{example}
-	Let $R=\R[X]$ and $f(X)\in R\setminus\{0\}$. Then $f(X)$ is irreducible if 
+	Let $R=\R[X]$ and $f(X)\in R\setminus\{0\}$. Then the polynomial $f(X)$ is irreducible if 
 	$\lambda\in\R^{\times}$ or $\lambda f(X)$ for $\lambda\in\R^{\times}$ 
 	are the only divisors
 	of $f(X)$.  
@@ -228,7 +232,7 @@ The irreducibles of $\Z$ are the prime numbers.
 	$yz\in (p)$ implies that $y\in (p)$ or $z\in (p)$. 
 \end{definition}
 
-In $\Z$ primes and irreducible coincide. This does not happend in full generality. However,
+In $\Z$ primes and irreducible coincide. This does not happen in full generality. However,
 the following result holds. 
 
 \begin{proposition}
@@ -249,7 +253,7 @@ the following result holds.
 	$x\in\mathcal{U}(R)$. 
 \end{proof}
 
-To show that there rings where some irreducibles are not prime, 
+To show that there are rings where some irreducibles are not prime, 
 we need the following lemma. 
 
 \begin{lemma}
@@ -272,7 +276,7 @@ satisfies the following properties:
 	The first three items are left as an exercises. Let us prove 4). 
 	If $\alpha=\beta\gamma$ for some $\beta,\gamma\in R$, then
 	$N(\alpha)=N(\beta)N(\gamma)$. Since $N(\alpha)$ is a prime number, it follows that
-	$N(\alpha)=1$ or $N()\beta)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
+	$N(\alpha)=1$ or $N(\beta)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
 \end{proof}
 
 \begin{example}
