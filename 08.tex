@@ -734,96 +734,119 @@ that the \textbf{quotient} $M/N$ is a module with
 r\cdot (m+N)=(r\cdot m)+N,\quad
 r\in R,\,m\in M. 
 \]
-Para esto, tenemos que ver la buena definición de la acción en $M/N$. Si $x+N=y+N$, entonces, como
-$x-y\in N$, se tiene que 
+Let us check that this operation on $M/N$ is well-defined. If $x+N=y+N$, then
+$x-y\in N$ implies that  
 \[
 r\cdot x-r\cdot y=r\cdot (x-y)\in N,
 \]
-es decir $r\cdot (x+N)=r\cdot (y+N)$. Dejamos como ejercicio demostrar que la función $\pi\colon M\to M/N$, $x\mapsto x+N$, es
-un morfismo sobreyectivo de módulos. 
+that is $r\cdot (x+N)=r\cdot (y+N)$. It is an exercise to show that
+the map $\pi\colon M\to M/N$, $x\mapsto x+N$, is a 
+surjective module homomorphism. 
 
 \begin{example}
-Si $R=M=\Z$ y $N=2\Z$, entonces $M/N\simeq\Z/2$. 
+If $R=M=\Z$ and $N=2\Z$, then $M/N\simeq\Z/2$. 
 \end{example}
 
 \begin{example}
-Sea $R$ un anillo conmutativo. Veamos que $M\simeq\Hom_R(\prescript{}{R}R,M)$. 
-Como $R$ es un anillo conmutativo, $\Hom_R(\prescript{}{R}R,M)$ es un módulo, ver~\ref{xca:Hom}.
-Sea $\varphi\colon M\to\Hom_R(\prescript{}{R}R,M)$, $m\mapsto f_m$, donde $f_m\colon R\to M$, $r\mapsto r\cdot m$. Para ver que $\varphi$ está bien definida
-hay que observar que $\varphi(m)\in\Hom_R(\prescript{}{R}R,M)$, es decir 
+Let $R$ be a commutative ring. We claim that 
+\[
+M\simeq\Hom_R(\prescript{}{R}R,M).
+\]
+Since $R$ is commutative, it follows that $\Hom_R(\prescript{}{R}R,M)$ is a module, see Exercise~\ref{xca:Hom}.
+Let $\varphi\colon M\to\Hom_R(\prescript{}{R}R,M)$, $m\mapsto f_m$, where $f_m\colon R\to M$, $r\mapsto r\cdot m$. 
+To show that $\varphi$ is well-defined it is enough to see that $\varphi(m)\in\Hom_R(\prescript{}{R}R,M)$, that is 
 \[
 f_m(r+s)=(r+s)\cdot m=r\cdot m+s\cdot m,\quad
 f_m(rs)=(rs)\cdot m=r\cdot (s\cdot m)=r\cdot f_m(s).
 \]
-
-Para ver que $\varphi$ es morfismo primero vemos que $\varphi(m+n)=\varphi(m)+\varphi(n)$ para todo $m,n\in M$, pues 
+Let us show that $\varphi$ is a module homomorphism. We first note that 
+\[
+\varphi(m+n)=\varphi(m)+\varphi(n)
+\]
+for all $m,n\in M$, as  
 \begin{align*}
 \varphi(m+n)(r)&=f_{m+n}(r)=r\cdot (m+n)\\
 &=r\cdot m+r\cdot n=f_m(r)+f_n(r)=\varphi(m)(r)+\varphi(n)(r).
 \end{align*}
-Además $\varphi(r\cdot m)=r\cdot\varphi(m)$ para 
-todo $r\in R$ y $m\in M$, pues 
+Moreover, 
+\[
+\varphi(r\cdot m)=r\cdot\varphi(m)
+\]
+for all  
+$r\in R$ and $m\in M$, as  
 \begin{align*}
-%\varphi(r\cdor m)(s)=f_{r\cdot m}(s)=(r\cdot \varphi(m))(s).
-%
 \varphi(r\cdot m)(s)&=f_{r\cdot m}(s)
-%(r\cdot f_m)(s)=f_m(rs)\\
 =s\cdot (r\cdot m)
 =(sr)\cdot m\\
 &=(rs)\cdot m=f_m(rs)=\varphi(m)(rs)=(r\cdot\varphi(m))(s).
-%&=(rs)\cdot m=(sr)\cdot m=s\cdot (r\cdot m)\\
-%&=f_{r\cdot m}(s)=\varphi(r\cdot m)(s)=(r\cdot \varphi)(m)(s). 
 \end{align*}
-
-Falta ver que $\varphi$ es un isomorfismo. 
-Veamos primero que $\varphi$ es monomorfismo. Si $\varphi(m)=0$, entonces $r\cdot m=\varphi(m)(r)=0$ para todo $r\in R$. En particular, 
-$m=1\cdot m=0$. 	Veamos ahora que $\varphi$ es epimorfismo. Si $f\in\Hom_R(\prescript{}{R}R,M)$, sea $m=f(1)$. Entonces $\varphi(m)=f$ pues
-$\varphi(m)(r)=r\cdot m=r\cdot f(1)=f(r)$.
+It remains to show that $\varphi$ is bijective. We first prove that
+$\varphi$ is injective. If $\varphi(m)=0$, then $r\cdot m=\varphi(m)(r)=0$ for all $r\in R$. In particular, 
+$m=1\cdot m=0$. We now prove that $\varphi$ is surjective. If $f\in\Hom_R(\prescript{}{R}R,M)$, 
+let $m=f(1)$. Then $\varphi(m)=f$, as
+\[
+\varphi(m)(r)=r\cdot m=r\cdot f(1)=f(r).
+\]
 \end{example}
 
-Tal como hicimos con grupos, puede demostrarse que si $M$ es un módulo y $N$ es un submódulo de $M$, el par
-$(M/N,\pi\colon M\to M/N)$ tiene las siguientes propiedades:
+As one does for groups, it is possible to show that if $M$ is a 
+module and $N$ is a submodule of $M$, the pair 
+$(M/N,\pi\colon M\to M/N)$ has the following properties:
 \begin{enumerate}
 \item $N\subseteq \ker \pi$.
-\item Si $f\colon M\to T$ es un morfismo tal que $N\subseteq \ker f$, entonces existe un único morfismo $\varphi\colon M/N\to T$ tal que $\varphi\circ\pi =f$.  
+\item If $f\colon M\to T$ is a homomorphism such that $N\subseteq \ker f$, then there exists a 
+unique module homomorphism $\varphi\colon M/N\to T$ such that 
+the diagram
+\[
+\begin{tikzcd}
+	M & T \\
+	{M/N}
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{\varphi }"', dashed, from=2-1, to=1-2]
+\end{tikzcd}
+\]
+is commutative, that is 
+$\varphi\circ\pi =f$.  
 \end{enumerate}
 
-\index{Teoremas de isomorfismos!para módulos}
-Recordemos que si $S$ y $T$ son submódulos de un módulo $M$, entonces
-$S\cap T$ y $S+T=\{s+t:s\in S,\,t\in T\}$ son ambos submódulos de $M$. 
-Se tienen entonces los teoremas de isomorfismos. 
+Recall that if $S$ and $T$ are submodules of a module $M$, then 
+both $S\cap T$ and 
+\[
+S+T=\{s+t:s\in S,\,t\in T\}
+\]
+are submodules of $M$. 
+The \textbf{isomorphism theorems} hold:
 \begin{enumerate}
-	\item Si $f\in\Hom_R(M,N)$, entonces $M/\ker f\simeq f(M)$.
-	\item Si $T\subseteq N\subseteq M$ son submódulos, entonces 
+	\item If $f\in\Hom_R(M,N)$, then $M/\ker f\simeq f(M)$.
+	\item If $T\subseteq N\subseteq M$ are submodules, then  
 	\[
 	\frac{M/T}{N/T}\simeq M/N
 	\]
-	\item Si $S$ y $T$ son submódulos de $M$, entonces $(S+T)/S\simeq T/(S\cap T)$. 
+	\item If $S$ and $T$ are submodules of $M$, then $(S+T)/S\simeq T/(S\cap T)$. 
 \end{enumerate}
 
 \begin{example}
-Si $R$ es un cuerpo y $V$ es un $R$-módulo, entonces $V$ es un espacio vectorial. 
-Si $S$ y $T$ son subespacios de $V$, entonces son submódulos de $V$. 
-El segundo teorema de isomorfismos nos dice que $(S+T)/T\simeq S/(S\cap T)$, 
-un isomorfismo de espacios vectoriales. Al aplicar dimensión, 
+If $K$ is a field and $V$ is a module over $K$, then $V$ is, by definition, a vector space over $K$. 
+If $S$ and $T$ are subspaces of $V$, then they are submodules of $V$. 
+By the second isomorphism theorem, $(S+T)/T\simeq S/(S\cap T)$ 
+as vector spaces. By applying dimension,  
 \[
 \dim(S+T)-\dim T=\dim(S)-\dim(S\cap T).
 \]
 \end{example}
 
 \begin{example}
-Si $S$ es un sumando directo de $M$ y $T$ es un complemento para $S$, entonces $T\simeq M/S$, pues
+If $N$ is a direct summand of $M$ and $M$ and $X$ is a complement for $N$, then $X\simeq M/N$, as
 \[
-M/S=(S\oplus T)/S\simeq T/(S\cap T)=T/\{0\}\simeq T
+M/N=(N\oplus X)/N\simeq X/(N\cap X)=X/\{0\}\simeq X
 \]
-por el segundo teorema de isomorfismos. Luego todos los complementos
-de $S$ en $M$ serán isomorfos.  	
+by the second isomorphism theorem. So all complements of $N$ in $M$ are isomorphic. 
 \end{example}
 
-Puede demostrarse además el teorema de la correspondencia, que afirma que existe una correspondencia biyectiva 
-entre los submódulos de $M/N$ y los submódulos de $M$ que contienen a $N$. La correspondencia está dada
-por $S\mapsto \pi^{-1}(S)$ y $\pi(T)\mapsfrom T$. 
-
+It is also possible to prove that there exists a bijective correspondence between
+submodules of $M/N$ and submodules of $M$ containing $N$. The correspondence is given by 
+$\pi^{-1}(Y)\mapsfrom Y$ and $X\mapsto \pi(X)$. 
 
 \begin{exercise}
 Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent: 
