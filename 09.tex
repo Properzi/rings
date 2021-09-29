@@ -63,7 +63,15 @@ $f(M)$ is finitely-generated.
     if $m\in M$, we write $m=\varphi(r_1,\dots,r_k)$ for some $(r_1,\dots,r_k)\in R^k$ 
     and hence 
     \[
-    m=\varphi(r_1,\dots,r_k)=\varphi\left(\sum_{i=1}^k r_i\cdot e_i\right)=\sum_{i=1}^kr_i\cdot\varphi(e_i).\qedhere
+    m=\varphi(r_1,\dots,r_k)=\varphi\left(\sum_{i=1}^k r_i\cdot e_i\right)
+    =\sum_{i=1}^kr_i\cdot\varphi(e_i).\qedhere
     \]
 \end{proof}
+
+\begin{definition}
+    Let $R$ be a ring, $M$ be a module over $R$ and $X$ be a subset of $M$. We say that
+    $X$ is \textbf{linearly independent} if for each $k\in\Z_{>0}$, $r_1,\dots,r_k\in R$
+    and $m_1,\dots,m_k\in X$ such that $\sum_{i=1}^kr_i\cdot m_i=0$, then 
+    $r_1=\cdots=r_k=0$. 
+\end{definition}
 
