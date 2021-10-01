@@ -75,3 +75,69 @@ $f(M)$ is finitely-generated.
     $r_1=\cdots=r_k=0$. 
 \end{definition}
 
+In any ring, the set $\{1\}$ is linearly independent. 
+
+\begin{examples}\
+\begin{enumerate}
+    \item $\{2,3\}$ is a linear dependent subset of $\Z$.
+    \item $\{2\}$ is a linearly dependent subset of $\Z/4$.
+    \item Let $R=\Z$, $M=\Q$ and $x\in M\setminus\{0\}$. 
+        Then $\{x\}$ is linearly independent subset of $M$. Is $y\in M\setminus\{x\}$, then
+        $\{x,y\}$ is linearly dependent.  
+\end{enumerate}    
+\end{examples}
+
+\begin{examples}
+Let $R=M_2(\R)$ and $M=\begin{pmatrix}
+        0&\R\\
+        0&\R 
+    \end{pmatrix}$. Then $\left\{\begin{pmatrix}0&1\\0&0\end{pmatrix}\right\}$ is a minimal generating 
+    set and it is linearly independent. 
+\end{examples}
+
+\begin{exercise}
+    Let $f\in\Hom_R(M,N)$ and $X$ be a subset of $M$. 
+    \begin{enumerate}
+        \item If $X$ is linearly dependent, then $f(X)$ is linearly dependent.
+        \item If $X$ is linearly independent and $f$ is injective, then $f(X)$ is linearly independent. 
+        \item If $M=(X)$ and $f$ is surjective, then $N=(f(X))$. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{definition}
+    Let $M$ be a module and $B$ be a subset of $M$. Then $B$ is a \textbf{basis} of $M$ if
+    $B$ is linearly independent and $M=(B)$. A module $M$ is said to be \textbf{free} if it admits a basis.   
+\end{definition}
+
+As a consequence of Zorn's lemma, 
+vector spaces are free. 
+
+\begin{examples}\
+\begin{enumerate}
+    \item If $R$ is a ring, then $\{1\}$ is a basis of $\prescript{}{R}{R}$, so $\prescript{}{R}{R}$ is free.
+    \item If $R$ is a ring, then $R^n$ is free as a module over $R$. 
+\end{enumerate}
+\end{examples}
+
+\begin{exercise}
+    Prove that $\Q$ is not free as a module over $\Z$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $R$ be a division ring and $M$ be a non-zero and finitely generated module over $R$.
+    Prove the following facts:
+    \begin{enumerate}
+        \item Every finite set of generators contains a basis.
+        \item Every linearly independent set can be extended into a basis.
+        \item Any two bases contain the same number of elements.
+    \end{enumerate}
+\end{exercise}
+
+\begin{example}
+    $\R[X]$ is a free module (over $\R$) with basis $\{1,X,X^2,\dots\}$. 
+\end{example}
+
+\begin{exercise}
+    Prove that $\{(a,b),(c,d)\}$ is a basis of $\Z\times\Z$ (as a module over $\Z$) if and only if
+    $ad-bc\in\{-1,1\}$. 
+\end{exercise}

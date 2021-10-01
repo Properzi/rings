@@ -92,7 +92,7 @@ Some facts:
 
 \begin{example}
     Let $n\geq2$. 
-    The abelian group $\Z/n=\{0,1,\dots,n\}$ of integers modulo $n$ is a ring 
+    The abelian group $\Z/n=\{0,1,\dots,n-1\}$ of integers modulo $n$ is a ring 
     with the usual multiplication modulo $n$. 
 \end{example}
 
@@ -154,8 +154,12 @@ is the additive inverse of $s$ as an element of $R$.
 \end{definition}
 
 The set $\mathcal{U}(R)$ of units of a ring $R$ form 
-a group with the multiplication. For example,
+a group with the multiplication. For example, $\mathcal{U}(\Z)=\{-1,1\}$ and 
 $\mathcal{U}(\Z/8)=\{1,3,5,7\}$. 
+
+\begin{exercise}
+Compute $\mathcal{U}(\R[X])$.
+\end{exercise}
 
 \begin{definition}
 	\index{Ring!division}
@@ -217,7 +221,7 @@ example of a right ideal that is not a left ideal?
 
 \begin{definition}
 \index{Ideal}	
-Let $R$ be a ring. An ideal of $R$ is a subset that is both a left and a right ideal of $R$. 
+Let $R$ be a ring. An \textbf{ideal} of $R$ is a subset that is both a left and a right ideal of $R$. 
 \end{definition}
  
 If $R$ is a ring, then $\{0\}$ and $R$ are both ideals of $R$. 
@@ -361,60 +365,3 @@ $f$ onto $\R$ is the identity, then there exists $x_0\in\R$ such that
 $f$ is the evaluation map at $x_0$. 
 \end{exercise}
 
-We now define quotient rings. 
-Let $R$ be a ring and $I$ be an ideal of $R$. 
-Then $R/I$ is an abelian group
-with 
-\[
-(x+I)+(y+I)=(x+y)+I
-\]
-and the 
-\textbf{canonical map} 
-$R\to R/I$, $x\mapsto x+I$,
-is a surjective group homomorphism. Recall that 
-$R/I$ is the set of cosets $x+I$, where 
-$x+I=y+I$ if and only if $x-y\in I$. Note that here we only used
-that $I$ is an additive subgroup of $R$. We need an ideal to put a ring structure
-on the set $R/I$ of cosets modulo $I$. As in the case of the integers, 
-we use the following notation. For $x,y\in R$ 
-we write 
-\[
-x\equiv y\bmod I\Longleftrightarrow x-y\in I.
-\]
-
-How can we put a ring structure on $R/I$? It makes sense
-to define a multiplication on $R/I$ in such a way that
-the canonical map $R\to R/I$ is a surjective ring homomorphism. For that purpose, 
-we define 
-\[
-(x+I)(y+I)=(xy)+I.
-\]
-Since $I$ is an ideal of $R$, this multiplication is well-defined. In fact, let 
-$x+I=x_1+I$ and $y+I=y_1+I$. We want to show that
-$xy+I=x_1y_1+I$. Since $x-x_1\in I$, 
-\[
-xy-x_1y=(x-x_1)y\in I
-\]
-because $I$ is a right ideal. Similarly, since $y-y_1\in I$, it follows that 
-\[
-x_1y-x_1y_1=x_1(y-y_1)\in I,
-\]
-as $I$ is a left ideal. Thus
-\[
-xy-x_1y_1=xy-x_1y+x_1y-x_1y_1=(x-x_1)y+x_1(y-y_1)\in I.
-\]
-
-\begin{theorem}
-	Let $R$ be a ring and $I$ be an ideal of $R$. Then
-	$R/I$ with 
-	\[
-	(x+I)+(y+I)=(x+y)+I,\quad
-	(x+I)(y+I)=(xy)+I,
-	\]
-	is a ring and the canonical map $R\to R/I$, $x\mapsto x+I$, 
-	is a surjective
-	ring homomorphism with kernel $I$. 
-\end{theorem}
-
-We have already seen that the multiplication is well-defined. The rest
-of the proof is left as an exercise. 
