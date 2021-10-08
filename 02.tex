@@ -11,7 +11,11 @@ and the
 $R\to R/I$, $x\mapsto x+I$,
 is a surjective group homomorphism. Recall that 
 $R/I$ is the set of cosets $x+I$, where 
-$x+I=y+I$ if and only if $x-y\in I$. Note that here we only used
+\[
+x+I=y+I\Longleftrightarrow x-y\in I.
+\]
+
+Note that here we only used
 that $I$ is an additive subgroup of $R$. We need an ideal to put a ring structure
 on the set $R/I$ of cosets modulo $I$. As in the case of the integers, 
 we use the following notation. For $x,y\in R$ 
@@ -54,8 +58,17 @@ xy-x_1y_1=xy-x_1y+x_1y-x_1y_1=(x-x_1)y+x_1(y-y_1)\in I.
 	ring homomorphism with kernel $I$. 
 \end{theorem}
 
-We have already seen that the multiplication is well-defined. The rest
-of the proof is left as an exercise. 
+We have already seen that the multiplication is well-defined. 
+The rest of the proof is left as an exercise. As an example, we show that 
+the left distributive property holds
+in $R/I$ because it holds in $R$, that is 
+\begin{align*}
+    (x+I)\left((y+I)+(z+I)\right) &= (x+I)(y+z+I)\\
+    &=x(y+z)+I\\
+    &=xy+xz+I\\
+    &=(xy+I)(xz+I)\\
+    &=(x+I)(y+I)+(x+I)(z+I).
+\end{align*}
 
 \begin{example}
 	Let $R=(\Z/3)[X]$ and $I=(2X^2+X+2)$ be the ideal of $R$ 
@@ -66,12 +79,13 @@ of the proof is left as an exercise.
 	\]
 	for some $q(X),r(X)\in R$, where either $r(X)=0$ or $\deg r(X)<2$. 
 	This means
-	that $r(X)=aX+b$ for some $a,b\in R$.
+	that $r(X)=aX+b$ for some $a,b\in\Z/3$.
 	Note that
 	$f(X)\equiv aX+b\bmod (2X^2+X+2)$
 	for some $a,b\in\Z/3$, 
 	so the quotient ring $R/I$ has 
-	nine elements.  
+	nine elements.  Can you find an expression for the product 
+	$(aX+b)(cX+d)$ in $R/I$?
 \end{example}
 
 An \textbf{isomorphism} between the rings $R$ and $S$ is a bijective
@@ -97,6 +111,7 @@ a&b\\
 0&a
 \end{pmatrix}:a,b\in\Q\right\}
 \]
+with the usual matrix operations. 
 A direct calculation shows that the map $R\to\Q$, $\begin{pmatrix}a&b\\0&a\end{pmatrix}\mapsto a$, is a surjective 
 ring homomorphism with  
 $\ker f=\left\{\begin{pmatrix}
@@ -130,11 +145,12 @@ Thus $R/\ker f\simeq\Q$.
 	\[
 	(aX+b)(cX+d)\equiv X(ad+bc)+(bd-ac), 
 	\]
-	which reminds us of the usual multiplication rule of the field of complex numbers. 
+	which reminds us of the usual 
+	multiplication rule of the field of complex numbers. 
 \end{example}
 
 \begin{exercise}
-	Prove that $\Z[\sqrt{-5}]\simeq\Z[X]/(X^2-5)$. 	
+	Prove that $\Z[\sqrt{-5}]\simeq\Z[X]/(X^2+5)$. 	
 \end{exercise}
 
 Similarly, if $N$ is a square-free integer, then 
@@ -197,15 +213,16 @@ Prove the following isomorphisms:
 
 As it happens in group theory, one has the following important result. 
 
-\begin{theorem}[correspondence theorem]
+\begin{theorem}[Correspondence theorem]
 	Let $f\colon R\to S$ be a surjective ring homomorphism. There exists a
 	bijective correspondence between 
 	the set of ideals of $R$ containing $\ker f$ and
-	the set of ideals of $S$.  
+	the set of ideals of $S$.  In particular, if $f(I)=J$, then
+	$R/I\simeq S/J$. 
 \end{theorem}
 
 \begin{proof}[Sketch of the proof]
-Let $I$ be an ideal of $R$ contaning $\ker f$ and
+Let $I$ be an ideal of $R$ containing $\ker f$ and
 let $J$ be an ideal of $S$. 
 We need to prove the following facts:
 \begin{enumerate}
