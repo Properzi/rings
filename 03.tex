@@ -12,7 +12,7 @@ in commutative rings.
 
 The ring $\Z$ of integers is noetherian.
 
-\begin{example}
+\begin{exercise}
 Let $R=\{f\colon [0,1]\to\R\}$ with 
 \[
 (f+g)(x)=f(x)+g(x),
@@ -26,7 +26,7 @@ $I_n=\{f\in R:f|_{[0,1/n]}=0\}$. Then each $I_n$ is an ideal of $R$ and
 the sequence 
 $I_1\subsetneq I_2\subsetneq\cdots$ 
 does not stabilizes. Thus $R$ is not noetherian. 
-\end{example}
+\end{exercise}
 
 \begin{definition}
 	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \textbf{finitely generated} if $I=(X)$ for some
@@ -122,7 +122,8 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	g(X)=\sum_{i=1}^mu_if_i(X)X^{n_{m+1}-n_i}\in (f_1(X),\dots,f_m(X)).
 	\]
 	The leading coefficient of $g(X)$ is $\sum_{i=1}^mu_ia_i=a_{m+1}$ and, moreover, 
-	the degree of $g(X)$ is $n_{m+1}$. Thus $\deg(g(X))<n_{m+1}$. 
+	the degree of $g(X)$ is $n_{m+1}$. Thus $\deg(g(X)-f_{m+1}(X))<n_{m+1}$. 
+	
 	Since $f_{m+1}(X)\not\in (f_1(X)\dots,f_n(X))$, 
 	\[
 	g(X)-f_{m+1}(X)\not\in (f_1(X),\dots,f_n(X)),
@@ -221,7 +222,8 @@ $(x)\subsetneq (y)\subsetneq R$.
 	of $f(X)$.  
 \end{example}
 
-The irreducibles of $\Z$ are the prime numbers. 
+The irreducibles of $\Z$ are the prime numbers. Note that $p\in \Z$
+is prime if and only if $p\mid xy$ then $p\mid x$ or $p\mid y$. 
 
 \begin{definition}
 	Let $R$ be an integral domain and $p\in R\setminus\{0\}$. Then  
@@ -233,8 +235,8 @@ In $\Z$ primes and irreducible coincide. This does not happen in full generality
 the following result holds. 
 
 \begin{proposition}
-	Let $R$ be an integral domain and $x\in R$. 
-	If $x$ is prime, then $x$ is irreducible. 
+	Let $R$ be an integral domain and $p\in R$. 
+	If $p$ is prime, then $p$ is irreducible. 
 \end{proposition}
 
 \begin{proof}
@@ -251,12 +253,14 @@ the following result holds.
 \end{proof}
 
 To show that there are rings where some irreducibles are not prime, 
-we need the following lemma. 
+we need the following lemma. A square-free
+integer is an integer which is divisible by no perfect square other than 1.
 
 \begin{lemma}
-Let $N\in\Z$ be a square-free integer and $R=\Z[\sqrt{N}]$. The map 
+Let $N\in\Z$ be a non-zero square-free integer and $R=\Z[\sqrt{N}]$. Then 
+the map 
 \[
-	N\colon R\to\Z_{>0},
+	N\colon R\to\Z_{\geq0},
 \quad a+b\sqrt{N}\mapsto 
 |a^2-Nb^2|,
 \]
@@ -294,45 +298,3 @@ satisfies the following properties:
 	\end{enumerate}	
 \end{example}
 
-\begin{exercise}
-	Let $R=\Z[\sqrt{-5}]$. 
-	\begin{enumerate}
-		\item Prove that $1+\sqrt{-5}$ and $1-\sqrt{-5}$ are irreducible in $R$. 
-		\item Prove that $2,3,1+\sqrt{-5}$ and $1-\sqrt{-5}$ are not associate in $R$.
-	\end{enumerate}
-\end{exercise}
-
-\begin{example}
-	Let $R=\Z[\sqrt{-3}]$ and $x=1+\sqrt{-3}$. 
-	\begin{enumerate}
-		\item $x$ is irreducible. 
-	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
-	$4=N(x)=N(\alpha)N(\beta)$. Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. Then
-	$N(\alpha)=a^2+3b^2\ne 2$. If $N(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
-	both have the same parity. 
-	
-	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
-	some $k,l\in\Z$, then 
-	\[
-	2=a^2+3b^2=4k^2+12l^2
-	\]
-	is divisible by 4, a contradiction.  
-	
-	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
-	\[
-	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
-	\]
-	is divisible by 4, a contradiction. 
-		\item $x$ is not prime. Note that $(1+\sqrt{-3})(1-\sqrt{-3})=4$, then 
-		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
-		\[
-		(a-3b)+(a+b)\sqrt{3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
-		\]
-		implies that $a-3b=2$ and $a+b=0$, which yields 
-		$a=1/2\not\in\Z$, a contradiction.
-	\end{enumerate}
-\end{example}
-
-\begin{exercise}
-	Let $R=\Z[\sqrt{5}]$. Prove that $1+\sqrt{5}$ is irreducible and not prime in $R$. 	
-\end{exercise}
