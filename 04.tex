@@ -57,11 +57,8 @@ The rings $\Z$ and $\R[X]$ are both principal.
 	$I=(2,X)$ is not principal. 
 	
 	First note that $I\ne\Z[X]$. In fact, if $I=\Z[X]$, then 
-	$1=2f(X)+Xg(X)$ for some $f(X),g(X)\in\Z[X]$. Then
-	\[
-	0=\deg(1)=\deg(2f(X)+Xg(X))=\deg(f(X))+\deg(g(X))+1>0,
-	\]	
-	a contradiction. 
+	$1=2f(X)+Xg(X)$ for some $f(X),g(X)\in\Z[X]$. Then 
+	$1=2f(0)$, which implies that $-1/2=f(0)\in\Z$, a contradiction. 
 	
 	If $I=(h(X))$ for some $h(X)\in\Z[X]$, then $2=h(X)g(X)$ for some $g(X)\in\Z[X]$. This
 	implies that $\deg(h(X))=0$, so $h(X)=h(1)\in\Z$. In particular, $2=h(1)g(1)$ and hence
@@ -114,7 +111,7 @@ Sometimes primes and irreducibles coincide.
 	\[
 	z=z1=z(xr+ys)=zxr+zys
 	\]
-	and therefore $x\mid z$. If $b\in\mathcal{U}(R)$, then $x$ and $a$ are associate, 
+	and therefore $x\mid z$. If $b\in\mathcal{U}(R)$, then $x$ and $a$ are associate
 	in $R$. Thus $I=(x)=(a)$ and hence $xt=y$ for some $t\in R$, that is $x\mid y$.  
 \end{proof}
 
@@ -157,7 +154,7 @@ we consider $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	\[
 	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
 	\]
-	for some $r,s\in\Z$. Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
+	for some $r,s\in\Q$. Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
 	$|s-n|\leq 1/2$. If $\delta=m+in$ and $\gamma=\alpha-\beta\delta$, then 
 	$\gamma\in R$, $\delta\in R$ and $\alpha=\beta\delta+\gamma$. If $\gamma\ne0$, then
 	\begin{align*}
