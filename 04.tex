@@ -150,7 +150,19 @@ we consider $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 
 \begin{example}
 	Let $R=\Z[i]$. Then $R$ is an euclidean domain with $\varphi(\alpha)=N(\alpha)$. Let 
-	$\alpha=a+ib$ and $\beta=c+id\ne 0$. Then
+	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
+	We want to find Gauss integers $\gamma,\delta\in\Z[i]$ such that 
+	\[
+	\frac{\alpha}{\beta}=\gamma+\frac{\delta}{\beta}
+	\]
+	and
+	$\varphi(\delta/\beta)=\varphi(\delta)/\varphi(\beta)<1$. Note that every complex
+	number $z\in\C$ can be written $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. Indeed, this
+	follows from the fact that 
+	$\C$ is covered by open unit disks of radius one and centers in Gauss integers, see Figure \ref{fig:covering}. 
+	
+	Let us now perform the explicit calculation. Let $\alpha=a+ib$ and $\beta=c+id$. 
+	Write 
 	\[
 	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
 	\]
@@ -173,6 +185,21 @@ for some $\delta,\gamma\in\Z[i]$,
 then there are up to four possibilities 
 for the remainder $\gamma$.
 
+	\begin{figure}
+	\centering
+	\begin{tikzpicture} 
+\draw[dashed] (0,0) grid (3,3); 
+\foreach \i in {0,...,3}     
+\foreach \j in {0,...,3}         
+\fill (\i,\j) circle (2pt);  
+\draw[red,thick](1,1) circle (1);
+\draw[red,thick](2,1) circle (1);
+\draw[red,thick](1,2) circle (1);
+\draw[red,thick](2,2) circle (1);
+\end{tikzpicture}
+\caption{$\C$ is covered by open unit disks of radius one and centers in Gauss integers.}
+\label{fig:covering}
+\end{figure}
 
 \begin{example}
 	Let $R=\Z[i]$ and 
