@@ -9,7 +9,7 @@ other basic examples of algebras.
 	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
 	\begin{enumerate}
 	    \item $p=2$ or $p\equiv1\bmod 4$.
-	    \item There exists $a\in\Z$ such that $a^2\equiv1\bmod p$.
+	    \item There exists $a\in\Z$ such that $a^2\equiv-1\bmod p$.
 	    \item $p$ is not irreducible in $\Z[i]$.
 	    \item $p=a^2+b^2$ for some $a,b\in\Z$.
 	\end{enumerate}
@@ -28,8 +28,8 @@ other basic examples of algebras.
     take $a=\alpha^k$. 
     
     We now prove that $2)\implies 3)$. If $a^2\equiv-1\bmod p$, then $a^2+1=kp$ 
-    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. We 
-    claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
+    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. Let us prove that $p$ is not prime in $\Z[i]$. 
+    We claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
     $a-i=p(e+fi)$ for some $e,f\in\Z$ and this implies that $1=pf$, a contradiction. Similarly,
     $p$ does not divide $a+i$. Thus $p$ is not prime in $\Z[i]$ 
     and hence it is not irreducible in $\Z[i]$ (because in $\Z[i]$ primes and irreducible coincide). 
@@ -56,7 +56,7 @@ if there is a subset $X\subseteq R\times R$ such that
 \begin{enumerate}
     \item $(r,r)\in X$ for all $r\in R$, 
     \item if $(r,s)\in X$ and $(s,t)\in X$, then $(r,t)\in X$, and 
-    \item if $(r,s)\in X$ and $(s,r)\in X$, then $r+s$. 
+    \item if $(r,s)\in X$ and $(s,r)\in X$, then $r=s$. 
 \end{enumerate}
 \end{definition}
 
@@ -77,7 +77,7 @@ $\{1,2\}$ and $\{3,4\}$ of $U$ are elements of $T$ that are not comparable.
 
 \begin{definition}
     Let $R$ be a poset and $r\in R$. Then $r$ is \textbf{maximal} in $R$ if 
-    such that $r\leq t$ implies $r=t$. 
+    $r\leq t$ implies $r=t$. 
 \end{definition}
 
 \begin{example}
@@ -141,23 +141,31 @@ if and only if $R/I$ is a field.
 The following application of Zorn's lemma uses 
 the identity of a ring. 
 
-\begin{theorem}
+\begin{theorem}[Krull]
 	Let $R$ be a ring. Each proper ideal $I$ of $R$ 
 	is contained in a maximal ideal. 
 	In particular, all rings have maximal ideals. 	
 \end{theorem}
 
 \begin{proof}
-	Let $X=\{J\subseteq R:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
+	Let $X=\{J:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
 	Since $I\in X$, it follows that $X$ is non-empty. Moreover, $X$ is a poset
-	with respect to the inclusion. If $C$ is a chain in $X$, then 
+	with respect to the inclusion. If $C$ is a chain in $X$ (say for example
+	an increasing sequence
+	\[
+	I_1\subseteq I_2\subseteq\cdots
+	\]
+	of proper ideals of $R$ containing $I$), then 
 	$\cup_{J\in C}J$ is an upper bound for $C$, as $\cup_{J\in C}J$ is an ideal and
 	$\cup_{J\in C}J\ne R$ because $1\not\in\cup_{J\in C}J$. 	Zorn's lemma implies that
-	there exists $M\in X$ maximal. We claim that $M$ is a maximal ideal of $R$. The definition
-	of $X$ implies that $M$ is a proper ideal of $R$. If $M_1$ is an ideal of $R$
+	there exists a maximal element $M\in X$. We claim that $M$ is a maximal ideal of $R$. The definition
+	of $X$ implies that $M$ is a proper ideal of $R$ that contains $I$. If $M_1$ is a proper ideal of $R$
 	such that $M\subseteq M_1$, it follows that $I\subseteq M_1$ and hence $M_1\in X$. The maximality
 	of $M$ implies that $M=M_1$.  
 \end{proof}
+
+In the proof of previous theorem it is crucial to consider rings with 
+identity. 
 
 \begin{exercise}
 	Compute the maximal ideals of $\R[X]$ and $\C[X]$. 	
@@ -224,6 +232,43 @@ The previous exercise can be used to solve the following exercises:
     Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
 \end{exercise}
 
+\section*{\S6. The caracteristic of a ring}
+
+\begin{definition}
+Let $R$ be a ring. If there is a least positive integer $n$ such that 
+$nx=0$ for all $x\in R$, then $R$ has \textbf{characteristic} $n$, i.e. $\ch R=n$. If no such $n$ exists, 
+then $R$ is of characteristic zero. 
+\end{definition}
+
+Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
+
+\begin{proposition}
+    Let $R$ be a ring such that $\ch R=n>0$,
+    \begin{enumerate}
+        \item The map $f\colon \Z\to R$, $m\mapsto m1$, is a ring homomorphism and $\ker f=n\Z$.  
+        \item $n=\min\{k\in\Z_{>0}:k1=0\}$.
+        \item If $R$ is a domain, then $n$ is a prime number.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    We leave (1) as an exercise. 
+    
+    Let us prove (2). Let $n_1=\min\{k\in\Z_{>0}:k1=0\}$. Clearly 
+    $n\geq n_1$. For $x\in R$,
+    $kx=k(1x)=(k1)x=0x=0$ 
+    and hence $n_1\geq n$. 
+    
+    Finally we prove (3). If $n$ is not prime, say
+    $n=rs$ with $1<r,s<n$. Then 
+    \[
+    0=n1=(rs)1=(r1)(s1)
+    \]
+    and hence $r1=0$ or $s1=0$, a contradiction. 
+\end{proof}
+
+\section*{\S7. Group algebras}
+
 \index{Group ring}
 \index{Group algebra}
 We now discuss an important family of examples. 
@@ -273,28 +318,30 @@ $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
 
 In general, one proves that $\C[C_n]\simeq\C[X]/(X^n-1)$ for $n\geq2$.
 
+\begin{exercise}
+	Prove that $\R[C_3]\simeq\R\times\C$. 	
+\end{exercise}
+
 \begin{example}
-	Let $K$ be a field and 
-	$G=\{1,g\}\simeq C_2$ be the cyclic group of order two. The product
-	of $K[G]$ is 
+	Let $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. The product
+	of $\C[G]$ is 
 	\[
 	(a1+bg)(c1+gd)=(ac+bd)1+(ad+bc)g.
 	\]
 	
-	If $K=\C$, then the map $K[G]\to K\times K$, $a1+bg\mapsto (a+b,a-b)$, 
+	The map $\C[G]\to \C\times \C$, $a1+bg\mapsto (a+b,a-b)$, 
 	is a linear isomorphism of rings. 
-	
-	If $K=\Z/2$, then the map $K[G]\to\begin{pmatrix}
+\end{example}
+
+\begin{exercise}
+	Let $K=\Z/2$ and $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. 
+	Prove that the map $K[G]\to\begin{pmatrix}
 		K&K\\
 		0&K
 	\end{pmatrix}$, $a1+bg\mapsto\begin{pmatrix}
 		a+b&b\\
 		0&a+b		
-	\end{pmatrix}$, is a linear isomorphism of rings. 
-\end{example}
-
-\begin{exercise}
-	Prove that $\R[C_3]\simeq\R\times\C$. 	
+	\end{pmatrix}$, is a linear isomorphism of rings.
 \end{exercise}
 
 The group ring has the following property, which is left as an exercise. 
