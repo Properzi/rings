@@ -46,7 +46,9 @@ if every ideal of $R$ is finitely generated.
 	Assume first that $R$ is noetherian. Let $I$ be an ideal of $R$ that is not finitely generated. 
 	Thus $I\ne\{0\}$. Let $x_1\in I\setminus\{0\}$ and let $I_1=(x_1)$. Since $I$ is not finitely
 	generated, $I\ne I_1$ and hence   
-	$\{0\}\subsetneq I_1\subsetneq I$. Once I have the ideals $I_1,\dots,I_{k-1}$, let 
+	$\{0\}\subsetneq I_1\subsetneq I$. Let $x_2\in I\setminus I_1$. Then
+	$I_2=(x_1,x_2)$ is a finitely generated ideal such that 
+	$I_1\subsetneq I_2\subsetneq I$.	 Once I have the ideals $I_1,\dots,I_{k-1}$, let 
 	$x_k\in I\setminus I_{k-1}$ (such an element exists because $I_{k-1}$ is finitely generated
 	and $I$ is not) and $I_k=(I_{k-1},x_k)$. The sequence
 	$\{0\}\subsetneq I_1\subsetneq I_2\subsetneq\cdots$ does not stabilize.  
@@ -55,8 +57,10 @@ if every ideal of $R$ is finitely generated.
 	let $I_1\subseteq I_2\subseteq\cdots$ be a sequence of ideals of $R$. Then
 	$I=\cup_{i\geq1}I_i$ is an ideal of $R$, so it is finitely generated, say
 	$I=(x_1,\dots,x_n)$. We may assume that $x_j\in I_{i_j}$ for all $j$. Let 
-	$N=\max\{j_1,\dots,j_n\}$ and $n\geq N$. Then 
-	$I_N\subseteq I\subseteq I_N$ and therefore the sequence stabilizes.  
+	$N=\max\{j_1,\dots,j_n\}$. Then 
+	$x_j\in I_N$ for all $j\in\{1,\dots,n\}$ 
+	and hence $I\subseteq I_N$. This implies that 
+	$I_m=I_N$ for all $m\geq N$. 
 \end{proof}
 
 \begin{exercise}
@@ -79,8 +83,9 @@ allow us to prove easily the following result.
 	$R$ is noetherian, $\pi^{-1}(J)$ is finitely generated, say 
 	$\pi^{-1}(J)=(x_1,\dots,x_k)$ for $x_1,\dots,x_k\in R$. Thus 
 	\[
-	J=\pi(\pi^{-1}(J))=(\pi(x_1),\dots,\pi(x_k))
+	J=\pi(\pi^{-1}(J))=(\pi(x_1),\dots,\pi(x_k)),
 	\]
+	because $\pi$ is surjective 
 	and hence $J$ is finitely generated. 
 \end{proof}
 
@@ -100,28 +105,39 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 \begin{proof}
 	We need to show that every ideal of $R[X]$ is finitely generated. Assume that
 	there is an ideal $I$ of $R[X]$ that is not finitely generated. In particular, $I\ne\{0\}$. 
-	Let $f_1(X)\in I\setminus\{0\}$ be of minimal degree. For $i>1$ let 
-	$f_i(X)\in I$ be of minimal degree such that $f_i(X)\not\in(f_1(X),\dots,f_{i-1}(X))$ (note
-	that such an $f_i(X)$ exists because $I$ is not finitely generated). For each $i$ 
+	Let $f_1(X)\in I\setminus\{0\}$ be of minimal degree $n_1$. 
+	Since $I$ is not finitely generated, it follows that 
+	$I\ne (f_1(X))$. Let $f_2(X)\in I\setminus (f_1(X))$ be
+	of minimal degree $n_2$. In particular, $n_2\geq n_1$. 
+	For $i>1$ let 
+	$f_i(X)\in I$ be a polynomial of minimal degree $n_i$ such that  
+	such that $f_i(X)\not\in(f_1(X),\dots,f_{i-1}(X))$ (note
+	that such an $f_i(X)$ exists because $I$ is not finitely generated). 
+	Moreover, $n_i\geq n_{i-1}$. This happens because 
+	if $n_i<n_{i-1}$, then
+	$f_i(X)\not\in (f_1(X),\dots,f_{i_2}(X))$, which contradicts
+	the minimality of $n_{i-1}=\deg f_{i-1}(X)$. 
+	For each $i\geq1$ 
 	let $a_i$ be the leading coefficient of $f_i(X)$, that is
 	\[
 	f_i(X)=a_iX^{n_i}+\cdots,
 	\]
 	where the dots denote lowest degree terms. Note that 
-	$a_i\ne 0$.
+	$a_i\ne 0$ for all $i\geq 1$. 
+	
 	Let $J=(a_1,a_2,\dots)$. Since $R$ is noetherian, the sequence
 	\[
 	(a_1)\subseteq (a_1,a_2)\subseteq\cdots(a_1,a_2,\dots,a_k)\subseteq\cdots
 	\]
-	stabilizes, so $J$ is finitely generated, say
+	stabilizes, so we may assume that 
 	$J=(a_1,\dots,a_m)$ for some $m\in\Z_{>0}$. 
-	There exist $u_1,\dots,u_m\in R$ such that 
+	In particular, there exist $u_1,\dots,u_m\in R$ such that 
 	\[
 	a_{m+1}=\sum_{i=1}^m u_ia_i.
 	\]
 	Let 
 	\[
-	g(X)=\sum_{i=1}^mu_if_i(X)X^{n_{m+1}-n_i}\in (f_1(X),\dots,f_m(X)).
+	g(X)=\sum_{i=1}^mu_if_i(X)X^{n_{m+1}-n_i}\in (f_1(X),\dots,f_m(X))\subseteq I.
 	\]
 	The leading coefficient of $g(X)$ is $\sum_{i=1}^mu_ia_i=a_{m+1}$ and, moreover, 
 	the degree of $g(X)$ is $n_{m+1}$. Thus $\deg(g(X)-f_{m+1}(X))<n_{m+1}$. 
@@ -257,9 +273,16 @@ the following result holds.
 	$x\in\mathcal{U}(R)$. 
 \end{proof}
 
+A square-free integer is an integer which is divisible by 
+no perfect square other than 1.
+
+\begin{exercise}
+If $N$ is a square-free integer, then 
+$a+b\sqrt{N}=c+d\sqrt{N}$ if and only if $a=b$ and $c=d$. 
+\end{exercise}
+
 To show that there are rings where some irreducibles are not prime, 
-we need the following lemma. A square-free
-integer is an integer which is divisible by no perfect square other than 1.
+we need the following lemma. 
 
 \begin{lemma}
 Let $N\in\Z$ be a non-zero square-free integer and $R=\Z[\sqrt{N}]$. Then 
