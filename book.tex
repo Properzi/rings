@@ -34,6 +34,10 @@
 \usepackage{colortbl}
 \usepackage{chngcntr}
 
+
+
+
+
 % Table of contents for lectures and topics
 \makeatletter
 \newcommand\listtopicsname{List of topics}
@@ -42,7 +46,7 @@
 \makeatother
 
 \makeatletter
-\newcommand\listlecturesname{List of lectures}
+\newcommand\listlecturesname{Contents}
 \newcommand\listoflectures{
     \chapter*{\listlecturesname}\@starttoc{lec}}
 \makeatother
@@ -56,6 +60,7 @@
     \section{#1}
     \addcontentsline{top}{chapter}{\S\thesection\quad #1}
 }
+
 
 \usepackage[small,bf]{caption}
 
@@ -319,45 +324,38 @@
 %\include{dedic}
 \include{preface}
 
-%\endmatter
-
-%\tableofcontents
-
-%\include{foreword}
-
 \listoflectures
 \listoftopics
 
 \mainmatter
 
-%\part{Rings}
 \include{01}
 \include{02}
 \include{03}
 \include{04}
 \include{05}
-
-%\part{Representations}
-
 \include{06}
 \include{07}
 \include{08}
 \include{09}
 
-%\part{Modules}
-
-
 \backmatter
-%\include{glossary}
+
 \include{hints}
+\addcontentsline{lec}{chapter}{Some hints}
+
 \include{solutions}
+\addcontentsline{lec}{chapter}{Some solutions}
+
 
 \bibliographystyle{abbrv}
 \bibliography{refs}
+\addcontentsline{lec}{chapter}{References}
 
-\printindex
 
-
+\printindex     
+\phantom{Trick}
+\addcontentsline{lec}{chapter}{\indexname}
 
 \end{document}
 
