@@ -34,8 +34,28 @@
 \usepackage{colortbl}
 \usepackage{chngcntr}
 
+% Table of contents for lectures and topics
+\makeatletter
+\newcommand\listtopicsname{List of topics}
+\newcommand\listoftopics{
+    \section*{\listtopicsname}\@starttoc{top}}
+\makeatother
 
+\makeatletter
+\newcommand\listlecturesname{List of lectures}
+\newcommand\listoflectures{
+    \section*{\listlecturesname}\@starttoc{lec}}
+\makeatother
 
+\newcommand{\lecture}[1]{
+    \chapter{#1}
+    \addcontentsline{lec}{chapter}{Lecture \thechapter}
+}
+
+\newcommand{\topic}[1]{
+    \section{#1}
+    \addcontentsline{top}{chapter}{\S\thesection\quad #1}
+}
 
 \usepackage[small,bf]{caption}
 
@@ -127,6 +147,7 @@
 
 % No sections in TOC
 \setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{0}
 
  \usepackage{titlesec}
  \titleformat{\section}
@@ -258,6 +279,7 @@
   \let\@evenfoot\@oddfoot
 }
 
+% Heading 
 \def\ps@headings{%
   \let\@mkboth\markboth
   \def\@oddfoot{\reset@font\small\hfil\thepage\hfil}%
@@ -270,6 +292,8 @@
     }{%
       {\if@chapnum Lecture \thechapter\thechapterend\fi ##1}}%
     }%
+    \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
+     \S\thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}
 }
 \makeatother
 \pagestyle{headings}
@@ -297,7 +321,8 @@
 \include{preface}
 %\include{foreword}
 
-\tableofcontents
+\listoflectures
+\listoftopics
 
 \mainmatter
 
