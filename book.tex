@@ -32,6 +32,9 @@
 \usepackage{hyperref} 
 %\usepackage{tikz-cd}
 \usepackage{colortbl}
+\usepackage{chngcntr}
+
+
 
 
 \usepackage[small,bf]{caption}
@@ -99,7 +102,12 @@
 \let\exercise\relax
 \let\example\relax
 \let\conjecture\relax
+
+% Numerar con sección y no resetear al cambiar de capítulo
+\counterwithout{section}{chapter}
+\counterwithout{theorem}{chapter}
 \spnewtheorem{theorem}{\theoremname}[section]{\bfseries}{\itshape}
+
 \renewcommand\thetheorem{\thesection.\arabic{theorem}}
 \spnewtheorem{lemma}[theorem]{\lemmaname}{\bfseries}{\itshape}
 \spnewtheorem{definition}[theorem]{\definitionname}{\bfseries}{\upshape}
@@ -114,13 +122,18 @@
 \spnewtheorem{steps}[theorem]{\stepsname}{\bfseries}{\upshape}
 \spnewtheorem{convention}[theorem]{\conventionname}{\bfseries}{\upshape}
 
-% to change page headings 
+% Numerar con sección y no resetear al cambiar de capítulo
+\counterwithout{section}{chapter}
 
+% No sections in TOC
+\setcounter{secnumdepth}{1}
+
+ \usepackage{titlesec}
+ \titleformat{\section}
+   {\secsize\secstyle}{\S\thesection.}{1em}{}
 
 % para enumerar
 \renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
-
-\setcounter{secnumdepth}{1}
 
 \makeindex             
 
@@ -230,9 +243,10 @@
 \fi
 }
 
+
 % numero como secciones
-\renewcommand{\thesection}{\arabic{chapter}}
-\renewcommand{\thesubsection}{\Alph{section}}
+\renewcommand{\thesection}{\arabic{section}}
+%\renewcommand{\thesubsection}{\Alph{section}}
 
 % To remove Springer from the title page
 \usepackage{etoolbox}
