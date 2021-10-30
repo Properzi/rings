@@ -38,13 +38,13 @@
 \makeatletter
 \newcommand\listtopicsname{List of topics}
 \newcommand\listoftopics{
-    \section*{\listtopicsname}\@starttoc{top}}
+    \chapter*{\listtopicsname}\@starttoc{top}}
 \makeatother
 
 \makeatletter
 \newcommand\listlecturesname{List of lectures}
 \newcommand\listoflectures{
-    \section*{\listlecturesname}\@starttoc{lec}}
+    \chapter*{\listlecturesname}\@starttoc{lec}}
 \makeatother
 
 \newcommand{\lecture}[1]{
@@ -309,7 +309,6 @@
   framerule=0pt,
 }
 
-
 \author{Leandro Vendramin}
 \title{Rings and modules}
 \subtitle{Notes}
@@ -319,6 +318,11 @@
 
 %\include{dedic}
 \include{preface}
+
+%\endmatter
+
+%\tableofcontents
+
 %\include{foreword}
 
 \listoflectures
