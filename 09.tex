@@ -471,35 +471,35 @@ If $M$ is free, then $M\simeq R^{(I)}$ for some set $I$.
 \end{proposition}
 
 \begin{proof}
-Supongamos que $M$ es libre con base $\{m_i:i\in I\}$. Vimos una proposición que nos dice que 
-existe un único morfismo $f\in\Hom_R(M,R^{(I)})$ tal que 
-$f(m_i)=e_i$ para todo $i\in I$, donde 
+Suppose that $M$ has basis $\{m_i:i\in I\}$. There exists a unique homomorphism
+$f\in\Hom_R(M,R^{(I)})$ such that  
+$f(m_i)=e_i$ for all $i\in I$, where 
 \[
 (e_i)_j=\begin{cases}
 	1 & \text{si $i=j$},\\
 	0 & \text{si $i\ne j$.}
 	\end{cases}	
 \]	
-Veamos que $f$ es un isomorfismo. 
-Primero veamos que $f$ es epimorfismo: dado $(r_i)_{i\in I}\in R^{(I)}$, entonces
-$f(\sum r_i\cdot m_i)=(r_i)_{i\in I}$. Para ver que es monomorfismo:
+We claim that $f$ is an isomorphism. We first prove that the map $f$ is surjective: if $(r_i)_{i\in I}\in R^{(I)}$, then
+$f(\sum r_i\cdot m_i)=(r_i)_{i\in I}$. Let us prove that $f$ is injective: 
 \[
-0=f(\sum r_i\cdot m_i)=\sum r_i\cdot f(m_i)=\sum r_i\cdot e_i\implies r_i=0\text{ para todo $i\in I$}.\qedhere
+0=f(\sum r_i\cdot m_i)=\sum r_i\cdot f(m_i)=\sum r_i\cdot e_i\implies r_i=0\text{ for all $i\in I$}.\qedhere
 \]
 \end{proof}
 
 \begin{corollary}
-Todo módulo es (isomorfo a un) cociente de un módulo libre.
+Every module is (isomorphic to) a quotient of a free module.
 \end{corollary}
 
 \begin{proof}
-Si $M$ es un módulo, vamos a demostrar que existe un módulo libre $L$ y un epimorfismo $f\in\Hom_R(L,M)$, ya que
-entonces $L/\ker f\simeq M$ por el primer teorema de isomorfismos. Sea 
-$\{m_i:i\in I\}$ un conjunto de generadores de $M$, que siempre existe, ya que podríamos tomar por ejemplo el conjunto
-$\{m:m\in M\}$ y sea $L=R^{(I)}$. Entonces $L$ es libre y $f\colon R^{(I)}\to M$, $e_i\mapsto m_i$, es un epimorfismo. 
+Let $M$ be a module. We claim that there exists a free module $L$ and a surjective homomorphism $f\in\Hom_R(L,M)$. Then
+$L/\ker f\simeq M$. Let $\{m_i:i\in I\}$
+be a generating set of $M$ (note that such a generating set always exists, as one could take, for example, the set
+$\{m:m\in M\}$) and let $L=R^{(I)}$. Then $L$ is free and $f\colon R^{(I)}\to M$, $e_i\mapsto m_i$, is a surjective 
+homomorphism.
 \end{proof}
 
-Otra propiedad importante de los módulos libres:
+Another important property of free modules:
 
 \begin{proposition}
 	Si $M$ es un módulo libre, $f\in\Hom_R(N,T)$ es un epimorfismo y $h\in\Hom_R(M,T)$, entonces existe
