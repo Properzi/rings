@@ -56,23 +56,23 @@ $\rank(N)\leq\rank(F)$.
 El teorema anterior también vale en el caso de bases infinitas. La demostración, sin embargo, depende del lema de Zorn.
 % todo: referencia al libro de lang
 	
-\begin{corollary}
-Sea $R$ un dominio de ideales principales. Si $M$ es proyectivo y finitamente generado, 
-entonces $M$ es libre.
-\end{corollary}
+% \begin{corollary}
+% Sea $R$ un dominio de ideales principales. Si $M$ es proyectivo y finitamente generado, 
+% entonces $M$ es libre.
+% \end{corollary}
 
-\begin{proof}
-Supongamos que $M=(m_1,\dots,m_k)$. Sabemos que $M$ es sumando directo de un libre $F$. Fijemos una base de $F$ y sea 
-$X=\{f_1,f_2,\dots\}$ un subconjunto finito de esa base de $F$ tal que
-\[
-m_j=\sum_{i=1}^{n_j}r_{ij}\cdot f_i
-\]
-para ciertos $r_{ij}\in R$ y ciertos $n_1\dots,n_k\in\N$. 
-Por construcción, $X$ es linealmente indepdendiente y $M=(X)$. 
-\end{proof}
+% \begin{proof}
+% Supongamos que $M=(m_1,\dots,m_k)$. Sabemos que $M$ es sumando directo de un libre $F$. Fijemos una base de $F$ y sea 
+% $X=\{f_1,f_2,\dots\}$ un subconjunto finito de esa base de $F$ tal que
+% \[
+% m_j=\sum_{i=1}^{n_j}r_{ij}\cdot f_i
+% \]
+% para ciertos $r_{ij}\in R$ y ciertos $n_1\dots,n_k\in\N$. 
+% Por construcción, $X$ es linealmente indepdendiente y $M=(X)$. 
+% \end{proof}
 
-El corolario anterior vale también para módulos arbitrarios. La demostración puede
-consultarse por ejemplo en~\cite[I, Theorem 5.1]{MR1438546}.
+% El corolario anterior vale también para módulos arbitrarios. La demostración puede
+% consultarse por ejemplo en~\cite[I, Theorem 5.1]{MR1438546}.
 
 \begin{corollary}
 Sea $R$ un dominio de ideales principales. Si $M$ es finitamente generado y $N$ 
@@ -189,7 +189,7 @@ Demuestre que $T(\oplus_{i\in I}M_i)\simeq \oplus_{i\in I}T(M_i)$.
 \item $T(\prescript{}{R}R)=\{r\in R:rs=0\text{ para algún $s\in R$}\}$.
 \item $T(\Z/n)=\Z/n$.
 \item $T(\Q)=\{0\}$.
-\item $T(\Z^{\N})=\{0\}$. 
+\item $T(\Z^{\Z_{>0}})=\{0\}$. 
 \end{enumerate}
 \end{examples}
 
@@ -317,310 +317,6 @@ parte de torsión es única y la parte libre es única salvo isomorfismos.
 \end{proof}
 
 
-\index{compontente $p$-primaria!de un módulo}
-Si $p\in R$ es un elemento irreducible, se define la componente $p$-primaria de $M$ como
-el subconjunto 
-\[
-M_p=\{x\in M:p^l\cdot x=0\text{ para algún $l\in\N$}\}.
-\]
-Dejamos como ejercicio demostrar que $M_p$ es un submódulo de $M$. 
-
-\begin{lemma}
-	\label{lem:Mp}
-	Sean $p,t\in R$ tales que $p$ y $t$ son coprimos. Si $p\in R$ es irreducible y además   
-	$\Ann(M)=(p^kt)$, entonces $\Ann_M(p^k)=M_p$. 
-\end{lemma}
-
-\begin{proof}
-Demostremos que $\Ann_M(p^k)\supseteq M_p$, ya que la otra inclusión es trivial. 
-Si $x\in M_p$, entonces $p^k\cdot x=0$ para algún $l\in\N$. Observemos que 
-$(p^kt)\cdot x=0$, pues $x\in M$. Como $p^l$ y $t$ son coprimos, existen 
-$r,s\in R$ tales que $1=rp^l+st$ y luego
-\[
-p^k\cdot x=1\cdot (p^k\cdot x)=(rp^l+st)\cdot (p^k\cdot x)=rp^{l+k}\cdot x+(st)\cdot (p^k\cdot x)=0.\qedhere	
-\]
-\end{proof}
-
-\begin{lemma} 
-\label{lem:Ann(ab)}
-Si $\Ann(M)=(ab)$ y $a$ y $b$ son coprimos, entonces 
-\[
-M=\Ann_M(a)\oplus\Ann_M(b).
-\] 	
-\end{lemma}
-
-\begin{proof}
-	Como $a$ y $b$ son coprimos, existen $r,s\in R$ tales que $1=ra+sb$. Si $m\in M$, entonces
-	\[
-	m=1\cdot m=(ra+sb)\cdot m=(ra)\cdot m+(sb)\cdot m\in\Ann_M(b)+\Ann_M(a),
-	\]
-	pues $(ab)\cdot M=0$. Además, si $m\in\Ann_M(a)\cap\Ann_M(b)$, entonces 
-	\[
-	m=1\cdot m=(ra+sb)\cdot m=0.\qedhere
-	\]
-\end{proof}
-
-Los dos lemas que vimos nos permiten demostrar el siguiente resultado:
-
-\begin{theorem}[de la descomposición primaria]
-\index{Teorema!de la descomposición primaria}
-Sea $R$ un dominio de ideales principales y 
-sean $p_1,\dots,p_k\in R$ irreducibles distintos y no asociados tales que $\Ann(M)=(p_1^{\alpha_1}\cdots p_k^{\alpha_k})$. 
-Si $M$ es finitamente generado y $T(M)=M$, entonces 
-\[
-M=\bigoplus_{i=1}^kM_{p_i}.
-\]   
-\end{theorem}
-
-\begin{proof}
-	Como $T(M)=M$, $\Ann(M)\ne\{0\}$. En efecto, si $M=(m_1,\dots,m_l)$, entonces cada $m_i\in T(M)$ y 
-	entonces existe $r_i\in R\setminus\{0\}$ tal que $r_i\cdot m_i=0$ para todo $i$. Como $R$ es un dominio, $r_1\cdots r_l\ne 0$ 
-	y cumple $(r_1\cdots r_l)\cdot m_i=0$ para todo $i\in\{1,\dots,l\}$, es decir $r_1\cdots r_l\in\Ann M$. Los dos lemas
-	que vimos anteriormente nos permiten escribir entonces
-	\[
-	M=\bigoplus_{i=1}^k\Ann_M(p_i^{\alpha_i})=\bigoplus_{i=1}^k M_{p_i}.\qedhere
-	\] 
-\end{proof}
- 
-Puede demostrarse que la descomposición mencionada en el teorema anterior es única salvo en el orden de los sumandos. 
-Más precisamente, si \[
-M=N_{q_1}\oplus\cdots\oplus N_{q_l},
-\]
-donde los $N_{q_i}$ son primarios tales que 
-$\Ann(N_{q_i})=(q_i^{\beta_i})$ 
-y los $q_1,\dots,q_l$ son irreducibles distintos no asociados, entonces $k=l$ y existe $\sigma\in\Sym_k$ tal que
-$M_{p_i}=N_{q_{\sigma(i)}}$ para todo $i$, los $q_{\sigma(i)}$ y los $p_i$ son asociados para todo $i$ y además 
-\[
-q_1^{\beta_1}\cdots q_k^{\beta_k}=p_1^{\alpha_1}\cdots p_k^{\alpha_k}.
-\]
-Para la demostración ver por ejemplo~\cite[Theorem 6.9]{MR2344656}.
-
-% \medskip
-% \index{Orden!de un submódulo}
-% Para el teorema siguiente necesitamos algunas nociones básicas sobre órdenes de submódulos. Un módulo 
-% $M$ se dirá de \textbf{orden} $r\in R$ si $\Ann(M)=(r)$. 
-
-% \begin{lemma}
-% Sean $R$ un dominio de ideales principales y $M$ un módulo.
-% \begin{enumerate}
-%     \item Si $m\in M$ es tal que $\Ann(m)=(r)$, entonces $(m)\simeq R/(r)$.
-%     \item Los submódulos de módulos cíclicos son cíclicos.
-%     \item Si $m\in M$ es tal que $\Ann(m)=(r)$, entonces $\Ann(s\cdot m)=r/\gcd(r,s)$. 
-%     En particular, si $r$ y $s$ son coprimos, entonces $\Ann(s\cdot m)=(s)$. 
-%     \item Si $m_1,\dots,m_k\in M\setminus\{0\}$ son tales que $\Ann(m_i)=(r_i)$ y los $r_i$ son coprimos dos a dos, 
-%     entonces $\Ann(m_1+\cdots+m_k)=(r_1\cdots r_k)$. 
-% \end{enumerate}
-% \end{lemma}
-
-% \begin{proof}
-%     Para el primer ítem hay que usar el primer teorema de isomorfismos con el epimorfismo $R\to (m)$, $r\mapsto r\cdot m$, 
-%     que tiene núcleo $\Ann(M)=(r)$. 
-    
-%     El segundo ítem es consecuencia del teorema \ref{thm:rango} que afirma que un submódulo de un cíclico estará generado 
-%     por un elemento. 
-    
-%     Demostremos el tercer ítem. 
-% \end{proof}
-
-
-% El lema anterior implica que si $M=S_1+\cdots + S_k$ y cada $\Ann(S_i)=(s_i)$ donde los $s_i$ son coprimos dos a dos, entonces
-% $M=S_1\oplus\cdots\oplus S_k$. 
-
-%\begin{exercise}
-%	Si en el teorema anterior, $M$ admite además una descomposición de la forma $M=N_{q_1}\oplus\cdots\oplus N_{q_l}$,
-%	donde $\Ann(N_{q_i})=(q_i^{\beta_i})$ para todo $i\in\{1,\dots,l\}$ y los $q_i$ son irreducibles distintos no asociados, entonces
-%	$k=l$; más aún, después de reordenar,
-%	tenemos que para todo $i\in\{1,\dots,k\}$ vale que 
-%$N_{q_i}=M_{q_i}$, $\alpha_i=\beta_i$ y que $p_i$ y $q_i$ son asociados.
-%\end{exercise} 
-%
-
-\begin{theorem}[de la descomposición cíclica]
-\index{Teorema!de la descomposición cíclica}
-Sea $R$ un dominio de ideales principales. 
-Sea $M$ un módulo finitamente generado tal que $T(M)=M$. Si $\Ann(M)=(p^{\alpha})$ para algún $p\in R$ irreducible, entonces
-\[
-M=(m_1)\oplus\cdots\oplus (m_k),
-%\bigoplus_{i=1}^k R/(p^{\alpha_i}),
-\]
-donde cada $m_j\in M$ es tal que $\Ann(m_j)=(p^{\alpha_j})$ y 
-$\alpha=\alpha_1\geq\alpha_2\geq\cdots\geq\alpha_k$.
-\end{theorem}
-
-\begin{proof}
-  Sea $m\in M$ tal que $p^{\alpha}\cdot m=0$ y $p^{\alpha-1}\cdot m\ne 0$. Si $M=(m)$, no hay nada para demostrar. En caso contrario,
-   vamos a demostrar que existe un submódulo $S$ de $M$ tal que 
-	$M=(m)\oplus S$. En este caso, como $S$ también cumple las hipótesis del teorema,
-	podemos repetir el procedimiento y obtener
-	\[
-	M=(m)\oplus (m_1)\oplus\cdots\oplus (m_k)\oplus S_k,
-	\]
-	donde $\Ann(m_i)=(p^{\alpha_i})$. Como $M$ es noetheriano, la sucesión 
-	\[
-	(m)\subseteq (m,m_1)\subseteq (m,m_1,m_2)\subseteq\cdots
-	\]
-	debe estabilizarse, lo que se traduce en la existencia de algún $k\in\N$ tal que $S_k=\{0\}$. 
-	
-	Sea $M_1=(m)$. Si
-	$M_1\ne M$, sea $x\in M\setminus M_1$. Necesitamos encontrar $r\in R$ tal que $S_2=(x-r\cdot m)$ esté en suma directa con $(m)$, es decir 
-	$(m)\cap S_2=\{0\}$. Si $y\in (m)\cap S_2$, 
-	\begin{gather*}
-	y=a\cdot m=b\cdot (x-r\cdot m)\implies 
-	b\cdot x=(a+br)\cdot m\in (m)
-	\end{gather*}
-	para ciertos $a,b\in R$. 
-	Un cálculo sencillo nos muestra que el conjunto  
-	\[
-	I=\{\lambda\in R:\lambda\cdot x\in (m)\}.
-	\] 
-	es un ideal de $R$ tal que $p^{\alpha}\in I$ y $b\in I$. 
-	Como $R$ es principal y $p$ es irreducible,
-	entonces $I=(p^\beta)$ para algún $\beta\leq \alpha$. Si $\beta=0$, entonces $I=R$ y luego $x=1\cdot x\in (m)$, una contradicción. Luego $\beta\ne0$. Como
-	$p^\beta\in I$, entonces $p^\beta\cdot x=c\cdot m$ para algún $c\in R$. En particular,
-	\[
-	0=p^{\alpha}\cdot x=p^{\alpha-\beta}\cdot (p^\beta\cdot x)
-	=(p^{\alpha-\beta}c)\cdot m,
-	\]
-	lo que implica que $p^{\alpha-\beta} c\in\Ann(m)=(p^{\alpha})$ y entonces  
-	$c=dp^{\beta}$ para algún $d\in R$. En particular, 
-	\[
-	p^\beta\cdot x=c\cdot m=(dp^{\beta})\cdot m.
-	\] 
-	Por definición $b\in I$ y entonces $b=ep^{\beta}$ para algún $e\in R$. Luego 
-	\[
-	b\cdot x=(ep^\beta)\cdot x=(edp^{\beta})\cdot m,
-	\]
-	lo que implica que si $r=d\in R$, entonces 
-	\[
-	y=b\cdot (x-d\cdot m)=b\cdot x-b\cdot (d\cdot m)=0.
-	\] 
-	
-	La contrucción general es similar. Si $M_k=(m)\oplus S_k$ es tal que $M_k\ne M$, afirmamos que existe un submódulo $S_{k+1}$ de $M$ tal que
-	$S_k\subsetneq S_{k+1}$ y además $(m)\cap S_{k+1}=\{0\}$. En efecto, como $M\ne M_k$, existe $x\in M\setminus M_k$. 
-	Queremos encontrar $r\in R$ tal que  $(m)\cap (S_k,x-r\cdot m)=\{0\}$. Sea 
-	$S_{k+1}=(S_k,x-r\cdot m)$. Si $y\in (m)\cap S_{k+1}$, entonces existen $s\in S_k$ y $a,b\in R$ tales que   
-	$y=a\cdot m=s+b\cdot (x-r\cdot m)$, es decir 
-	\[
-	b\cdot x=(a+br)\cdot m-s\in (m)\oplus S_k.
-	\]
-	El conjunto 
-	\[
-	I=\{\lambda\in R:\lambda\cdot x\in (m)\oplus S_k\}
-	\]
-	es un ideal de $R$ tal que $p^{\alpha}\in I$. Como
-	$I$ es principal, $I=(p^\beta)$ para algún $\beta\leq\alpha$. Además $\beta\ne0$ pues $x=1\cdot x\not\in (m)\oplus S_k$. Como $p^\beta\in I$, entonces
-	$p^\beta\cdot x=c\cdot m+t$ para algún $c\in R$ y $t\in S_k$. En particular, 
-	\[
-	0=p^{\alpha}\cdot x=p^{\alpha-\beta}\cdot (p^\beta \cdot x)=(p^{\alpha-\beta}c)\cdot m+p^{\alpha-\beta}\cdot t.
-	\]
-	Luego $(p^{\alpha-\beta} c)\cdot m=0$, pues 
-	$(m)\cap S_k=\{0\}$, y entonces podemos escribir 
-	$c=dp^\beta$ para algún $d\in R$, ya que  
-	$p^{\alpha-\beta}c\in\Ann(m)=(p^{\alpha})$. Tenemos entonces que
-	\[
-	p^\beta\cdot x=(dp^\beta)\cdot m+t.
-	\]
-	Por otro lado, como $b\in I$, existe $e\in R$ tal que $b=ep^\beta$ y entonces
-	\[
-	b\cdot x=e\cdot (p^\beta\cdot x)=e\cdot((dp^\beta)\cdot m+t)=(edp^\beta)\cdot m+e\cdot t.
-	\]
-	$y=b\cdot (x-r\cdot m)=(edp^\beta-ep^\beta r)\cdot m$, se concluye que $y=0$ si elegimos 
-	$r=d$. En efecto, si $y\in (m)\cap S_{k+1}$, entonces $y=s+e\cdot t\in S_k$. Luego 
-	$y\in (m)\cap S_k=\{0\}$.
-\end{proof}
-
-Puede demostrarse que la descomposición del teorema anterior es única. Más precisamente, 
-si $M=(n_1)\oplus\cdots\oplus (n_l)$, donde $\Ann(n_i)=(q^{\beta_i})$ para todo $i$ y algún irreducible $q$ de $R$ 
-y $\beta_1\geq\beta_2\geq\cdots\geq\beta_l$, entonces $\Ann(n_i)=\Ann(m_i)$ para todo $i$. En particular, $k=l$, 
-$p$ y $q$ son asociados y $\alpha_i=\beta_i$ para todo $i\in\{1,\dots,k\}$. 
-Para la demostración ver 
-por ejemplo~\cite[Theorem 6.11]{MR2344656}.
-
-%\index{Módulo!cíclico}
-%Un submódulo $S$ de $M$ se dice \textbf{cíclico} si $S=(m)$ para algún $m\in M$. 
-%
-\begin{corollary}
-\index{Divisores elementales!de un módulo}
-Sea $R$ un dominio de ideales principales. Si $M$ es un módulo finitamente generado, entonces
-$M=F\oplus T$, donde $F$ es libre y $T$ es un submódulo de torsión. Si $\Ann(T)=(p_1^{\alpha_1}\cdots p_k^{\alpha_k})$, donde
-los $p_i$ son irreducibles distintos y no asociados, entonces 
-$M$ puede descomponerse como
-\[
-M=F\oplus \underbrace{\left( (m_{1,1})\oplus\cdots\oplus (m_{1,l_1})\right)}_{M_{p_1}}\oplus\cdots\oplus 
-\underbrace{\left( (m_{k,1})\oplus\cdots\oplus (m_{k,l_k})\right)}_{M_{p_k}}
-\]
-donde $\Ann(m_{i,j})=(p_i^{\alpha_{i,j}})$ y $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq \alpha_{i,l_i}$. Los $p_i^{\alpha_{i,j}}$ son 
-los \textbf{divisores elementales} de $M$. 
-\end{corollary}
-
-\begin{proof}
-	Sabemos que $M$ puede descomponerse como $M=F\oplus T(M)$, donde $F$ es un submódulo libre y $T(M)$ es el submódulo de torsión de $M$. 
-	Por el teorema de la descomposición primaria, podemos descomponer al submódulo $T(M)$ 
-	como $T(M)=M_{p_1}\oplus\cdots\oplus M_{p_k}$ para ciertos irreducibles distintos y no asociados
-	$p_1,\dots,p_k\in R$. A su vez, por el teorema de la descomposición cíclica, cada 
-	$M_{p_j}$ puede descomponerse como suma directa de cíclicos, digamos
-	\[
-	M_{p_j}=(m_{j,1})\oplus\cdots\oplus (m_{j,l_j}),
-	\] 
-	donde $\Ann(m_{i,j})=(p_i^{\alpha_{i,j}})$ y $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq \alpha_{i,l_i}$. 
-\end{proof}
-
-También puede demostrarse la unicidad de la descomposición del corolario anterior. Más precisamente, 
-el rango de la parte libre, los submódulos primarios y los anuladores quedarán unívocamente determinados
-por $M$. Una demostración puede consultarse en~\cite[Theorem 6.12]{MR2344656}.
-
-\begin{corollary}[descomposicion en factores invariantes]
-	\index{Teorema!de la descomposición en factores invariantes}
-	\index{Factores invariantes}
-	Sea $R$ un dominio de ideales principales. Si $M$ es un módulo finitamente generado, entonces
-	\[
-	M=F\oplus D_1\oplus\cdots\oplus D_k,
-	\]
-	donde $F$ es un submódulo libre de $M$ y los $D_i$ son submódulos
-	cíclicos de $M$ tales que $\Ann(D_i)=(d_i)$, donde 
-	$d_i\mid d_{i-1}$ para todo $i\in\{2,\dots,k\}$. Los $d_i$ son los \textbf{factores invariantes} de la descomposicion.
-\end{corollary}
-
-\begin{proof}
-	El corolario anterior nos permite descomponer a $M$ como 
-	\[
-M=F\oplus \underbrace{\left( (m_{1,1})\oplus\cdots\oplus (m_{1,l_1})\right)}_{M_{p_1}}\oplus\cdots\oplus 
-\underbrace{\left( (m_{k,1})\oplus\cdots\oplus (m_{k,l_k})\right)}_{M_{p_k}},
-\]
-donde $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq\alpha_{i,l_i}$. Si agrupamos ordenadamente 
-los sumandos cíclicos
-de orden coprimo, digamos
-\begin{align*}
-D_1 &= (m_{1,1})\oplus (m_{2,1})\oplus\cdots\\
-D_2 &= (m_{1,2})\oplus (m_{2,2})\oplus\cdots\\
-D_3 &= (m_{1,3})\oplus (m_{2,3})\oplus\cdots\\
-&\vdots
-\end{align*}
-obtenemos la descomposición que buscamos. 
-\end{proof}
-
-Puede demostrarse que los factores invariantes quedan únivocamente determinados, salvo multiplicación por unidades, por el módulo $M$. 
-Ver por ejemplo~\cite[Theorem 6.13]{MR2344656}.
-  
-\begin{example}
-Para entender mejor la descomposición del teorema anterior
-hagamos un ejemplo. Si un módulo $M$ admite una descomposición cíclica de la forma 
-\[
-M=\left((m_{1,1}\oplus (m_{1,2})\right)\oplus (m_{2,1})\oplus \left((m_{3,1})\oplus (m_{3,2})\oplus (m_{3,3})\right),
-\]
-donde $\Ann(m_{1,1})=p_1^3$, $\Ann(m_{1,2})=p_1^2$, $\Ann(m_{2,1})=(p_2)$, $\Ann(m_{3,1})=(p_3^3)$, $\Ann(m_{3,2})=(p_3^3)$ y $\Ann(m_{3,3})=(p_3)$ 
-para irreducibles distintos no asociados $p_1$, $p_2$ y $p_3$, entonces 
-entonces $M=D_1\oplus D_2\oplus D_3$, donde 
-\[
-D_1=(m_{1,1})\oplus (m_{2,1})\oplus (m_{3,1}),
-\quad
-D_2=(m_{1,2})\oplus (m_{3,2}),\quad
-D_3=(m_{3,3}).
-\]
-En este caso, $d_1=p_1^3p_2p_3^3$, $d_2=p_1^2p_3^3$ y $d_3=p_3$. 
-\end{example}
-
-
 %\begin{proof}
 %Observemos
 %que la función $R\to (m)$, $r\mapsto r\cdot m$, es un epimorfismo de módulos con núcleo
@@ -631,7 +327,8 @@ En este caso, $d_1=p_1^3p_2p_3^3$, $d_2=p_1^2p_3^3$ y $d_3=p_3$.
 %como suma directa de módulos cíclicos. Observemos que...
 %\end{proof}
 
-\index{Submódulo!de relaciones de un módulo}
+\topic{Smith's normal form}
+
 Para terminar el capítulo veremos un algoritmo que nos permite calcular
 efectivamente los factores invariantes de un módulo finitamente generado. Aunque lo que haremos puede hacerse sobre dominios
 de ideales principalers, nos concentraremos únicamente en el caso
