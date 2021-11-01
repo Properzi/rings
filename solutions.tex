@@ -35,6 +35,72 @@
 % \end{sol}
 
 % \section*{Lecture 9}
+
+% \begin{sol}{xca:linear_algebra}
+% Para demostrar la primera afirmación procederemos por inducción en la cantidad de generadores de $M$. Si $M=(m)$, entonces
+% $\{m\}$ es base pues $\{m\}$ es linealmente independiente: si $r\cdot m=0$ y $r\ne 0$, entonces
+% \[
+% m=1\cdot m=(r^{-1}r)\cdot m=r^{-1}\cdot (r\cdot m)=0.
+% \]
+% Si vale para $k-1$ generadores, sea $M=(m_1,\dots,m_k)$. Si $\{m_1,\dots,m_k\}$ no es linealmente
+% independiente, entonces existen $r_1,\dots,r_k\in R$ no todos cero tales
+% que
+% \[
+% r_1\cdot m_1+\cdots+r_k\cdot m_k=0.
+% \]
+% Sin perder generalidad podemos suponer que $r_k\ne 0$. Entonces
+% \[
+% v_k=\sum_{i=1}^{k-1} (r_k^{-1}r_i)\cdot m_i\in (m_1,\dots,m_{k-1}).
+% \]
+% Como entonces $M=(m_1,\dots,m_k)=(m_1,\dots,m_{k-1})$, la hipótesis inductiva implica que
+% $M$ es libre. 
+
+% Vamos a demostrar ahora que todo
+% conjunto $X$ linealmente independiente puede extenderse a una base. 	Sea $X=\{x_1,\dots,x_k\}$ tal que $M=(X)$. 
+% Como $M\ne\{0\}$, sin perder generalidad podemos suponer que $x_1\ne 0$. Como $R$ es de división,
+% el conjunto $\{x_1\}$ es linealmente independiente, pues si $r\ne 0$ y $r\cdot x_1=0$, entonces 
+% \[
+% x_1=1\cdot r=(r^{-1}r)\cdot x_1=r^{-1}\cdot (r\cdot x)=r^{-1}\cdot 0=0.
+% \]
+% Sea $Y=\{y_1,\dots,y_l\}$ un subconjunto de $X$ maximal tal que $Y$ es linealmente independiente. Veamos que $X\subseteq (Y)$. Sea $x\in X$. Si $x\not\in Y$,  
+% entonces, como $Y\subseteq Y\cup \{x\}$, la maximalidad de $Y$ implica que $\{x\}\cup Y$ es linealmente dependiente, es decir
+% que existen $r,r_1,\dots,r_k\in R$ no todos cero tales que
+% \[
+% r\cdot x+\sum_{i=1}^l r_i\cdot y_i=0.
+% \]
+% Si $r=0$, entonces $r_1=\cdots=r_l=0$ porque los $y_j$ son linealmente independientes, una contradicción. Luego $r\ne 0$ y entonces
+% \[
+% x=-\sum_{i=1}^l (-r^{-1}r_i)\cdot y_i\in (Y).
+% \]
+% Luego $X\subseteq (Y)$. En conclusión $Y$ es una base de $M$ pues $M=(Y)$ 
+% y además $Y$ es linealmente independiente. 
+
+% Demostremos que dos bases finitas cualesquiera tienen la misma cantidad de elementos. 
+% Para eso es suficiente demostrar
+% que si $X$ e $Y$ son conjuntos finitos linealmente independientes
+% tales que $(X)\subseteq (Y)$, entonces $|X|\leq |Y|$. Supongamos que $|X|=k$ e $|Y|=l$. 
+% Procederemos por inducción en $l$. Si $l=1$ y $k>1$, entonces
+% exiten $r_1,r_2\in R$ tales que $x_1=r_1\cdot y_1$ y $x_2=r_2\cdot y_1$. Luego
+% \[
+% x_2=r_2\cdot y_1=r_2\cdot (r_1^{-1}\cdot x_1)=(r_2r_1^{-1})\cdot x_1,
+% \]
+% una contradicción pues $\{x_1,x_2\}$ es linealmente independiente. 
+% Supongamos ahora que el resultado 
+% es verdadero para $l-1$ y sea $l=|Y|$. Para cada $j$ escribimos
+% \[
+% x_j = \sum_{i=1}^l r_{ji}\cdot y_i,
+% \]
+% donde $r_{ji}\in R$. Si $r_{j1}\ne 0$ para todo $j$, entonces 
+% $x_j=\sum_{i=2}^l r_{ji}\cdot y_i$ para todo $j$ y luego $(X)\subseteq (y_2,\dots,y_l)$, que implica que
+% $|X|\leq l-1<l=|Y|$. Si existe $j$ tal que $r_{j1}\ne 0$, sin perder generalidad podemos
+% suponer que $r_{11}\ne 0$. Para cada $j\in\{2,\dots,k\}$ sea
+% \[
+% z_j = x_j-(r_{j1}r_{11}^{-1})\cdot x_1.
+% \]
+% Como $z_j\in (y_2,\dots,y_l)$ para todo $j$ y los $z_j$ son linealmente independientes, 
+% la hipótesis inductiva impica que $k-1\leq l-1$, es decir $|X|\leq |Y|$.  
+% \end{sol}
+
 % \section*{Lecture 10}
 % \section*{Lecture 11}
 % \section*{Lecture 12}
