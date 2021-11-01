@@ -33,11 +33,61 @@ For example, $\Z=(1)=(2,3)$ and $\Z\ne (2)$.
 \end{exercise}
 
 If $f\in\Hom_R(M,N)$ and $M$ is finitely-generated, then 
-$f(M)$ is finitely-generated. 
+$f(M)$ is finitely-generated. We can prove something strong. For that purpose
+we need exact sequences. 
+A sequence 
+	\begin{equation}
+	\label{eq:exacta1}	
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0,
+        }
+  	\end{equation}
+of modules and homomorphism is said to be \textbf{exact} 
+if $f$ is injective, $g$ is surjective and $f(M)=\ker g$. For example,
+the sequence
+\[
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & M\oplus N
+        \ar[r]^g
+        & N\ar[r]
+        & 0,
+        }
+\]
+where $f(m)=(m,0)$ and $g(m,n)=n$ is exact.
+
+\begin{exercise}
+	Si  
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+     be an exact sequence. Prove the following statements: 
+     \begin{enumerate}
+     \item If $N$ if finitely generated, then $T$ is finitely generated. 
+     \item If $M$ and $T$ are finitely generated, then $N$ is finitely generated. 	
+     \end{enumerate}
+\end{exercise}
 
 \begin{proposition}
     Let $R$ be a ring and $M$ be a module over $R$. 
-    Then $M$ is finitely-generated if and only if $M$ is isomorphic to a quotient of $R^k$ for some $k$.
+    Then $M$ is finitely-generated if and only 
+    if $M$ is isomorphic to a quotient of $R^k$ for some $k$.
 \end{proposition}
 
 \begin{proof}
@@ -68,6 +118,96 @@ $f(M)$ is finitely-generated.
     \]
 \end{proof}
 
+\topic{Noetherian modules}
+
+\begin{definition}
+A module is \textbf{noetherian} if every sequence $M_1\subseteq M_2\subseteq\cdots$ of submodules of $M$ 
+stabilizes, that is there exists $n$ such that $M_k=M_{n+k}$ for all $k$. 	
+\end{definition}
+
+\begin{proposition}
+Let $M$ be a module. The following statements are equivalent:
+\begin{enumerate}
+\item $M$ is noetherian.
+\item Submodules of $M$ are finitely generated.
+\item Each non-empty family of submodules of $M$ has a maximal element (with respect to the inclusion).	
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	We first prove $2)\implies1)$. If $S_1\subseteq S_2\subseteq\cdots$ is a sequence of submodules of $M$, 
+	it follows that $S=\cup_{i\geq 1}S_i$ is a submodule of $M$. Since $S$ is finitely generated, 
+	$S=(x_1,\dots,x_n)$ for some $x_1,\dots,x_n\in M$. It follows that 
+	$x_1,\dots,x_n\in S_N$ for some positive integer $N$. Thus 
+	$S\subseteq S_N$ and hence $S_N=S_{N+k}$ for all $k$. 
+	
+	We now prove $1)\implies3)$. Let $F$ be a non-empty family of submodules of $M$ with no maximal elements. 
+	Let $S_1\in F$. Since $S_1$ is not maximal, there exists $S_2\in F$ such that $S_1\subsetneq S_2$. 
+	Having constructed with this method the submodules $S_1\subsetneq\dots\subsetneq S_k$, since $S_k$ is not
+	maximal, there exists $S_{k+1}\in F$ such that $S_k\subsetneq S_{k+1}$. 
+	This means that the sequence 
+	$S_1\subsetneq S_2\subsetneq\cdots$ does not stabilize. 
+	
+	We finally prove $3)\implies2)$. Let $S$ be a submodule of $M$ and let 
+	\[
+	F=\{T\subseteq S:T\text{ finitely generated submodule of $M$}\}.
+	\]
+	By assumption, $F$ has a maximal element $N$. Thus
+	$N$ is a finitely generated submodule of $M$ such that $N\subseteq S$. We may assume that 
+	$N=(n_1,\dots,n_k)$. If $N=S$, then, in particular, $S$ is finitely generated. Suppose that
+	$N\ne S$ and let $x\in S\setminus N$. It follows that  
+	$N\subseteq (n_1,\dots,n_k,x)\subseteq S$. Since 
+	$(n_1,\dots,n_k,x)\in F$ and $N$ is maximal, it follows that 
+	$N=(n_1,\dots,n_k,x)$, a contradiction
+	to $x\not\in N$. 
+\end{proof}
+
+\begin{exercise}
+\label{xca:exacta_noetheriano}
+	Let   
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+     be an exact sequence. Prove the following statements:
+     \begin{enumerate}
+     	\item If $N$ is noetherian, then $M$ and $T$ are noetherian.
+     	\item If $M$ and $T$ are noetherian, then $N$ is noetherian.
+     \end{enumerate}	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:regular_noetheriano}
+A ring $R$ is noetherian if and only if $\prescript{}{R}R$ is noetherian.	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:directa_noetheriano}
+If $M_1,\dots,M_n$ are noetherian, then $M_1\oplus\cdots\oplus M_n$ is noetherian. 	
+\end{exercise}
+
+The previous exercise cannot be extended to infinitely many modules. Why?
+%For example, $\Z^{\Z}$ is not noetherian, as it is not finitely generated. 
+
+\begin{proposition}
+If $R$ is noetherian and $M$ is a finitely generated module, then $M$ is noetherian. 
+\end{proposition}
+
+\begin{proof}
+    Assume that $M=(m_1,\dots,m_k)$. There exists a surjective homomorphism  
+$R^k\to N$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, where
+$R^k=\oplus_{i=1}^k R$. Since $R$ is noetherian, $R^k$ is noetherian. Thus $M$ is noetherian.	
+\end{proof}
+
+\topic{Free modules}
+
 \begin{definition}
     Let $R$ be a ring, $M$ be a module over $R$ and $X$ be a subset of $M$. We say that
     $X$ is \textbf{linearly independent} if for each $k\in\Z_{>0}$, $r_1,\dots,r_k\in R$
@@ -96,6 +236,7 @@ Let $R=M_2(\R)$ and $M=\begin{pmatrix}
 \end{examples}
 
 \begin{exercise}
+\label{xca:LI}
     Let $f\in\Hom_R(M,N)$ and $X$ be a subset of $M$. 
     \begin{enumerate}
         \item If $X$ is linearly dependent, then $f(X)$ is linearly dependent.
@@ -124,6 +265,7 @@ vector spaces are free.
 \end{exercise}
 
 \begin{exercise}
+\label{xca:linear_algebra}
     Let $R$ be a division ring and $M$ be a non-zero and finitely generated module over $R$.
     Prove the following facts:
     \begin{enumerate}
@@ -138,6 +280,7 @@ vector spaces are free.
 \end{example}
 
 \begin{exercise}
-    Prove that $\{(a,b),(c,d)\}$ is a basis of $\Z\times\Z$ (as a module over $\Z$) if and only if
+    Prove that $\{(a,b),(c,d)\}$ is a basis of $\Z\times\Z$ 
+    (as a module over $\Z$) if and only if
     $ad-bc\in\{-1,1\}$. 
 \end{exercise}
