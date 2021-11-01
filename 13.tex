@@ -1,17 +1,20 @@
+\lecture{}
+
 \topic{Modules over principal domains}
 
 \begin{theorem}
 \label{thm:rango}
-Sea $R$ un dominio de ideales principales. Si $F$ es un módulo libre finitamente generado 
-y $N$ es un submódulo de $F$, entonces $N$ es también libre y además 
+Let $R$ be a principal domain. If $F$ is a finitely generated free module and 
+$N$ is a submodule of $F$, then $N$ is free and 
 $\rank(N)\leq\rank(F)$. 
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en $n=\rank(F)$. Si $n=1$, entonces
+	We proceed by induction on $n=\rank(F)$. Si $n=1$, entonces
 	$F\simeq\prescript{}{R}R$ 
-	y los submódulos de $F$ son exactamente los ideales a izquierda de $R$. En particular,
-	$N=(r)$ para algún $r\in R$. Si $r=0$, entonces $N=\{0\}$ y el resultado es verdadero. Si $r\ne 0$, entonces $\{r\}$ es base de $N$ y también el resultado es cierto. 
+	and the submodules of $F$ are exactly the left ideals of $R$. In particular,
+	$N=(r)$ for some $r\in R$. If $r=0$, then $N=\{0\}$ and the result holds. If $r\ne 0$, then 
+	$\{r\}$ is basis of $N$ and the result holds.
 	
 	Supongamos ahora que el resultado es válido para todo módulo libre de rango $<n$. 
 	Sea $\{f_1,\dots,f_n\}$ una

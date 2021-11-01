@@ -499,42 +499,39 @@ $\{m:m\in M\}$) and let $L=R^{(I)}$. Then $L$ is free and $f\colon R^{(I)}\to M$
 homomorphism.
 \end{proof}
 
-Another important property of free modules:
+Another important property of free modules: free modules are
+\emph{projective}. 
 
 \begin{proposition}
-	Si $M$ es un módulo libre, $f\in\Hom_R(N,T)$ es un epimorfismo y $h\in\Hom_R(M,T)$, entonces existe
-	$\varphi\in\Hom_R(M,N)$ tal que $f\circ \varphi=h$. 
+	If $M$ is a free module and $f\in\Hom_R(N,T)$ is surjective and $h\in\Hom_R(M,T)$, then 
+	there exists $\varphi\in\Hom_R(M,N)$ such that $f\circ \varphi=h$. 
 	% todo: diagrama
 \end{proposition}
 
 \begin{proof}
-Si $\{m_i:i\in I\}$ es base de $M$, como $f$ es un epimorfismo, para cada $i\in I$ existe $n_i\in N$ tal que $f(n_i)=h(m_i)$. Como 
-$M$ es libre, existe un único morfismo $\varphi\colon M\to N$ tal que $\varphi(m_i)=n_i$ para todo $i\in I$. Este morfismo
-cumple $f\circ \varphi=h$. 
+Let $\{m_i:i\in I\}$ be a basis of $M$. Since $f$ is surjective, for each $i\in I$ there exists $n_i\in N$ such that
+ $f(n_i)=h(m_i)$. Since  
+$M$ is free, there exists a unique homomorphism $\varphi\colon M\to N$ 
+such that $\varphi(m_i)=n_i$ for all $i\in I$. Thus homomorphism is such that $f\circ \varphi=h$. 
 \end{proof}
 
-%\index{Sumando directo!de un submódulo}
-%Recordemos que un submódulo $N$ de $M$ es un \textbf{sumando directo} de $M$ si existe un submódulo $T$ de $M$ tal que
-%$M=N\oplus T$. 
-
-
 \begin{theorem}
-Sea $R$ un dominio íntegro. 
-Si $M$ es un módulo libre con base finita, entonces dos bases cualesquiera de $M$ 
-tienen la misma cantidad de elementos.
+Let $R$ be an integral domain. If $M$ is free with a finite basis, then 
+any two bases of $M$ have the same number of elements 
 \end{theorem}
 
 \begin{proof}
-Sea $K=K(R)$ el cuerpo de fracciones de $R$. Es sencillo verificar que el grupo abeliano  
-$V=\Hom_R(M,K)$ es un $K$-espacio vectorial con la acción 
+Let $K=K(R)$ be the field of fractions of $R$. Note that 
+$V=\Hom_R(M,K)$ is an abelian group and hence it 
+is a vector space (over $K$) with 
 \[
 (\lambda f)(m)=\lambda f(m),
 \]
-donde $\lambda\in K$, $f\in V$ y $m\in M$.
+where $\lambda\in K$, $f\in V$ and $m\in M$.
 
-El espacio vectorial $V$ tiene bien definida su dimensión. 
-Calculemos entonces $\dim V$. Para eso, sea $\{e_1,\dots,e_n\}$ una base de $M$. 
-Para cada $i\in\{1,\dots,n\}$ sea
+The vector space $V$ has a well-defined dimension. 
+Let us compute $\dim V$. Let $\{e_1,\dots,e_n\}$ be a basis of $M$. 
+For each $i\in\{1,\dots,n\}$ let 
 \[
 f_i\colon M\to K,\quad
 e_j\mapsto\begin{cases}
@@ -542,24 +539,25 @@ e_j\mapsto\begin{cases}
 0 & \text{si $i\ne j$}.
 \end{cases}
 \]
-Veamos que $\{f_1,\dots,f_n\}$ es base de $V$. Es un conjunto de generadores de $V$ pues 
-si $f\in V$, entonces
+We claim that $\{f_1,\dots,f_n\}$ is basis of  $V$. It generates $V$, as  
+if $f\in V$, then 
 \[
 f=\sum_{i=1}^n f(e_i)f_i,
 \]
-pues estos morfismos coinciden en los elementos de una base de $M$, es decir 
-$f(e_j)=(\sum_{i=1}^n f(e_i)f_i)(e_j)$ para todo $j\in\{1,\dots,n\}$.    
-Además $\{f_1,\dots,f_n\}$ es linealmente independiente, pues si $0=\sum_{i=1}^n\lambda_if_i$, 
-entonces, al evaluar en cada $e_j$, se tiene que 
+as these homomorphisms coincide in the elements of a basis of $M$, that is 
+$f(e_j)=(\sum_{i=1}^n f(e_i)f_i)(e_j)$ for all $j\in\{1,\dots,n\}$.    
+Moreover, $\{f_1,\dots,f_n\}$ is linearly independent, as if $0=\sum_{i=1}^n\lambda_if_i$, 
+then, evaluating on each $e_j$, it follows that 
 \begin{align*}
 0=\left(\sum_{i=1}^n \lambda_if_i\right)(e_j)=\lambda_j
 \end{align*}
-para todo $j\in\{1,\dots,n\}$. Luego $n=\dim V$. 
+for all $j\in\{1,\dots,n\}$. Thus $n=\dim V$. 
 \end{proof}
 
 \begin{definition}
-\index{Rango!de un módulo}
-Sea $R$ un dominio íntegro. Si $M$ es un módulo finitamente generado, se 
-define el \textbf{rango} de $M$ como el cardinal de una base de $M$. Si $M$ no es finitamente
-generado diremos que el rango de $M$ es infinito. El rango del módulo $M$ será denotado por $\rank(M)$.   
+Let $R$ be an integral domain. If $M$ is a finitely generated module, we define
+the \textbf{rank} of $M$ as the size of a basis of $M$. If $M$ is not finitely generated, 
+we say that the rank of $M$ is infinite. 
 \end{definition}
+
+The rank of a module $M$ will be denoted by $\rank(M)$.   
