@@ -206,6 +206,55 @@ $R^k\to N$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, where
 $R^k=\oplus_{i=1}^k R$. Since $R$ is noetherian, $R^k$ is noetherian. Thus $M$ is noetherian.	
 \end{proof}
 
+\topic{Quotient fields}
+
+Let $R$ be an integral domain and $S=R\setminus\{0\}$. 
+On $R\times S$ we define the following relation:
+\[
+(r,s)\sim (r_1,s_1)\Longleftrightarrow rs_1-r_1s=0.
+\]
+
+\begin{exercise}
+Prove that $\sim$ is an equivalence relation.
+\end{exercise}
+
+The equivalence class of $(r,s)$ will be denoted by $r/s$ or $\frac{r}{s}$. 
+
+It is possible to prove that the set 
+$K(R)=(R\times S)/{\sim}$ of equivalence classes is a field 
+with the operations 
+\begin{equation}
+\label{eq:K(R)}
+\frac{r}{s}+\frac{r_1}{s_1}=\frac{rs_1+r_1s}{ss_1},
+\quad
+\frac{r}{s}\frac{r_1}{s_1}=\frac{rr_1}{ss_1}.
+\end{equation}
+
+\begin{definition}
+$K(R)$ is known as the \textbf{quotient field} of $R$. 
+\end{definition}
+
+Simple example: $K(\Z)=\Q$.
+
+\begin{exercise}
+Let $R$ be an integral domain. 
+Prove that $K(R)$ is a field. 
+\end{exercise}
+
+To prove that $K(R)$ is a field one first needs to prove that 
+the operations~\eqref{eq:K(R)} are well-defined. For example, let us check the addition is well-defined. 
+If $r/s\sim r'/s'$ and $r_1/s_1\sim r_1'/s_1'$, then
+$r/s+r_1/s_1\sim r'/s'+r_1'/s_1'$. In fact, 
+since $r/s\sim r'/s'$, it follows that $rs'-r's=0$. Similarly, $r_1s_1'-r_1's_1=0$, as $r_1/s_1\sim r_1'/s_1'$. Thus 
+\begin{gather*}
+\frac{rs_1+r_1s}{ss_1}=\frac{r's_1'+r_1's'}{s's_1'}
+\shortintertext{as}
+(rs_1+r_1s)s's_1'=rs_1s's_1'+r_1ss's_1'
+=r'ss_1s_1'+r_1's_1ss'
+=(r's_1'+r_1's)ss_1.
+\end{gather*}
+
+
 \topic{Free modules}
 
 \begin{definition}
@@ -345,16 +394,19 @@ Evaluation on $e_{2n}$ yields $\alpha=0$ and evaluation on $e_{2n+1}$ yields $\b
 \end{example} 
 
 \begin{example}
-Si $M$ es un módulo libre con base $X$ y $N$ es un módulo libre con base $Y$, entonces
-$M\oplus N$ es un módulo libre con base 
+If $M$ is a free module with basis $X$ and $N$ 
+is a free module with basis $Y$, then 
+$M\oplus N$ is a free module with basis 
 \[
 \{(x,0):x\in X\}\cup \{(0,y):y\in Y\}.
 \]	
 \end{example}
 
 \begin{exercise}
-Sea $R$ es un anillo conmutativo. Si $M$ y $N$ son libres y finitamente generados, entonces
-$\Hom_R(M,N)$ es libre y finitamente generado.	
+Let $R$ be a commutative ring. If $M$ and $N$ 
+are free and finitely generated, then 
+$\Hom_R(M,N)$
+is free and finitely generated
 \end{exercise}
 
 % Como $R$ es conmutativo, $\Hom_R(M,N)$ es un $R$-módulo. Si $\{m_1,\dots,m_k\}$ es base de $M$ 
@@ -370,45 +422,52 @@ $\Hom_R(M,N)$ es libre y finitamente generado.
 Some properties of free modules:
 
 \begin{proposition}
-Si $M$ es libre, entonces existe un subconjunto $\{m_i:i\in I\}$ de $M$ tal que 
-para cada $m\in M$ existen únicos $r_i\in R$, $i\in I$, 
-donde $r_i=0$ salvo finitos $i\in I$ 
-tales que $m=\sum r_i\cdot m_i$. 
+If $M$ is free, then there exists a subset $\{m_i:i\in I\}$ of $M$ 
+such that for each $m\in M$ there exist unique $r_i\in R$, $i\in I$, 
+where $r_i=0$ except for finitely many $i\in I$ 
+such that $m=\sum r_i\cdot m_i$. 
 \end{proposition}
 
 \begin{proof}
-Como $M$ es libre, existe una base $\{m_i:i\in I\}$ de $M$. Si $m\in M$, entonces
-podemos escribir $m=\sum r_i\cdot m_i$ (suma finita) para ciertos $r_i\in I$. Veamos que los $r_i$ son únicos. Si $m=\sum s_i\cdot m_i$, entonces
-$\sum (r_i-s_i)\cdot m_i=0$. La independencia lineal del conjunto $\{m_i:i\in I\}$ implica entonces que $r_i=s_i$ para todo $i\in I$.  	
+Since $M$ is free, there exists a basis $\{m_i:i\in I\}$ of $M$. If $m\in M$,
+$m=\sum r_i\cdot m_i$ (finite sum) for some $r_i\in I$. We claim that
+the $r_i$'s are unique. If $m=\sum s_i\cdot m_i$, then
+$\sum (r_i-s_i)\cdot m_i=0$. Since $\{m_i:i\in I\}$ 
+is linearly independent, $r_i=s_i$ for all $i\in I$.  	
 \end{proof}
 
 \begin{proposition}
 \label{pro:libre}
-Sea $M$ libre con base $\{m_i:i\in I\}$ y sea $N$ un submódulo de $M$. Si $\{n_i:i\in I\}\subseteq N$ es un subcobjunto, existe
-un único $f\in\Hom_R(M,N)$ tal que $f(m_i)=n_i$ para todo $i\in I$.  
+Let $M$ be a free module with basis $\{m_i:i\in I\}$ and let $N$ be a submodule of $M$. 
+If $\{n_i:i\in I\}\subseteq N$ is a subset, then 
+there exists $f\in\Hom_R(M,N)$ such that
+$f(m_i)=n_i$ for all $i\in I$.  
 \end{proposition}
 
-\begin{proof}[Bosquejo de la demostración]
-Basta con observar que el único morfismo $f\colon M\to N$ debe definirse como $f(\sum r_i\cdot m_i)=\sum r_i\cdot n_i$.  	
+\begin{proof}[Sketch of the proof]
+Note that the unique homomorphism $f\colon M\to N$ is defined as 
+$f(\sum r_i\cdot m_i)=\sum r_i\cdot n_i$.  	
 \end{proof}
 
-Una aplicación sencilla de la proposición anterior:
+Another application:
 
 \begin{example}
-Veamos que no existe un epimorfismo $\Z\to\Z\times\Z$ (de $\Z$-módulos). En efecto, si $f\colon\Z\to\Z\times\Z$ es un epimorfismo, 
-sea $\{u,v\}$ una base de $\Z\times\Z$. Entonces $f(k)=u$ y $f(l)=v$ para ciertos $k,l\in\Z$. La proposición~\ref{pro:libre} implica
-que existe un morfismo $g\colon\Z\times\Z\to\Z$ tal que $g(u)=k$ y $g(v)=l$. En particular, $f\circ g=\id_{\Z\times\Z}$ y luego 
-$g$ es un monomorfismo. 	Como 
+There is no surjective homomorphism $\Z\to\Z\times\Z$ (of modules over $\Z$). 
+If $f\colon\Z\to\Z\times\Z$ is a surjective homomorphism, 
+let $\{u,v\}$ a basis of $\Z\times\Z$. Then $f(k)=u$ and $f(l)=v$ for some $k,l\in\Z$. Proposition~\ref{pro:libre} implies 
+that there exists a homomorphism $g\colon\Z\times\Z\to\Z$ such that $g(u)=k$ and $g(v)=l$. 
+In particular, $f\circ g=\id_{\Z\times\Z}$ and hence 
+$g$ is injective. Since  
 \[
 g(lu-kv)=lg(u)-kg(v)=lk-kl=0,
 \]
-se tiene entonces que $lu-kv=0$ y luego $k=l=0$, pues $\{u,v\}$ es linealmente independiente, una contradicción.  
+it follows that $lu-kv=0$ and thus $k=l=0$, as $\{u,v\}$ is linearly independent, a constradiction
 \end{example}
 
-Otra propiedad importante de los módulos libres:
+Another important property:
 
 \begin{proposition}
-Si $M$ es libre, entonces $M\simeq R^{(I)}$ para algún conjunto $I$.
+If $M$ is free, then $M\simeq R^{(I)}$ for some set $I$.
 \end{proposition}
 
 \begin{proof}
@@ -458,47 +517,6 @@ cumple $f\circ \varphi=h$.
 %Recordemos que un submódulo $N$ de $M$ es un \textbf{sumando directo} de $M$ si existe un submódulo $T$ de $M$ tal que
 %$M=N\oplus T$. 
 
-\index{Cuerpo!de fracciones}
-Sea $R$ un dominio íntegro y sea $S=R\setminus\{0\}$. 
-
-En el conjunto $R\times S$ definimos
-la siguiente relación:
-\[
-(r,s)\sim (r_1,s_1)\Longleftrightarrow rs_1-r_1s=0.
-\]
-
-Dejamos como ejercicio verificar que $\sim$ es una relación de equivalencia. 
-
-La clase
-de equivalencia del par $(r,s)$ será denotada por $r/s$ o bien $\frac{r}{s}$. 
-
-Puede demostrarse que 
-el conjunto
-$K(R)=(R\times S)/{\sim}$ de clases de equivalencia 
-es un cuerpo con las operaciones
-\begin{equation}
-\label{eq:K(R)}
-\frac{r}{s}+\frac{r_1}{s_1}=\frac{rs_1+r_1s}{ss_1},
-\quad
-\frac{r}{s}\frac{r_1}{s_1}=\frac{rr_1}{ss_1}.
-\end{equation}
-$K(R)$ se llama el \textbf{cuerpo de fracciones} de $R$. 
-Por ejemplo, 
-$K(\Z)=\Q$.
-
-Para demostrar que $K(R)$ es un cuerpo primero
-debemos ver que las operaciones~\ref{eq:K(R)} están bien definidas. Por ejemplo, si $r/s\sim r'/s'$ y $r_1/s_1\sim r_1'/s_1'$, entonces
-$r/s+r_1/s_1\sim r'/s'+r_1'/s_1'$. En efecto,
-como $r/s\sim r'/s'$, entonces $rs'-r's=0$. Similarmente, $r_1s_1'-r_1's_1=0$, pues $r_1/s_1\sim r_1'/s_1'$. Luego 
-\begin{gather*}
-\frac{rs_1+r_1s}{ss_1}=\frac{r's_1'+r_1's'}{s's_1'}
-\shortintertext{pues}
-(rs_1+r_1s)s's_1'=rs_1s's_1'+r_1ss's_1'
-=r'ss_1s_1'+r_1's_1ss'
-=(r's_1'+r_1's)ss_1.
-\end{gather*}
-De la misma forma se demuestra que el producto también está bien definido. Dejamos como ejercicio
-verificar que con estas operaciones $K(R)$ es un cuerpo. 
 
 \begin{theorem}
 Sea $R$ un dominio íntegro. 
