@@ -89,6 +89,31 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
 	$a_i/b_i$ is a unit. Hence $g_i$ and $h_i$ are associate in $\Z[X]$.     
 \end{sol}
 
+\begin{sol}{xca:Z[i]irreducibles}
+	Let $x\in\Z[i]$ be irreducible. Since 
+	$x\not\in\mathcal{U}(\Z[i])$, it follows that $N(x)>1$. Write
+	the integer $N(x)$ as a product of (not necessarily different) primes $p_1,\dots,p_k$. Since 
+	$x$ divides $N(x)=x\overline{x}=p_1\cdots p_k$ and $x$ is prime, 
+	$x$ divides $p_i$ for some $i\in\{1,\dots,k\}$. 
+	
+	If $p_i$ is irreducible in $\Z[i]$, 
+	then $x$ and $p_i$ are associate, so $x\in\{p_i,-p_i,ip_i,-ip_i\}$ for some
+	prime number $p_i$ that is irreducible in $\Z[i]$. 
+	
+	If $p_i$ is not irreducible, say $p_i=\alpha\beta$ for some $\alpha,\beta\in\Z[i]$ that
+	are not units of $\Z[i]$. Then 
+	$p_i^2=N(p_i)=N(\alpha)N(\beta)$ with $N(\alpha)>1$ and $N(\beta)>1$. The unique factorization
+	of $\Z$ implies that $N(\alpha)=N(\beta)=p_i$ and hence $\alpha$ and $\beta$ 
+	are irreducible in $\Z[i]$. Thus $x$ divides 
+	$\alpha\beta$. If $x$ divides the irreducible $\alpha$, 
+	then $x$ and $\alpha$ are associate in $\Z[i]$. This means that 
+	$\alpha\in\{x,-x,xi,-xi\}$ and $N(x)=N(\alpha)=p_i$ for some prime number $p_i$.  
+	
+	Combining the previous paragraphs with Fermat's theorem it follows that 
+	the irreducibles of $\Z[i]$ are $1+i$, $1-i$, $-1+i$ and $-1-i$, 
+	$p$, $-p$, $pi$ and $-p$ for some prime number $p\in\Z$ such that $p\equiv3\bmod 4$, and 
+	the elements $x\in\Z[i]$ such that $N(x)=p$ where $p\in\Z$ is a prime number such that $p\equiv1\bmod 4$. 
+\end{sol}
 
 \section*{Lecture 6}
 
