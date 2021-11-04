@@ -99,6 +99,7 @@ The rings $\Z$ and $\R[X]$ are both principal.
 Sometimes primes and irreducibles coincide. 
 
 \begin{proposition}
+\label{pro:PID:irreducible=prime}
 	Let $R$ be a principal domain and $x\in R$. 
 	Then $x$ is irreducible if and only if $x$ is prime. 	
 \end{proposition}
@@ -338,8 +339,21 @@ for example see \cite{MR967349}, \cite{MR3665445} or \cite{MR314831}.
 It is important to remark that some rings 
 have factorizations and this factorization is not unique. 
 In fact, if $N$ is a square-free integer, $\Z[\sqrt{N}]$ is noetherian and hence it   
-has factorization. This fact will be proved in the proof of the following theorem. 
-However, not all these rings with be euclidean domains. 
+has factorization. 
+However, not all these rings admit are unique factorization domains. 
+
+\begin{example}
+	The ring $R=\Z[\sqrt{-6}]$ is not a unique factorization domain. In fact,
+	\[
+	10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
+	\]	
+	Note that $N(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
+	if $2=\alpha\beta$, then $4=N(2)=N(\alpha)N(\beta)$. 
+	Similarly, $5$ is irreducible. It is an exercise to prove that 
+	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
+\end{example}
+
+
 
 \begin{theorem}
 	Let $R$ be a principal domain. 
@@ -374,7 +388,10 @@ However, not all these rings with be euclidean domains.
 	\end{claim}
 	
 	Let $x\in R$ be such that $x$ factorizes into irreducibles as 
-	$x=c_1\cdots c_n=d_1\cdots d_m$. We may assume that $n\leq m$. We proceed by 
+	$x=c_1\cdots c_n=d_1\cdots d_m$. 
+	Note that since $R$ is a principal domain, irreducibles and primes coincide by 
+	Proposition \ref{pro:PID:irreducible=prime}. 
+	We may assume that $n\leq m$. We proceed by 
 	induction on $m$. If $m=1$, then 
 	$n=1$ and $c_1=d_1$. If $m>1$, then, since $c_1$ is prime and 
 	$c_1\mid d_1\cdots d_m$, it follows that $c_1\mid d_j$ for some $j$, say $c_1\mid d_1$ (here is precisely where the permutation $\sigma$ appears). Since
@@ -400,16 +417,6 @@ one does for $\Z$.
 	The ring $\Z[i]$ is a unique factorization domain. 	
 \end{example}
 
-We conclude the lecture with an example 
-of a noetherian domain that is not a unique factorization domain. 
-
 \begin{example}
-	The ring $R=\Z[\sqrt{-6}]$ is not a unique factorization domain. In fact,
-	\[
-	10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
-	\]	
-	Note that $N(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
-	if $2=\alpha\beta$, then $4=N(2)=N(\alpha)N(\beta)$. 
-	Similarly, $5$ is irreducible. It is an exercise to prove that 
-	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
+	The ring $\Z[X]$ is a unique factorization domain that is not a principal domain. 	
 \end{example}
