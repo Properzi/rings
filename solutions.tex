@@ -126,17 +126,25 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
     to a basis $B$ of $\R$ as a $\Q$-vector space. The
     linear map $f\colon\R\to\R$ such that
     $f(1)=\sqrt{2}$, $f(\sqrt{2})=1$ and $f(b)=b$ for all $b\in B\setminus\{1,\sqrt{2}\}$ 
-    is not of the form $f(x)=\lambda x$. 
+    is not of the form $f(x)=\lambda x$. Indeed, if $f(x)=\lambda x$ for some $\lambda\in\R$, 
+    then $\sqrt{2}=f(1)=\lambda$ and $1=f(\sqrt{2})=\lambda\sqrt{2}$, a contradiction. 
 \end{sol}
 
 \begin{sol}{xca:Rn=R}
     Let $\{x_i:i\in I\}$ be a basis of $\R$ as a $\Q$-vector space and
-    let $\{e_1,\dots,e_n\}$ be the standard basis of $\R^n$. Since
+    let $\{e_1,\dots,e_n\}$ be the standard basis of $\R^n$ as a vector space over $\R$. 
+    Routine calculations prove that  
+    \[
+    \{x_ie_j:i\in I,1\leq j\leq n\}
+    \]
+    is a basis of $\R^n$ as a $\Q$-vector space. 
+    Since
     $I$ and $I\times\{e_1,\dots,e_n\}$ have the same cardinality, 
-    there exists a bijective map $f\colon I\to I\times\{e_1,\dots,e_n\}$. Since
-    the set $\{x_ie_j:i\in I,1\leq j\leq n\}$ is a basis of $\R^n$, it follows
-    that the bases of $\R^n$ and $\R$ have the same cardinality and hence
-    $\R^n$ and $\R$ are isomorphic as vector spaces. 
+    there exists a bijective map $f\colon I\to I\times\{e_1,\dots,e_n\}$. This bijective
+    map extends to a linear isomorphisms between the rational vector spaces 
+    $\R^n$ and
+    $\R$. In particular, $\R^n$ and 
+    $\R$ are isomorphic as abelian groups. 
 \end{sol}
 
 \begin{sol}{xca:aut}
