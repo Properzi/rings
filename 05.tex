@@ -321,14 +321,12 @@ for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$.
 
 \begin{definition}
 \index{Algebra}
-Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space (over $K$) 
-and the map $K\to Z(A)$, $k\mapsto k1_A$, is an injective ring homomorphism.  
+Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space (over $K$)
+such that $\lambda(ab)=(\lambda a)b=a(\lambda b)$ for all $\lambda\in K$ and $a,b\in A$. 
 \end{definition}
 
-Thus $K[G]$ is an algebra, as it is a ring that contains $K$ in its center (or more precisely,
-the map $K\to Z(K[G])$, $k\mapsto k1$, is an injective ring homomorphism.  
-Other examples of algebras 
-are the polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.  
+Other examples of algebras are 
+polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.  
 
 \begin{example}
 	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
@@ -349,6 +347,7 @@ $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
 In general, one proves that $\C[C_n]\simeq\C[X]/(X^n-1)$ for $n\geq2$.
 
 \begin{exercise}
+\label{xca:RC3}
 	Prove that $\R[C_3]\simeq\R\times\C$. 	
 \end{exercise}
 
