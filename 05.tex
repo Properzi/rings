@@ -6,6 +6,7 @@ and some applications. Finally, we introduce the (complex) group algebra and
 other basic examples of algebras. 
 
 \begin{theorem}[Fermat]
+\index{Fermat's theorem}
 	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
 	\begin{enumerate}
 	    \item $p=2$ or $p\equiv1\bmod 4$.
@@ -108,6 +109,7 @@ $R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal
 We now state Zorn's lemma:
 
 \begin{quote}
+\index{Zorn's lemma}
 Let $R$ be a poset such that 
 every chain in $R$ admits an upper bound in $R$. 
 Then $R$ contains a maximal element. 
@@ -143,6 +145,7 @@ The following application of Zorn's lemma uses
 the identity of a ring. 
 
 \begin{theorem}[Krull]
+\index{Krull's theorem}
 	Let $R$ be a ring. Each proper ideal $I$ of $R$ 
 	is contained in a maximal ideal. 
 	In particular, all rings have maximal ideals. 	
@@ -205,11 +208,13 @@ One can also compute the maximal ideals of $K[X]$ for any field $K$.
 \end{exercise}
 
 \begin{exercise}
-	Let $R$ be a commutative ring and $J(R)$ be the intertopic of all maximal ideals 
+\label{xca:Jacobson}
+\index{Jacobson's radical}
+	Let $R$ be a commutative ring and $J(R)$ be the intersection of all maximal ideals 
 	of $R$. Prove that $x\in J(R)$ 
 	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is proper
 	and it is known
-	as the \textbf{Jacobson radical} of $R$.  	
+	as the \textbf{Jacobson's radical} of $R$.  	
 \end{exercise}
 
 We conclude the lecture with a different application of Zorn's lemma.  
@@ -290,6 +295,7 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
 
 \begin{exercise}
 \label{xca:freshman_dream}
+\index{Freshman's dream}
     Let $R$ be a commutative ring of prime characteristic $p$. 
     \begin{enumerate}
         \item If $x,y\in R$, then $(x+y)^{p^n}=x^{p^n}+y^{p^n}$ for all $n\geq0$. 
@@ -299,8 +305,6 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
 
 \topic{Group algebras}
 
-\index{Group ring}
-\index{Group algebra}
 We now discuss an important family of examples. 
 Fix a field $K$. 
 For a finite group $G$ let $K[G]$ be the vector space (over $K$)
