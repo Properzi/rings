@@ -395,7 +395,8 @@ However, not all these rings admit are unique factorization domains.
 	We may assume that $n\leq m$. We proceed by 
 	induction on $m$. If $m=1$, then 
 	$n=1$ and $c_1=d_1$. If $m>1$, then, since $c_1$ is prime and 
-	$c_1\mid d_1\cdots d_m$, it follows that $c_1\mid d_j$ for some $j$, say $c_1\mid d_1$ (here is precisely where the permutation $\sigma$ appears). Since
+	$c_1\mid d_1\cdots d_m$, it follows that $c_1\mid d_j$ for some $j$, 
+	say $c_1\mid d_1$ (here is precisely where the permutation $\sigma$ appears). Since
 	$d_1$ is irreducible, $c_1$ and $d_1$ are associate, that is
 	$c_1=ud_1$ for some $u\in\mathcal{U}(R)$. Then
 	\[
@@ -421,46 +422,29 @@ one does for $\Z$.
 Let us show that the converse of Theorem \ref{thm:PID=>UFD} does not hold. 
 
 \begin{exercise}
-\label{xca:Gauss_primitive}
-A polynomial $f\in\Z[X]$ is \textbf{primitive} if
-the greatest common divisors of its coefficients is equal to one. Prove the following statements:
+\label{xca:content}
+	A polynomial $f\in\Z[X]$ is \textbf{primitive} if
+	the greatest common divisors of its coefficients is equal to one. 
+	Let $f\in\Z[X]$ be a non-constant polynomial. If $f=af_1$ for some $a\in\Z$ and some
+	primitive polynomial $f_1$, then $a$ is the greatest common divisor of the coefficients of $f$. 	
+\end{exercise}
+
+
+\begin{exercise}
+\label{xca:Gauss}
+Prove the following statements:
 \begin{enumerate}
     \item Let $f,g\in\Z[X]$ be primitive polynomials. Prove that $fg$ es primitive.
-    \item Let $f\in\Z[X]$ be non-constant and primitive. Then
-$f$ is irreducible in $\Z[X]$ if and only if 
+    \item Let $f\in\Z[X]$ be non-constant. Then
+$f$ is irreducible in $\Z[X]$ if and only if $f$ is primitive and 
 $f$ is irreducible in $\Q[X]$. 
 \end{enumerate}
 \end{exercise}
 
-The first item of Exercise \ref{xca:Gauss_primitive} is known as Gauss' lemma.
+The first item of Exercise \ref{xca:Gauss} is known as Gauss' lemma.
 The second one, as Gauss' theorem. These results should be used to prove
 the following result: 
 
-% \begin{proof}
-% Sean $f=\sum_{i=0}^na_iX^i$, $g=\sum_{i=0}^mb_iX^i$. Supongamos que $fg$ no es primitivo y sea $p$ un primo que
-% divide a todos los coeficientes de $fg$. Como $f$ y $g$ son primitivos, $p$ no 
-% divide a los coeficientes de $f$ ni divide a los coeficientes de $g$. Sean $i\in\{0,\dots,n\}$ 
-% y $j\in\{0,\dots,m\}$ minimales tales que $p\nmid a_i$ y $p\nmid b_j$. Si $c_{i+j}$ es el coeficiente de $X^{i+j}$ en $fg$, 
-% entonces
-% \[
-% c_{i+j}=\sum_{k>i}a_kb_{i+j-k}+\sum_{k<i}a_kb_{i+j-k}+a_ib_j.
-% \]
-% Luego $p$ divide a $\sum_{k>i}a_kb_{i+j-k}+\sum_{k<i}a_kb_{i+j-k}$ pero no divide al 
-% entero $a_ib_j$, es decir no divide a $c_{i+j}$, una contradicción.
-% \end{proof}
-
-% \begin{proof}
-% Demostremos la implicación no trivial. Vamos a demostrar que $f$ es reducible en 
-% $\Z[X]$. Supongamos que $f=gh$ con $g,h\in\Q[X]$ de grado positivo. Al multiplicar 
-% por un número racional adecuado, podemos suponer que
-% \[
-% f=\frac{a}{b}g_1h_1,
-% \]
-% donde $\gcd(a,b)=1$ y $g_1,h_1\in\Z[X]$ son polinomios primitivos, es decir $bf=ag_1h_1$. Luego
-% el máximo común divisor de los coeficientes de $bf$ es $b$. Como $g_1h_1$ es primitivo por el lema de Gauss, 
-% el máximo común divisor de los coeficientes de $ag_1h_1$ es $a$. Luego $a=b$ o $a=-b$, 
-% es decir $f=g_1h_1$ o $f=-g_1h_1$ en $\Z[X]$. 
-% \end{proof}
 \begin{exercise}
 \label{xca:Z[X]_UFD}
     Prove that $\Z[X]$ is a unique factorization domain. 

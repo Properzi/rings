@@ -24,7 +24,72 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
 	it follows that $(a_k)\subseteq I=(x)\subseteq (a_n)$ for all $k\in\Z_{>0}$. 
 \end{sol}
 	
-% \section*{Lecture 5}
+\section*{Lecture 5}
+
+
+\begin{sol}{xca:content}
+	Let $d$ be 
+	the greatest common divisor
+	of the coefficients of $f$. 
+	Since $a$ divides all the coefficients of $f$, it follows that $a$ divides $d$. If $p$ is a prime that
+	divides $d$, then either $p$ divides $a$ or $p$ divides all the coefficients of the primitive
+	polynomial $f_1$. It follows that $d$ divides $a$.    
+\end{sol}
+
+\begin{sol}{xca:Gauss}
+\begin{enumerate}
+	\item Let $f=\sum_{i=0}^na_iX^i$, $g=\sum_{i=0}^mb_iX^i$. Suppose that 
+	$fg$ is not primitive and let $p$ be a prime number dividing all the coefficients  
+	of $fg$. Since both $f$ and $g$ are primitive, there exist $i\in\{0,\dots,n\}$ 
+ 	and $j\in\{0,\dots,m\}$ minimal such that $p\nmid a_i$ and $p\nmid b_j$. 
+ 	If $c_{i+j}$ is the coefficient of $X^{i+j}$ in $fg$, then  
+	\[
+ 	c_{i+j}=\sum_{k>i}a_kb_{i+j-k}+\sum_{k<i}a_kb_{i+j-k}+a_ib_j.
+ 	\]
+ 	Thus $p$ divides $\sum_{k>i}a_kb_{i+j-k}+\sum_{k<i}a_kb_{i+j-k}$ and does not divide
+ 	the integer $a_ib_j$, that is $p$ does not divide $c_{i+j}$, a contradiction.
+	\item Suppose that $f$ is irreducible in $\Z[X]$. If $f$ is not primitive, then
+	$f=af_1$ for some $a\in\Z\setminus\{-1,1\}$ and some primitive polynomial $f_1$, a contradiction 
+	to the irreducibility of $f$. Let us prove that $f$ is irreducible in $\Q[X]$. If not, say 
+	$f=gh$ for some $g,h\in\Q[X]$ of positive degree. After multiplying by a 
+	suitable rational number, we may assume that  
+	\[
+ 	f=\frac{a}{b}g_1h_1,
+ 	\]
+ 	where $\gcd(a,b)=1$ and $g_1,h_1\in\Z[X]$ are primitive polynomials, that is 
+ 	\[
+ 	bf=ag_1h_1.
+ 	\]
+ 	The greatest common divisor of the coefficients of $bf$ is $b$. 
+	Since $g_1h_1$ is primitive by the previous item, the greatest common divisor 
+	of the coefficients of $ag_1h_1$ is $a$. Thus $a=b$ or $a=-b$, 
+  	that is $f=g_1h_1$ or $f=-g_1h_1$ in $\Z[X]$.  
+\end{enumerate}
+\end{sol}
+
+\begin{sol}{xca:Z[X]_UFD}
+	Since $\Z$ is noetherian, it follows that $\Z[X]$ is noetherian by Hilbert's theorem. 
+	Then $\Z[X]$ admits factorizations. We need to show that the factorization into irreducibles is unique. 
+	Let $f\in\Z[X]$ be non-zero and
+	assume that 
+	\[
+	f=f_1\cdots f_k=g_1\cdots g_l
+	\]
+	be factorizations of $f$ into non-constant irreducibles integer polynomials. Since
+	$f_1,\dots,f_k$ and $g_1,\dots,g_k$ 
+	are irreducible in $\Q[X]$ and $\Q[X]$ is a unique factorization domain, it follows
+	that $k=s$ and there exits $\sigma\in\Sym_k$ such that $g_i$ and $h_{\sigma(i)}$ are
+	associate for all $i\in\{1,\dots,k\}$. After reordering we may assume that 
+	for each $i\in\{1,\dots,k\}$ there
+	exists $a_i/b_i\in\Q$ such that $b_ig_i=a_ih_i$. Since both $g_i$ and $h_i$ are
+	irreducible integer polynomials, it follows from Exercise \ref{xca:Gauss} that
+	both $g_i$ and $h_i$ are primitive. By Exercise \ref{xca:content}, 
+	$a_i$ (resp. $b_i$) is the greatest common divisor of the coefficients 
+	of $a_ih_i$ (resp. $b_ig_i$). This implies that $a_i$ and $b_i$ are associate, so 
+	$a_i/b_i$ is a unit. Hence $g_i$ and $h_i$ are associate in $\Z[X]$.     
+\end{sol}
+
+
 \section*{Lecture 6}
 
 \begin{sol}{xca:fx=cx}
@@ -62,7 +127,36 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
     $G$ is either trivial of cyclic of order two. Both groups have trivial
     automorphism group. 
 \end{sol}
-% \section*{Lecture 7}
+
+\section*{Lecture 7}
+
+\begin{sol}{xca:freshman_dream}
+    The tricky part of the exercise is to prove that 
+    if $p$ is a prime and $1\leq k\leq p^n-1$, then $\binom{p^n}{k}$ is divisible by $p$. The rest is routine. 
+    Write
+    \[
+    \binom{p^n}{k}=\frac{(p^n)!}{k!(p^n-k)!}=\frac{p^n}{k}\binom{p^n-1}{k-1}.
+    \]
+    Then
+    \[
+    k\binom{p^n}{k}=p^n\binom{p^n-1}{k-1},
+    \]
+    that is $p^n$ divides $k\binom{p^n}{k}$. 
+    
+    If $\gcd(p,k)=1$, then it follows that $p$ divides $\binom{p^n}{k}$ by unique decomposition
+    of every integer as a product of primes. We may assume then that $\gcd(p,k)\ne1$, 
+    say $k=p^\alpha m$ for some integer $m$ not divisible by $p$. Then
+    \[
+    p^n\binom{p^n-1}{k-1}=k\binom{p^n}{k}=p^{\alpha}m\binom{p^n}{k}
+    \]
+    and hence 
+    \[
+    p^{n-\alpha}\binom{p^n-1}{k-1}=m\binom{p^n}{k}.
+    \]
+    Since $k<p^n$, it follows that
+    $m-\alpha\geq 1$. Thus $p$ divides $m\binom{p^n}{k}$ and hence
+    $p$ divides $\binom{p^n}{k}$ because $p$ and $m$ are coprime. 
+\end{sol}
 
 \section*{Lecture 8}
 
