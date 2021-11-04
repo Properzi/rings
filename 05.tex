@@ -175,7 +175,7 @@ identity.
 One can also compute the maximal ideals of $K[X]$ for any field $K$. 
 
 \begin{exercise}
-	Let $R$ be a principal domain and $p\in R$. Then $p$ is irreducible 
+	Let $R$ be a principal domain and $p\in R\setminus\{0\}$. Then $p$ is irreducible 
 	if and only if $(p)$ is maximal.	
 \end{exercise}
 
@@ -221,19 +221,39 @@ We conclude the lecture with a different application of Zorn's lemma.
 The previous exercise can be used to solve the following exercises:
 
 \begin{exercise}
+\label{xca:extend}
+    Every linearly independent subset of a non-zero vector space
+    $V$ can be extended to a basis of $V$.
+\end{exercise} 
+
+\begin{exercise}
+    Let $V$ be a vector space. Prove that every subspace $U$ of $V$ is a direct summand of $V$, that is
+    $V=U\oplus W$ for some subspace $W$ of $V$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that every spanning set of a non-zero vector space
+    contains a basis. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:fx=cx}
     Prove that there exists a group homomorphism $f\colon\R\to\R$ that 
     is not of the form $f(x)=\lambda x$ for some $\lambda\in\R$. 
 \end{exercise}
 
+
 \begin{exercise}
+\label{xca:Rn=R}
     Prove that the abelian groups $\R^n$ and $\R$ are isomorphic.
 \end{exercise}
 
 \begin{exercise}
+\label{xca:aut}
     Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
 \end{exercise}
 
-\topic{The caracteristic of a ring}
+\topic{The characteristic of a ring}
 
 \begin{definition}
 Let $R$ be a ring. If there is a least positive integer $n$ such that 
@@ -269,10 +289,11 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
 \end{proof}
 
 \begin{exercise}
+\label{xca:freshman_dream}
     Let $R$ be a commutative ring of prime characteristic $p$. 
     \begin{enumerate}
         \item If $x,y\in R$, then $(x+y)^{p^n}=x^{p^n}+y^{p^n}$ for all $n\geq0$. 
-        \item The map $R\to R$, $x\mapsto x^p$, is a ring homomorphism.
+        \item The map $R\to R$, $x\mapsto x^{p^n}$, is a ring homomorphism for all $n\geq0$.
     \end{enumerate}
 \end{exercise}
 

@@ -25,7 +25,43 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
 \end{sol}
 	
 % \section*{Lecture 5}
-% \section*{Lecture 6}
+\section*{Lecture 6}
+
+\begin{sol}{xca:fx=cx}
+    Consider $\R$ as a $\Q$-vector space. 
+    Since $\sqrt{2}\not\in\Q$, the subset $\{1,\sqrt{2}\}$ of $\R$ 
+    is linearly independent 
+    over $\Q$. Extend $\{1,\sqrt{2}\}$ 
+    to a basis $B$ of $\R$ as a $\Q$-vector space. The
+    linear map $f\colon\R\to\R$ such that
+    $f(1)=\sqrt{2}$, $f(\sqrt{2})=1$ and $f(b)=b$ for all $b\in B\setminus\{1,\sqrt{2}\}$ 
+    is not of the form $f(x)=\lambda x$. 
+\end{sol}
+
+\begin{sol}{xca:Rn=R}
+    Let $\{x_i:i\in I\}$ be a basis of $\R$ as a $\Q$-vector space and
+    let $\{e_1,\dots,e_n\}$ be the standard basis of $\R^n$. Since
+    $I$ and $I\times\{e_1,\dots,e_n\}$ have the same cardinality, 
+    there exists a bijective map $f\colon I\to I\times\{e_1,\dots,e_n\}$. Since
+    the set $\{x_ie_j:i\in I,1\leq j\leq n\}$ is a basis of $\R^n$, it follows
+    that the bases of $\R^n$ and $\R$ have the same cardinality and hence
+    $\R^n$ and $\R$ are isomorphic as vector spaces. 
+\end{sol}
+
+\begin{sol}{xca:aut}
+    Let $G$ be a group such that $\Aut(G)=\{\id\}$. 
+    Then $G$ is abelian, as the map $G\to G$, $x\mapsto gxg^{-1}$,   
+    is an automorphism of $G$. Since $G$ is abelian, 
+    the map $G\to G$, $x\mapsto x^{-1}$, is an automorphism of $G$. Since 
+    the automorphism group of $G$ is trivial, 
+    $x=x^2$ for all $x\in G$. It follows that $G$ is a vector space
+    over the field $\Z/2$ of two elements. Let $B$ be   
+    a basis of $G$ over $\Z/2$. If $|I|\geq 2$, 
+    the automorphism of $G$ that exchanges to basis elements of $B$ and  
+    and fixes all other elements of $B$ would be non-trivial. Hence $|I|=1$ and 
+    $G$ is either trivial of cyclic of order two. Both groups have trivial
+    automorphism group. 
+\end{sol}
 % \section*{Lecture 7}
 % \section*{Lecture 8}
 

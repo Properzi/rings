@@ -16,8 +16,44 @@
 % \section*{Lecture 3}
 % \section*{Lecture 4}
 % \section*{Lecture 5}
-% \section*{Lecture 6}
-% \section*{Lecture 7}
+\section*{Lecture 6}
+
+\begin{sol}{xca:extend}
+    If $X$ is a linearly independent set, a basis 
+    of $V$ that contains $X$ will be found as a maximal linearly independent set 
+    containing $X$. 
+\end{sol}
+
+\section*{Lecture 7}
+
+\begin{sol}{xca:freshman_dream}
+    The tricky part of the exercise is to prove that 
+    if $p$ is a prime and $1\leq k\leq p^n-1$, then $\binom{p^n}{k}$ is divisible by $p$.
+    We proceed as follows. Write
+    \[
+    \binom{p^n}{k}=\frac{(p^n)!}{k!(p^n-k)!}=\frac{p^n}{k}\binom{p^n-1}{k-1}.
+    \]
+    Then
+    \[
+    k\binom{p^n}{k}=p^n\binom{p^n-1}{k-1},
+    \]
+    that is $p^n$ divides $k\binom{p^n}{k}$. 
+    
+    If $\gcd(p,k)=1$, then it follows that $p$ divides $\binom{p^n}{k}$ by unique decomposition
+    of every integer as a product of primes. We may assume then that $\gcd(p,k)\ne1$, 
+    say $k=p^\alpha m$ for some integer $m$ not divisible by $p$. Then
+    \[
+    p^n\binom{p^n-1}{k-1}=k\binom{p^n}{k}=p^{\alpha}m\binom{p^n}{k}
+    \]
+    and hence 
+    \[
+    p^{n-\alpha}\binom{p^n-1}{k-1}=m\binom{p^n}{k}.
+    \]
+    Since $k<p^n$, it follows that
+    $m-\alpha\geq 1$. Thus $p$ divides $m\binom{p^n}{k}$ and hence
+    $p$ divides $\binom{p^n}{k}$ because $p$ and $m$ are coprime. 
+\end{sol}
+
 % \section*{Lecture 8}
 % \section*{Lecture 9}
 % \section*{Lecture 10}
