@@ -61,7 +61,10 @@ representations on vector spaces or matrix representations.
 	$\rho_{xy}^m=\begin{pmatrix}
 		1&m\\
 		0&1	
-	\end{pmatrix}$. From this the claim follows.
+	\end{pmatrix}$. Then 
+	\[
+	(xy)^n=(xy)^m\implies\rho_{xy}^n=\rho_{xy}^m\implies n=m.
+	\] 
 \end{example}
 
 The previous example shows the power of group representations, even for infinite groups.   
@@ -259,7 +262,11 @@ map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$.
     $\{0\}$ and $V$ are the only invariant subspaces of $V$.
 \end{definition}
 
-Degree-one representations are irreducible.
+Degree-one representations are irreducible. 
+
+The irreducibility 
+of a representation, of course, depends on the base field. 
+In the following example it is crucial using real representations.
 
 \begin{example}
     Let $G=\langle g:g^3=1\rangle$ be the
@@ -371,6 +378,16 @@ Note that if $\rho\colon G\to\GL(V)$ is completely reducible and
 $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible representations 
 $\rho_i\colon G\to\GL(V_i)$, $i\in\{1,\dots,n\}$, then 
 each $V_i$ is an invariant subspace of $V$ and $V=V_1\oplus \cdots V_n$. 
+Moreover, in some basis of $V$ the matrix  
+$\rho_g$ can be written as 
+\[
+\rho_g=\begin{pmatrix}
+(\rho_1)_g &  \\
+& (\rho_2)_g  \\
+&&\ddots\\
+&&&(\rho_n)_g	
+\end{pmatrix}.
+\]
 
 \begin{definition}
 \index{Representation!decomposable}

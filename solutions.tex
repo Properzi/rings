@@ -116,7 +116,7 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
 	the elements $x\in\Z[i]$ such that $N(x)=p$ where $p\in\Z$ is a prime number such that $p\equiv1\bmod 4$. 
 \end{sol}
 
-\section*{Lecture 6}
+%\section*{Lecture 6}
 
 \begin{sol}{xca:fx=cx}
     Consider $\R$ as a $\Q$-vector space. 
@@ -171,7 +171,7 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
     automorphism group. 
 \end{sol}
 
-\section*{Lecture 7}
+%\section*{Lecture 7}
 
 \begin{sol}{xca:freshman_dream}
     One approach to solve this exercise requires the following fact: 
@@ -201,7 +201,6 @@ $z=z1=z(xy)=(zx)y=1y=1$ and hence $x$ is a unit.
     $p$ divides $\binom{p^n}{k}$ because $p$ and $m$ are coprime. 
 \end{sol}
 
-\section*{Lecture 8}
 
 \begin{sol}{xca:RC3}
 Let $G=\langle g:g^3=1\rangle$ be the cyclic group of order three and $\omega$ be a primitive cubic root of one.  
@@ -209,6 +208,32 @@ The map $G\to \R\times\C$, $g\mapsto (1,\omega)$, extends to an algebra
 homomorphism $\varphi\colon\R[G]\to\R\times\C$. Since 
 $\dim_\R\R\times\C=\dim\R[G]=3$, it follows that $\varphi$ is a bijective. 
 \end{sol}
+
+\section*{Lecture 6}
+
+\begin{sol}{xca:equivalence}
+Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for all $g\in G$. 
+\begin{enumerate}
+	\item Assume that $\psi$ is not irreducible. Let $Y$ be an invariant subspace of $W$. 
+		Then $X=T^{-1}(Y)$ is an invariant subspace of $V$, as 
+		\[
+		\rho_g(X)=\rho_gT^{-1}(Y)=T^{-1}\psi_g(Y)\subseteq T^{-1}(Y)=X
+		\]
+		for all $g\in G$. 
+	\item By assumption
+		$V$ can be decomposed as $V=X\oplus Y$ for some invariant subspaces $X$ and $Y$. Let $X_1=T(X)$ 
+		and $Y_1=T(Y)$. 
+		Note that $X_1$ and $Y_1$ are invariant. In fact, if $g\in G$, then  
+		$\psi_g(X_1)=\psi_g T(X)=T\rho_x(X)\subseteq T(X)=X_1$.
+		Similarly, $\psi_g(Y_1)\subseteq Y_1$ 
+		for all $g\in G$. Now we prove that $W=X_1\oplus Y_1$. If $w\in W=T(V)$, then 
+		$w=T(v)$ for some $v\in V$ since $T$ is surjective. Write $v=x+y$ for $x\in X$ and $y\in Y$. Then 
+		$w=T(v)=T(x)+T(y)\in X_1+Y_1$. Now if $w\in X_1\cap Y_1$, then $w=T(x)=T(y)$ for some $x\in X$ and
+		$y\in Y$. Since $T$ is injective, it follows that $x=y\in X\cap Y=\{0\}$. Hence $w=0$. 
+	\item 
+	\end{enumerate}	
+\end{sol}
+
 
 % \begin{sol}{xca:projector}
 % \end{sol}
@@ -222,7 +247,7 @@ $\dim_\R\R\times\C=\dim\R[G]=3$, it follows that $\varphi$ is a bijective.
 % \begin{sol}{xca:Hom}
 % \end{sol}
 
-\section*{Lecture 9}
+%\section*{Lecture 9}
 
 \begin{sol}{xca:Pruffer}
 Take for example the $\Z$-module $\cup_{k\geq}\Z/(p^k)$.
