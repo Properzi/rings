@@ -293,9 +293,9 @@
   \def\@oddhead{\runheadsize\runheadstyle\rightmark\hfil}%
   \def\chaptermark##1{%
     \markboth{%
-      {\if@chapnum Lecture \thechapter\thechapterend\fi ##1}%
+      {\if@chapnum \thechapter\thechapterend\fi ##1}%
     }{%
-      {\if@chapnum Lecture \thechapter\thechapterend\fi ##1}}%
+      {\if@chapnum \thechapter\thechapterend\fi ##1}}%
     }%
     \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
      \S\thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}
