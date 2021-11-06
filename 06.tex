@@ -89,24 +89,25 @@ groups.
 	is a group representation of degree two. 
 \end{example}
 
-To prove the following result we need
-to use some linear algebra. 
-
-\begin{proposition}
-    Let $G$ be a finite group and $\rho\colon G\to\GL_n(\C)$ 
-    be a representation. Then
-    each $\rho_g$ is diagonalizable.
-\end{proposition}
-
-\begin{proof}
-    Since $g$ is finite, $g^m=1$ for some $m\in\Z_{>0}$. This means that $\rho_g$ is a root of $X^m-1\in\C[X]$. Since
-    the roots of the polynomial $X^m-1$ are all different and $X^m-1$ factorizes linearly on $\C[X]$, it follows
-    that the minimal polynomial of $\rho_g$ also factorizes linearly in $\C[X]$. Hence $\rho_g$ is diagonalizable.
-\end{proof}
-
-In page \pageref{rho_diagonalizable} we will see an alternative  
-proof of the previous proposition. 
-
+%To prove the following result we need
+%the \emph{minimal polynomial characterization of diagonazability",  
+%see for example, \cite[Corollary 2.5.12]{zbMATH06049469}.
+%
+%\begin{proposition}
+%    Let $G$ be a finite group and $\rho\colon G\to\GL_n(\C)$ 
+%    be a representation. Then
+%    each $\rho_g$ is diagonalizable.
+%\end{proposition}
+%
+%\begin{proof}
+%    Since $g$ is finite, $g^m=1$ for some $m\in\Z_{>0}$. This means that $\rho_g$ is a root of $X^m-1\in\C[X]$. Since
+%    the roots of the polynomial $X^m-1$ are all different and $X^m-1$ factorizes linearly on $\C[X]$, it follows
+%    that the minimal polynomial of $\rho_g$ also factorizes linearly in $\C[X]$. Hence $\rho_g$ is diagonalizable.
+%\end{proof}
+%
+%In page \pageref{rho_diagonalizable} we will see an alternative  
+%proof of the previous proposition. 
+%
 \begin{definition}
 	\index{Invariant map}
     Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
@@ -403,8 +404,6 @@ an inner product $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$.
     $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
 \end{definition}
 
-An important example:
-
 \begin{example}
 Let $G$ be a finite group and $V=\C[G]$. The \textbf{left regular representation}
 of $G$ is the representation
@@ -430,6 +429,7 @@ is called the
 \textbf{orthogonal complement} of $W$. The following result is extremely important: 
 
 \begin{proposition}
+\label{pro:irr_or_dec}
 Let $\rho\colon G\to\GL(V)$ be a unitary representation. Then $\rho$ is either
 irreducible or decomposable.
 \end{proposition}
@@ -448,11 +448,11 @@ irreducible or decomposable.
 	$\rho_g(v)\in W^\perp$ and hence $V=W\oplus W^{\perp}$ is decomposable.  
 \end{proof}
 
-\begin{proposition}[Weyl's trick]
+\begin{theorem}[Weyl's trick]
 \index{Weyl's trick}
     Every representation $\rho\colon G\to\GL_n(\C)$ 
     of a finite group is unitary.
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
 	Let $V=\C^n$ and 
@@ -470,11 +470,25 @@ irreducible or decomposable.
 \end{proof}
 
 \label{rho_diagonalizable}
-Weyl's trick has several interesting corollaries:  
-\textbf{1)} Every finite-dimensional representation $\rho\colon G\to\GL(V)$ is equivalent to a unitary representation, 
-see Example \ref{xca:change_of_basis}, \textbf{2)} every non-zero representation is either
-irreducible or decomposable, and \textbf{3)} every $\rho_g$ is diagonalizable
-(as unitary operators are diagonalizable).
+Weyl's trick has several interesting consequences:  
+
+\begin{corollary}
+	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$. The following properties
+	hold:
+	\begin{enumerate}
+		\item $\rho$ is equivalent to a unitary representation.
+		\item $\rho$ is either irreducible or decomposable.
+		\item Each $\rho_g$ is diagonalizable. 
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	The first claim follows from Example \ref{xca:change_of_basis} and 
+	Weyl's trick. The second claim, from 1) and
+	Proposition \ref{pro:irr_or_dec}. Finally 3) follows immediately 
+	from Weyl's trick, as unitary matrices are diagonalizable.  
+\end{proof}
+
 
 \begin{exercise}
     If $G$ is an infinite group it is not longer true that every non-zero representation
