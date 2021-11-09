@@ -190,7 +190,7 @@ Find a non-noetherian module such that every proper submodule is finitely genera
 
 \begin{exercise}
 \label{xca:regular_noetheriano}
-A ring $R$ is noetherian if and only if $\prescript{}{R}R$ is noetherian.	
+A commutative ring $R$ is noetherian if and only if $\prescript{}{R}R$ is noetherian.	
 \end{exercise}
 
 \begin{exercise}
@@ -362,7 +362,7 @@ $\{e_i:i\in I\}$, where
 \end{example}
 
 \begin{example}
-If $R=M_2(\Z)$, then $M=\prescript{}{R}R$ is free with bassi $\left\{\begin{pmatrix}
+If $R=M_2(\Z)$, then $M=\prescript{}{R}R$ is free with basis $\left\{\begin{pmatrix}
     1&0\\0&1\end{pmatrix}\right\}$. The submodule 
 $N=\begin{pmatrix}\Z&0\\\Z&0\end{pmatrix}$ does not admits a basis as a module over $R$.
 \end{example}
@@ -411,7 +411,7 @@ $M\oplus N$ is a free module with basis
 Let $R$ be a commutative ring. If $M$ and $N$ 
 are free and finitely generated, then 
 $\Hom_R(M,N)$
-is free and finitely generated
+is free and finitely generated.
 \end{exercise}
 
 % Como $R$ es conmutativo, $\Hom_R(M,N)$ es un $R$-módulo. Si $\{m_1,\dots,m_k\}$ es base de $M$ 
@@ -445,7 +445,7 @@ is linearly independent, $r_i=s_i$ for all $i\in I$.
 \label{pro:libre}
 Let $M$ be a free module with basis $\{m_i:i\in I\}$ and let $N$ be a submodule of $M$. 
 If $\{n_i:i\in I\}\subseteq N$ is a subset, then 
-there exists $f\in\Hom_R(M,N)$ such that
+there exists a unique $f\in\Hom_R(M,N)$ such that
 $f(m_i)=n_i$ for all $i\in I$.  
 \end{proposition}
 
@@ -517,12 +517,12 @@ Another important property of free modules: free modules are
 Let $\{m_i:i\in I\}$ be a basis of $M$. Since $f$ is surjective, for each $i\in I$ there exists $n_i\in N$ such that
  $f(n_i)=h(m_i)$. Since  
 $M$ is free, there exists a unique homomorphism $\varphi\colon M\to N$ 
-such that $\varphi(m_i)=n_i$ for all $i\in I$. Thus homomorphism is such that $f\circ \varphi=h$. 
+such that $\varphi(m_i)=n_i$ for all $i\in I$. Thus homomorphism is such that $f\varphi=h$. 
 \end{proof}
 
 \begin{theorem}
 Let $R$ be an integral domain. If $M$ is free with a finite basis, then 
-any two bases of $M$ have the same number of elements 
+any two bases of $M$ have the same number of elements.
 \end{theorem}
 
 \begin{proof}
