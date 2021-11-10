@@ -383,491 +383,445 @@ Compute the character table of $\Sym_4$.
     Compute the character table of the dihedral group of eight elements. 
 \end{exercise}
 
-\topic{Modules}
+\topic{An application}
 
-The rest of the course will be devoted to study modules over rings. 
-We first start with the main definitions and basic examples.
+Let $N$ be a normal subgroup of $G$ 
+and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
+If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
+is a representation of $G/N$ with 
+character
+$\widetilde{\chi}$, the composition 
+$\rho=\widetilde{\rho}\circ\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
+is a representation of $G$. 
+Thus
+\[
+\chi(g)=\trace{\rho_g}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
+\]
+In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
+is the \textbf{lifting} to $G$ of the character 
+$\widetilde{\chi}$ of $G/N$. 
 
-\begin{definition}
-    Let $R$ be a ring. A \textbf{module} (over $R$) is an abelian group
-    $M$ with a map $R\times M\to M$, $(x,m)\mapsto x\cdot m$, such that
-    the following conditions hold:
-    \begin{enumerate}
-        \item $(r_1+r_2)\cdot m=r_1\cdot m+r_2\cdot m$ for all $r_1,r_2\in R$ y $m\in M$.
-		\item $r\cdot (m_1+m_2)=r\cdot m_1+r\cdot m_2$ for all $r\in R$ y $m_1,m_2\in M$.
-		\item $r_1\cdot (r_2\cdot m)=(r_1r_2)\cdot m$ for all $r_1,r_2\in R$ y $m\in M$.
-		\item $1\cdot m=m$ for all $m\in M$.	
-    \end{enumerate}
-\end{definition}
+\begin{proposition}
+If $\chi\in\Irr(G)$, then 
+\[
+\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
+\]
+is a normal subgroup of $G$. 
+\end{proposition}
 
-Our definition is that of left module. Similarly one defines right modules. We will always
-consider left modules, so they will be referred simply as modules.
+\begin{proof}
+Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
+$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
+$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
+$\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
+$\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
+\[
+n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
+\]
+Since each $\lambda_i$ is a root of one,  
+$\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
+\end{proof}
 
-\begin{example}
-A module over a field is a vector space. 
-\end{example}
+\index{Kernel!of a character}
+If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
+is the \textbf{kernel} of $\chi$. 
 
-\begin{example}
-Every abelian group is a module over $\Z$.	
-\end{example}
+\begin{theorem}[Correspondence theorem]
+\index{Correspondence theorem!for characters}
+Let $N$ be a normal subgroup of a finite group $G$. There exists
+a bijective correspondence 
+\[
+\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
+N\subseteq\ker\chi\}
+\]
+that maps irreducible characters to irreducible characters.
+\end{theorem}
 
-\begin{example}
-Let $R$ be a ring. Then $R$ is a module (over $R$) with $x\cdot m=xm$. 
-This is the \textbf{(left) regular representation} of $R$ and it usually 
-be denoted by $\prescript{}{R}R$. 
-\end{example}
+\begin{proof}
+If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
+then
+\[
+\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+\]
+and thus $N\subseteq\ker\chi$. 
 
-\begin{example}
-If $R$ is a ring, then $R^n=\{(x_1,\dots,x_n):x_1,\dots,x_n\in R\}$ 
-is a module (over $R$) with  
-$r\cdot (x_1,\dots,x_n)=(rx_1,\dots,rx_n)$. 
-\end{example}
+If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representationn
+with character $\chi$. 
+Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
+is well-defined: 
+\[
+gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+\]
+Moreover, $\widetilde{\rho}$ is a representation, as 
+\[
+\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
+\]
+If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
+$\widetilde{\chi}(gN)=\chi(g)$.
 
-\begin{example}
-If $R$ is a ring, then $M_{m,n}(R)$ is a module (over $R$) with usual matrix operations. 
-\end{example}
-
-Students usually ask why in the definition of a ring homomorphism one needs
-the condition $1\mapsto 1$. The following example provides a good explanation. 
-
-\begin{example}
-%%\label{exa:f(1)=1}
-If $f\colon R\to S$ is a ring homomorphism and $M$ is a module (over $S$) wih 
-$(s,m)\mapsto sm$, then 
-$M$ is also a module (over $R$) with $r\cdot m=f(r)m$ for all $r\in R$ and $m\in M$. In fact, 
+We now prove that $\chi$ is irreducible if and only if 
+$\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
 \begin{align*}
-&1\cdot m=f(1)m=1m=m,\\
-&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
+\text{$U$ is invariant}
+%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
+&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
+&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
+\shortintertext{Thus}
+\chi\text{ is irreducible }&\Longleftrightarrow
+\rho\text{ is irreducible }\\
+&\Longleftrightarrow\widetilde{\rho}\text{ is irreducible }\Longleftrightarrow
+\widetilde{\chi}\text{ is irreducible }\qedhere.
 \end{align*}
-for all $r_1,r_2\in R$ and $m\in M$.	  	
-\end{example}
-%
-\begin{example}
-Let $R=\R[X]$ and $T\colon\R^n\to\R^n$ be a linear map. Then $M=\R^n$ with 
-\[
-\left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v)
-\]	
-is a module (over $R$).   
-\end{example}
+\end{proof}
 
 \begin{example}
-If $\{M_i|i\in I\}$ is a family of modules, then  	
-\[
-\prod_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ for all $i\in I$}\}
-\]
-is a module with 
-$x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$, 
-where $(m_i)_{i\in I}$ denotes the map $I\to M_i$, $i\mapsto m_i$.
-This module is the \textbf{direct product} of the family $\{M_i:i\in I\}$.
-\end{example}
-%
-\begin{example}
-If $\{M_i|i\in I\}$ is family of modules, then   	
-\[
-\bigoplus_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ for all $i\in I$ and $m_i=0$ except finitely many $i\in I$}\}
-\]
-is a module with 
-$x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$. 
-This module is the \textbf{direct sum} of the family $\{M_i:i\in I\}$. 
-\end{example}
-%
-%\begin{exercise}
-If $M$ is a module, then $0\cdot m=0$ and $-m=(-1)\cdot m$ for all $m\in M$ and 
-$x\cdot 0=0$ for all $x\in R$. 
-%
-\begin{example}
-Let $M=\Z/6$ as a module (over $\Z$). Note that 
-$3\cdot 2=0$ but $3\ne 0$ (in $\Z$) and $2\ne 0$ (in $\Z/6$).  
-\end{example}
-%
-\begin{definition}
-	Let $M$ be a module. A subset $N$ of $M$ is a \textbf{submodule} of $M$ if 
-	$(N,+)$ is a subgroup of $(M,+)$ and 
-	$x\cdot n\in N$ for all $x\in R$ and $n\in N$. 
-\end{definition}
-
-Clearly, if $M$ is a module, then $\{0\}$ and $M$ are submodules of $M$. 
-
-\begin{example}
-Let $R$ be a field and $M$ be a module over $R$. Then
-$N$ is a submodule of $M$ if and only if $N$ is a subspace of $M$. 
+    Let $G=\Sym_4$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. We know that $N$ is normal in $G$ 
+    and that $G/N=\langle a,b\rangle\simeq\Sym_3$, where 
+    $a=(123)N$ and $b=(12)N$. 
+    The character table of $G/N$ is 
+    \begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			%& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
+			\hline 
+			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+    For each $i\in\{1,2,3\}$ we compute the lifting $\chi_i$ to $G$ of the character  
+    $\widetilde{\chi}_i$ of $G/N$. 
+    Since $(12)(34)\in N$ and $(13)(1234)=(12)(34)\in N$, 
+    \begin{align*}
+        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
+        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
+    \end{align*}
+    Since the characters $\widetilde{\chi_i}$ are irreducibles, 
+    the liftings $\chi_i$ are also irreducibles. With this process
+    we obtain the following irreducible characters of $G$:
+    	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
 \end{example}
 
+The character table of a group can be used to find the lattice 
+of normal subgroups. In particular, the character table detect simple groups. 
+
+\begin{lemma}
+    Let $G$ be a finite group and 
+    let $g,h\in G$. Then $g$ and $h$ 
+    are conjugate if and only if 
+    $\chi(g)=\chi(h)$ for all
+    $\chi\in\Char(G)$. 
+\end{lemma}
+
+\begin{proof}
+    If $g$ and $h$ are conjugate, then $\chi(g)=\chi(h)$, as characters are class functions
+    of $G$.
+    Conversely, if $\chi(g)=\chi(h)$ for all $\chi\in\Char(G)$, then 
+    $f(g)=f(h)$ for all class function $f$ of $G$, 
+    as characters $G$ generate the space of class functions of $G$. In particular, 
+    $\delta(g)=\delta(h)$, where
+    \[
+    \delta(x)=\begin{cases}
+    1 & \text{if $x$ and $g$ are conjugate},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+    This implies that $g$ and $h$ are conjugate.
+\end{proof}
+
+As a consequence, we get that 
+\begin{equation}
+\label{eq:kernels}
+\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+\end{equation}
+Indeed, if $g\in\ker\chi$ for all $\chi\in\Irr(G)$, then $g=1$ since 
+the lemma implies that $g$ and $1$ are conjugate
+because 
+$\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
+
+\begin{proposition}
+\label{pro:normal}
+    Let $G$ be a finite group. 
+    If $N$ is a normal subgroup of $G$, 
+    then there exist characters
+    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
+    such that
+    \[
+    N=\bigcap_{i=1}^k\ker\chi_i.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Apply the previous remark to the group $G/N$ to obtain that 
+    \[
+    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
+    \]
+    Assume that $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
+    We lift the irreducible characters of $G/N$ to $G$ 
+    to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
+    of $G$ such that 
+    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+    If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
+    \[
+    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
+    \]
+    for all $i\in\{1,\dots,k\}$. This implies that
+    \[
+    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
+    \]
+    that is $g\in N$. 
+\end{proof}
+
+\index{Group!simple}
+Recall that a non-trivial group is \textbf{simple} if it contains no non-trivial normal 
+proper subgroups. Examples of simple groups are cyclic groups of prime order
+and the alternating groups $\Alt_n$ for $n\geq5$. 
+As a corollary of Proposition \ref{pro:normal}, 
+we can use the character table to detect simple groups.
+
+\begin{proposition}
+    Let $G$ be a finite group. Then $G$ is not simple if and only if 
+    there exists a non-trivial irreducible character $\chi$ such that
+    $\chi(g)=\chi(1)$ 
+    for some $g\in G\setminus\{1\}$. 
+\end{proposition}
+
+\begin{proof}
+    If $G$ is not simple, there exists a normal subgroup $N$ of $G$ such that
+    $N\ne G$ and $N\ne\{1\}$. 
+    By Proposition \ref{pro:normal}, there exist characters 
+    $\chi_1,\dots,\chi_k\in\Irr(G)$
+    such that 
+    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
+    In particular, there exists a non-trivial character
+    $\chi_i$ such that $\ker\chi_i\ne\{1\}$. Thus 
+    there exists $g\in G\setminus\{1\}$ such that
+    $\chi_i(g)=\chi_i(1)$. 
+    
+    Assume now that there exists a non-trivial character $\chi$ 
+    such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
+    and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
+    Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
+\end{proof}
+
 \begin{example}
-Let $R=\Z$ and $M$ be a module (over $R$). Then
-$N$ is a submodule of $M$ if and only if $N$ is a subgroup of $M$
+\index{Mathieu's group $M_9$}
+    If there exists a group $G$ with
+    a character table 
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
+	Mathieu's group $M_{9}$ has precisely this character table! 
 \end{example}
 
 \begin{example}
-If $M=\prescript{}{R}R$, then a subset $N\subseteq M$ is a submodule
-of $M$ if and only if $N$ is a left ideal of $R$. 
-\end{example}
-
-\begin{example}
-If $V$ is a vector space and $T\colon V\to V$ is a linear map, then
-$V$ is a module (over $\R[X]$) with  
-\[
-\left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v).
-\]
-A submodule is a subspace $W$ 
-of $V$ such that $T(W)\subseteq W$. 
-\end{example}
-
-Clearly, a subset $N$ of $M$ is a submodule if and only 
-if $r_1n_1+r_2n_2\in N$ for all
-$r_1,r_2\in R$ and $n_1,n_2\in N$. 	
-
-\begin{exercise}
-If $N$ and $N_1$ are submodules of $M$, then 
-\[
-N+N_1=\{n+n_1:n\in N,\,n_1\in N_1\}
-\]
-is a submodule of $M$.
-\end{exercise}
-
-\begin{definition}
-Let $M$ and $N$ be modules over $R$. 
-A map $f\colon M\to N$ is a \textbf{module homomorphism} if $f(x+y)=f(x)+f(y)$ and 
-$f(r\cdot x)=r\cdot f(x)$ for all $x,y\in M$ and $r\in R$. 
-\end{definition}
-
-We denote by $\Hom_R(M,N)$ the set of module homomorphisms $M\to N$. 
-
-\begin{exercise}
-Let $f\in\Hom_R(M,N)$.  
-\begin{enumerate}
-\item If $V$ is a submodule of $M$, then $f(V)$ is a submodule of $N$.
-\item If $W$ is a submodule of $N$, then $f^{-1}(W)$ is a submodule of $M$.
-\end{enumerate}
-\end{exercise}
-
-If $f\in\Hom_R(M,N)$, the \textbf{kernel} of $f$ is the submodule  
-\[
-\ker f=f^{-1}(\{0\})=\{m\in M:f(m)=0\}
-\]
-of $M$. We say that $f$ is a \textbf{monomorphism} (resp. \textbf{epimorphism}) 
-if $f$ is injective (resp. surjective). Moreover, $f$ is an \textbf{isomorphism} 
-if $f$ is
-bijective. 
-
-\begin{exercise}
-Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent:
-\begin{enumerate}
-\item $f$ is a monomorphism.
-\item $\ker f=\{0\}$.
-\item For every module $V$ and every $g,h\in\Hom_R(V,M)$, $f\circ g=f\circ h\implies g=h$.
-\item For every module $V$ and every $g\in\Hom(V,M)$, $f\circ g=0\implies g=0$.
-\end{enumerate}
-\end{exercise}
-
-Later we will see a similar exercise for surjective module homomorphisms.
-
-\begin{example}
-	Let $R=
-		\begin{pmatrix}
-			\R & 0\\
-			0 & \R
-		\end{pmatrix}$. 
-	We claim that 
-	$\begin{pmatrix}
-			\R\\
-			0
-		\end{pmatrix}
-		\not\simeq\begin{pmatrix}
-			0\\
-			\R
-		\end{pmatrix}$
-	as modules over $R$, where the module structure is given by the usual matrix multiplication. 
-	Assume that they are isomorphic. 
-	Let $f\colon\begin{pmatrix}
-			0\\
-			\R
-		\end{pmatrix}
-		\to\begin{pmatrix}
-			\R\\
-			0
-		\end{pmatrix}$  
-	be an isomorphism of modules and let  
-	$x_0\in\R\setminus\{0\}$ be such that 
-	$f\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}x_0\\0\end{pmatrix}$. Thus 
+    Let $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+    If there exists a group $G$ with a character table
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}    
+	then $G$ is simple. Note that such a group $G$ would have order 
+	$\sum_{i=1}^6\chi_i(1)^2=168$. 
+	The group  
 	\[
-	f\begin{pmatrix}
-	0\\
-	1\end{pmatrix}
-	=f\left(\begin{pmatrix}
-	0&0\\
-	0&1\end{pmatrix}
-	\cdot 
-	\begin{pmatrix}
-	0\\
-	1
-	\end{pmatrix}\right)
-	=\begin{pmatrix}
-	0&0\\
-	0&1\end{pmatrix}\cdot f\begin{pmatrix}0\\1\end{pmatrix}
-	=\begin{pmatrix}
-	0&0\\
-	0&1
-	\end{pmatrix}
-	\cdot 
-	\begin{pmatrix}		
-	x_0\\
-	0
-	\end{pmatrix}
-	=\begin{pmatrix}
-	0\\
-	0
-	\end{pmatrix},
-	\]	
-	a contradiction, as $f$ is injective.    
-\end{example}
-
-If $N$ and $N_1$ are submodules of $M$, we say that $M$ is the \textbf{direct sum} of $N$ and $N_1$
-if $M=N+N_1$ and $N\cap N_1=\{0\}$. In this case, we write $M=N\oplus N_1$. Note that if
-$M=N\oplus N_1$, then each $m\in M$ can be written uniquely as $m=n+n_1$ for some
- $n\in N$ and $n_1\in N_1$. 
-Such a decomposition exists because $M=N+N_1$. If $m\in M$ can be written as 
-$m=n+n_1=n'+n_1'$ for some $n,n'\in N$ and $n_1,n_1'\in N_1$, then 
-$-n'+n=n_1'-n_1\in N\cap N_1=\{0\}$ and hence $n=n'$ and $n_1=n_1'$. If $M=N\oplus N_1$, the submodule
-$N$ (resp. $N_1$) is a \textbf{direct summand} of $M$ and the submodule $N_1$ (resp $N$) is a \textbf{complement} of $N$ 
-in $M$.   	
-
-\begin{example}
-If $M=\R^2$ as a vector space, then every subspace of $M$ is a direct summand of $M$.
-\end{example}
-
-Clearly, the submodules $\{0\}$ and $M$ are direct summands of $M$.
-
-\begin{example}
-If $M=\Z$ as a module over $\Z$, then $m\Z$ is a direct sum of $M$ if and only if 
-$m\in\{0,1\}$, as $n\Z\cap m\Z=\{0\}$ if and only if $nm=0$.
-\end{example}
-
-\begin{exercise}
-\label{xca:projector}
-Let $M$ be a module. 
-A module $N$ is isomorphic to a direct summand of $M$ if and only if
-there are module homomorphisms $i\colon N\to M$ and $p\colon M\to N$ 
-such that $p\circ i=\id_N$. In this case, $M=\ker p\oplus i(N)$.  
-\end{exercise}
-
-The \textbf{direct sum} of submodules can be defined for finitely many summands. 
-If $V_1,\dots,V_n$ are submodules of $M$, we say that $M=V_1\oplus\cdots\oplus V_n$ 
-if every $m\in M$ can be written uniquely as $m=v_1+\cdots+v_n$ for some $v_1\in V_1,\dots,v_n\in V_n$. 
-
-\begin{exercise}
-Prove that $M=V_1\oplus\cdots\oplus V_n$ if and only if 
-$M=V_1+\cdots+V_n$ and 
-\[
-V_i\cap\left(\sum_{j\ne i}V_j\right)=\{0\}
-\]	
-for all $i\in\{1,\dots,n\}$.
-\end{exercise}
-
-If $\{N_i:i\in I\}$ is a family of submodules of a module $M$, then the intertopic 
-$\cap_{i\in I}N_i$ is also a submodule of $M$.
-
-\begin{exercise}
-\label{xca:submodules}
-Let $T\colon\R^2\to\R^2$ be a linear map and $M=\R^2$ with the module structure 
-over $\R[X]$ given by
-\[
-\left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y).
-\]
-Find the submodules of $M$ in the following cases. 
-\begin{enumerate}
-    \item $T(x,y)=(0,y)$.
-    \item $T(x,y)=(y,x)$.
-\end{enumerate}
-% Prove that 
-% $\{0\}$, $M$, $\R\times\{0\}$ and $\{0\}\times\R$ 
-% are the only submodules of $M$.
-% 
-% Vamos a demostrar que
-% $\{0\}$, $M$, $\R\times\{0\}$ y $\{0\}\times\R$ son los únicos submódulos de $M$. Si $N$ es un submódulo no nulo de $M$, sea
-% $(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$ es tal que $xy\ne 0$, entonces
-% \[
-% \left(\frac{x}{x_0}+\left(\frac{y}{y_0}-\frac{x}{x_0}\right)X\right)\cdot (x_0,y_0)=(x,y) 
-% \]
-% y luego $N=M$. Si $y_0=0$, entonces $N=\R\times\{0\}$, pues $\frac{x}{x_0}\cdot (x_0,0)=(x,0)$. Si $x_0=0$, entonces
-% $N=\{0\}\times\R$, pues 
-% $\frac{y}{y_0}\cdot (0,y_0)=(0,y)$ 
-\end{exercise}
-
-
-% \begin{example}
-% Sea $M=\R^2$ como $\R[X]$-módulo con la acción
-% \[
-% \left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y),
-% \]
-% donde $T\colon M\to M$, $T(x,y)=(y,x)$. 
-% Vamos a calcular todos los submódulos de $M$. 
-% Si $N\subseteq M$ es un submódulo entonces $N$ es un espacio vectorial real. Supongamos que $N\ne\{(0,0)\}$ y que $N\ne\R^2$. Como entonces $\dim N=1$, 
-% sea $\{(a_0,b_0)\}$ una base de $N$. Como $N$ es un submódulo,
-% $(b_0,a_0)=X\cdot (a_0,b_0)\in N$. En particular, existe $\lambda\in\R$ tal que $(b_0,a_0)=\lambda (a_0,b_0)$. Como $(a_0,b_0)\ne(0,0)$, sin perder generalidad
-% podemos suponer que $a_0\ne 0$. Esto implica que
-% $\lambda^2 a_0=\lambda (\lambda a_0)=\lambda b_0=a_0$ y entonces $\lambda^2=1$. Si $\lambda=1$, entonces
-% $a_0=b_0$. Si $\lambda=-1$, entonces $a_0=-b_0$. En conclusión, $N$ está generado por $(1,1)$ o por $(1,-1)$.  
-% \end{example}
-
-\begin{example}
-\label{xca:commuting}
-Let $V$ be a real vector space and $T\colon V\to V$ be a linear map. Then 
-$V$ is a module over $\R[X]$ with  
-\[
-\left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
-\]
-Prove that a module homomorphism $g\colon V\to V$ commutes with $T$. 
-% \[
-% (g\circ T)(v)=g(T(v))=g(X\cdot v)=X\cdot g(v)=T(g(v))=(T\circ g)(v)
-% \]
-% para todo $v\in V$.x
-\end{example}
-
-\begin{exercise}
-\label{xca:Hom}
-Prove that $\Hom_R(M,N)$ is a module over $Z(R)$. 
-\end{exercise}
-
-Let $M$ be a module and $N$ be a submodule of $M$. In particular, $M/N$ is an abelian group
-and the map $\pi\colon M\to M/N$, $m\mapsto m+N$, is a surjective group homomorphism with kernel equal to $N$. We claim
-that the \textbf{quotient} $M/N$ is a module with  
-\[
-r\cdot (m+N)=(r\cdot m)+N,\quad
-r\in R,\,m\in M. 
-\]
-Let us check that this operation on $M/N$ is well-defined. If $x+N=y+N$, then
-$x-y\in N$ implies that  
-\[
-r\cdot x-r\cdot y=r\cdot (x-y)\in N,
-\]
-that is $r\cdot (x+N)=r\cdot (y+N)$. It is an exercise to show that
-the map $\pi\colon M\to M/N$, $x\mapsto x+N$, is a 
-surjective module homomorphism. 
-
-\begin{example}
-If $R=M=\Z$ and $N=2\Z$, then $M/N\simeq\Z/2$. 
-\end{example}
-
-\begin{example}
-Let $R$ be a commutative ring. We claim that 
-\[
-M\simeq\Hom_R(\prescript{}{R}R,M).
-\]
-Since $R$ is commutative, it follows that $\Hom_R(\prescript{}{R}R,M)$ is a module, see Exercise~\ref{xca:Hom}.
-Let $\varphi\colon M\to\Hom_R(\prescript{}{R}R,M)$, $m\mapsto f_m$, where $f_m\colon R\to M$, $r\mapsto r\cdot m$. 
-To show that $\varphi$ is well-defined it is enough to see that $\varphi(m)\in\Hom_R(\prescript{}{R}R,M)$, that is 
-\[
-f_m(r+s)=(r+s)\cdot m=r\cdot m+s\cdot m,\quad
-f_m(rs)=(rs)\cdot m=r\cdot (s\cdot m)=r\cdot f_m(s).
-\]
-Let us show that $\varphi$ is a module homomorphism. We first note that 
-\[
-\varphi(m+n)=\varphi(m)+\varphi(n)
-\]
-for all $m,n\in M$, as  
-\begin{align*}
-\varphi(m+n)(r)&=f_{m+n}(r)=r\cdot (m+n)\\
-&=r\cdot m+r\cdot n=f_m(r)+f_n(r)=\varphi(m)(r)+\varphi(n)(r).
-\end{align*}
-Moreover, 
-\[
-\varphi(r\cdot m)=r\cdot\varphi(m)
-\]
-for all  
-$r\in R$ and $m\in M$, as  
-\begin{align*}
-\varphi(r\cdot m)(s)&=f_{r\cdot m}(s)
-=s\cdot (r\cdot m)
-=(sr)\cdot m\\
-&=(rs)\cdot m=f_m(rs)=\varphi(m)(rs)=(r\cdot\varphi(m))(s).
-\end{align*}
-It remains to show that $\varphi$ is bijective. We first prove that
-$\varphi$ is injective. If $\varphi(m)=0$, then $r\cdot m=\varphi(m)(r)=0$ for all $r\in R$. In particular, 
-$m=1\cdot m=0$. We now prove that $\varphi$ is surjective. If $f\in\Hom_R(\prescript{}{R}R,M)$, 
-let $m=f(1)$. Then $\varphi(m)=f$, as
-\[
-\varphi(m)(r)=r\cdot m=r\cdot f(1)=f(r).
-\]
-\end{example}
-
-As one does for groups, it is possible to show that if $M$ is a 
-module and $N$ is a submodule of $M$, the pair 
-$(M/N,\pi\colon M\to M/N)$ has the following properties:
-\begin{enumerate}
-\item $N\subseteq \ker \pi$.
-\item If $f\colon M\to T$ is a homomorphism such that $N\subseteq \ker f$, then there exists a 
-unique module homomorphism $\varphi\colon M/N\to T$ such that 
-the diagram
-\[
-\begin{tikzcd}
-	M & T \\
-	{M/N}
-	\arrow["\pi"', from=1-1, to=2-1]
-	\arrow["f", from=1-1, to=1-2]
-	\arrow["{\varphi }"', dashed, from=2-1, to=1-2]
-\end{tikzcd}
-\]
-is commutative, that is 
-$\varphi\circ\pi =f$.  
-\end{enumerate}
-
-Recall that if $S$ and $T$ are submodules of a module $M$, then 
-both $S\cap T$ and 
-\[
-S+T=\{s+t:s\in S,\,t\in T\}
-\]
-are submodules of $M$. 
-The \textbf{isomorphism theorems} hold:
-\begin{enumerate}
-	\item If $f\in\Hom_R(M,N)$, then $M/\ker f\simeq f(M)$.
-	\item If $T\subseteq N\subseteq M$ are submodules, then  
-	\[
-	\frac{M/T}{N/T}\simeq M/N
+	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
 	\]
-	\item If $S$ and $T$ are submodules of $M$, then $(S+T)/S\simeq T/(S\cap T)$. 
-\end{enumerate}
-
-\begin{example}
-If $K$ is a field and $V$ is a module over $K$, then $V$ is, by definition, a vector space over $K$. 
-If $S$ and $T$ are subspaces of $V$, then they are submodules of $V$. 
-By the second isomorphism theorem, $(S+T)/T\simeq S/(S\cap T)$ 
-as vector spaces. By applying dimension,  
-\[
-\dim(S+T)-\dim T=\dim(S)-\dim(S\cap T).
-\]
+	is a simple group that has precisely this character table!  
 \end{example}
 
-\begin{example}
-If $N$ is a direct summand of $M$ and $M$ and $X$ is a complement for $N$, then $X\simeq M/N$, as
-\[
-M/N=(N\oplus X)/N\simeq X/(N\cap X)=X/\{0\}\simeq X
-\]
-by the second isomorphism theorem. So all complements of $N$ in $M$ are isomorphic. 
-\end{example}
+\topic{The classification of finite simple groups}
 
-It is also possible to prove that there exists a bijective correspondence between
-submodules of $M/N$ and submodules of $M$ containing $N$. The correspondence is given by 
-$\pi^{-1}(Y)\mapsfrom Y$ and $X\mapsto \pi(X)$. 
+Character theory is one of the key tools in the 
+classification of finite simple groups. 
+One of the first non-trivial applications
+one finds of character theory is 
+the following result:
 
-\begin{exercise}
-Let $f\in\Hom_R(M,N)$. Prove that the following statements are equivalent: 
+\begin{theorem}[Burnside]
+\index{Burnside's theorem}
+    Let $G$ be a finite simple group of order $p^aq^b$ for some
+    prime numbers $p$ and $q$. Then $G$ is cyclic. 
+\end{theorem}
+
+The proof is a basic application of character theory. 
+Is not at all hard, but it is out of the scope of this course. Burnside's theorem
+is important and generalizes in many different directions. 
+
+\begin{theorem}[Feit--Thompson]
+\index{Feit--Thompson's theorem}
+Let $G$ be a finite simple group of odd order. Then $G$ is cyclic. 
+\end{theorem}
+
+The proof is extremely hard and occupies a full volume of 
+the \emph{Pacific Journal of Mathematics}, see~\cite{MR166261}.  
+Feit--Thompson's theorem was formally verified 
+by the computer proof assistant Coq, 
+see~\cite{MR3111271} for the announcement. 
+
+The proof of Feit--Thompson's theorem suggest the following conjecture:
+
+\begin{conjecture}[Feit--Thompson]
+\index{Feit--Thompson's conjecture}
+There are not distinct prime numbers $p$ and $q$ such that
+$\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
+\end{conjecture}
+
+The conjecture is still open, see \cite{MR297686} for some partial results. 
+
+Feit--Thompson's theorem is one of the starting points
+of the classification of finite simple groups. 
+This classification is one
+of the deepest theorems 
+of the 20th century.
+
+\begin{theorem}
+\index{Classification of simple groups}
+Let $G$ be a finite simple group. Then $G$ lies in one (or more) 
+of the following families:
 \begin{enumerate}
-\item $f$ is an epimorphism.
-\item $N/f(M)\simeq\{0\}$. 
-\item For every module $W$ and every $g,h\in\Hom_R(N,T)$, $g\circ f=h\circ f\implies g=h$.
-\item For every module $T$ and every $g\in\Hom_R(N,T)$, $g\circ f=0\implies g=0$. 
+    \item Cyclic groups of prime order.
+    \item $\Alt_n$ for $n\geq5$.
+    \item Finite groups of Lie type.
+    \item 26 sporadic simple groups.
 \end{enumerate}
-\end{exercise}
+\end{theorem}
 
-\begin{exercise}
-\label{xca:mod_iso_max}
-    Let $R$ be a ring and $M_1$ and $M_2$ be maximal ideals of $R$. Prove that
-    $R/M_1\simeq R/M_2$ as modules over $R$ if and only if there exists
-    $r\in R\setminus M_2$ such that $rM_1\subseteq M_2$. 
-\end{exercise}
+Groups of Lie type are finite analogs of simple Lie groups such as 
+$\SL_n(\C)$. A typical example
+of a finite simple group of Lie type is
+$\PSL_n(p)$ for some prime number $p$, which is defined
+as $\SL_n(p)$ over its center. 
 
+The sporadic groups are 26 groups that do not follow a systematic pattern. 
+The first five of the sporadic groups were discovered by Mathieu in the 1860s and the other 21 
+were found between 1965 and 1975.
+Several of these groups were predicted to exist before they were constructed, sometimes
+just knowing their character tables! 
+The full list of sporadic simple groups is:
+\begin{itemize}
+\item Mathieu groups $M_{11}$, $M_{12}$, $M_{22}$, $M_{23}$ and $M_{24}$.
+\item Janko groups $J_1$, $J_2$, $J_3$ and $J_4$.
+\item Conway groups $Co_1$, $Co_2$ and $Co_3$.
+\item Fischer groups $Fi_{22}$, $Fi_{23}$ and $Fi_{24}$. 
+\item Higman–Sims group $HS$.
+\item McLaughlin group $McL$.
+\item Held group $He$.
+\item Rudvalis group $Ru$.
+\item Suzuki group $Suz$.
+\item O'Nan group $ON$.
+\item Harada–Norton group $HN$.
+\item Lyons group $Ly$.
+\item Thompson group $Th$.
+\item Baby Monster group $B$.
+\item Monster group $M$.
+\end{itemize}
 
+Mathieu groups can be realized 
+as automorphism groups of certain very complicated
+combinatorial structures known as \textbf{Steiner systems}. 
+A concrete example: 
+\[
+M_{11}=\langle (123456789\,10\,11), (37\,11\,8)(4\,10\,56)\rangle,
+\]
+which is a subgroup of $\Sym_{11}$ of order 7920. The group
+$M_{11}$ contains ten irreducible characters, so the
+character table of $M_{11}$ is essentially a $10\times 10$ matrix. Let us
+use the computer software \lstinline{GAP} 
+to see how the character table looks like:
 
+\begin{lstlisting}
+gap> Display(CharacterTable("M11"));
+M11
 
+      2  4  4  1  3  .  1  3  3   .   .
+      3  2  1  2  .  .  1  .  .   .   .
+      5  1  .  .  .  1  .  .  .   .   .
+     11  1  .  .  .  .  .  .  .   1   1
 
+        1a 2a 3a 4a 5a 6a 8a 8b 11a 11b
+     2P 1a 1a 3a 2a 5a 3a 4a 4a 11b 11a
+     3P 1a 2a 1a 4a 5a 2a 8a 8b 11a 11b
+     5P 1a 2a 3a 4a 1a 6a 8b 8a 11a 11b
+    11P 1a 2a 3a 4a 5a 6a 8a 8b  1a  1a
+
+X.1      1  1  1  1  1  1  1  1   1   1
+X.2     10  2  1  2  . -1  .  .  -1  -1
+X.3     10 -2  1  .  .  1  A -A  -1  -1
+X.4     10 -2  1  .  .  1 -A  A  -1  -1
+X.5     11  3  2 -1  1  . -1 -1   .   .
+X.6     16  . -2  .  1  .  .  .   B  /B
+X.7     16  . -2  .  1  .  .  .  /B   B
+X.8     44  4 -1  . -1  1  .  .   .   .
+X.9     45 -3  .  1  .  . -1 -1   1   1
+X.10    55 -1  1 -1  . -1  1  1   .   .
+
+A = E(8)+E(8)^3
+  = Sqrt(-2) = i2
+B = E(11)+E(11)^3+E(11)^4+E(11)^5+E(11)^9
+  = (-1+Sqrt(-11))/2 = b11
+\end{lstlisting}
+
+Thus the character table of the Mathieu group $M_{11}$ is
+given by
+\begin{center}
+		\begin{tabular}{|c|cccccccccc|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 10 & 2 & 1 & 2 & 0 & -1 & 0 & 0 & -1 & -1 \tabularnewline
+			$\chi_{3}$ & 10 & -2 & 1 & 0 & 0 & 1 & $\alpha$ & $-\alpha$ & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 10 & -2 & 1 & 0 & 0 & 1 & $-\alpha$ & $\alpha$ & -1 & -1\tabularnewline
+		    $\chi_{5}$ & 11 & 3 & 2 &-1 & 1 & 0 & -1 & -1 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 16 & 0 & -2 & 0 & 1 & 0 & 0 & 0 & $\beta$ & $1/\beta$\tabularnewline
+			$\chi_{7}$ & 16 & 0 & -2 & 0 & 1 & 0 & 0 & 0 & $1/\beta$ & $\beta$\tabularnewline
+			$\chi_{8}$ & 44 & 4 &-1 & 0 &-1 & 1 & 0 & 0 & 0 & 0\tabularnewline
+			$\chi_{9}$ & 45 & -3 & 0 & 1 & 0 & 0 &-1 &-1 &  1 & 1\tabularnewline
+			$\chi_{10}$ & 55 & -1 & 1 & -1 & 0 & -1 & 1 & 1 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}    
+\end{center}
+where $\alpha=\sqrt{-2}$ and $\beta=\frac{-1-\sqrt{-11}}{2}$. 
+
+The largest sporadic simple group is the \textbf{Monster group} $M$ and has order
+\[
+808017424794512875886459904961710757005754368000000000, 
+\]
+which is roughly $8\times 10^{53}$. 
+The monster group was predicted by Fischer and Griess. 
+Griess proved the existence of the Monster group realizing it as
+the automorphism group of a certain space of dimension 196884. 
+The group $M$ can be represented as
+a subgroup of $\GL_{196883}(\C)$. It has 194 conjugacy classes, so 
+the character table is a $194\times 194$ array. 
