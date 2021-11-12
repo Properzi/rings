@@ -108,8 +108,12 @@ Two applications:
 \end{proposition}
 
 \begin{proof}
-    Let $\lambda$ be an eigenvector of $T$. Then $T-\lambda\id$ is invariant and it is 
-    not bijective. Thus $T-\lambda\id=0$ by Schur's lemma.
+    Let $\lambda$ be an eigenvector of $T$. Then $T-\lambda\id$ is invariant, as 
+    \[
+    (T-\lambda\id)\rho_g=T\rho_g-\lambda\rho_g=\rho_g(T-\lambda\id)
+    \]
+    for all $g\in G$ since $T$ is invariant. By definition, 
+    $T-\lambda\id$ is not bijective. Thus $T-\lambda\id=0$ by Schur's lemma.
 \end{proof}
 
 \begin{proposition}
@@ -123,15 +127,26 @@ Two applications:
     \[
     T\rho_g=\rho_h\rho_g=\rho_{hg}=\rho_{gh}=\rho_g\rho_h=\rho_gT.
     \]
-    By Schur's lemma, there exists $\lambda_h\in\C$ such that $\rho_h=\lambda_h\id$. If $v\in V\setminus\{0\}$, 
-    then $V=\langle v\rangle$, as $\rho$ is irreducible. 
+    By the previous proposition, 
+    there exists $\lambda_h\in\C$ such that $\rho_h=\lambda_h\id$. If $v\in V\setminus\{0\}$, 
+    then $V=\langle v\rangle$. In fact, since 
+    $\langle v\rangle$ is a non-zero invariant subspace of $V$ and $\rho$ is irreducible, 
+    it follows that $V=\langle v\rangle$. 
 \end{proof}
 
 \topic{Characters}
 
-This lecture is devoted to study character theory. We prove
-the first Schur orthogonality relation and present 
-several applications.
+This lecture is devoted to study character theory. Fix a group and consider
+(matrix) representations of groups. How can we study those matrices? Since 
+equivalence of representations translates into equivalence of matrices, 
+it makes sense to use linear algebra. We can use 
+the characteristic polynomial of the matrix, 
+\[
+A\in\C^{n\times n}\rightsquigarrow \chi_A(X)=a_0+a_1X+\cdots+a_nX^n\in \C[X], 
+\]
+or any of the numbers $a_0,\dots,a_n\in\C$, as all of them are indeed invariants of the matrix $A$.
+The determinant and the trace of $A$ are examples of such numbers. In the context of group representations,  
+the trace is particularly interesting. 
 
 \begin{definition}
 	\index{Character}
@@ -361,13 +376,15 @@ for all $v\in V$.
 	=\psi_hT^{\#}(v).
       \end{align*}
 
-	  If $T\in\Hom_{G}(V,V)$, then 
-      \[
+    It is a routine calculation to show that $T\mapsto T^{\#}$ is a linear map. The map
+    $T\mapsto T^{\#}$ is surjective since 
+    if $T\in\Hom_G(V,V)$, then  
+	\[
 	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g(v)
 	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
 	=T(v)
       \]
-      for all $v\in V$.
+    holds for all $v\in V$, so $T^{\#}=T$.  
 \end{proof}
 
 If $\rho\colon G\to\GL(V)$ and $\psi\colon
