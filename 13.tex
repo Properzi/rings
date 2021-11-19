@@ -328,19 +328,24 @@ donde $\iota$ es la inclusión y $\pi$ es el morfismo canónico, 	el teorema\dot
 
 \topic{Smith's normal form}
 
-Para terminar el capítulo veremos un algoritmo que nos permite calcular
-efectivamente los factores invariantes de un módulo finitamente generado. Aunque lo que haremos puede hacerse sobre dominios
-de ideales principalers, nos concentraremos únicamente en el caso
-en que $R$ sea un dominio euclidiano, ya que solamente en este contexto el algoritmo es constructivo.
- 
-Si $M$ es un módulo finitamente generado y $\{m_1,\dots,m_k\}$ es
-un conjunto de generadores,  
-existe un epimorfismo $\varphi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$. Por el primer teorema de isomorfismos, 
+We finish the course with an algorithm that allows us to understand the
+structure of certain finitely generated modules.  We will discuss the case of
+modules over euclidean domains, as in this case the algorithm is constructive. 
+
+
+Let $M$ be a finitely generated module and $\{m_1,\dots,m_k\}$ be a set of
+generators.  There exists a surjective module homomorphism 
+\[
+	\varphi\colon R^k\to M, 
+	\quad
+	(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i,
+\]
+and hence 
 $M\simeq R^k/\ker\varphi$. 
-El submódulo $\ker\varphi$ es el \textbf{submódulo de relaciones} de $M$. 
-Como $R$ es en particular un dominio de ideales
-principales y $M$ es finitamente generado, $\ker\varphi$ es también finitamente generado. Sea 
-$\{e_1,\dots,e_l\}$ un conjunto de generadores de $\ker\varphi$, digamos 
+The submodule $\ker\varphi$ is the \textbf{relations submodule} of $M$. 
+Since $R$ is an euclidean domain, $R$ is a principal domain. Since 
+$M$ is finitely generated, then so is $\ker\varphi$. Let 
+$\{e_1,\dots,e_l\}$ be a generating set of $\ker\varphi$, say 
 \begin{align*}
 e_1&=(a_{11},a_{12},\dots,a_{1k}),\\
 e_2&=(a_{21},a_{22},\dots,a_{2k}),\\
@@ -348,30 +353,40 @@ e_2&=(a_{21},a_{22},\dots,a_{2k}),\\
 e_l&=(a_{l1},a_{l2},\dots,a_{lk}).	
 \end{align*}
 
-La matriz $A=(a_{ij})_{1\leq i\leq l,1\leq j\leq k}$ es la 
-\textbf{matriz de relaciones} de $M$ con respecto a los conjuntos $\{m_1,\dots,m_k\}$ y $\{e_1,\dots,e_l\}$. 
-Veamos algunas propiedades de la matriz de relaciones.
-\begin{enumerate}
-\item Si $P\in R^{l\times l}$ es inversible, entonces las filas $\{f_1,\dots,f_l\}$ de la matriz $PA$ generan $\ker\varphi$. Además $PA$ es la matriz de relaciones
-con respecto a $\{m_1,\dots,m_k\}$ y $\{f_1,\dots,f_l\}$. 
-\item Si $Q\in R^{k\times k}$ es inversible con 
-$Q^{-1}=(q_{ij})$ y para cada
-$j\in\{1,\dots,k\}$ se define  
-$n_j=\sum_{i=1}^k q_{ij}\cdot m_i$, el conjunto $\{n_1,\dots,n_k\}$ genera a $M$ y las 
-filas de la matriz $AQ$ generan $\ker\varphi$. Además $AQ$ es la matriz de relaciones respecto de $\{n_1\dots,n_k\}$.  
-\end{enumerate}
+The matrix $A=(a_{ij})_{1\leq i\leq l,1\leq j\leq k}$ is the 
+\textbf{relations matrix} of $M$ with respect to $\{m_1,\dots,m_k\}$ 
+and $\{e_1,\dots,e_l\}$. 
 
-Para demostrar la primera afirmación supongamos que $P=(p_{ij})$. Las filas de la matriz $PA$ son entonces
-$f_1,\dots,f_l$, donde 
+\begin{claim}
+		If $P\in R^{l\times l}$ is invertible, then the rows
+		$\{f_1,\dots,f_l\}$ of $PA$ generate $\ker\varphi$. Moreover, $PA$ is
+		the relations matrix with respect to $\{m_1,\dots,m_k\}$ and
+		$\{f_1,\dots,f_l\}$. 
+\end{claim}
+
+%Some properties:
+%\begin{enumerate}
+%	\item If $P\in R^{l\times l}$ is invertible, then the rows
+%		$\{f_1,\dots,f_l\}$ of $PA$ generate $\ker\varphi$. Moreover, $PA$ is
+%		the relations matrix with respect to $\{m_1,\dots,m_k\}$ and
+%		$\{f_1,\dots,f_l\}$. 
+%	\item If $Q\in R^{k\times k}$ is invertible and $Q^{-1}=(q_{ij})$ and for
+%		each $j\in\{1,\dots,k\}$ we define $n_j=\sum_{i=1}^k q_{ij}\cdot m_i$,
+%		the set $\{n_1,\dots,n_k\}$ generates $M$ and the rows of 
+%$AQ$ generate $\ker\varphi$. Moreover, $AQ$ is the relations matrix with respect to $\{n_1\dots,n_k\}$.  
+%\end{enumerate}
+
+Let us prove the claim. Assume that $P=(p_{ij})$. The rows of $PA$ are 
+%$f_1,\dots,f_l$, where 
 \begin{align*}
 f_1 &= p_{11}e_1+\cdots+p_{1l}e_l,\\
 f_2 &= p_{21}e_1+\cdots+p_{2l}e_l,\\
 &\phantom{=}\vdots\\
 f_l &= p_{l1}e_1+\cdots+p_{ll}e_l.	
 \end{align*}
-Además $f_j\in\ker\varphi$ para todo $j\in\{1,\dots,l\}$. 
-Como $P$ es inversible, $\{f_1,\dots,f_l\}$ es un conjunto de generadores de $\ker\varphi$, pues
-cada $e_j$ es combinación lineal de los $f_i$,  
+Moreover, $f_j\in\ker\varphi$ for all $j\in\{1,\dots,l\}$. 
+Since $P$ is invertible, the set $\{f_1,\dots,f_l\}$ generates $\ker\varphi$. Indeed, each 
+$e_j$ is a linear combination of the $f_i$'s,  
 \[
 \begin{pmatrix}
 e_1\\
@@ -386,9 +401,18 @@ f_2\\
 f_l
 \end{pmatrix}.
 \]
-En particular, $PA$ es la matriz de relaciones respecto de $\{m_1,\dots,m_k\}$ y $\{f_1,\dots,f_l\}$.  
+In particular, $PA$ is the relations matrix with respect to 
+$\{m_1,\dots,m_k\}$ and $\{f_1,\dots,f_l\}$.  
 
-Demostremos ahora la segunda afirmación. Como
+\begin{claim}
+	If $Q\in R^{k\times k}$ is invertible and $Q^{-1}=(q_{ij})$ and for each
+	$j\in\{1,\dots,k\}$ we define $n_j=\sum_{i=1}^k q_{ij}\cdot m_i$, the set
+	$\{n_1,\dots,n_k\}$ generates $M$ and the rows of $AQ$ generate
+	$\ker\varphi$. Moreover, $AQ$ is the relations matrix with respect to
+	$\{n_1\dots,n_k\}$.  
+\end{claim}
+
+Now we prove the claim. Since 
 \[
 \begin{pmatrix}
 n_1\\
@@ -403,8 +427,8 @@ m_2\\
 m_k
 \end{pmatrix},
 \]
-entonces
-\begin{align*}
+it follows that 
+\begin{align*} 
 \begin{pmatrix}
 0\\
 0\\
@@ -423,7 +447,7 @@ m_k
 	n_2\\
 	\vdots\\
 	n_k
-\end{pmatrix},
+\end{pmatrix}.
 %=(AQ)Q^{-1}\begin{pmatrix}
 %	m_1\\
 %	m_2\\
@@ -437,11 +461,12 @@ m_k
 %0	
 %\end{pmatrix}.
 \end{align*}
-lo que nos dice que las filas de la matriz $AQ$ son relaciones respecto del conjunto de generadores $\{n_1,\dots,n_k\}$. 
-Sea $\psi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot n_i$.  
-Veamos que las filas de $AQ$ generan el módulo de relaciones $\ker\psi$ respecto de $\{n_1,\dots,n_k\}$. 
-Si $(r_1,\dots,r_k)\in \ker\psi$, entonces
-$\sum_{i=1}^k r_i\cdot n_i=0$. Si escribimos esta fórmula matricialmente,  
+This implies that the rows of $AQ$ are relations with respect to the generating set 
+$\{n_1,\dots,n_k\}$. 
+Let $\psi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot n_i$.  
+Let us prove that the rows of $AQ$ generate $\ker\psi$ with respect to $\{n_1,\dots,n_k\}$. 
+If $(r_1,\dots,r_k)\in \ker\psi$, then 
+$\sum_{i=1}^k r_i\cdot n_i=0$. Write 
 \[
 \begin{pmatrix}
 0\\
@@ -454,14 +479,18 @@ m_1\\
 m_2\\
 \vdots\\
 m_k	
-\end{pmatrix},
+\end{pmatrix}.
 \]
-donde conviene recordar que cada $e_j$ es un elemento de $R^k$, entonces 
+We remark that each $e_j$ belongs to $R^k$. Thus 
 \[
 (r_1\cdots r_k)Q^{-1} = \left(\sum_{i=1}^k r_i\cdot q_{i1},\sum_{i=1}^k r_i\cdot q_{2i},\dots,\sum_{i=1}^k r_i\cdot q_{ki}\right)\in \ker\varphi.
 \]
-Como $\ker\varphi$ está generado por el conjunto $\{e_1,\dots,e_l\}$, existen  
-$s_1,\dots,s_l\in R$ tales que $(r_1\cdots r_k)Q^{-1}=\sum_{i=1}^l s_i\cdot e_i$, es decir  
+Since $\ker\varphi$ is generated by $\{e_1,\dots,e_l\}$, there exist 
+$s_1,\dots,s_l\in R$ such that 
+\[
+	(r_1\cdots r_k)Q^{-1}=\sum_{i=1}^l s_i\cdot e_i,
+\]
+that is 
 \[
 (r_1\dots r_k)Q^{-1}=(s_1\cdots s_l)\begin{pmatrix}e_1\\\vdots\\ e_l\end{pmatrix}
 =(s_1\cdots s_l)\begin{pmatrix}
@@ -471,55 +500,60 @@ a_{l1} & a_{l2} & \cdots & a_{lk}
 \end{pmatrix}
 .
 \]
-Si reescribimos esta fórmula como
+Rewritting this expression as 
 \[
 (r_1\cdots r_k)=(s_1\cdots s_l)AQ,
 \]
-obtenemos entonces que $(r_1,\dots,r_k)$ es combinación lineal de las filas de $AQ$, pues
+we conclude that  $(r_1,\dots,r_k)$ is a linear combination of the rows of $AQ$, as 
 \begin{align*}
 (r_1,\dots,r_k)&=\left(\sum_{i=1}^l s_i\cdot x_{i1},\dots,\sum_{i=1}^l s_i\cdot x_{ik}\right)
 =\sum_{i=1}^l s_i\cdot (x_{11},\dots,x_{1k}).
 \end{align*}
-En conclusión, $\{n_1,\dots,n_k\}$ es un conjunto de generadores de $M$ y las filas de $AQ$ generan el correspondiente
-submódulo de relaciones y $AQ$ es la matriz de relaciones respecto de $\{n_1,\dots,n_k\}$ y $\{e_1,\dots,e_l\}$. 
+Therefore $\{n_1,\dots,n_k\}$ generates $M$ and the rows of $AQ$ generate the
+corresponding relations submodule and $AQ$ is the relations matrix with respect
+to $\{n_1,\dots,n_k\}$ and $\{e_1,\dots,e_l\}$. 
 
 \begin{proposition}
-Sea $A$ la matriz de relaciones de un módulo $M$. 
-Si existen matrices inversibles $P\in R^{l\times l}$ y $Q\in R^{k\times k}$ tales que
-\[
-PAQ=
-\begin{pmatrix}
-a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
-0 & a_2 & \cdots & \cdot & \cdot & \cdots & 0\\
-\vdots && \ddots &  & & & \vdots\\	
-0 & \cdot & \cdots & a_r & \cdot & \cdots & 0\\	
-0 & \cdot & \cdots & \cdot & 0 & \cdots & 0\\	
-\vdots &&&&&\ddots &\vdots\\
-0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
-\end{pmatrix}
-\]
-donde $a_i\ne0$ para todo $i\in\{1,\dots,r\}$ y $a_i\mid a_{i+1}$ para todo $i\in\{1,\dots,r-1\}$,  
-entonces 
-\[
-M\simeq R/(a_1)\oplus\cdots\oplus R/(a_r)\oplus R^{n-r}.
-\]
+	Let $A$ be the relations matrix of a module $M$. 
+	If there exist invertible matrices $P\in R^{l\times l}$ and $Q\in R^{k\times k}$ such that 
+	\[
+		PAQ=
+		\begin{pmatrix}
+			a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
+			0 & a_2 & \cdots & \cdot & \cdot & \cdots & 0\\
+			\vdots && \ddots &  & & & \vdots\\	
+			0 & \cdot & \cdots & a_r & \cdot & \cdots & 0\\	
+			0 & \cdot & \cdots & \cdot & 0 & \cdots & 0\\	
+			\vdots &&&&&\ddots &\vdots\\
+			0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
+		\end{pmatrix}
+	\]
+	where $a_i\ne0$ for all $i\in\{1,\dots,r\}$ and  $a_i\mid a_{i+1}$ for all
+	$i\in\{1,\dots,r-1\}$,  then 
+	\[
+		M\simeq R/(a_1)\oplus\cdots\oplus R/(a_r)\oplus R^{n-r}.
+	\]
 \end{proposition}
 
 \begin{proof}
-	Sabemos que $PAQ$ es la matriz de relaciones con respecto a un cierto conjunto de generadores $\{m_1,\dots,m_k\}$ de $M$
-	y respecto al submódulo de relaciones generado por las filas de $PAQ$. 
-	Si $\varphi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, 
-	entonces $R^k/\ker\varphi\simeq M$, pues $\varphi$ es un epimorfismo. Para $j\in\{r+1,\dots,k\}$ sea $a_j=0$.
-	Sea $\psi\colon R^k\to R/(a_1)\oplus\cdots\oplus R/(a_k), (s_1,\dots,s_k)\mapsto (s_1+(a_1),\dots,s_k+(a_k))$. 
-	 
-	Un cálculo sencillo muestra que 
+	The matrix $PAQ$ is the relations matrix with respect to 
+	the generating set $\{m_1,\dots,m_k\}$ de $M$ and respect to the relations submodule 
+	given by the rows of $PAQ$.  If $\varphi\colon R^k\to
+	M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, then 
+	$R^k/\ker\varphi\simeq M$, as $\varphi$ is a surjective homomorphism. For each 
+	$j\in\{r+1,\dots,k\}$ let $a_j=0$.  Let 
 	\[
-	\ker\psi=(a_1)\oplus\cdots\oplus (a_k)
+		\psi\colon R^k\to R/(a_1)\oplus\cdots\oplus R/(a_k),\quad
+		(s_1,\dots,s_k)\mapsto (s_1+(a_1),\dots,s_k+(a_k)). 
 	\]
-	y luego 
+	A straighforward calculation shows that 
+	\[
+		\ker\psi=(a_1)\oplus\cdots\oplus (a_k).
+	\]
+	Thus 
 	$R^k/\ker\psi\simeq \oplus_{i=1}^k R/(a_i)$. 
 	
-	Dejamos como ejercicio demostrar que $\ker\varphi=\ker\psi$. 
+	It is an exercise to show that $\ker\varphi=\ker\psi$. 
 	
 % 	Veamos que $\ker\psi\subseteq\ker\varphi$. 
 % 	Si $(s_1\cdot a_1,\dots,s_k\cdot a_k)\in (a_1)\oplus\cdots\oplus (a_k)$, entonces
@@ -533,15 +567,14 @@ M\simeq R/(a_1)\oplus\cdots\oplus R/(a_r)\oplus R^{n-r}.
 % 	\]
 % 	pues $PAQ$ es la matriz de relaciones de $M$ con respecto a $\{m_1,\dots,m_k\}$. 
 
-    En conclusión, 
- 	tenemos que $M\simeq R/(a_1)\oplus\cdots\oplus R/(a_k)$. Para completar la demostración hay que 
- 	observar que $R/(a_i)\simeq R$ para todo $i\in\{r+1,\dots,k\}$. 
+	Therefore $M\simeq R/(a_1)\oplus\cdots\oplus R/(a_k)$. To finish the proof
+	we need to note that $R/(a_i)\simeq R$ for all $i\in\{r+1,\dots,k\}$. 
 \end{proof}
 
-Veamos cómo encontrar las matrices $P$ y $Q$. La descomposición se conoce
-como la \textbf{forma normal de Smith}. 
-Para simplificar la presentación supondremos que $R$ es un domino euclidiano con norma $\varphi$. 
-Transformaremos nuestra matriz mediante las siguientes operaciones:
+The decomposition given in the previous proposition is known as 
+the \textbf{Smith normal form} of the matrix $M$. 
+How can we find the matrices $P$ and $Q$? 
+Consider the following matrix operations: 
 \begin{enumerate}
 	\item Intercambiar las filas $i$-ésima y la $j$-ésima, es decir $F_i\leftrightarrow F_j$.
 	\item Reemplazar la fila $F_i$ por $F_i+\lambda F_j$ para algún $\lambda\in R$ y $j\ne i$.
