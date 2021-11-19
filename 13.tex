@@ -576,27 +576,29 @@ the \textbf{Smith normal form} of the matrix $M$.
 How can we find the matrices $P$ and $Q$? 
 Consider the following matrix operations: 
 \begin{enumerate}
-	\item Intercambiar las filas $i$-ésima y la $j$-ésima, es decir $F_i\leftrightarrow F_j$.
-	\item Reemplazar la fila $F_i$ por $F_i+\lambda F_j$ para algún $\lambda\in R$ y $j\ne i$.
-	\item Intercambiar las columnas $i$-ésima y la $j$-ésima, es decir $C_i\leftrightarrow C_j$.
-	\item Reemplazar la columna $C_i$ por $C_i+\lambda C_j$ para algún $\lambda\in R$ y $j\ne i$. 
+	\item Switch the $i$-th row and $j$-th row, that is $F_i\leftrightarrow F_j$.
+	\item Replace row $F_i$ by $F_i+\lambda F_j$ for some $\lambda\in R$ and $j\ne i$.
+	\item Switch the $i$-th column and the $j$-th column, that is $C_i\leftrightarrow C_j$.
+	\item Replace column $C_i$ by $C_i+\lambda C_j$ for some $\lambda\in R$ and $j\ne i$. 
 \end{enumerate}
-Todas estas operaciones son inversibles. Por ejemplo, la operación (1) corresponde a multiplicar
-a izquierda a la matriz $A$ por una matriz de permutación. La operación (2) corresponde 
-a multiplicar a izquierda a la matriz $A$ por $I+\lambda E_{ij}$, donde 
+These operations are invertible. For example, the first operation
+corresponds to multiply $A$ on the left by a permutation matrix. 
+a izquierda a la matriz $A$ por una matriz de permutación. The second
+operation corresponds to multiply $A$ by $I+\lambda E_{ij}$ on the left, 
+where 
 \[
 (E_{ij})_{kl}=\begin{cases}
-1 & \text{si $i=k$ y $j=l$},\\
-0 & \text{en otro caso}.	
+1 & \text{if $i=k$ and $j=l$},\\
+0 & \text{otherwise}.	
 \end{cases}
 \]
-Similarmente, las operaciones de columnas se corresponden con multiplicar a derecha por matriz de 
-permutación o matrices de la forma $I+\lambda E_{ij}$. 
+Similarly, column operations correspnd to multiply on the right the matrix $A$
+either by a permutation matrix or a matrix of the form $I+\lambda E_{ij}$. 
   
-\begin{theorem}[forma normal de Smith]
-\index{Forma normal!de Smith}
-Sea $(R,\varphi)$ un dominio euclidiano. Si $A\in R^{l\times k}$,  
-existen matrices inversibles $P\in R^{l\times l}$ y $Q\in R^{k\times k}$ tales que
+\begin{theorem}[Smith's normal form]
+\index{Smith's normal form}
+Let $R$ be an euclidean domain. If $A\in R^{l\times k}$,  
+there exists invertible matrices $P\in R^{l\times l}$ and $Q\in R^{k\times k}$ such that 
 \[
 PAQ=\begin{pmatrix}
 a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
@@ -608,10 +610,10 @@ a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
 0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
 \end{pmatrix}
 \]
-con $a_1\cdots a_k\ne 0$ y $a_i\mid a_{i+1}$ para todo $i\in\{1,\dots,r-1\}$. 
+where $a_1\cdots a_k\ne 0$ and $a_i\mid a_{i+1}$ for all $i\in\{1,\dots,r-1\}$. 
 \end{theorem}
 
-\begin{proof}[Bosquejo de la demostración]
+\begin{proof}[Sketch of the proof]
 Vamos a demostrar que podemos transformar a la matriz $A$ en una matriz de la forma
 \begin{equation*}
 B=\begin{pmatrix}
