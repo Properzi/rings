@@ -331,5 +331,32 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
 % \section*{Lecture 10}
 % \section*{Lecture 11}
 % \section*{Lecture 12}
-%\section*{Lecture 13}
+\section*{Lecture 13}
 
+\begin{sol}{xca:AX=b}
+	The Smith's normal form yields 
+	\[
+		P=\begin{pmatrix}
+			1 & 1 & 0\\
+			1 & 0 & 0\\
+			-1 & -2 & 1
+		\end{pmatrix},
+		\quad
+		Q=\begin{pmatrix}
+			1 & -1 & 1\\
+			0 & 0 & 1\\
+			0 & -1 & 2
+		\end{pmatrix},\quad
+		S=PAQ=\begin{pmatrix}
+			1 & 0 & 0\\
+			0 & 1 & 0\\
+			0 & 0 & 0
+		\end{pmatrix}.
+	\]
+	The solution of the integer linear system is then
+	$X=\begin{pmatrix}
+		1 + t\\
+		t\\
+		-5+2t
+	\end{pmatrix}$ for $t\in\Z$. 
+\end{sol}
