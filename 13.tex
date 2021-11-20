@@ -610,11 +610,14 @@ a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
 0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
 \end{pmatrix}
 \]
-where $a_1\cdots a_k\ne 0$ and $a_i\mid a_{i+1}$ for all $i\in\{1,\dots,r-1\}$. 
+where $a_1\cdots a_k\ne 0$ and $a_i\mid a_{i+1}$ for all $i\in\{1,\dots,r-1\}$.
+Moreover, the elements $a_1,\dots,a_r$ are unique up to multiplication by
+units. 
 \end{theorem}
 
 \begin{proof}[Sketch of the proof]
-Vamos a demostrar que podemos transformar a la matriz $A$ en una matriz de la forma
+	We only prove the existence. Let $(R,\varphi)$ be an euclidean domain.  
+	We need to show that $A$ can be turned into a matrix of the form 
 \begin{equation*}
 B=\begin{pmatrix}
 	b_{11} & 0 & \cdots & 0\\
@@ -623,7 +626,8 @@ B=\begin{pmatrix}
 	0 & b_{n2} & \cdots & b_{nm}
 \end{pmatrix}
 \end{equation*}
-tal que cada $b_{ij}$ es divisible por $b_{11}$. Repetimos el mismo procedimiento en la submatriz 
+where each  $b_{ij}$ is divisible by $b_{11}$. Then we apply the same procedure
+to the submatrix 
 \[
 \begin{pmatrix}
 	\frac{b_{22}}{b_{11}} & \cdots & \frac{b_{2m}}{b_{11}}\\
@@ -631,11 +635,11 @@ tal que cada $b_{ij}$ es divisible por $b_{11}$. Repetimos el mismo procedimient
 	\frac{b_{n2}}{b_{11}} & \cdots & \frac{b_{nm}}{b_{11}}
 \end{pmatrix}
 \]
-e iteramos el algoritmo hasta que no podamos continuar. 
+and repeat the method until we cannot continue. 
 
-Veamos cómo conseguir la matriz $B$. 
-Al aplicar operaciones de fila y columna podemos suponer que el elemento de la matriz $A$ 
-de menor norma está en la posición
+Let us show how to get the matrix $B$. 
+By applying row and column operations we may assume that the coefficient of $A$ 
+with minimal norm appears in position
 $(1,1)$.  
 Si algún $a_{i1}$ no es divisible por $a_{11}$, escribimos  
 $a_{i1}=a_{11}u+r$ para $u\in R$ y $r\in R$ tal que $\varphi(r)<\varphi(a_{11})$. Aplicamos entonces la transformación
@@ -666,10 +670,11 @@ $F_1\leftarrow F_1+F_i$ o bien la operación $C_1\leftarrow C_1+C_j$ y repetimos
 el procedimiento.
 \end{proof}
 
-Veamos algunos ejemplos. 
+A detailed exposition of the Smith normal form and the uniqueness can be found in\dots
+Here we will explain the algorithm with examples. 
 
 \begin{example}
-Sea 
+Let 
 \[
 A=\begin{pmatrix}
 	2 & 5 & 3\\
@@ -677,8 +682,9 @@ A=\begin{pmatrix}
 	3 & 1 & 0
 \end{pmatrix}\in\Z^{3\times3}.
 \]	
-Vamos a encontrar la forma normal de Smith de la matriz $A$. Como el elemento de menor norma se encuentra en la posición $(3,2)$,
-hacemos las operaciones $F_1\leftrightarrow F_3$ y $C_1\leftrightarrow C_2$ y nos queda la matriz
+Let us compute the Smith's normal form of $A$. $A$. 
+Since the element with smallest norm appears in position $(3,2)$,
+we apply the operations $F_1\leftrightarrow F_3$ and  $C_1\leftrightarrow C_2$ to transform $A$ into 
 \[
 \begin{pmatrix}
 	1 & 3 & 0\\
