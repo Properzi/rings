@@ -836,3 +836,77 @@ Luego el grupo abeliano $M/K$ puede presentarse con la base $\{n_1,n_2,n_3,n_4\}
 $2n_1=0$, $2n_2=0$ y $44n_3=0$. En conclusión, $M/K\simeq\Z\times (\Z/2)^2\times (\Z/44)$. 
 \end{example}
 
+\begin{example}
+	Let $A=\begin{pmatrix}
+		1 & -1 & 1\\
+		1 & 0 & 2
+	\end{pmatrix}$ and $b=\begin{pmatrix} 4 \\ 5\end{pmatrix}$. Let us solve
+	the linear system $AX=b$ in the integers. We need to compute
+	the Smith's normal form of $A$. For example, 
+	\[
+	P=\begin{pmatrix}
+		0 & 1\\
+		-1 & 1
+	\end{pmatrix},\quad
+	Q=\begin{pmatrix}
+		0 & -2 & 2\\
+		0 & 0 & 1\\
+		0 & 1 & -1
+	\end{pmatrix},
+	\quad
+	S=PAQ=\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & 1 & 0
+	\end{pmatrix}.
+	\]
+	Note that the matrix $S$ is unique, but not the 
+	matrices $P$ and $Q$. To solve $AX=b$ we proceed as follows. Let 
+	$Y=Q^{-1}X$. Then $AX=b$ implies that 
+	\[
+		SY=(PAQ)(Q^{-1}X)=Pb=\begin{pmatrix} 5 \\ 1\end{pmatrix}.
+	\]	
+	Write $X=\begin{pmatrix}
+		x\\
+		y\\
+		z
+	\end{pmatrix}$. Since $Q^{-1}=\begin{pmatrix}
+		1 & 0 & 2\\
+		0 & 1 & 1\\
+		0 & 1 & 0
+	\end{pmatrix}$, it follows that  
+	$Y=Q^{-1}X=\begin{pmatrix}
+		x+2z\\
+		y+z\\
+		y
+	\end{pmatrix}$ and hence $SY=\begin{pmatrix}5\\1\end{pmatrix}$ turns into 
+	\[
+		\begin{pmatrix}
+			x+2z\\
+			y+z
+		\end{pmatrix}
+		=
+	\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & 1 & 0
+	\end{pmatrix}\begin{pmatrix}
+		x+2z\\
+		y+z\\
+		y
+	\end{pmatrix}
+	=\begin{pmatrix}
+		5\\
+		1
+	\end{pmatrix}.
+	\]
+	It follows that the solution of $AX=b$ is then $X=\begin{pmatrix}
+		x\\
+		y\\
+		z
+	\end{pmatrix}
+	=\begin{pmatrix}
+		5-2z\\
+		1-z\\
+		z
+	\end{pmatrix}$ for $z\in\Z$. 
+\end{example}
+
