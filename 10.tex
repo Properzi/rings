@@ -498,16 +498,65 @@ Another important property of free modules: free modules are
 \emph{projective}. 
 
 \begin{proposition}
-	If $M$ is a free module and $f\in\Hom_R(N,T)$ is surjective and $h\in\Hom_R(M,T)$, then 
-	there exists $\varphi\in\Hom_R(M,N)$ such that $f\circ \varphi=h$. 
-	% todo: diagrama
+	\label{pro:free=>projective}
+	If $M$ is a free module and $f\in\Hom_R(N,T)$ is surjective and
+	$h\in\Hom_R(M,T)$, then there exists $\varphi\in\Hom_R(M,N)$ such that
+	$f\varphi=h$. 
 \end{proposition}
 
 \begin{proof}
-Let $\{m_i:i\in I\}$ be a basis of $M$. Since $f$ is surjective, for each $i\in I$ there exists $n_i\in N$ such that
- $f(n_i)=h(m_i)$. Since  
-$M$ is free, there exists a unique homomorphism $\varphi\colon M\to N$ 
-such that $\varphi(m_i)=n_i$ for all $i\in I$. Thus homomorphism is such that $f\varphi=h$. 
+	Let $\{m_i:i\in I\}$ be a basis of $M$. Since $f$ is surjective, for each
+	$i\in I$ there exists $n_i\in N$ such that $f(n_i)=h(m_i)$. Since  $M$ is
+	free, there exists a unique homomorphism $\varphi\colon M\to N$ such that
+	$\varphi(m_i)=n_i$ for all $i\in I$. Thus homomorphism is such that
+	$f\varphi=h$. 
+\end{proof}
+
+A consequence of the previous proposition
+that we will use later:
+
+\begin{proposition}
+	Let 
+	\[
+	   \begin{tikzcd}
+        0 & A & B & C & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow["f", from=1-2, to=1-3]
+        \arrow["g", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}
+	\]
+	be an exact sequence of modules.  If $C$ is free, then $A\oplus C\simeq B$. 
+\end{proposition}
+
+\begin{proof}
+	The previous proposition 
+	implies that there exists a module homomorphism $h\colon C\to B$
+	such that $gh=\id_C$. In fact, let $\{c_i:i\in I\}$ be a basis of $C$.
+	For each $i\in I$ let $b_i\in B$ be such that $g(b_i)=c_i$. The map 
+	$h\colon C\to B$, $h(\sum r_i\cdot c_i)=\sum r_i\cdot b_i$, is a module homomorphism 
+	such that $gh=\id_C$. 
+
+	Let $\varphi\colon A\oplus C\to B$, $(a,c)\mapsto f(a)+h(c)$. A simple
+	calculation shows that $\varphi$ is a module homomorphism. 
+
+	We prove that $\varphi$ is 
+	injective. If $\varphi(a,c)=0$, then $f(a)+h(c)=0$. By applying $g$ we get that
+	$0=g(f(a))+g(h(c))=c$ and hence, since $f$ is injective and
+	$f(a)=0$, is follows that $(a,c)=(0,0)$. 
+		
+	Now we prove that $\varphi$ is surjective. 
+	Let $b\in B$. 
+	We need to find $(a,c)\in A\oplus C$ such that $\varphi(a,c)=b$. 
+	Let $c=g(b)\in C$. Since
+	\[
+		g(b-h(c))=g(b)-gh(c)=g(b)-c,
+	\]
+	it follows that $b-h(c)\in \ker g=f(A)$. This means
+	that $b-h(c)=f(a)$ for some $a\in A$. Now $b\in \varphi(A\oplus C)$, as
+	\[
+		\varphi(a,c)=f(a)+h(c)=b-h(c)+h(c)=b.\qedhere
+	\]
 \end{proof}
 
 \begin{theorem}

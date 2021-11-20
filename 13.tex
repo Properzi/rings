@@ -277,42 +277,48 @@ y en consecuencia $M$ es libre.
 % todo: referencia al libro de lang
 
 \begin{theorem}
-Sea $R$ un dominio de ideales principales. 
-Si $M$ es un módulo finitamente generado, entonces $M=T(M)\oplus F$ con $F\simeq M/T(M)$ libre y finitamente generado. La
-parte de torsión es única y la parte libre es única salvo isomorfismos.
+	\label{thm:free+torsion}
+	Let $R$ be a principal domain. 
+	If $M$ is a finitely generated module, then $M=T(M)\oplus F$, where
+	$F\simeq M/T(M)$ is finitely generated and free. The torsion submodule
+	is unique and $F$ is unique up to isomorphism. 
 \end{theorem}
 
 \begin{proof}
-	Veamos que $T(M/T(M))\simeq\{0\}$. Si $x+T(M)\in T(M/T(M))$, sea $r\in R\setminus\{0\}$ tal que
-	$r\cdot (x+T(M))=T(M)$. Entonces $r\cdot x\in T(M)$, es decir que existe $s\in R\setminus\{0\}$ tal que $s\cdot (r\cdot x)=(sr)\cdot x=0$. 
-	Como $sr\ne 0$, se concluye que $x\in T(M)$. 
-	
-	Como $M$ es finitamente generado, el cociente $M/T(M)$ es también finitamente generado. Como además $M/T(M)$ no tiene torsión, 
-	se concluye que $M/T(M)$ es libre. 
-	Como entonces $M/T(M)$ es proyectivo, la sucesión exacta 
-\[
-\begin{tikzcd}
-	0 & T(M) & M & M/T(M) & 0
-	\arrow[from=1-1, to=1-2]
-	\arrow["\iota", from=1-2, to=1-3]
-	\arrow["\pi", from=1-3, to=1-4]
-	\arrow[from=1-4, to=1-5]
-\end{tikzcd}\]
-donde $\iota$ es la inclusión y $\pi$ es el morfismo canónico, 	el teorema\dots%~\ref{thm:proyectivo} 
-	 implica que $M\simeq T(M)\oplus M/T(M)$. 	
+	We first prove that $T(M/T(M))\simeq\{0\}$. If 
+	$x+T(M)\in T(M/T(M))$, let $r\in R\setminus\{0\}$ be such that 
+	$r\cdot (x+T(M))=T(M)$. Then $r\cdot x\in T(M)$, that is, there exists 
+	$s\in R\setminus\{0\}$ such that $s\cdot (r\cdot x)=(sr)\cdot x=0$. 
+	Since $sr\ne 0$, it follows that $x\in T(M)$. 
+
+	Since $M$ is finitely generated, $M/T(M)$ is finitely generated. Moreover, $M/T(M)$ is torsion-free. 
+	It follows that $M/T(M)$ is free. Consider the exact sequence 
+	\[
+		\begin{tikzcd}
+			0 & T(M) & M & M/T(M) & 0
+			\arrow[from=1-1, to=1-2]
+			\arrow["\iota", from=1-2, to=1-3]
+			\arrow["\pi", from=1-3, to=1-4]
+			\arrow[from=1-4, to=1-5]
+	\end{tikzcd}\]
+	where $\iota$ is the inclusion map and $\pi$ is the canonical map.  Since
+	$M/T(M)$ is free, there exists a module homomorphism $h\colon M/T(M)\to M$
+	such that $\pi h=\id$, see Proposition \ref{pro:free=>projective}. 
+	The previous lemma implies then that $M\simeq
+	T(M)\oplus M/T(M)$. 	
 	 
-	 Para demostrar la unicidad, supongamos que $M=T\oplus L$, donde $T$ es de torsión y $L$ es libre. Primero
-	 demostraremos que $T=T(M)$. Claramente 
-	 $T\subseteq T(M)$. Por otro lado, si $m\in T(M)$, entonces $m=t+l$ para ciertos $t\in T$ y $l\in L$. En particular, 
-	 $r\cdot m=0$ y $s\cdot t=0$ para ciertos $r,s\in R$. Como $R$ es conmutativo, 
-	 \[
-	 0=(rs)\cdot m=(rs)\cdot (t+l)=(rs)\cdot t+(rs)\cdot l=(rs)\cdot l.
-	 \]
-	 y entonces $l\in T(L)$. Pero 
-	 como $L$ es libre, $T(L)=\{0\}$ (pues $T(L)$ es también libre y entonces cualquier elemento $x$  
-	 de una base de $T(L)$ sería tal que $\{x\}$ es linealmente independiente, una contradicción). Luego 
-	 $l=0$ y en consecuencia $m=t\in T$. La unicidad salvo isomorfismo de la parte libre
-	 se obtiene inmediatamente al observar que $M/T(M)$. 
+	Para demostrar la unicidad, supongamos que $M=T\oplus L$, donde $T$ es de torsión y $L$ es libre. Primero
+	demostraremos que $T=T(M)$. Claramente 
+	$T\subseteq T(M)$. Por otro lado, si $m\in T(M)$, entonces $m=t+l$ para ciertos $t\in T$ y $l\in L$. En particular, 
+	$r\cdot m=0$ y $s\cdot t=0$ para ciertos $r,s\in R$. Como $R$ es conmutativo, 
+	\[
+		0=(rs)\cdot m=(rs)\cdot (t+l)=(rs)\cdot t+(rs)\cdot l=(rs)\cdot l.
+	\]
+	y entonces $l\in T(L)$. Pero 
+	como $L$ es libre, $T(L)=\{0\}$ (pues $T(L)$ es también libre y entonces cualquier elemento $x$  
+	de una base de $T(L)$ sería tal que $\{x\}$ es linealmente independiente, una contradicción). Luego 
+	$l=0$ y en consecuencia $m=t\in T$. La unicidad salvo isomorfismo de la parte libre
+	se obtiene inmediatamente al observar que $M/T(M)$. 
 \end{proof}
 
 
