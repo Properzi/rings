@@ -18,11 +18,12 @@ $\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is giv
 
 \begin{lemma}
 Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
-$(E_{ik}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
+$(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
 \end{lemma}
 
 \begin{proof}
-  We compute
+  Assume that $\rho$ is unitary. Then $\rho^{-1}_g=\rho_{g^{-1}}=\rho^*_g=\overline{\rho}_g^T$ for all $g\in G$. 
+  Thus  
   \begin{align*}
       (E_{ki}^\#)_{lj} &= \frac{1}{|G|}\sum_{g\in G}(\psi_{g^{-1}}E_{ki}\rho_g)_{lj}\\
       &=\frac{1}{|G|}\sum_{g\in G}\sum_{p,q}\psi_{lq}(g^{-1})(E_{ki})_{qp}(\rho_{ij}(g))_{pj}\\
@@ -37,7 +38,7 @@ $(E_{ik}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
     Then the following statements hold:
     \begin{enumerate}
         \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ if $\rho$ and $\psi$ are not equivalent.
-        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{jl}}$.
+        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{lj}}$.
     \end{enumerate}
 \end{theorem}
 
@@ -49,7 +50,7 @@ $(E_{ik}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
     
     To prove the second claim, we use the previous lemma:
     \[
-    (E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle
+    (E_{ki}^\#)_{lj}=\langle\rho_{ij},\rho_{kl}\rangle
     =\frac{1}{\dim V}(\trace E_{ki})\delta_{lj}
     =\frac{1}{\dim V}\delta_{ki}\delta_{lj}.\qedhere
     \]
@@ -91,7 +92,8 @@ If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
 \[
 \{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
 \]
-is an orthonormal set.
+is an orthonormal set. In particular, 
+we immediately get the following result:
 
 % \begin{corollary}
 %     If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
@@ -102,16 +104,16 @@ is an orthonormal set.
     A finite group has finitely many classes of irreducible representations. 
 \end{corollary}
 
-\begin{proof}
-    Let $G$ be a finite group. 
-    Every isomorphism class of representations of $G$ contains a unitary representation. Since $\dim L(G)=|G|$, 
-    it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
-    $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
-    irreducible representations of $G$. For each $k$ let $n_k=\deg\rho_k$. Since
-    the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
-    form an orthonormal set of $L(G)$, it follows that
-    $r\leq n_1^2+\cdots n_r^2\leq|G|$.
-\end{proof}
+% \begin{proof}
+%     Let $G$ be a finite group. 
+%     Every isomorphism class of representations of $G$ contains a unitary representation. Since $\dim L(G)=|G|$, 
+%     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
+%     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
+%     irreducible representations of $G$. For each $k$ let $n_k=\deg\rho_k$. Since
+%     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
+%     form an orthonormal set of $L(G)$, it follows that
+%     $r\leq n_1^2+\cdots n_r^2\leq|G|$.
+% \end{proof}
 
 Let $G$ be a finite group. Since $G$ has only finitely many non-equivalent 
 irreducible representation, we will often say
@@ -184,11 +186,10 @@ write $mV=V\oplus\cdots\oplus V$ ($m$-times). Similarly,
 if $\rho$ is a representation, 
 we write $m\rho=\rho\oplus\cdots\oplus\rho$ ($m$-times). 
 
-
 \begin{theorem}
     Let $\rho_1,\dots,\rho_r$ be the irreducible representations of a finite group $G$. If 
 	$\rho=\sum_{i_1}^rm_j\rho_j$ where $m_1,\dots m_r\in\Z_{\geq0}$, then
-    $m_j=\langle \rho_\rho,\rho_j\rangle$ for all $j\in\{1,\dots,r\}$. 
+    $m_i=\langle \chi_\rho,\chi_i\rangle$ for all $i\in\{1,\dots,r\}$. 
 \end{theorem}
 
 \begin{proof}
@@ -212,15 +213,15 @@ is unique and that it is determined (up to equivalence) by its character.
     there is exactly one $j$ such that $m_j=1$ and $m_i=0$ for all $i\ne j$.  
 \end{proof}
 
-% As an example, the representation of $\Sym_3$ given by
-
 \begin{exercise}
     Let $\rho\colon H\to\GL(V)$ be an irreducible
     representation of $H$ and 
     $f\colon G\to H$ be a surjective group homomorphism. Prove that the composition $\rho\circ f\colon G\to\GL(V)$ is an irreducible representation. 
 \end{exercise}
 
-% is not irreducible. as $\chi($
+Recall that the left regular representation of a finite group $G$
+is the group homomorphism $L\colon G\to \GL(V)$, where $V$ is the complex vector space
+with basis $\{g:g\in G\}$ and $L_g(x)=gx$ for all $g,x\in G$. 
 
 \begin{theorem}
     Let $G$ be a finite group and $L$ be its regular representation. 
@@ -237,7 +238,7 @@ is unique and that it is determined (up to equivalence) by its character.
         0 & \text{otherwise}.
     \end{cases}
     \shortintertext{Then}
-    \chi_L(g)=\trace(L_g)=\sum_{i=1}^r(L_g)_{ii}=\begin{cases}
+    \chi_L(g)=\trace(L_g)=\sum_{i=1}^n(L_g)_{ii}=\begin{cases}
         |G| & \text{if $g=1$},\\
         0 & \text{otherwise}.
     \end{cases}
@@ -690,7 +691,7 @@ Compute the character table of $\Sym_4$.
     Compute the character table of the dihedral group of eight elements. 
 \end{exercise}
 
-\topic{An application}
+\topic{An application (optional)}
 
 Let $N$ be a normal subgroup of $G$ 
 and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
@@ -969,7 +970,7 @@ we can use the character table to detect simple groups.
 	is a simple group that has precisely this character table!  
 \end{example}
 
-\topic{Finite simple groups}
+\topic{Finite simple groups (optional)}
 
 Character theory is one of the key tools in the 
 classification of finite simple groups. 
