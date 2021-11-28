@@ -16,48 +16,50 @@ $\rank(N)\leq\rank(F)$.
 	$N=(r)$ for some $r\in R$. If $r=0$, then $N=\{0\}$ and the result holds. If $r\ne 0$, then 
 	$\{r\}$ is basis of $N$ and the result holds.
 	
-	Supongamos ahora que el resultado es válido para todo módulo libre de rango $<n$. 
-	Sea $\{f_1,\dots,f_n\}$ una
-	base de $F$ y sea $F_n=(f_1,\dots,f_{n-1})$. Por hipótesis inductiva, 
-	el submódulo $U=N\cap F_n$ es libre de rango $\leq n-1$. Sea
-	$\{n_1,\dots,n_k\}$ una base de $U$ (por convención, si $U=\{0\}$, entonces $k=0$). Si $f\in F$, existen únicos $r_1,\dots,r_n\in R$ tales que 
+	Assume now that the result holds for all free module of rank $<n$. 
+	Let $\{f_1,\dots,f_n\}$ be basis of $F$ and $F_n=(f_1,\dots,f_{n-1})$. By the inductive hypothesis, 
+	$U=N\cap F_n$ is free of rank $\leq n-1$. Let 
+	$\{n_1,\dots,n_k\}$ be a basis of $U$ (by convention, if $U=\{0\}$, then $k=0$). If 
+	$f\in F$, there exist unique $r_1,\dots,r_n\in R$ such that  
 	\[
 	f=\sum_{i=1}^n r_i\cdot f_i.
 	\]
-	Queda definido 
-	entonces un morfismo 
+	There exists a well-defined homomorphism 
 	\[
 	\varphi\colon F\to R,
 	\quad
 	\sum_{i=1}^nr_i\cdot f_i\mapsto r_n.
 	\] 
-	Si $\varphi(N)=\{0\}$, entonces $N\subseteq (f_1,\dots,f_{n-1})$ y luego $N=U$. 
-	Si $\varphi(N)\ne\{0\}$, entonces $\varphi(N)$ es un ideal
-	de $R$, digamos $\varphi(N)=(x)$ para algún $x\in R\setminus\{0\}$. Sea $n_{k+1}\in N$ 
-	tal que $\varphi(n_{k+1})=x$. 
-	Veamos que $\{n_1,\dots,n_k,n_{k+1}\}$ es base de $N$. 
-	Si $n\in N$, entonces $\varphi(n)=rx$ 
-	para algún $r\in R$. Entonces $n-r\cdot n_{k+1}\in N\cap\ker\varphi=N\cap F_n=U$ pues 
-	$\varphi(n-r\cdot n_{k+1})=0$. En particular, 
+	If $\varphi(N)=\{0\}$, then $N\subseteq (f_1,\dots,f_{n-1})$ and thus $N=U$. 
+	If $\varphi(N)\ne\{0\}$, then $\varphi(N)$ is an ideal of 
+	$R$, say $\varphi(N)=(x)$ for some $x\in R\setminus\{0\}$. Let $n_{k+1}\in N$ 
+	be such that $\varphi(n_{k+1})=x$. 
+    We claim that $\{n_1,\dots,n_k,n_{k+1}\}$ is basis of $N$. 
+	If $n\in N$, then $\varphi(n)=rx$ 
+	for some $r\in R$. Thus $n-r\cdot n_{k+1}\in N\cap\ker\varphi=N\cap F_n=U$, as  
+	$\varphi(n-r\cdot n_{k+1})=0$. In particular, 
 	\[
 	n-r\cdot n_{k+1}\in (n_1,\dots,n_k)\implies  
 	n\in (n_1,\dots,n_k,n_{k+1}).
 	\]
-	Veamos ahora que
-	$\{n_1,\dots,n_k,n_{k+1}\}$ es linealmente independiente. Si 
+	We claim that 
+	$\{n_1,\dots,n_k,n_{k+1}\}$ is linearly independent. If 
 	\[
 	0=\sum_{i=1}^{k+1}r_i\cdot n_i,
 	\]
-	para $r_1,\dots,r_{k+1}\in R$, entonces, como $\varphi(n_i)=0$ para todo $i\in\{1,\dots,k\}$, se tiene que 
+	for some $r_1,\dots,r_{k+1}\in R$, then, since 
+	$\varphi(n_i)=0$ for all $i\in\{1,\dots,k\}$,
 	\[
-	0=\varphi(r_{k+1}\cdot n_{k+1})=r_{k+1}x,
+	0=\varphi(r_{k+1}\cdot n_{k+1})=r_{k+1}x.
 	\]
-	que implica $r_{k+1}=0$. Queda entonces que $\sum_{i=1}^kr_i\cdot n_i=0$. Como $\{n_1,\dots,n_k\}$ es base de $U$, se concluye que
+	This implies that $r_{k+1}=0$. Thus $\sum_{i=1}^kr_i\cdot n_i=0$. Since
+	$\{n_1,\dots,n_k\}$ is basis of $U$, we conclude that 
 	$r_1=\dots=r_k=0$. 
 \end{proof}
 
-El teorema anterior también vale en el caso de bases infinitas. La demostración, sin embargo, depende del lema de Zorn.
-% todo: referencia al libro de lang
+The previous theorem also holds for infinite bases. However, 
+the proof requires the use of Zorn's lemma. 
+% reference?
 	
 % \begin{corollary}
 % Sea $R$ un dominio de ideales principales. Si $M$ es proyectivo y finitamente generado, 
@@ -78,26 +80,28 @@ El teorema anterior también vale en el caso de bases infinitas. La demostració
 % consultarse por ejemplo en~\cite[I, Theorem 5.1]{MR1438546}.
 
 \begin{corollary}
-Sea $R$ un dominio de ideales principales. Si $M$ es finitamente generado y $N$ 
-es un submódulo de $M$, entonces $N$ es también finitamente generado.  
+Let $R$ be a principal domain. If $M$ is finitely generated and $N$ 
+is a submodule of $M$, then $N$ is finitely generated.   
 \end{corollary}
 
 \begin{proof}
-Sabemos que existe un módulo libre $F$ de rango finito y un epimorfismo 
-$\varphi\colon F\to M$. Como $N_1=\varphi^{-1}(N)$ es un submódulo de $F$, el teorema anterior
-implica que 
-$\rank(N_1)\leq\rank F$. Si $\{x_1,\dots,x_k\}$ es base de $N_1$, entonces, como $\varphi$ es un epimorfismo, $\{\varphi(x_1),\dots,\varphi(x_k)\}$ es un conjunto de generadores de 
-$\varphi(N_1)=\varphi(\varphi^{-1}(N))=N$. En particular, $\rank(N)\leq k=\rank(N_1)\leq\rank(F)$. 
+There exists a free module $F$ of finite rank and a surjective homomorphism
+$\varphi\colon F\to M$. Sinc $N_1=\varphi^{-1}(N)$ is a submodule of $F$, 
+the previous theorem implies that  
+$\rank(N_1)\leq\rank F$. If $\{x_1,\dots,x_k\}$ is basis of $N_1$, then, since $\varphi$ 
+is a surjective homomorphism, 
+$\{\varphi(x_1),\dots,\varphi(x_k)\}$ is a generating set of 
+$\varphi(N_1)=\varphi(\varphi^{-1}(N))=N$. In particular, $\rank(N)\leq k=\rank(N_1)\leq\rank(F)$. 
 \end{proof}
 
-Algunos ejercicios útiles:
+Some exercises:
 
 \begin{exercise}
 \label{xca:rank}
-    Sea $R$ un dominio de ideales principales  
-	y sea $M$ un módulo libre. Si 
-	$S$ es un submódulo de $M$ tal que $M/S$ es libre, entonces $M\simeq S\oplus (M/S)$. Si además 
-	$S$ es libre, entonces 
+    Let $R$ be a principal domain and 
+    let $M$ be a free module. If $S$ is a submodule of $M$ such that
+    $M/S$ is free, then $M\simeq S\oplus (M/S)$. If, moreover,  
+	$S$ is free, then 
 	\[
 	\rank(M)=\rank(S)+\rank(M/S).
 	\] 
@@ -105,46 +109,54 @@ Algunos ejercicios útiles:
 
 \begin{exercise}
 \label{xca:n_elements}
-Sea $R$ un dominio de ideales principales. 
-Si $M$ es un módulo libre de rango $n$, entonces todo conjunto linealmente independiente de $M$ tiene
-a lo sumo $n$ elementos. 
+    Let $R$ be a principal domain. 
+    If $M$ is a free module of rank $n$, then
+    every linearly independent subset of $M$ 
+    contains at most $n$ elements. 
 \end{exercise}
 
 \begin{exercise}
-Sea $R$ un dominio de ideales principales 
-y sean $M$ y $N$ dos módulos libres. Demuestre que $M\simeq N$ si y sólo si $\rank(M)=\rank(N)$. 	
+    Let $R$ be a principal domain. 
+    and $M$ and $N$ be free modules. Prove that 
+    $M\simeq N$ if and only if $\rank(M)=\rank(N)$. 	
 \end{exercise}
 
 \begin{exercise}
 \label{xca:base}
-Sea $R$ un dominio de ideales principales. 
-Si $M$ es un módulo libre tal que $n=\rank(M)$ y $\{s_1,\dots,s_n\}$ es un conjunto de generadores, entonces $\{s_1,\dots,s_n\}$ es una base de $M$.
+    Let $R$ be a principal domain. 
+    If $M$ is a free module of finite rank $n$ and $\{s_1,\dots,s_n\}$ 
+    is a generating set, then $\{s_1,\dots,s_n\}$ is a basis of $M$.
 \end{exercise}
 
-\index{Anulador!de un módulo}
-\index{Anulador!de un elemento del anillo}
-Si $M$ es un módulo, el \textbf{anulador} de $M$ se define como
+\index{Annihilator!of a module}
+\index{Annihilator!of an element}
+If $M$ is a module, the \textbf{annihilator} of $M$ 
+is defined as 
 \[
-\Ann(M)=\{r\in R:r\cdot m=0\text{ para todo $m\in M$}\}.
+\Ann(M)=\{r\in R:r\cdot m=0\text{ for all $m\in M$}\}.
 \] 
 Si $m\in M$ se define 
 \[
 \Ann(m)=\{r\in R:r\cdot m=0\}.
 \]  
-Observar que $\Ann(M)=\cap_{m\in M}\Ann(m)$. 
-Dejamos como ejercicio demostrar que $\Ann(M)$ y $\Ann(m)$ son ideales de $R$. 
-Si $r\in R$, el anulador de $r$ en $M$ se define como
+Note that $\Ann(M)=\cap_{m\in M}\Ann(m)$. 
+It is an exercise to show that both 
+$\Ann(M)$ and $\Ann(m)$ are ideals of $R$. 
+If $r\in R$, the annihilator of $r$ in $M$ 
+is defined as 
 \[
 \Ann_M(r)=\{m\in M:r\cdot m=0\}.
 \] 
-Dejamos como ejercicio demostrar que $\Ann_M(r)$ es un submódulo de $M$. 
+It is an exercise to show that $\Ann_M(r)$ is a submodule of 
+$M$. 
 
 \begin{exercise}
-Sean $M$ un módulo, $m\in M$ y $r\in R$ tal que $\Ann(m)=(r)$. Sea 
-$p\in R$ irreducible. 
+Let $M$ be a module. Let $m\in M$ and $r\in R$ be such that $\Ann(m)=(r)$.
+Let 
+$p\in R$ be an irreducible element. 
 \begin{enumerate}
-\item Si $p$ divide a $r$, entonces $(m)/p\cdot (m)\simeq R/(p)$.
-\item Si $p$ no divide a $r$, entonces $p\cdot (m)=(m)$.
+\item If $p$ divides $r$, then $(m)/p\cdot (m)\simeq R/(p)$.
+\item If $p$ does not divide $r$, then $p\cdot (m)=(m)$.
 \end{enumerate}
 \end{exercise}
 
@@ -160,58 +172,63 @@ $p\in R$ irreducible.
 % $a,b\in R$ tales que $ap+br=1$. Como $r\cdot \m=0$ pues $\Ann(m)=(r)$, 
 % $m=1\cdot m=(ap+br)\cdot m=p\cdot (a\cdot m)\in p\cdot (m)$.  
 
-\index{Torsión!de un módulo}
-\index{Módulo!sin torsión}
-\index{Módulo!de torsión}
-La \textbf{torsión} de un módulo $M$ se define como
-el subconjunto 
+\index{Torsion!of a module}
+\index{Torsion-free module}
+\index{Torsion module}
+The \textbf{torsion} of a module $M$ 
+is defined as the subset 
 \[
-T(M)=\{m\in M:r\cdot m=0\text{ para algún $r\in R$}\}.
+T(M)=\{m\in M:r\cdot m=0\text{ for some $r\in R$}\}.
 \]
-Queda como ejercicio demostrar que $T(M)$ es un submódulo de $M$. 
-Se dice que un módulo $M$ 
-\textbf{no tiene torsión} si $T(M)=\{0\}$ y que es \textbf{de torsión} si $T(M)=M$.   
+It is an exercise to show that $T(M)$ is a submodule of $M$. 
+A module $M$ 
+\textbf{is torsion-free} if $T(M)=\{0\}$ and it is 
+a \textbf{torsion} module if $T(M)=M$.   
 
 \begin{exercise}
-Si $M\simeq N$, entonces $T(M)\simeq T(N)$.
+If $M\simeq N$, then $T(M)\simeq T(N)$.
 \end{exercise}
 
 \begin{exercise}
-Demuestre que $T(\oplus_{i\in I}M_i)\simeq \oplus_{i\in I}T(M_i)$.
+Prove that $T(\oplus_{i\in I}M_i)\simeq \oplus_{i\in I}T(M_i)$.
 \end{exercise}
 
 \begin{exercise}
 \label{xca:free}
-    Sean $R$ un dominio principal y $M$ un $R$-módulo. Pruebe que si $M$ es
-    finitamente generado y $S\subseteq M$ es un submódulo libre tal que $M/S$ no
-    tiene torsión, entonces $M$ es libre
+    Let $R$ be a principal domain and $M$ be a module. Prove that
+    if $M$ is finitely generated and $S\subseteq M$ is a free submodule such that
+    $M/S$ is torsion-free, then $M$ is free.
 \end{exercise}
 
-\begin{examples}\
-\begin{enumerate}
-\item $T(\prescript{}{R}R)=\{r\in R:rs=0\text{ para algún $s\in R$}\}$.
-\item $T(\Z/n)=\Z/n$.
-\item $T(\Q)=\{0\}$.
-\item $T(\Z^{\Z_{>0}})=\{0\}$. 
-\end{enumerate}
-\end{examples}
+Clearly, $T(\Z/n)=\Z/n$ and $T(\Q)=\{0\}$.
 
 \begin{example}
-Si $V$ es un espacio vectorial de dimensión finita y $T\colon V\to V$ es una
-transformación lineal, sabemos que $V$ es un $K[X]$-módulo con la acción
+    Let $R$ be a ring, viewed as a module with left multiplication. 
+    Then $T(R)=\{r\in R:rs=0\text{ for some $s\in R$}\}$.
+\end{example}
+
+\begin{example}
+    Let $M$ be the module (over $\Z$) of
+    integer sequences, that is $M=\Z^I$, where 
+    $I=\{1,2,3,\dots\}$. Then $T(M)=\{0\}$. 
+\end{example}
+
+\begin{example}
+If $V$ is a finite-dimensional vector space and $T\colon V\to V$ 
+is a linear transformation, $V$ is a module (over $K[X]$) 
+with 
 \[
 \left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
 \]
 
-Veamos que
-$V$ es de torsión, es decir $V=T(V)$. Sea $n=\dim V$. Si $v\in V$, entonces 
-$\{v,T(v),\dots,T^n(v)\}$ es linealmente dependiente, pues
-tiene $n+1$ elementos. En particular, existen $a_0,\dots,a_n\in K$ no todos cero tales
-que 
+We claim that 
+$V$ is a torsion module, that is $V=T(V)$. Let $n=\dim V$. If $v\in V$, 
+then $\{v,T(v),\dots,T^n(v)\}$ is linearly dependent, as it has 
+$n+1$ elements. In particular, there exist $a_0,\dots,a_n\in K$ not all zero such that
 \[
 0=\sum_{i=0}^n a_iT^i(v)=\left(\sum_{i=0}^n a_iX^i\right)\cdot v.
 \]
-Luego $v\in T(V)$. 
+Thus $v\in T(V)$. 
 \end{example}
 
 \begin{theorem}
