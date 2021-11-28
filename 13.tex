@@ -232,34 +232,40 @@ Thus $v\in T(V)$.
 \end{example}
 
 \begin{theorem}
-Sea $R$ un dominio de ideales principales  
-y sea $M$ finitamente generado. Si $T(M)=\{0\}$, entonces $M$ es libre. 
+Let $R$ be a principal domain and 
+$M$ be a finitely generated module. If
+$T(M)=\{0\}$, then $M$ is free. 
 \end{theorem}
 
 \begin{proof}
-Sin perder generalidad podemos suponer que $M$ es no nulo. Supongamos además que $M=(X)$, donde $X$ es un conjunto 
-finito de generadores. Si $x\in X$, entonces $r\cdot x=0\Longleftrightarrow r=0$, pues $T(M)=\{0\}$. Sea $S=\{x_1,\dots,x_k\}\subseteq X$ 
-maximal con respecto a la siguiente propiedad:
+Without loss of generality we may assume that $M$ is non-zero.
+By assumption, $M=(X)$, where $X$ is a finite set. 
+If $x\in X$, then $r\cdot x=0\Longleftrightarrow r=0$, as $T(M)=\{0\}$. 
+Let $S=\{x_1,\dots,x_k\}\subseteq X$ 
+be maximal with respect to the following property:
 \[
-r_1\cdot x_1+\cdots+r_k\cdot x_k=0\text{ para $r_1,\dots,r_k\in R$}\implies r_1=\cdots=r_k=0.
+r_1\cdot x_1+\cdots+r_k\cdot x_k=0\text{ for $r_1,\dots,r_k\in R$}\implies r_1=\cdots=r_k=0.
 \]	
-Sea $F=(S)$ el módulo libre con base en el conjunto $S$. Si $X=S$, no hay nada para demostrar. 
-Si $y\in X\setminus S$, entonces
-existen $r_y,r_1,\dots,r_k\in R$ no todos cero tales que
+Let $F=(S)$ be the free module with basis $S$. If $X=S$, we are done. 
+If $y\in X\setminus S$, then
+there exist $r_y,r_1,\dots,r_k\in R$ not all zero such that 
 \[
 r_y\cdot y+\sum_{i=1}^k r_i\cdot x_i=0.
 \]
-Como entonces $r_y\cdot y=-\sum_{i=1}^k r_i\cdot x_i\in F$, se concluye que $r_y\ne 0$, pues si 
-$r_y=0$ entonces $r_1=\cdots=r_k=0$. Como $X$ es finito, 
+Since $r_y\cdot y=-\sum_{i=1}^k r_i\cdot x_i\in F$, it follows that
+$r_y\ne 0$, as  
+$r_y=0$ implies $r_1=\cdots=r_k=0$. Since $X$ is finite, 
 \[
 r=\prod_{y\in X\setminus S}r_y
 \]
-está bien definido pues $R$ es conmutativo y es tal que $r\cdot X\subseteq F$. Si $f\colon M\to M$, $x\mapsto r\cdot x$, entonces
-$f$ es un morfismo tal que $f(M)=r\cdot M$. Como $T(M)=\{0\}$, entonces $\ker f=\{0\}$. Luego
+is well-defined, as $R$ is commutative and 
+$r\cdot X\subseteq F$. If $f\colon M\to M$, $x\mapsto r\cdot x$, then
+$f$ is a homomorphism such that $f(M)=r\cdot M$. Since $T(M)=\{0\}$, it follows that
+$\ker f=\{0\}$. Thus 
 \[
 r\cdot M=f(M)\simeq M
 \]
-y en consecuencia $M$ es libre. 
+and hence $M$ is free. 
 \end{proof}
 
 %\begin{theorem}
@@ -324,18 +330,20 @@ y en consecuencia $M$ es libre.
 	The previous lemma implies then that $M\simeq
 	T(M)\oplus M/T(M)$. 	
 	 
-	Para demostrar la unicidad, supongamos que $M=T\oplus L$, donde $T$ es de torsión y $L$ es libre. Primero
-	demostraremos que $T=T(M)$. Claramente 
-	$T\subseteq T(M)$. Por otro lado, si $m\in T(M)$, entonces $m=t+l$ para ciertos $t\in T$ y $l\in L$. En particular, 
-	$r\cdot m=0$ y $s\cdot t=0$ para ciertos $r,s\in R$. Como $R$ es conmutativo, 
+	Let us prove uniqueness. Suppose that $M=T\oplus L$, where 
+	$T$ is a torsion module and $L$ is free. We first prove that
+	$T=T(M)$. On the one hand,  
+	$T\subseteq T(M)$. On the other hand, if $m\in T(M)$, then
+	$m=t+l$ for some $t\in T$ y $l\in L$. In particular, 
+	$r\cdot m=0$ and $s\cdot t=0$ for some $r,s\in R$. Since $R$ is commutative, 
 	\[
 		0=(rs)\cdot m=(rs)\cdot (t+l)=(rs)\cdot t+(rs)\cdot l=(rs)\cdot l.
 	\]
-	y entonces $l\in T(L)$. Pero 
-	como $L$ es libre, $T(L)=\{0\}$ (pues $T(L)$ es también libre y entonces cualquier elemento $x$  
-	de una base de $T(L)$ sería tal que $\{x\}$ es linealmente independiente, una contradicción). Luego 
-	$l=0$ y en consecuencia $m=t\in T$. La unicidad salvo isomorfismo de la parte libre
-	se obtiene inmediatamente al observar que $M/T(M)$. 
+	and thus $l\in T(L)$. Since  
+	$L$ is free, $T(L)=\{0\}$ (because $T(L)$ is free and hence every basis element $x$ of  
+	$T(L)$ is such that $\{x\}$ is linearly independent, a contradiction). Thus 
+	$l=0$ and hence  $m=t\in T$. The free part is unique up to isomorphism 
+	because it is isomorphic to $M/T(M)$. 
 \end{proof}
 
 
