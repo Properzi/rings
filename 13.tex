@@ -383,7 +383,6 @@ e_2&=(a_{21},a_{22},\dots,a_{2k}),\\
 &\vdots\\
 e_l&=(a_{l1},a_{l2},\dots,a_{lk}).	
 \end{align*}
-
 The matrix $A=(a_{ij})_{1\leq i\leq l,1\leq j\leq k}$ is the 
 \textbf{relations matrix} of $M$ with respect to $\{m_1,\dots,m_k\}$ 
 and $\{e_1,\dots,e_l\}$. 
@@ -672,18 +671,21 @@ Let us show how to get the matrix $B$.
 By applying row and column operations we may assume that the coefficient of $A$ 
 with minimal norm appears in position
 $(1,1)$.  
-Si algún $a_{i1}$ no es divisible por $a_{11}$, escribimos  
-$a_{i1}=a_{11}u+r$ para $u\in R$ y $r\in R$ tal que $\varphi(r)<\varphi(a_{11})$. Aplicamos entonces la transformación
-$F_i\leftarrow F_i-uF_1$ y nos queda una matriz
-que en el lugar $(1,i)$ tendrá al elemento $r$. Similarmente, si algún $a_{1j}$
-no es divisible por $a_{11}$, entonces $a_{1j}=va_{11}+s$ con $\varphi(s)<\varphi(a_{11})$ y 
-aplicamos la transformación $C_j\leftarrow C_j-vC_1$ para quedarnos con una matriz que en el lugar 
-$(j,1)$ tiene al elemento $s$.  
-Si todos los $a_{i1}$ son divisibles por $a_{11}$, digamos $a_{i1}=a_{11}\lambda_i$, entonces
-aplicamos la transformación $F_i\leftarrow \lambda_i F_1-F_i$. Similarmente, si todos los
-$a_{1j}$ son divisibles por $a_{11}$, digamos $a_{1j}=a_{11}\mu_j$, entonces aplicamos
-la transformación $C_j\leftarrow \mu_j C_1-C_j$. Esto nos permite quedarnos con una matriz
-de la forma
+If some $a_{i1}$ is not divisible by $a_{11}$, we use the division algorithm to write   
+$a_{i1}=a_{11}u+r$ for some $u\in R$ and $r\in R$ with 
+$\varphi(r)<\varphi(a_{11})$. The transformation 
+$F_i\leftarrow F_i-uF_1$ turns our matrix into a matrix that 
+has $r$ in position $(1,i)$. Similarly, if some $a_{1j}$
+is not divisible by $a_{11}$, then $a_{1j}=va_{11}+s$ with $\varphi(s)<\varphi(a_{11})$. 
+By applying  
+$C_j\leftarrow C_j-vC_1$ our matrix turns into a matrix 
+that has $s$ in position 
+$(j,1)$.  
+If every $a_{i1}$ is divisible by $a_{11}$, say $a_{i1}=a_{11}\lambda_i$, then
+apply $F_i\leftarrow \lambda_i F_1-F_i$. Similarly, if 
+every $a_{1j}$ is divisible by $a_{11}$, say $a_{1j}=a_{11}\mu_j$, then
+apply $C_j\leftarrow \mu_j C_1-C_j$. In this way we replace our matrix by 
+a matrix of the form 
 \[
 \begin{pmatrix}
 	a_{11} & 0\\
@@ -696,12 +698,17 @@ de la forma
 	0 & * & \cdots & *
 \end{pmatrix}.
 \]
-Si alguna de las entradas de la submatriz $A_1$ no fuera divisible por $a_{11}$, hacemos la operación
-$F_1\leftarrow F_1+F_i$ o bien la operación $C_1\leftarrow C_1+C_j$ y repetimos
-el procedimiento.
+If some entry of the matrix $A_1$ is not divisible by $a_{11}$, apply either 
+$F_1\leftarrow F_1+F_i$ or $C_1\leftarrow C_1+C_j$ and repeat 
+the procedure described before. 
 \end{proof}
 
-A detailed exposition of the Smith normal form and the uniqueness can be found in\dots
+We refer to Artin's book \cite[\S14]{MR1129886} for 
+a detailed exposition of the Smith normal
+when the base ring $R$ is $\Z$ or
+$K[X]$ for any field $K$. For an application 
+of the Smith's normal to explicit calculations related to 
+homology groups, see \cite[\S11]{MR755006}. 
 Here we will explain the algorithm with examples. 
 
 \begin{example}
@@ -715,7 +722,8 @@ A=\begin{pmatrix}
 \]	
 Let us compute the Smith's normal form of $A$. $A$. 
 Since the element with smallest norm appears in position $(3,2)$,
-we apply the operations $F_1\leftrightarrow F_3$ and  $C_1\leftrightarrow C_2$ to transform $A$ into 
+we apply the operations $F_1\leftrightarrow F_3$ and 
+$C_1\leftrightarrow C_2$ to transform $A$ into 
 \[
 \begin{pmatrix}
 	1 & 3 & 0\\
@@ -723,9 +731,10 @@ we apply the operations $F_1\leftrightarrow F_3$ and  $C_1\leftrightarrow C_2$ t
 	5 & 2 & 3
 \end{pmatrix}.
 \]
-Para obtener ceros en las posiciones $(1,2)$, $(1,3)$, $(2,1)$ y $(2,3)$ hacemos las operaciones
-$F_2\leftrightarrow 6F_1-F_2$, $F_3\leftrightarrow 5F_1-F_3$ y luego 
-$C_1\leftrightarrow 3C_1-C_2$. Nos queda entonces la matriz  
+To obtain zeros in positions $(1,2)$, $(1,3)$, $(2,1)$ and $(2,3)$ we 
+apply 
+$F_2\leftrightarrow 6F_1-F_2$, $F_3\leftrightarrow 5F_1-F_3$ and 
+$C_1\leftrightarrow 3C_1-C_2$. Then out matrix turns into   
 \[
 \begin{pmatrix}
 	1 & 3 & 0\\
@@ -733,7 +742,8 @@ $C_1\leftrightarrow 3C_1-C_2$. Nos queda entonces la matriz
 	0 & -13 & -3
 \end{pmatrix}.
 \]
-Para sacarnos de encima los números negativos multiplicamos la segunda y la tercera fila por $-1$, que es una unidad de $\Z$:
+Multiply the second and the third row 
+by $-1$:
 \[
 \begin{pmatrix}
 	1 & 3 & 0\\
@@ -741,57 +751,60 @@ Para sacarnos de encima los números negativos multiplicamos la segunda y la ter
 	0 & 13 & 3
 \end{pmatrix}.
 \]
-Ahora hacemos lo mismo en la submatriz $\begin{pmatrix}10&4\\13&3\end{pmatrix}$. Para que en el lugar $(2,2)$ nos
-quede el elemento de la submatriz que tiene menor norma, aplicamos las transformaciones $F_2\leftrightarrow F_3$ y
-$C_3\leftrightarrow C_2$. Nos queda entonces
+We perform the same procedure to the submatrix $\begin{pmatrix}10&4\\13&3\end{pmatrix}$. 
+We want the smallest element of the submatrix in position 
+$(2,2)$. For that purpose, apply $F_2\leftrightarrow F_3$ and 
+$C_3\leftrightarrow C_2$:
 \[ 
 \begin{pmatrix}
 3 & 13\\
 4 & 10
 \end{pmatrix}.
 \]
-Escribimos $13=3\cdot 4+1$ y aplicamos
-la transformación $C_2\leftarrow C_2-4C_1$ para obtener $\begin{pmatrix}3&1\\4&-6\end{pmatrix}$. Intercambiamos 
-la primera y la segunda columna y nos queda la matriz
-$\begin{pmatrix}1&3\\-6&4\end{pmatrix}$. Aplicamos ahora la transformación
-$F_2\leftarrow 6F_1+F_2$ y al resultado le aplicamos la transformación $C_2\leftarrow 3C_1-C_2$:
+Write $13=3\cdot 4+1$ and apply 
+$C_2\leftarrow C_2-4C_1$ to obtain $\begin{pmatrix}3&1\\4&-6\end{pmatrix}$. Interchange 
+the first two columns to obtain 
+$\begin{pmatrix}1&3\\-6&4\end{pmatrix}$. Apply now 
+$F_2\leftarrow 6F_1+F_2$. To the resulting matrix we apply
+$C_2\leftarrow 3C_1-C_2$:
 \[
 \begin{pmatrix}
     1 & 0\\
     0 & 22
 \end{pmatrix}.
 \]
-Luego
+Hence we find the Smith's normal form of the matrix: 
 \[
 \begin{pmatrix}
 	1 & 0 & 0\\
 	0 & 1 & 0\\
 	0 & 0 & -22	
-\end{pmatrix}
+\end{pmatrix}.
 \]
-es la forma normal de Smith de la matriz $A$.
 \end{example}
 
-Veamos ahora algunas aplicaciones.
+Some applications:
 
 \begin{example}
-Sea $M$ el grupo abeliano con generadores $m_1,m_2,m_3$ y relaciones
-$8m_1+4m_2+8m_3=0$, $4m_1+8m_2+4m_3=0$. La matriz de relaciones es entonces
+Let $M$ be the abelian group with generators $m_1,m_2,m_3$ and relations 
+$8m_1+4m_2+8m_3=0$, $4m_1+8m_2+4m_3=0$. The matrix of relations is then 
 \[
 A=\begin{pmatrix}
 8 & 4 & 8\\
 4 & 8 & 4
 \end{pmatrix}.
 \]	
-Veamos que $M\simeq\Z/4\times\Z/{12}$. Si hacemos la operación $F_1\leftarrow 2F_2-F_1$, nos queda la matriz
+We claim that $M\simeq\Z/4\times\Z/{12}$. Apply 
+$F_1\leftarrow 2F_2-F_1$ to obtain 
 \[
 \begin{pmatrix}
 0 & 12 & 0\\
 4 & 8 & 4	
-\end{pmatrix},
+\end{pmatrix}. 
 \]
-que corresponde a los generadores $\{m_1,m_2,m_3\}$ con las relaciones $12m_2=0$ y $4m_1+8m_2+4m_3=0$. Si 
-hacemos simultáneamente las operaciones $C_2\leftarrow C_2-2C_1$ y $C_3\leftarrow C_3-C_1$, nos queda 
+Note that this matrix correspond to the set of generators 
+$\{m_1,m_2,m_3\}$ and relations $12m_2=0$ and $4m_1+8m_2+4m_3=0$.
+Apply $C_2\leftarrow C_2-2C_1$ and $C_3\leftarrow C_3-C_1$ to obtain 
 la matrix
 \[
 \begin{pmatrix}
@@ -799,30 +812,33 @@ la matrix
 4 & 0 & 0	
 \end{pmatrix},
 \]
-que corresponde al conjunto de generadores $\{m_1+2m_2+m_3,m_2\}$ con las relaciones $12m_2=0$ y $4(m_1+2m_2+m_3)=0$. 
-Por último, al intercambiar
-la primera y la segunda columna, nos queda la matriz 
+which corresponds to generators $\{m_1+2m_2+m_3,m_2\}$ and relations $12m_2=0$ and $4(m_1+2m_2+m_3)=0$. 
+Finally, interchange the first two columns to obtain
+the Smith's normal form of $A$: 
 \[
 \begin{pmatrix}
 4 & 0 & 0\\
 0 & 12 & 0	
-\end{pmatrix},
+\end{pmatrix}.
 \]
-que corresponde al conjunto de generadores $\{m_2,m_1+2m_2+m_3\}$ con las relaciones $4(m_1+2m_2+m_3)=0$ y $12m_2=0$. 
-En conclusión, $M\simeq\Z/4\times\Z/{12}$. 
+This matrix corresponds to 
+the set of generators $\{m_2,m_1+2m_2+m_3\}$ and relations $4(m_1+2m_2+m_3)=0$ and
+$12m_2=0$. 
+Thus  $M\simeq\Z/4\times\Z/{12}$. 
 \end{example}
 
 
 \begin{example}
-Sea $M$ el grupo abeliano generdo por $\{m_1,\dots,m_4\}$ y sea $K$ el subgrupo
-generado por $\{e_1,e_2,e_3\}$, donde
+Let $M$ be the abelian group generated by $\{m_1,\dots,m_4\}$ and let $K$
+be the subgroup of $M$ generated by 
+$\{e_1,e_2,e_3\}$, where 
 \[
 e_1=22m_3,\quad
 e_2=-2m_1+2m_2-6m_3-4m_4,\quad
 e_3=2m_1+2m_2+6m_3+8m_4.
 \]
-Queremos calcular $M/K$. 
-La matriz de relaciones es 
+We want to determine the structure of $M/K$. 
+The matrix of relations is  
 \[
 A=\begin{pmatrix}
 	0 & 0 & 22 & 0\\
@@ -830,7 +846,7 @@ A=\begin{pmatrix}
 	2 & 2 & 6 & 8
 \end{pmatrix}.
 \]
-Si aplicamos la operación $F_1\leftrightarrow F_3$ y después la operación $F_2\leftarrow F_1+F_2$ nos da la matriz
+Apply $F_1\leftrightarrow F_3$ and then $F_2\leftarrow F_1+F_2$ to obtain 
 \[
 \begin{pmatrix}
 	2 & 2 & 6 & 8\\
@@ -838,7 +854,8 @@ Si aplicamos la operación $F_1\leftrightarrow F_3$ y después la operación $F_
 	0 & 0 & 22 & 0
 \end{pmatrix}.
 \]
-Ahora aplicamos las operaciones $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-3C_1$ y $C_4\leftarrow C_4-4C_1$ y obtenemos
+Apply $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-3C_1$ and
+$C_4\leftarrow C_4-4C_1$ to obtain 
 \[
 \begin{pmatrix}
 	2 & 0 & 0 & 0\\
@@ -846,16 +863,16 @@ Ahora aplicamos las operaciones $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-3C_1
 	0 & 0 & 22 & 0
 \end{pmatrix}.
 \]
-Hacemos ahora $C_4\leftarrow C_4-C_2$ y nos queda la matriz
+Apply $C_4\leftarrow C_4-C_2$ to get 
 \[
 \begin{pmatrix}
 	2 & 0 & 0 & 0\\
 	0 & 4 & 0 & 0\\
 	0 & 0 & 22 & 0
-\end{pmatrix}
+\end{pmatrix}. 
 \]
-pero ahora nos encontramos con que $4\nmid 22$. Utilizamos las operaciones $F_2\leftarrow F_2+F_3$, $C_3\leftarrow C_3-5C_2$, $C_3\leftarrow C_2$, $F_3\leftarrow F_3-11F_2$ y 
-$C_3\leftarrow C_3-C_2$ y nos queda
+Note that $4\nmid 22$. Apply $F_2\leftarrow F_2+F_3$, $C_3\leftarrow C_3-5C_2$, $C_3\leftarrow C_2$, $F_3\leftarrow F_3-11F_2$ and 
+$C_3\leftarrow C_3-C_2$ to get 
 \[
 \begin{pmatrix}
 	2 & 0 & 0 & 0\\
@@ -863,8 +880,8 @@ $C_3\leftarrow C_3-C_2$ y nos queda
 	0 & 0 & -44 & 0
 \end{pmatrix}.
 \]
-Luego el grupo abeliano $M/K$ puede presentarse con la base $\{n_1,n_2,n_3,n_4\}$ y las relaciones
-$2n_1=0$, $2n_2=0$ y $44n_3=0$. En conclusión, $M/K\simeq\Z\times (\Z/2)^2\times (\Z/44)$. 
+The group $M/K$ has basis $\{n_1,n_2,n_3,n_4\}$ and relations 
+$2n_1=0$, $2n_2=0$ and $44n_3=0$. Thus $M/K\simeq\Z\times (\Z/2)^2\times (\Z/44)$. 
 \end{example}
 
 \begin{example}
