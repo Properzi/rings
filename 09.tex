@@ -60,11 +60,12 @@ for all $r_1,r_2\in R$ and $m\in M$.
 \end{example}
 %
 \begin{example}
-Let $R=\R[X]$ and $T\colon\R^n\to\R^n$ be a linear map. Then $M=\R^n$ with 
+Let $V$ be a finite-dimensional real vector space and $T\colon V\to V$ be a linear map.  
+Let $R=\R[X]$. Then $M=\R^n$ with 
 \[
 \left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v)
 \]	
-is a module (over $R$).   
+is module (over $R$).   
 \end{example}
 
 \begin{example}
@@ -301,38 +302,12 @@ Find the submodules of $M$ in the following cases.
     \item $T(x,y)=(0,y)$.
     \item $T(x,y)=(y,x)$.
 \end{enumerate}
-% Prove that 
-% $\{0\}$, $M$, $\R\times\{0\}$ and $\{0\}\times\R$ 
-% are the only submodules of $M$.
-% 
-% Vamos a demostrar que
-% $\{0\}$, $M$, $\R\times\{0\}$ y $\{0\}\times\R$ son los únicos submódulos de $M$. Si $N$ es un submódulo no nulo de $M$, sea
-% $(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$ es tal que $xy\ne 0$, entonces
-% \[
-% \left(\frac{x}{x_0}+\left(\frac{y}{y_0}-\frac{x}{x_0}\right)X\right)\cdot (x_0,y_0)=(x,y) 
-% \]
-% y luego $N=M$. Si $y_0=0$, entonces $N=\R\times\{0\}$, pues $\frac{x}{x_0}\cdot (x_0,0)=(x,0)$. Si $x_0=0$, entonces
-% $N=\{0\}\times\R$, pues 
-% $\frac{y}{y_0}\cdot (0,y_0)=(0,y)$ 
+Prove that 
+$\{0\}$, $M$, $\R\times\{0\}$ and $\{0\}\times\R$ 
+are the only submodules of $M$.
 \end{exercise}
 
-
-% \begin{example}
-% Sea $M=\R^2$ como $\R[X]$-módulo con la acción
-% \[
-% \left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y),
-% \]
-% donde $T\colon M\to M$, $T(x,y)=(y,x)$. 
-% Vamos a calcular todos los submódulos de $M$. 
-% Si $N\subseteq M$ es un submódulo entonces $N$ es un espacio vectorial real. Supongamos que $N\ne\{(0,0)\}$ y que $N\ne\R^2$. Como entonces $\dim N=1$, 
-% sea $\{(a_0,b_0)\}$ una base de $N$. Como $N$ es un submódulo,
-% $(b_0,a_0)=X\cdot (a_0,b_0)\in N$. En particular, existe $\lambda\in\R$ tal que $(b_0,a_0)=\lambda (a_0,b_0)$. Como $(a_0,b_0)\ne(0,0)$, sin perder generalidad
-% podemos suponer que $a_0\ne 0$. Esto implica que
-% $\lambda^2 a_0=\lambda (\lambda a_0)=\lambda b_0=a_0$ y entonces $\lambda^2=1$. Si $\lambda=1$, entonces
-% $a_0=b_0$. Si $\lambda=-1$, entonces $a_0=-b_0$. En conclusión, $N$ está generado por $(1,1)$ o por $(1,-1)$.  
-% \end{example}
-
-\begin{example}
+\begin{exercise}
 \label{xca:commuting}
 Let $V$ be a real vector space and $T\colon V\to V$ be a linear map. Then 
 $V$ is a module over $\R[X]$ with  
@@ -344,7 +319,7 @@ Prove that a module homomorphism $g\colon V\to V$ commutes with $T$.
 % (g\circ T)(v)=g(T(v))=g(X\cdot v)=X\cdot g(v)=T(g(v))=(T\circ g)(v)
 % \]
 % para todo $v\in V$.x
-\end{example}
+\end{exercise}
 
 \begin{exercise}
 \label{xca:Hom}

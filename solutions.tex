@@ -251,6 +251,32 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
 	$\Z/4$ is a moduel over $\Z/2$, 
 	then $0=2\cdot 1=1+1=2$, a contradiction. 
 \end{sol}
+
+\begin{sol}{xca:submodules}
+    \begin{enumerate}
+        \item We prove that $\{0\}$, $M$, $\R\times\{0\}$ and $\{0\}\times\R$ are
+        the only submodules of $M$. If $N$ is a non-zero submodule of $M$, then
+        let $(x_0,y_0)\in N\setminus\{(0,0)\}$. If $(x,y)\in M$ is such that $xy\ne 0$, then
+        \[
+            \left(\frac{x}{x_0}+\left(\frac{y}{y_0}-\frac{x}{x_0}\right)X\right)\cdot (x_0,y_0)=(x,y) 
+        \]
+        and thu $N=M$. If $y_0=0$, then $N=\R\times\{0\}$, as $\frac{x}{x_0}\cdot (x_0,0)=(x,0)$. If $x_0=0$, then
+        $N=\{0\}\times\R$, as 
+        $\frac{y}{y_0}\cdot (0,y_0)=(0,y)$ 
+            \item If $N\subseteq M$ is a submodule, then $N$ is real vector space. Assume that 
+            $N\ne\{(0,0)\}$ and that $N\ne\R^2$. Since $\dim N=1$, 
+            let $\{(a_0,b_0)\}$ be a basis of $N$. Since $N$ is a submodule of $M$, 
+            $(b_0,a_0)=X\cdot (a_0,b_0)\in N$. In particular, there exists 
+            $\lambda\in\R$ such that $(b_0,a_0)=\lambda (a_0,b_0)$. Since $(a_0,b_0)\ne(0,0)$, 
+            without loss of generality we may assume that 
+            $a_0\ne 0$. Thus 
+            $\lambda^2 a_0=\lambda (\lambda a_0)=\lambda b_0=a_0$ and hence
+            $\lambda^2=1$. If $\lambda=1$, then 
+            $a_0=b_0$. If $\lambda=-1$, then $a_0=-b_0$. In conclusion, $N$ 
+            is generated either by $(1,1)$ or $(1,-1)$.  
+    \end{enumerate}
+\end{sol}
+
 	
 \begin{sol}{xca:Pruffer}
 	Take for example the $\Z$-module $\cup_{k\geq}\Z/(p^k)$.
