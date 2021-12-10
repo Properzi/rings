@@ -277,7 +277,8 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
     \end{enumerate}
 \end{sol}
 
-	
+\section*{Lecture 10}
+
 \begin{sol}{xca:Pruffer}
 	Take for example the $\Z$-module $\cup_{k\geq}\Z/(p^k)$.
 \end{sol}
@@ -433,3 +434,28 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
 	\]
 	where $(X)=X^4 - 3 X^3 - 11 X^2 + 7X + 84$. 
 \end{sol}
+
+\begin{sol}{xca:unimodular}
+    Since $\det A\ne 0$, the set $\{y_1,\dots,y_n\}$ is linearly independent over $\Q$
+    and hence they are linearly independent over $\Z$. 
+    Let $B=(b_{ij})\in M_n(\Q)$ be the inverse of $A$. Then 
+    \[
+    B=A^{-1}=(\det A)^{-1}\operatorname{adj}(A)=\pm\operatorname{adj}(A)\in M_n(\Z).
+    \]
+    Then $x_i=\sum_{j=1}^n b_{ij}y_j$ for all $i\in\{1,\dots,n\}$ 
+    and hence $\{y_1,\dots,y_n\}$ generates $G$ and therefore 
+    $\{y_1,\dots,y_n\}$ is a basis of $G$. 
+    
+    Assume now that $\{y_1,\dots,y_n\}$ is a basis of $G$. There exist
+    $A=(a_{ij})\in M_n(\Z)$ and $B=(b_{ij})\in M_n(\Z)$ such that
+    \[
+    y_i=\sum_{j=1}^{n}a_{ij}x_j,\quad
+    x_i=\sum_{j=1}^{n}b_{ij}y_j
+    \]
+    for all $i\in\{1,\dots,n\}$. In particular, 
+    $AB=I$. Applying determinant, $(\det A)(\det B)=1$ and hence $\det A=\det B\in\{-1,1\}$. 
+\end{sol}
+
+% \begin{sol}{xca:Z3}
+    
+% \end{sol}
