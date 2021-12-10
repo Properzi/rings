@@ -355,11 +355,37 @@ $1=yz$ for some $y\in R$, it follows that $zy=1$, as
 \]	
 \end{example}
 
+If $R$ is a ring and $I$ is a set, 
+\[
+R^{(I)}=\{f\colon I\to R:f(x)=0\text{ for all but finitely many $x\in I$}\}
+\]
+is a module (over $R$) with 
+$(f+g)(x)=f(x)+g(x)$ and $(rf)(x)=rf(x)$ for all $f,g\in R^{(I)}$, $x\in I$ and $r\in R$. 
+Note that 
+every element 
+of $R^{(I})$ can be written uniquely as
+a finite sum of the form 
+\[
+\sum_{i\in I}r_i\delta_i,
+\]
+where the $r_i$ are elements of $R$ and only finitely many of them are non-zero, and 
+\[
+\delta_i(j)=\begin{cases}
+1 & \text{if $i=j$},\\
+0 & \text{otherwise}.
+\end{cases}.
+\]
+One proves
+that
+\[
+R^{(I)}\simeq\bigoplus_{i\in I}R.
+\]
+
 \begin{example}
 If $I$ is a non-empty set, the module $R^{(I)}$ is free with basis 
-$\{e_i:i\in I\}$, where 
+$\{\delta_i:i\in I\}$, where 
 \[
-(e_i)_j=\begin{cases}
+\delta_i(j)=\begin{cases}
 	1 & \text{if $i=j$},\\
 	0 & \text{if $i\ne j$.}
 	\end{cases}	
@@ -376,7 +402,7 @@ In modules, the size of a basis is not an invariant of the module.
 
 \begin{example}
 Let $V$ be the complex vector space with infinite basis $e_0,e_1,e_2,\dots$ and let 
-$R=\End(V)$ with the ring structucture given by 
+$R=\End(V)$ with the ring structure given by 
 \[
 (f+g)(v)=f(v)+g(v),\quad
 (fg)(v)=f(g(v))
@@ -483,9 +509,9 @@ If $M$ is a free $R$-moodule, then $M\simeq R^{(I)}$ for some set $I$.
 \begin{proof}
 Suppose that $M$ has basis $\{m_i:i\in I\}$. There exists a unique homomorphism
 $f\in\Hom_R(M,R^{(I)})$ such that  
-$f(m_i)=e_i$ for all $i\in I$, where 
+$f(m_i)=\delta_i$ for all $i\in I$, where 
 \[
-(e_i)_j=\begin{cases}
+\delta_i(j)=\begin{cases}
 	1 & \text{si $i=j$},\\
 	0 & \text{si $i\ne j$.}
 	\end{cases}	
