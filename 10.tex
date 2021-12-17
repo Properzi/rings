@@ -601,6 +601,18 @@ that we will use later:
 	\]
 \end{proof}
 
+What can we say about the number of elements of a basis? One proves
+that if a module $M$ has an infnite basis $E$, then every 
+basis of $M$ have cardinality $|E|$. Equivalently, 
+if $M$ has a finite basis, then every basis of $M$ will be finite. To prove
+this, let $M$ be a module 
+and $E=\{e_i:i\in I\}$ be a basis of $M$. If $M$ is finitely generated, say 
+$M=(m_1,\dots,m_k)$, write each $m_j$ as a (finite) linear combination of elements
+of $E$. Then there exists 
+a finite set $\{e_1,\dots,e_m\}$ that generates $M$. Since 
+$E$ is a basis, it follows that
+$\{e_1,\dots,e_m\}=E$ and hence $E$ is finite.  
+
 \begin{theorem}
 Let $R$ be an integral domain. If $M$ is free with a finite basis, then 
 any two bases of $M$ have the same number of elements.
@@ -639,6 +651,8 @@ then, evaluating on each $e_j$, it follows that
 \end{align*}
 for all $j\in\{1,\dots,n\}$. Thus $n=\dim V$. 
 \end{proof}
+
+The previous result can be proved for non-commutative rings. 
 
 \begin{definition}
 Let $R$ be an integral domain. If $M$ is a finitely generated module, we define
