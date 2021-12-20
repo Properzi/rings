@@ -104,8 +104,8 @@ Some exercises:
 \label{xca:rank}
     Let $R$ be a commutative principal domain and 
     let $M$ be a free module. If $S$ is a submodule of $M$ such that
-    $M/S$ is free, then $M\simeq S\oplus (M/S)$. If, moreover,  
-	$S$ is free, then 
+    $M/S$ is free, then $M\simeq S\oplus (M/S)$. Moreover,  
+	$S$ is free and 
 	\[
 	\rank(M)=\rank(S)+\rank(M/S).
 	\] 
@@ -269,12 +269,25 @@ r=\prod_{y\in X\setminus S}r_y
 \]
 is well-defined, as $R$ is commutative and 
 $r\cdot X\subseteq F$. If $f\colon M\to M$, $x\mapsto r\cdot x$, then
-$f$ is a homomorphism such that $f(M)=r\cdot M$. Since $T(M)=\{0\}$, it follows that
+$f$ is a homomorphism such that $f(M)=r\cdot M$.
+
+% Since $r\cdot X\subseteq F$, it follows that $r\cdot M\subseteq F$
+% We claim that $r\cdot M\subseteq M$ is a submodule is a free module. 
+% In fact, since $r\cdot X\subseteq F$
+Since $T(M)=\{0\}$, it follows that
 $\ker f=\{0\}$. Thus 
 \[
-r\cdot M=f(M)\simeq M
+r\cdot M=f(M)\simeq M.
 \]
-and hence $M$ is free. 
+
+To finish the proof we show that $r\cdot M\subseteq F$. Let $m\in M$. Since $M=(X)$, there exist $s_1,\dots,s_m\in R$
+such that 
+$m=\sum s_i x_i$. Then 
+\[
+r\cdot m=\sum (rs_i)\cdot x_i=\sum s_i\cdot (r\cdot x_i)\in F,
+\]
+as each $r\cdot x_i\in r\cdot X\subseteq F$. In particular, since 
+$R$ is commutative, $r\cdot M$ is a submodule of $F$ and hence $r\cdot M$ is a free module.  
 \end{proof}
 
 % todo: explicar mejor la parte final

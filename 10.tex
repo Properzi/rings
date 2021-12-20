@@ -601,10 +601,8 @@ that we will use later:
 	\]
 \end{proof}
 
-What can we say about the number of elements of a basis? One proves
-that if a module $M$ has an infnite basis $E$, then every 
-basis of $M$ have cardinality $|E|$. Equivalently, 
-if $M$ has a finite basis, then every basis of $M$ will be finite. To prove
+What can we say about the number of elements of a basis? 
+If $M$ has a finite basis, then every basis of $M$ will be finite. To prove
 this, let $M$ be a module 
 and $E=\{e_i:i\in I\}$ be a basis of $M$. If $M$ is finitely generated, say 
 $M=(m_1,\dots,m_k)$, write each $m_j$ as a (finite) linear combination of elements
@@ -612,6 +610,15 @@ of $E$. Then there exists
 a finite set $\{e_1,\dots,e_m\}$ that generates $M$. Since 
 $E$ is a basis, it follows that
 $\{e_1,\dots,e_m\}=E$ and hence $E$ is finite.  
+
+\begin{exercise}
+\label{xca:cardinality}
+    Let $M$ be a free module with an infinite basis $E$. Prove
+    that every basis of $M$ has cardinality $|E|$. 
+\end{exercise}
+
+Under additional assumptions the previous exercise also holds for 
+finite bases. 
 
 \begin{theorem}
 Let $R$ be an integral domain. If $M$ is free with a finite basis, then 
