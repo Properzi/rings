@@ -24,7 +24,7 @@
 		\item $x$ is not prime. Note that $(1+\sqrt{-3})(1-\sqrt{-3})=4$, then 
 		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
 		\[
-		(a-3b)+(a+b)\sqrt{3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
+		(a-3b)+(a+b)\sqrt{-3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
 		\]
 		implies that $a-3b=2$ and $a+b=0$, which yields 
 		$a=1/2\not\in\Z$, a contradiction.
@@ -92,8 +92,9 @@ The rings $\Z$ and $\R[X]$ are both principal.
 	$N(\alpha)\mid 4$ and $N(\alpha)\mid 6$, because $N(2)=4$ and $N(1+\sqrt{-5})=6$. 
 	Thus $N(\alpha)\in\{1,2\}$. If we write
 	$\alpha=a+b\sqrt{-5}$ for $a,b\in\Z$, then it follows that 
-	$a^2+5b^2=N(\alpha)=1$ and hence $\alpha\in\mathcal{U}(R)$. 
-	Therefore $I=R$, a contradiction.   
+	$a^2+5b^2=N(\alpha)$. Clearly, $N(\alpha)\ne 2$, as $a^2=2$ has no solution in $\Z$.
+	Now $N(\alpha)= 1$ implies that $\alpha\in\mathcal{U}(R)$ and hence 
+	$I=R$, a contradiction.   
 \end{example}
 
 Sometimes primes and irreducibles coincide. 
@@ -223,12 +224,12 @@ for the remainder $\gamma$.
 				\]
 				with $N(-1+i)=2<N(\beta)=5$. 
 		\item If $\alpha-\gamma=\beta_1$, where $-2+i=\beta_1=\beta i$, then 
-			$\gamma=-1$ and 
+			$\gamma=1$ and 
 			\[
 			-1+i=(1+2i)i+(-1)
 			\]
 			with $N(-1)=1<N(\beta)=5$. 
-		\item If $\alpha-\gamma=\beta_2$, where $-1+3=\beta_2i=\beta (1+i)$, 
+		\item If $\alpha-\gamma=\beta_2$, where $-1+3i=\beta_2i=\beta (1+i)$, 
 			then $\gamma=2i$ and  
 			\[
 			-1+i=(1+2i)(1+i)+(-2i)

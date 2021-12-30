@@ -203,7 +203,7 @@ If $R$ is noetherian and $M$ is a finitely generated module, then $M$ is noether
 
 \begin{proof}
     Assume that $M=(m_1,\dots,m_k)$. There exists a surjective homomorphism  
-$R^k\to N$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, where
+$R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, where
 $R^k=\oplus_{i=1}^k R$. Since $R$ is noetherian, $R^k$ is noetherian. Thus $M$ is noetherian.	
 \end{proof}
 
@@ -277,15 +277,23 @@ In any ring, the set $\{1\}$ is linearly independent.
 \end{enumerate}    
 \end{examples}
 
+A generating set $X$ for a module $M$ is \emph{minimal} if 
+$X\setminus\{x\}$ is no longer a generating set of $M$ for all $x\in X$. 
+In vector spaces, a subset of the vector space is a basis
+if and only if it is a minimal generating set. This is no longer true 
+for arbitrary modules.
+
 \begin{examples}
 Let $R=M_2(\R)$ and $M=\begin{pmatrix}
         0&\R\\
         0&\R 
     \end{pmatrix}$. Then $\left\{\begin{pmatrix}0&1\\0&0\end{pmatrix}\right\}$ is a minimal generating 
-    set and it is linearly independent. 
+    set and it is not linearly independent. 
 \end{examples}
 
-% todo: minimal?
+One can prove, however, that each 
+basis of a module is a minimal generating set. 
+% roman 4.4, page 116
 
 \begin{exercise}
 \label{xca:LI}
