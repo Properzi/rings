@@ -1,12 +1,13 @@
 \RequirePackage{amsmath} 
 
 \documentclass[graybox,envcountsect]{svmono}
-
+%\usepackage{marginnote}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage[notref,notcite]{showkeys}
 \usepackage{anyfontsize}
+\usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{amssymb}
 \usepackage{amstext}
@@ -284,24 +285,24 @@
   \let\@evenfoot\@oddfoot
 }
 
-% Heading 
-\def\ps@headings{%
-  \let\@mkboth\markboth
-  \def\@oddfoot{\reset@font\small\hfil\thepage\hfil}%
-  \let\@evenfoot\@oddfoot
-  \def\@evenhead{\runheadsize\runheadstyle\hfil\leftmark}%
-  \def\@oddhead{\runheadsize\runheadstyle\rightmark\hfil}%
-  \def\chaptermark##1{%
-    \markboth{%
-      {\if@chapnum \thechapter\thechapterend\fi ##1}%
-    }{%
-      {\if@chapnum \thechapter\thechapterend\fi ##1}}%
-    }%
-    \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
-     \S\thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}
-}
-\makeatother
-\pagestyle{headings}
+% % Heading 
+% \def\ps@headings{%
+%   \let\@mkboth\markboth
+%   \def\@oddfoot{\reset@font\small\hfil\thepage\hfil}%
+%   \let\@evenfoot\@oddfoot
+%   \def\@evenhead{\runheadsize\runheadstyle\hfil\leftmark}%
+%   \def\@oddhead{\runheadsize\runheadstyle\rightmark\hfil}%
+%   \def\chaptermark##1{%
+%     \markboth{%
+%       {\if@chapnum \thechapter\thechapterend\fi ##1}%
+%     }{%
+%       {\if@chapnum \thechapter\thechapterend\fi ##1}}%
+%     }%
+%     \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
+%      \S\thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}
+% }
+% \makeatother
+% \pagestyle{headings}
 
 \begin{document}
  
