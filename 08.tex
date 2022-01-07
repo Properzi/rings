@@ -88,31 +88,49 @@ Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible represent
 
 Schur's theorem has several important corollaries.
 
-If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
+If $\rho\colon G\to\GL(V)$ is a unitary irreducible representation 
+of degree $n$, then
 \[
 \{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
 \]
-is an orthonormal set. 
+is an orthonormal set of size $n^2$.
 
 % \begin{corollary}
 %     If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
 %     $\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}$ is an orthonormal set.
 % \end{corollary}
 
-% \begin{corollary}
-%     A finite group has finitely many classes of irreducible representations. 
-% \end{corollary}
+\begin{corollary}
+     A finite group has finitely many classes of irreducible representations. 
+\end{corollary}
 
-% \begin{proof}
-%     Let $G$ be a finite group. 
-%     Every isomorphism class of representations of $G$ contains a unitary representation. Since $\dim L(G)=|G|$, 
-%     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
-%     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
-%     irreducible representations of $G$. For each $k$ let $n_k=\deg\rho_k$. Since
-%     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
-%     form an orthonormal set of $L(G)$, it follows that
-%     $r\leq n_1^2+\cdots n_r^2\leq|G|$.
-% \end{proof}
+\begin{proof}
+     Let $G$ be a finite group. 
+     Every isomorphism class of representations of $G$ contains a unitary representation. 
+     Since $\dim L(G)=|G|$, 
+     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
+     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
+    irreducible representations of $G$. At the moment, we do not know whether $r$ is finite. 
+    For each $k$ let $n_k=\deg\rho_k$. Since
+     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
+     form a non-zero orthonormal set of $L(G)$, it follows that
+     $r\leq n_1^2+\cdots+ n_r^2\leq|G|$.
+\end{proof}
+
+Let $G$ be a finite group. Since $G$ has only finitely many non-equivalent 
+irreducible representation, we will often say
+that 
+\[
+\rho_1,\dots,\rho_r
+\]
+are \emph{the} irreducible representations of $G$, where it is assumed that
+the $\rho_i$ form a complete set of 
+representatives of irreducible representations of $G$. For each $i$ we write
+$\chi_i=\chi_{\rho_i}$. The set of irreducible characters will be denoted
+by 
+\[
+\Irr(G)=\{\chi_1,\dots,\chi_r\}.
+\]
 
 % If $G$ is a finite group, let $K(G)$ be the number of conjugacy classes of $G$. 
 % We want to know how many irreducible representations are there. For that purpose, 
@@ -164,21 +182,6 @@ are conjugacy classes of $G$, then
     independent. Since irreducible characters
     are class functions, it follows that there are at most $K(G)$ irreducible different characters.  
 \end{proof}
-
-Let $G$ be a finite group. Since $G$ has only finitely many non-equivalent 
-irreducible representation, we will often say
-that 
-\[
-\rho_1,\dots,\rho_r
-\]
-are \emph{the} irreducible representations of $G$, where it is assumed that
-the $\rho_i$ form a complete set of 
-representatives of irreducible representations of $G$. For each $i$ we write
-$\chi_i=\chi_{\rho_i}$. The set of irreducible characters will be denoted
-by 
-\[
-\Irr(G)=\{\chi_1,\dots,\chi_r\}.
-\]
 
 Let $m\in\Z_{>0}$. If $V$ is a vector space, we 
 write $mV=V\oplus\cdots\oplus V$ ($m$-times). Similarly,
