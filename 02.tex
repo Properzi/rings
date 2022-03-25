@@ -275,8 +275,21 @@ If $I$ and $J$ are ideals of $R$, then
 \[
 	IJ=\left\{\sum_{i=1}^mu_iv_i:m\in\Z_{\geq0},\,u_1,\dots,u_m\in I,\,v_1,\dots,v_m\in J\right\}
 \]
-is an ideal of $R$. Note that $IJ\subseteq I\cap J$. The equality does not hold in general. Take
+is an ideal of $R$. 
+Why we need to consider finite sums of elements of the form $uv$
+for $u\in I$ and $v\in J$?
+
+\begin{exercise}
+    \label{xca:IJ}
+    Let $R=\R[X,Y]$ and $I=J=(X,Y)$. Prove that the
+    set $\{uv:u\in I,\,v\in J\}$ is not an ideal of $R$.
+\end{exercise}
+
+
+Note that $IJ\subseteq I\cap J$. The equality does not hold in general. Take
 for example $R=\Z$ and $I=J=(2)$. Then $IJ=(4)\subsetneq (2)=I\cap J$. 
+
+% X^2+Y^2\not\in K.
 
 \begin{proposition}
 Let $R$ be a commutative ring. If $I$ and $J$ are coprime ideals, then $IJ=I\cap J$. 	
