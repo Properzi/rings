@@ -47,6 +47,7 @@ xy-x_1y_1=xy-x_1y+x_1y-x_1y_1=(x-x_1)y+x_1(y-y_1)\in I.
 \]
 
 \begin{theorem}
+\label{thm:quotient_ring}
 	Let $R$ be a ring and $I$ be an ideal of $R$. Then
 	$R/I$ with 
 	\[
@@ -69,6 +70,10 @@ in $R/I$ because it holds in $R$, that is
     &=(xy+I)(xz+I)\\
     &=(x+I)(y+I)+(x+I)(z+I).
 \end{align*}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:quotient_ring}.
+\end{exercise}
 
 \begin{example}
 	Let $R=(\Z/3)[X]$ and $I=(2X^2+X+2)$ be the ideal of $R$ 
@@ -95,6 +100,8 @@ to understand quotient rings one has
 the first isomorphism theorem. 
 
 \begin{theorem}[First isomorphism theorem]
+\index{First isomorphism theorem!for rings}
+\label{thm:ring_iso1}
 	If $f\colon R\to S$ is a ring homomorphism, then $R/\ker f\simeq f(R)$.  	
 \end{theorem}
 
@@ -102,6 +109,10 @@ This is somewhat similar to the result one knows from group theory.
 One needs to show that 
 the map $R/I\to f(R)$, $x+I\mapsto f(x)$, is a well-defined 
 bijective ring homomorphism. 
+
+\begin{exercise}
+    Prove Theorem \ref{thm:ring_iso1}.
+\end{exercise}
 
 \begin{example}
 Let 
@@ -221,6 +232,7 @@ As it happens in group theory, one has the following important result.
 
 \begin{theorem}[Correspondence theorem]
 \index{Correspondence theorem!for rings}
+\label{thm:ring_correspondence}
 	Let $f\colon R\to S$ be a surjective ring homomorphism. There exists a
 	bijective correspondence between 
 	the set of ideals of $R$ containing $\ker f$ and
@@ -248,6 +260,10 @@ $g=\pi\circ f\colon R\to S/J$ is a ring homomorphism and
 \]
 Since $g(R)=S/J$, the first isomorphism theorem implies that $R/I\simeq S/J$.
 \end{proof}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:ring_correspondence}.
+\end{exercise}
 
 \topic{Chinese remainder theorem}
 
