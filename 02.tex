@@ -9,7 +9,7 @@ with
 and the 
 \textbf{canonical map} 
 $R\to R/I$, $x\mapsto x+I$,
-is a surjective group homomorphism. Recall that 
+is a surjective group homomorphism with kernel $I$. Recall that 
 $R/I$ is the set of cosets $x+I$, where 
 \[
 x+I=y+I\Longleftrightarrow x-y\in I.
@@ -106,7 +106,7 @@ the first isomorphism theorem.
 \end{theorem}
 
 This is somewhat similar to the result one knows from group theory. 
-One needs to show that 
+One needs to show that, if $I=\ker f$, then 
 the map $R/I\to f(R)$, $x+I\mapsto f(x)$, is a well-defined 
 bijective ring homomorphism. 
 
@@ -125,9 +125,11 @@ a&b\\
 with the usual matrix operations. 
 A direct calculation shows that the map $R\to\Q$, $\begin{pmatrix}a&b\\0&a\end{pmatrix}\mapsto a$, is a surjective 
 ring homomorphism with  
-$\ker f=\left\{\begin{pmatrix}
+\[
+\ker f=\left\{\begin{pmatrix}
 0&b\\
-0&0\end{pmatrix}:b\in\Q\right\}$. 	
+0&0\end{pmatrix}:b\in\Q\right\}.
+\]
 Thus $R/\ker f\simeq\Q$. 	
 \end{example}
 
@@ -320,7 +322,8 @@ $x=x1=x(u+v)=xu+xv\in IJ$.
 
 \begin{theorem}[Chinese remainder theorem]
 \index{Chinese remainder theorem}
-Let $R$ be a commutative ring and $I$ and $J$ be coprime ideals. If $u,v\in R$, then 
+Let $R$ be a commutative ring and $I$ and $J$ be coprime ideals of $R$. 
+If $u,v\in R$, then 
 there exists $x\in R$ such that 
 \[
 \begin{cases}	
