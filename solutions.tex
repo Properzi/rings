@@ -20,6 +20,24 @@ $z=z1=z(xy)=(zx)y=1y=y$ and hence $x$ is a unit.
     $X^2\in K$ and $Y^2\in K$ but $X^2+Y^2\not\in K$, so $K$ is not an ideal.
 \end{sol}
 
+\begin{sol}{xca:strongly_regular}
+    Assume first that $I\cap J=IJ$ holds for all ideals $I$ and $J$. 
+    Let $a\in R$. Since $Ra=RaR$ and
+    $Ra$ is an ideal, 
+    \[
+    Ra=(Ra)(Ra)=(RaR)a=(Ra)a=Ra^2.
+    \]
+    In particular, $a\in Ra^2$ and 
+    hence $a=xa^2$ for some $x\in R$. 
+    
+    Conversely, assume that $R$ is strongly regular. Since $I$ and $J$ are
+    ideals, $I\cap J\supseteq IJ$. 
+    Let $a\in I\cap J$. There exists $x\in R$ such that
+    $a=xa^2$. In particular, 
+    $a=(xa)a\in IJ$.
+\end{sol}
+
+
 \begin{sol}{xca:principal=>noetherian}
 	Let $I_1\subsetneq I_2\subsetneq$ be a sequence of ideals of $R$.  
 	Since $R$ is principal, each $I_j$ is principal, 
