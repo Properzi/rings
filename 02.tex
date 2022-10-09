@@ -304,7 +304,6 @@ for $u\in I$ and $v\in J$?
     set $\{uv:u\in I,\,v\in J\}$ is not an ideal of $R$.
 \end{exercise}
 
-
 Note that $IJ\subseteq I\cap J$. Equality does not hold in general. Take
 for example $R=\Z$ and $I=J=(2)$. Then $IJ=(4)\subsetneq (2)=I\cap J$. 
 
@@ -319,6 +318,33 @@ Let $x\in I\cap J$. Since $I$ and $J$ are coprime,
 $1=u+v$ for some $u\in I$ and $v\in J$, 
 $x=x1=x(u+v)=xu+xv\in IJ$. 	
 \end{proof}
+
+\begin{exercise}
+\label{xca:strongly_regular}
+%\index{Ring!strongly regular}
+    Let $R$ be a commutative ring. 
+    Prove that $I\cap J=IJ$ 
+    for all ideals $I$ and $J$ of $R$
+    if and only if $R$ is \emph{strongly regular}, 
+    that is  
+    for each $a\in R$ there 
+    exists $x\in R$ such that $a=xa^2$. 
+\end{exercise}
+
+One can also prove that if $R$ is a ring,
+$I\cap J=IJ$ holds 
+for all left ideals $I$ and $J$ of $R$ 
+if and only if $R$ is strongly regular. 
+% steps
+% Let $I$ be a left ideal of $R$. Since $RI=I=I\cap R=IR$, $I$ 
+% is an ideal of $R$. Let $a\in R$. Then $Ra=RaR$ and
+% $Ra=(Ra)(Ra)=(RaR)a=(Ra)a$ and hence $a=xa^2$ for some $x$. 
+% Conversely, let $a\in I\cap J$. There exists $x$ such that $a=xa^2$. Then
+% a=(xa)a\in IJ$. Claim: $I$ is an ideal of $R$. Let $a\in I$ and $r\in R$.
+% Then there exists $x$ such that $a=xa^2$. Since $xa$ is central, 
+% $ar=xa^2r$...
+%. https://ysharifi.wordpress.com/category/noncommutative-ring-theory-notes/von-neumann-regular-rings/
+
 
 \begin{theorem}[Chinese remainder theorem]
 \index{Chinese remainder theorem}
