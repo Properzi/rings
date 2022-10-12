@@ -9,7 +9,8 @@
 	stabilizes, that is $I_n=I_m$ for some $m\in\Z_{>0}$ and all $n\geq m$. 
 \end{definition}
 
-The ring $\Z$ of integers is noetherian.
+Finite rings
+are noetherian. The ring $\Z$ of integers is noetherian.
 
 \begin{exercise}
 Let $R=\{f\colon [0,1]\to\R\}$ with 
@@ -47,7 +48,8 @@ if every ideal of $R$ is finitely generated.
 	generated, $I\ne I_1$ and hence   
 	$\{0\}\subsetneq I_1\subsetneq I$. Let $x_2\in I\setminus I_1$. Then
 	$I_2=(x_1,x_2)$ is a finitely generated ideal such that 
-	$I_1\subsetneq I_2\subsetneq I$.	 Once I have the ideals $I_1,\dots,I_{k-1}$, let 
+	$I_1\subsetneq I_2\subsetneq I$. We continue with this 
+	procedure. Once I have the ideals $I_1,\dots,I_{k-1}$, let 
 	$x_k\in I\setminus I_{k-1}$ (such an element exists because $I_{k-1}$ is finitely generated
 	and $I$ is not) and $I_k=(I_{k-1},x_k)$. The sequence
 	$\{0\}\subsetneq I_1\subsetneq I_2\subsetneq\cdots$ does not stabilize.  
@@ -64,7 +66,15 @@ if every ideal of $R$ is finitely generated.
 
 \begin{exercise}
 	Let $R=\C[X_1,X_2,\cdots]$ be the ring of polynomial in an infinite number of 
-	commuting variables. Prove that the ideal $I=(X_1,X_2,\dots)$ of polynomials 
+	commuting variables. 
+	Every element of $R$ is a finite sum
+	of the form 
+	\[
+	\sum a_{i_1i_2\cdots i_k}X_{i_1}^{n_1}X_{i_2}^{n_2}\cdots X_{i_k}^{n_k}
+	\]
+	for some non-zero complex numbers 
+	$a_{i_1i_2\cdots i_k}$. 
+	Prove that the ideal $I=(X_1,X_2,\dots)$ of polynomials 
 	with zero constant term is not finitely generated. 
 \end{exercise}
 
@@ -107,8 +117,9 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	Let $f_1(X)\in I\setminus\{0\}$ be of minimal degree $n_1$. 
 	Since $I$ is not finitely generated, it follows that 
 	$I\ne (f_1(X))$. Let $f_2(X)\in I\setminus (f_1(X))$ be
-	of minimal degree $n_2$. In particular, $n_2\geq n_1$. 
-	For $i>1$ let 
+	of minimal degree $n_2$. In particular, the minimality of the degree of $f_1(X)$ implies that 
+	$n_2\geq n_1$. 
+	We continue with this procedure. For $i>1$ let 
 	$f_i(X)\in I$ be a polynomial of minimal degree $n_i$ such that  
 	such that $f_i(X)\not\in(f_1(X),\dots,f_{i-1}(X))$ (note
 	that such an $f_i(X)$ exists because $I$ is not finitely generated). 
@@ -121,7 +132,8 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	\[
 	f_i(X)=a_iX^{n_i}+\cdots,
 	\]
-	where the dots denote the lowest degree terms. Note that 
+	where the dots denote a polynomial of 
+	degree $<n_i$. Note that 
 	$a_i\ne 0$ for all $i\geq 1$. 
 	
 	Let $J=(a_1,a_2,\dots)$. Since $R$ is noetherian, the sequence
@@ -153,6 +165,7 @@ one proves that if $R$ is a commutative noetherian ring,
 then $R[X_1,\dots,X_n]$ is noetherian. 
  
 \begin{example}
+    Let $N>0$ be a square-free integer.  
 	Since $\Z$ is noetherian, so is $\Z[X]$ by Hilbert's theorem. Now 
 	$\Z[\sqrt{N}]$ is noetherian, as $\Z[\sqrt{N}]\simeq\Z[X]/(X^2-N)$ and quotients
 	of noetherian rings are noetherian.  	
