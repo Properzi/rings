@@ -2,11 +2,8 @@
 
 \topic{Noetherian rings}
 
-We now study noetherian rings. We will prove Hilbert's basis 
-theorem. After that we will start our study of factorization
-in commutative rings. 
-
 \begin{definition}
+\index{Ring!noetherian}
 	A ring $R$ is said to be \textbf{noetherian} if every (increasing)
 	sequence $I_1\subseteq I_2\subseteq\cdots$ of ideals of $R$
 	stabilizes, that is $I_n=I_m$ for some $m\in\Z_{>0}$ and all $n\geq m$. 
@@ -31,7 +28,9 @@ does not stabilize. Thus $R$ is not noetherian.
 \end{exercise}
 
 \begin{definition}
-	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \textbf{finitely generated} if $I=(X)$ for some
+\index{Ideal!finitely generated}
+	Let $R$ be a ring. An ideal $I$ of $R$ 
+	is said to be \textbf{finitely generated} if $I=(X)$ for some
 	finite subset $X$ of $R$. 
 \end{definition}
 
@@ -68,7 +67,6 @@ if every ideal of $R$ is finitely generated.
 	commuting variables. Prove that the ideal $I=(X_1,X_2,\dots)$ of polynomials 
 	with zero constant term is not finitely generated. 
 \end{exercise}
-
 
 The correspondence theorem and the previous proposition 
 allow us to prove easily the following result. 
@@ -116,7 +114,7 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	that such an $f_i(X)$ exists because $I$ is not finitely generated). 
 	Moreover, $n_i\geq n_{i-1}$. This happens because 
 	if $n_i<n_{i-1}$, then
-	$f_i(X)\not\in (f_1(X),\dots,f_{i_2}(X))$, which contradicts
+	$f_i(X)\not\in (f_1(X),\dots,f_{i-1}(X))$, which contradicts
 	the minimality of $n_{i-1}=\deg f_{i-1}(X)$. 
 	For each $i\geq1$ 
 	let $a_i$ be the leading coefficient of $f_i(X)$, that is
@@ -143,9 +141,9 @@ Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$.
 	The leading coefficient of $g(X)$ is $\sum_{i=1}^mu_ia_i=a_{m+1}$ and, moreover, 
 	the degree of $g(X)$ is $n_{m+1}$. Thus $\deg(g(X)-f_{m+1}(X))<n_{m+1}$. 
 	
-	Since $f_{m+1}(X)\not\in (f_1(X)\dots,f_n(X))$, 
+	Since $f_{m+1}(X)\not\in (f_1(X)\dots,f_m(X))$, 
 	\[
-	g(X)-f_{m+1}(X)\not\in (f_1(X),\dots,f_n(X)),
+	g(X)-f_{m+1}(X)\not\in (f_1(X),\dots,f_m(X)),
 	\]
 	a contradiction to the minimality of the degree of $f_{m+1}$.  
 \end{proof}
@@ -164,9 +162,9 @@ then $R[X_1,\dots,X_n]$ is noetherian.
 	The ring $\Z[X,X^{-1}]$ is noetherian, as $\Z[X,X^{-1}]\simeq\Z[X,Y]/(XY-1)$. 
 \end{example}
  
- 
+
 \begin{exercise}
-    Let $R$ be a ring and $R[\![X]\!]$ be the ring of formal power series with the usual operations.  
+    Let $R$ be a commutative ring and $R[\![X]\!]$ be the ring of formal power series with the usual operations.  
 	Prove that $R[\![X]\!]$ is noetherian if $R$ is noetherian. 	
 \end{exercise}
 
@@ -253,7 +251,8 @@ is prime if and only if $p\mid xy$ then $p\mid x$ or $p\mid y$.
 %	$yz\in (p)$ implies that $y\in (p)$ or $z\in (p)$. 
 \end{definition}
 
-In $\Z$ primes and irreducible coincide. This does not happen in full generality. However,
+In $\Z$ primes and irreducible coincide. 
+This does not happen in full generality. However,
 the following result holds. 
 
 \begin{proposition}
@@ -263,21 +262,30 @@ the following result holds.
 
 \begin{proof}
 	Let $p$ be a prime. Then $p\ne 0$ and $p\not\in\mathcal{U}(R)$. Let $x$ be such that
-	$x\mid p$. Then $p=xy$ for some $y\in R$. This means $xy\in (p)$, 
-	so $x\in (p)$ or $y\in (p)$ because
-	$p$ is prime. If $x\in (p)$, then $x=pz$ for some $z\in R$ and hence
-	\[
-	p=xy=(pz)y.
-	\]
-	Since $p-pzy=p(1-zy)$ and $R$ is an integral domain, it follows that 
-	$1-zy=0$. Thus $y\in\mathcal{U}(R)$. Similarly, if $y\in (p)$, then 
-	$x\in\mathcal{U}(R)$. 
+	$x\mid p$. Then $p=xy$ for some $y\in R$. In particular, $p\mid xy$. 
+	Since $p$ is prime, $p\mid x$ or $p\mid y$. If $p\mid x$, then
+	$p$ and $x$ are associate, that is $p=xu$ for some $u\in\mathcal{U}(R)$.
+	This implies that $xu=p=xy$, so $x(u-y)=0$. Since $x\ne 0$, 
+	$y=u\in\mathcal{U}(R)$. 
+	If $p\mid y$, then $y=pz$ for some $z\in R$. Then
+	$y=pz=(xy)z$ and hence $y(1-xz)=0$. Since $y\ne 0$, 
+	$xz=1$ and hence $x\in\mathcal{U}(R)$. 
+%	This means $xy\in (p)$, 
+%	so $x\in (p)$ or $y\in (p)$ because
+%	$p$ is prime. If $x\in (p)$, then $x=pz$ for some $z\in R$ and hence
+%	\[
+%	p=xy=(pz)y.
+%	\]
+%	Since $p-pzy=p(1-zy)$ and $R$ is an integral domain, it follows that 
+%	$1-zy=0$. Thus $y\in\mathcal{U}(R)$. Similarly, if $y\in (p)$, then 
+%	$x\in\mathcal{U}(R)$. 
 \end{proof}
 
 To show that there are rings where some irreducibles are not prime, 
 we need the following lemma. 
 
 \begin{lemma}
+\label{lem:norm}
 Let $N\in\Z$ be a non-zero square-free integer and $R=\Z[\sqrt{N}]$. Then 
 the map 
 \[
@@ -297,9 +305,13 @@ satisfies the following properties:
 \begin{proof}
 	The first three items are left as exercises. Let us prove 4). 
 	If $\alpha=\beta\gamma$ for some $\beta,\gamma\in R$, then
-	$N(\alpha)=N(\beta)N(\gamma)$. Since $N(\alpha)$ is a prime number, it follows that
-	$N(\alpha)=1$ or $N(\beta)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
+	$N(\alpha)=N(\beta)N(\gamma)$. Since $N(\alpha)\in\Z$ is a prime number, it follows that
+	$N(\beta)=1$ or $N(\gamma)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
 \end{proof}
+
+\begin{exercise}
+Prove Lemma \ref{lem:norm}.
+\end{exercise}
 
 \begin{example}
 	Let $R=\Z[i]$. 
