@@ -100,11 +100,11 @@ allow us to prove easily the following result.
 Since $\Z$ is noetherian, $\Z/n$ is noetherian for all $n\geq2$. 
 
 \begin{exercise}
+\label{xca:R[X]_noetherian}
 	Prove that $\R[X]$ is noetherian. 	
 \end{exercise}
 
-% usar qu ees principal
-% todo: agregar despues de la prueba de la principalidad para Z que tambien R[X] es principal
+Hint: Use the fact that $\R[X]$ is a principal domain (Exercise \ref{xca:R[X]_principal}).  
 
 \begin{theorem}[Hilbert]
 \index{Hilbert's theorem}
@@ -193,8 +193,6 @@ then $R[X_1,\dots,X_n]$ is noetherian.
 \index{Domain}
     A \textbf{domain} $R$ is a ring such that $xy=0$ implies $x=0$ or $y=0$. 
     An \textbf{integral} domain is a commutative ring that is also a domain. 
-% 	A commutative ring $R$ is said to be an \textbf{integral domain}
-% 	if $xy=0$ implies $x=0$ or $y=0$.  	
 \end{definition}
 
 The rings $\Z$ and $\Z[i]$ are both integral domains. 
@@ -217,7 +215,7 @@ Note that $x\mid y$ if and only if $(y)\subseteq (x)$.
 	\textbf{associate} in $R$ if $x=yu$ for some $u\in\mathcal{U}(R)$. 
 \end{definition}
 
-Note that $x$ and $y$ are associate if and only if $(x)=(y)$.  
+Note that $x$ and $y$ are associate if and only if $(x)=(y)$.
 
 \begin{example}
 	The integers $2$ and $-2$ are associate in $\Z$.	
@@ -243,7 +241,7 @@ Note that $x$ and $y$ are associate if and only if $(x)=(y)$.
 	and $x=ab$ with $a,b\in R$ implies that $a\in\mathcal{U}(R)$ or $b\in\mathcal{U}(R)$. 
 \end{definition}
 
-Note that $x$ is irreducible if and only if $(x)\ne R$ 
+Note that $x\in R$ is irreducible if and only if $(x)\ne R$ 
 and there is no principal ideal $(y)$ such that 
 $(x)\subsetneq (y)\subsetneq R$.
 
@@ -264,9 +262,9 @@ is prime if and only if $p\mid xy$ then $p\mid x$ or $p\mid y$.
 %	$yz\in (p)$ implies that $y\in (p)$ or $z\in (p)$. 
 \end{definition}
 
-In $\Z$ primes and irreducible coincide. 
-This does not happen in full generality. However,
-the following result holds. 
+Note that a non-zero element $p\in R$ is prime 
+if and only if $(p)\ne R$ and 
+$xy\in (p)$ implies that $x\in (p)$ or $y\in (p)$. 
 
 \begin{proposition}
 	Let $R$ be an integral domain and $p\in R$. 
@@ -283,17 +281,10 @@ the following result holds.
 	If $p\mid y$, then $y=pz$ for some $z\in R$. Then
 	$y=pz=(xy)z$ and hence $y(1-xz)=0$. Since $y\ne 0$, 
 	$xz=1$ and hence $x\in\mathcal{U}(R)$. 
-%	This means $xy\in (p)$, 
-%	so $x\in (p)$ or $y\in (p)$ because
-%	$p$ is prime. If $x\in (p)$, then $x=pz$ for some $z\in R$ and hence
-%	\[
-%	p=xy=(pz)y.
-%	\]
-%	Since $p-pzy=p(1-zy)$ and $R$ is an integral domain, it follows that 
-%	$1-zy=0$. Thus $y\in\mathcal{U}(R)$. Similarly, if $y\in (p)$, then 
-%	$x\in\mathcal{U}(R)$. 
 \end{proof}
 
+In $\Z$ primes and irreducible coincide. 
+This does not happen in full generality. 
 To show that there are rings where some irreducibles are not prime, 
 we need the following lemma. 
 
@@ -323,7 +314,7 @@ satisfies the following properties:
 \end{proof}
 
 \begin{exercise}
-Prove Lemma \ref{lem:norm}.
+    Prove Lemma \ref{lem:norm}.
 \end{exercise}
 
 \begin{example}
