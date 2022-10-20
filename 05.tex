@@ -1,5 +1,31 @@
 \chapter{}
 
+The following picture shows 
+the relationships between 
+different classes of commutative domains:
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=4mm, >=latex',
+block/.style = {draw, rectangle, minimum height=10mm, minimum width=28mm,align=center}]
+    \node [block]                      (E)     {Euclidean};
+    \node [block, right=of E]       (P)   {Principal};
+    \node [block, right=of P]     (UF)  {Unique factorization};
+    \node [block, below=of UF]    (F) {Factorization};
+    \node [block, below=of P]     (N)  {Noetherian};
+    \path[draw,->] (E)      edge (P)
+                   (P)    edge (UF)
+                   (UF)   edge (F)
+                   (P)       edge (N)
+                   (N)   edge (F)
+                    ;
+    \end{tikzpicture}
+\end{figure}
+
+We also know that the  
+reverse implications do not hold. 
+
+It is time to give a very nice number-theoretical application.
+
 \begin{theorem}[Fermat]
 \index{Fermat's theorem}
 	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
