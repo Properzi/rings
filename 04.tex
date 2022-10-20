@@ -5,22 +5,27 @@
 	\begin{enumerate}
 		\item $x$ is irreducible. 
 	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
-	$4=N(x)=N(\alpha)N(\beta)$. Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. Then
-	$N(\alpha)=a^2+3b^2\ne 2$. If $N(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
-	both have the same parity. 
-	
-	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
-	some $k,l\in\Z$, then 
-	\[
-	2=a^2+3b^2=4k^2+12l^2
-	\]
-	is divisible by 4, a contradiction.  
-	
-	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
-	\[
-	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
-	\]
-	is divisible by 4, a contradiction. 
+	$4=N(x)=N(\alpha)N(\beta)$. Thus $N(\alpha)\in\{1,2,4\}$. 
+	Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. 
+	If $N(\alpha)=a^2+3b^2=2$, then $b=0$ and hence
+	$a^2=2$, a contradiction. If $N(\alpha)=1$, then $\alpha\in\mathcal{U}(R)$.
+	If $N(\alpha)=4$, then $N(\beta)=1$ and $\beta\in\mathcal{U}(R)$. 
+%
+%	If $N(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
+%	both have the same parity. 
+%	
+%	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
+%	some $k,l\in\Z$, then 
+%	\[
+%	2=a^2+3b^2=4k^2+12l^2
+%	\]
+%	is divisible by 4, a contradiction.  
+%	
+%	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
+%	\[
+%	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
+%	\]
+%	is divisible by 4, a contradiction. 
 		\item $x$ is not prime. Note that $(1+\sqrt{-3})(1-\sqrt{-3})=4$, then 
 		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
 		\[
@@ -462,3 +467,4 @@ The same technique could be used to prove that if
 $R$ is a unique factorization domain, then $R[X]$ is a unique factorization domain, see
 for example, \cite[Chapter III, Theorem 6.14]{MR600654}.  
 
+    
