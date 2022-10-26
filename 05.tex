@@ -122,11 +122,24 @@ $R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal
     for $S$ is an element $u\in R$ such that $s\leq u$ for all $s\in S$. 
 \end{definition}
 
+An upper bound for $S$ might not be an element of $S$. 
+
 \begin{example}
-    Let $S=\{6\Z,12\Z,24\Z\}$ be a subset of the set of subgroups of $\Z$ partially ordered by 
+    Let $S=\{6\Z,12\Z,24\Z\}$ be a subset of the set $X$ 
+    of subgroups of $\Z$ partially ordered by 
     the inclusion. Then 
-    $6\Z=6\Z\cup 12\Z\cup 24\Z$ is an upper bound of the subset~$S$. 
+    $6\Z=6\Z\cup 12\Z\cup 24\Z$ is an upper bound of the subset~$S$ 
+    that is not maximal in $X$. 
 \end{example}
+
+\begin{example}
+    Let $R=\{\emptyset, \{1\},\{2\},\{3\},\{1,2\}\}$ partially ordered with
+    the inclusion, where $R$ is considered as a subset
+    of the power set of $X=\{1,2,3\}$. 
+    Then $\{3\}$ and $\{1,2\}$ are maximal elements of $R$. Moreover, 
+    $X$ is an upper bound for $R$. 
+\end{example}
+
 
 \begin{definition}
     Let $R$ be a poset. A \textbf{chain} is a non-empty subset $S$ of $R$ such that
@@ -142,12 +155,16 @@ every chain in $R$ admits an upper bound in $R$.
 Then $R$ contains a maximal element. 
 \end{quote}
 
-It is not intuitive, but it is logically equivalent to a more 
+It is not intuitive\footnote{The mathematician
+Jerry L. Bona has a nice joke about Zorn's lemma: 
+\emph{The Axiom of Choice is obviously true, 
+the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}
+but it is logically equivalent to a more 
 intuitive statement in set theory, the Axiom of Choice, 
 which says every Cartesian product of non-empty sets is non-empty. 
 It is more an axiom than a lemma. 
 The reason for calling Zorn’s lemma a lemma rather 
-than an axiom is purely historical.
+than an axiom is purely historical. 
 
 \begin{definition}
 	\index{Ideal!maximal}
@@ -352,6 +369,37 @@ with
 =\sum_{g,h\in G}\lambda_g\mu_h(gh).
 \] 
 
+\begin{example}
+    Let $\Sym_3=\{\id,(12),(13),(23),(123),(132)\}$ 
+    the symmetric group in three letters. Every element of $\C[\Sym_3]$
+    is of the form 
+    \[
+    a\id+b(12)+c(13)+d(23)+e(123)+f(132)
+    \]
+    for some $a,b,c,d,e,f\in\C$. For example, 
+    \[
+    \alpha=5\id +3(123),\quad
+    \beta=-4\id+(132)
+    \]
+    are elements of
+    $\C[\Sym_3]$. We compute
+    \begin{align*}
+    \alpha+\beta &=1\id+3(123)+(132)
+    \shortintertext{and}
+    \alpha\beta &=(5\id +3(123))(-4\id+(132))\\
+    &=-20\id +5(132)-12(123)+3(123)(132)\\
+    &=-20\id +5(132)-12(123)+3\id\\
+    &=-17\id+ 5(132)-12(123).
+    \end{align*}
+    Another example:
+    \begin{align*}
+    (\id+5(13))(2\id-(12))
+    &=2\id-(12)+10(13)-5(13)(12)\\
+    &=2\id-(12)+10(13)-5(123),
+    \end{align*}
+    as $(13)(12)=(123)$. 
+\end{example}
+
 Thus $K[G]$ is a ring and also a vector space (over $K$) and these structures
 are somewhat compatible. Note that
 \[
@@ -426,7 +474,7 @@ $\varphi|_G=f$.
 	\[
 	\C[\D_3]\simeq\C\times\C\times M_2(\C).
 	\]
-	Let $\omega$ be a primitive root of one. Let 
+	Let $\omega$ be a primitive cubic root of one. Let 
 	\[
 	R=\begin{pmatrix}
 		\omega&0\\
