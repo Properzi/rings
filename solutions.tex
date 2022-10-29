@@ -140,6 +140,70 @@ $z=z1=z(xy)=(zx)y=1y=y$ and hence $x$ is a unit.
 
 %\section*{Lecture 5}
 
+\begin{sol}{xca:maximal<=>field}
+    Assume that $I$ is a maximal ideal of $R$. 
+    We need to show that every non-zero element of $R/I$ 
+    is invertible. Recall 
+    that $1_{R/I}=1+I$. 
+    Let $a\not\in I$. Then $(I,a)=R$, as
+    $I$ is maximal. Then $1+x+ab$ for some $x\in I$ and $b\in R$.
+    In particular, 
+    \[
+    (ab)+I=(a+I)(b+I)=1+I.
+    \]
+    
+    Conversely, let $J$ be an ideal of $R$ 
+    such that $I\subsetneq J$. Let $a\in J\setminus I$. 
+    Since $R/I$ is a field, there exists $b\in R$ such that
+    \[
+    (ab)+I=(a+I)(b+I)=1+I.
+    \]
+    Thus $ab=1+x$ for some $x\in I\subseteq J$. Since $ab\in J$, 
+    it follows that $1\in J$ and therefore $J=R$. 
+\end{sol}
+
+\begin{sol}{xca:prime<=>domain}
+    Recall that $R/I$ is a ring with 
+    $0_{R/I}=I$. Thus $x+I=0_{R/I}$ if and only if $x\in I$. 
+    Assume first that $I$ is a prime ideal. 
+    Let $a,b\in R$ be such that 
+    \[
+    (ab)+I=(a+I)(b+I)=I.
+    \]
+    Since
+    $ab\in I$ and $I$ is prime, $a\in I$ or $b\in I$. This means
+    that $a+I=I$ or $b+I=I$. 
+    
+    Conversely, if there are $a,b\in R$ 
+    are such that $a\not\in I$ and $b\not\in I$ and 
+    \[
+    (ab)+I=(a+I)(b+I)=I,
+    \]
+    then $ab\in I$ and $I$ is not prime. 
+\end{sol}
+
+\begin{sol}{xca:maximal=>prime}
+\begin{enumerate}
+    \item Let $a,b\in R$ be such that $ab\in I$. If $a\not\in I$, 
+    then $(I,a)=R$, as $I$ is a maximal ideal. Thus $1=x+ra$ for
+    some $x\in I$ and $r\in R$. Multiplying by $b$ and using
+    that $x\in I$ and $ab\in I$,  
+    $b=xb+rab\in I$. 
+    \item The ideal $(X)$ is prime as $R/(X)\simeq\Z$ is a domain. Since     $\Z$ is not a field, the ideal $(X)$ cannot be maximal (see
+        Exercise \ref{xca:maximal<=>field}). 
+    \item Let $J$ be an ideal such that $I\subseteq J$. There 
+        exist $a,b\in R\setminus\{0\}$
+        such that $I=(a)$ and $J=(b)$. In particular, 
+        since $a\in I\subseteq J$, there exists $r\in R$ such that
+        $a=rb\in I$. Since $I$ is prime, $r\in I$ or $b\in I$. 
+        If $b\in I$, then $I=J$. If $r\in I=(a)$, then 
+        $r=sa$ for some $s\in R$. Thus  
+        $a=rb=s(ab)$, so $a(1-sb)=0$. Since $a\ne 0$, 
+        $b\in\mathcal{U}(R)$ and therefore $J=R$. 
+\end{enumerate}
+. 
+\end{sol}
+
 \begin{sol}{xca:fx=cx}
     Consider $\R$ as a $\Q$-vector space. 
     Since $\sqrt{2}\not\in\Q$, the subset $\{1,\sqrt{2}\}$ of $\R$ 
