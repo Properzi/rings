@@ -192,7 +192,7 @@ then $R[X_1,\dots,X_n]$ is noetherian.
 \index{Integral domain}
 \index{Domain}
     A \textbf{domain} $R$ is a ring such that $xy=0$ implies $x=0$ or $y=0$. 
-    An \textbf{integral} domain is a commutative ring that is also a domain. 
+    An \textbf{integral domain} is a commutative ring that is also a domain. 
 \end{definition}
 
 The rings $\Z$ and $\Z[i]$ are both integral domains. 
@@ -200,6 +200,19 @@ More generally, if $N$ is a square-free integer,
 then the ring $\Z[\sqrt{N}]$ is an integral domain.  
 The ring $\Z/4$ of 
 integers modulo 4 is not an integral domain. 
+
+\begin{example}
+    The ring $\Z/12$ is not a domain. Weird things can happen 
+    when we work over these rings. For example, the degree-two  
+    $f(X)=X^2-4\in(\Z/12)[X]$ has more than two roots, 
+    as $f(2)=f(8)=f(10)=0$. In fact, 
+    \[
+    f(X)=(X-2)(X-10)=(X-8)(X-10).
+    \]
+\end{example}
+
+The previous example shows why it might be better 
+to work over integral domains. 
 
 \begin{definition}
 \index{Divisibility}
@@ -257,6 +270,30 @@ $(x)\subsetneq (y)\subsetneq R$.
 
 The irreducibles of $\Z$ are the prime numbers. Note that $p\in \Z$
 is prime if and only if $p\mid xy$ then $p\mid x$ or $p\mid y$. 
+
+\begin{example}
+    The polynomial $X^4+1\in\Z[X]$ is irreducible. If not, 
+    since $X^4+1$ has no integer roots, there are 
+    $a,b,c,d\in\Z$ such that
+    \[
+    X^4+1=(X^2+aX+b)(X^2+cX+d).
+    \]
+    This implies that 
+    \begin{equation}
+    \label{eq:system}
+    \begin{cases}
+    bd=1,\\
+    cb+ad=0,\\
+    b+d+ac=0,\\
+    a+c=0.
+    \end{cases}
+    \end{equation}
+    This is a contradiction. as \eqref{eq:system} has no integer solutions.
+\end{example}
+
+If $p$ is a prime number, 
+one can prove that $X^4+1\in(\Z/p)[X]$ is never irreducible. For example
+$X^4+1=(X^2+1)^2$ in $(\Z/2)[X]$. 
 
 \begin{definition}
 \index{Prime elements}
@@ -320,6 +357,13 @@ satisfies the following properties:
 \begin{exercise}
     Prove Lemma \ref{lem:norm}.
 \end{exercise}
+
+\begin{exercise}
+    Prove that $\Z[\sqrt{2}]$ has infinitely many units. 
+\end{exercise}
+
+Hint: You can prove, for example, that $(1+\sqrt{2})^n\in\mathcal{U}(\Z[\sqrt{2}])$ 
+for all $n\geq1$. 
 
 \begin{example}
 	Let $R=\Z[i]$. 

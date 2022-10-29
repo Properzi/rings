@@ -233,7 +233,8 @@ example of a right ideal that is not a left ideal?
 
 \begin{definition}
 \index{Ideal}	
-Let $R$ be a ring. An \textbf{ideal} of $R$ is a subset that is both a left and a right ideal of $R$. 
+Let $R$ be a ring. An \textbf{ideal} of $R$ 
+is a subset that is both a left and a right ideal of $R$. 
 \end{definition}
  
 If $R$ is a ring, then $\{0\}$ and $R$ are both ideals of $R$. 
@@ -245,6 +246,7 @@ Let $R$ be a ring.
 \item If $I_1\subseteq I_2\subseteq\cdots$ is a sequence of ideals of $R$, then $\cup_{i\geq1}I_i$ is an ideal of $R$. 
 \end{enumerate}
 \end{exercise}
+
 
 \begin{example}
 Let $R=\R[X]$. If $f(X)\in R$, then the set 
@@ -281,6 +283,29 @@ Find the ideals of $\R$.
 \end{exercise}
 
 A similar exercise is to find the ideals of any division ring.  
+
+\begin{exercise}
+\label{xca:ideals}
+    Let $R$ be a commutative ring. Prove that every ideal of $M_n(R)$ is 
+    of the form $M_n(I)$ for some ideal $I$ of $R$. 
+\end{exercise}
+
+%\begin{sol}{xca:ideals}
+%    Recall the formula $E_{ij}E_{jk}=E_{ik}$ for elementary matrices.  
+%    
+%    Let $J$ be an ideal of $M_n(R)$. For a matrix $A=(a_{ij})$,
+%    $E_{ki}AE_{jl}=a_{ij}E_{kl}$ for all $i,j,k,l$. Let 
+%    \[
+%    I=\{r\in R:rE_{11}\in J\}.
+%    \]
+%    Then $I$ is an ideal of $R$. Since $a_{ij}E_{11}=E_{1i}AE_{j1}$, 
+%    $J\subseteq M_n(I)$. 
+%    
+%    Conversely, if $A\in M_n(I)$, then $A$ is a sum of elements 
+%    of the form $rE_{ij}$ for $r\in I$. Thus $rE_{ij}\in J$ for $r\in I$ 
+%    and hence $A\in J$. 
+%\end{sol}
+
 
 \begin{definition}
 \index{Ideal!principal}
@@ -357,7 +382,12 @@ $\ker f=\{0\}$ if and only if $f$ is injective. The image
 \[
 f(R)=\{f(x):x\in R\}
 \]
-is a subring of $S$. In general, $f(R)$ is not an ideal of $S$. Provide an example! 
+is a subring of $S$. In general, $f(R)$ is not an ideal of $S$. 
+
+\begin{example}
+The inclusion $\Z\hookrightarrow\Z[X]$ is a ring homomorphism. Then
+$2\Z$ is an ideal of $\Z$ but not an ideal of $\Z[X]$. 
+\end{example}
 
 \begin{example}
 	The map $\C\to M_2(\R)$, $a+bi\mapsto\begin{pmatrix}a&b\\-b&a\end{pmatrix}$, is an injective
