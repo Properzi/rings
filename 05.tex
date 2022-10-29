@@ -185,8 +185,12 @@ Let $R$ be a commutative ring and $I$ be an ideal of $R$. Prove that $I$ is maxi
 if and only if $R/I$ is a field.  	
 \end{exercise}
 
+\index{Ideal!proper}
+An ideal $I$ of a ring $R$ is said to be \textbf{proper}
+if $I\ne R$. 
+
 The following application of Zorn's lemma uses 
-the identity of a ring. 
+the identity of a ring.
 
 \begin{theorem}[Krull]
 \index{Krull's theorem}
@@ -222,9 +226,36 @@ identity.
 One can also compute the maximal ideals of $K[X]$ for any field $K$. 
 
 \begin{exercise}
-	Let $R$ be a principal domain and $p\in R\setminus\{0\}$. Then $p$ is irreducible 
+	Let $R$ be a principal domain and $p\in R\setminus\{0\}$. 
+	Then $p$ is irreducible 
 	if and only if $(p)$ is maximal.	
 \end{exercise}
+
+\begin{definition}
+\index{Ideal!prime}
+Let $R$ be a commutative ring. A proper ideal $I$ of $R$ is said to be
+\textbf{prime} if $xy\in I$ implies that $x\in I$ or $y\in I$. 
+\end{definition}
+
+If $p$ is a prime number, then $p\Z$ is a prime ideal of $\Z$.
+
+\begin{exercise}
+\label{xca:prime<=>domain}
+    Let $R$ be a commutative ring. 
+    Prove that an ideal $I$ of $R$ is prime if and only if $R/I$ is a domain. 
+\end{exercise}
+
+\begin{exercise}\
+\label{xca:maximal=>prime}
+\begin{enumerate}
+    \item Prove that maximal ideals are prime. 
+    \item Let $R=\Z[X]$. Prove that $(X)$ is a prime ideal that is not maximal.
+    \item Let $R$ be a principal domain. Prove that prime ideals are maximal. 
+\end{enumerate}
+\end{exercise}
+
+% $(X)$ is prime as $R/(X)\simeq\Z$ is a domain. Since $\Z$ is not a field, 
+% $(X)$ cannot be maximal. 
 
 \begin{example}
 	The ideal $(X^2+2X+2)$ is maximal in $\Q[X]$ because
@@ -256,9 +287,8 @@ One can also compute the maximal ideals of $K[X]$ for any field $K$.
 \index{Jacobson's radical}
 	Let $R$ be a commutative ring and $J(R)$ be the intersection of all maximal ideals 
 	of $R$. Prove that $x\in J(R)$ 
-	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is proper
-	and it is known
-	as the \textbf{Jacobson's radical} of $R$.  	
+	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is known
+	as the \textbf{Jacobson's radical} of $R$. Note that $J(R)\ne R$.   
 \end{exercise}
 
 We conclude the lecture with a different application of Zorn's lemma.  
@@ -342,6 +372,12 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
 \end{proof}
 
 \begin{exercise}
+    Let $p$ be a prime number and 
+    $R=\Z/p\times\Z/p$ be a ring with the usual point-wise operations. 
+    Prove that $\ch R=p$ and that $R$ has zero divisors. 
+\end{exercise}
+
+\begin{exercise}
 \label{xca:freshman_dream}
 \index{Freshman's dream}
     Let $R$ be a commutative ring of prime characteristic $p$. 
@@ -378,7 +414,7 @@ with
     \]
     for some $a,b,c,d,e,f\in\C$. For example, 
     \[
-    \alpha=5\id +3(123),\quad
+    \alpha=5\id +3(123)\quad\text{ and }\quad 
     \beta=-4\id+(132)
     \]
     are elements of
