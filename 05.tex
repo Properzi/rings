@@ -28,6 +28,7 @@ It is time to give a very nice number-theoretical application.
 
 \begin{theorem}[Fermat]
 \index{Fermat's theorem}
+\label{thm:Fermat}
 	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
 	\begin{enumerate}
 	    \item $p=2$ or $p\equiv1\bmod 4$.
@@ -71,10 +72,56 @@ It is time to give a very nice number-theoretical application.
 \end{proof}
 
 \begin{exercise}
+\label{xca:p=3(4)}
+    Let $\alpha\in\Z[i]$ be such that $N(\alpha)=p^2$ 
+    for some prime number $p\in\Z$ with $p\equiv3\bmod 4$. 
+    Prove that $\alpha$ is irreducible. 
+\end{exercise}
+
+\begin{exercise}
+    \label{xca:p=1(4)}
+    Let $p\in\Z$ be a prime number such that $p\equiv1\bmod 4$.
+    If $\alpha\in\Z[i]$, then $\alpha=\gamma\overline{\gamma}$
+    for some $\gamma\in\Z[i]$ irreducible. 
+\end{exercise}
+
+\begin{exercise}
 \label{xca:Z[i]irreducibles}
 Find the irreducible elements of $\Z[i]$. 
 \end{exercise}
 
+\index{Eisenstein integers}
+The following exercise is about \textbf{Eisenstein integers}. 
+
+\begin{exercise}
+    \label{xca:Eisenstein}
+    Let $\omega=e^{2\pi i/3}\in\C$ and $R=\Z[\omega]=\{a+b\omega:a,b\in\Z\}$. 
+    Prove the following statements:
+    \begin{enumerate}
+        \item The map 
+        \[
+        N\colon R\to\Z_{\geq0},
+        \quad
+        N(a+b\omega)=a^2-ab+b^2,
+        \]
+        is multiplicative and 
+        satisfies $N(\alpha)=\alpha\overline{\alpha}$
+        for all $\alpha\in R$. 
+        \item $\mathcal{U}(R)=\{1,-1,\omega,-\omega,\omega^2,-\omega^2\}$.
+        \item $R$ is an euclidean domain.
+        \item If $N(\alpha)$ is a prime number, then $\alpha$ is irreducible. 
+        \item If $N(\alpha)=p^2$ for some 
+            prime number $p$ with $p\equiv 2\bmod 3$, then 
+            $\alpha$ is irreducible. 
+        \item If $p\equiv 1\bmod 3$, then 
+            $p=\gamma\overline{\gamma}$ for some 
+            irreducible $\gamma\in R$.
+        \item Up to multiplication by units, 
+            the irreducible elements of $R$ are $1-2\omega$, 
+            $a+b\omega$ with $a^2-ab+b^2=p$ and $p\equiv 1\bmod 3$, 
+            and prime numbers $p\in\Z$ with $p\equiv 2\bmod 3$.
+    \end{enumerate}
+\end{exercise}
 
 \topic{Zorn's lemma}
 

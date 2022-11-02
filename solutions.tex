@@ -112,31 +112,89 @@ $z=z1=z(xy)=(zx)y=1y=y$ and hence $x$ is a unit.
 	$a_i/b_i$ is a unit. Hence $g_i$ and $h_i$ are associate in $\Z[X]$.     
 \end{sol}
 
-\begin{sol}{xca:Z[i]irreducibles}
-	Let $x\in\Z[i]$ be irreducible. Since 
-	$x\not\in\mathcal{U}(\Z[i])$, it follows that $N(x)>1$. Write
-	the integer $N(x)$ as a product of (not necessarily different) primes $p_1,\dots,p_k$. Since 
-	$x$ divides $N(x)=x\overline{x}=p_1\cdots p_k$ and $x$ is prime, 
-	$x$ divides $p_i$ for some $i\in\{1,\dots,k\}$. 
-	
-	If $p_i$ is irreducible in $\Z[i]$, 
-	then $x$ and $p_i$ are associate, so $x\in\{p_i,-p_i,ip_i,-ip_i\}$ for some
-	prime number $p_i$ that is irreducible in $\Z[i]$. 
-	
-	If $p_i$ is not irreducible, say $p_i=\alpha\beta$ for some $\alpha,\beta\in\Z[i]$ that
-	are not units of $\Z[i]$. Then 
-	$p_i^2=N(p_i)=N(\alpha)N(\beta)$ with $N(\alpha)>1$ and $N(\beta)>1$. The unique factorization
-	of $\Z$ implies that $N(\alpha)=N(\beta)=p_i$ and hence $\alpha$ and $\beta$ 
-	are irreducible in $\Z[i]$. Thus $x$ divides 
-	$\alpha\beta$. If $x$ divides the irreducible $\alpha$, 
-	then $x$ and $\alpha$ are associate in $\Z[i]$. This means that 
-	$\alpha\in\{x,-x,xi,-xi\}$ and $N(x)=N(\alpha)=p_i$ for some prime number $p_i$.  
-	
-	Combining the previous paragraphs with Fermat's theorem it follows that 
-	the irreducibles of $\Z[i]$ are $1+i$, $1-i$, $-1+i$ and $-1-i$, 
-	$p$, $-p$, $pi$ and $-p$ for some prime number $p\in\Z$ such that $p\equiv3\bmod 4$, and 
-	the elements $x\in\Z[i]$ such that $N(x)=p$ where $p\in\Z$ is a prime number such that $p\equiv1\bmod 4$. 
+%\begin{sol}{xca:Z[i]irreducibles}
+%	Let $x\in\Z[i]$ be irreducible. Since 
+%	$x\not\in\mathcal{U}(\Z[i])$, it follows that $N(x)>1$. Write
+%	the integer $N(x)$ as a product of (not necessarily different) primes $p_1,\dots,p_k$. Since 
+%	$x$ divides $N(x)=x\overline{x}=p_1\cdots p_k$ and $x$ is prime, 
+%	$x$ divides $p_i$ for some $i\in\{1,\dots,k\}$. 
+%	
+%	If $p_i$ is irreducible in $\Z[i]$, 
+%	then $x$ and $p_i$ are associate, so $x\in\{p_i,-p_i,ip_i,-ip_i\}$ for some
+%	prime number $p_i$ that is irreducible in $\Z[i]$. 
+%	
+%	If $p_i$ is not irreducible, say $p_i=\alpha\beta$ for some $\alpha,\beta\in\Z[i]$ that
+%	are not units of $\Z[i]$. Then 
+%	$p_i^2=N(p_i)=N(\alpha)N(\beta)$ with $N(\alpha)>1$ and $N(\beta)>1$. The unique factorization
+%	of $\Z$ implies that $N(\alpha)=N(\beta)=p_i$ and hence $\alpha$ and $\beta$ 
+%	are irreducible in $\Z[i]$. Thus $x$ divides 
+%	$\alpha\beta$. If $x$ divides the irreducible $\alpha$, 
+%	then $x$ and $\alpha$ are associate in $\Z[i]$. This means that 
+%	$\alpha\in\{x,-x,xi,-xi\}$ and $N(x)=N(\alpha)=p_i$ for some prime number $p_i$.  
+%	
+%	Combining the previous paragraphs with Fermat's theorem it follows that 
+%	the irreducibles of $\Z[i]$ are $1+i$, $1-i$, $-1+i$ and $-1-i$, 
+%	$p$, $-p$, $pi$ and $-p$ for some prime number $p\in\Z$ such that $p\equiv3\bmod 4$, and 
+%	the elements $x\in\Z[i]$ such that $N(x)=p$ where $p\in\Z$ is a prime number such that $p\equiv1\bmod 4$. 
+%\end{sol}
+
+\begin{sol}{xca:p=1(4)}
+    Since $p\equiv1\bmod4$, 
+    $p$ is not prime in $\Z[i]$ (see Theorem \ref{thm:Fermat}). 
+    Thus $p=\alpha\beta$ for some $\alpha,\beta\not\in\mathcal{U}(\Z[i])$. Hence $p^2=N(p)=N(\alpha)N(\beta)$. Since 
+    $N(\alpha)\ne 1$ and $N(\beta)\ne 1$, $N(\alpha)=N(\beta)=p$. 
+    Therefore $\alpha\overline{\alpha}=N(\alpha)=p$. 
 \end{sol}
+
+\begin{sol}{xca:Z[i]irreducibles}
+    We claim that (up to units) the irreducible
+    elements of $\Z[i]$ are $1+i$, $a+bi$, where 
+    $a,b\in Z$ and $a^2+b^2=p$ with $p$ a prime number
+    such that $p\equiv1\bmod 4$, and a prime number $p$ with 
+    $p\equiv3\bmod 4$.
+    
+    Let $\alpha\in\Z[i]$ be irreducible. Then $\alpha$ is
+    prime in $\Z[i]$. We claim that $p\in (\alpha)$ for some
+    prime number $p\in\Z$. In fact, 
+    $(\alpha)\cap\Z$ is an ideal of $\Z$, so 
+    $(\alpha)\cap\Z=(p)$ for some positive integer $p\in\Z$. 
+    To see that $p$ is a prime number, let 
+    us assume that $p\mid xy$ for some $x,y\in\Z$. Then 
+    $xy=pm\in (\alpha)\cap\Z$ for some $m\in\Z$. In particular, 
+    $xy=\alpha\beta$ for some $\beta\in\Z[i]$. Thus $\alpha\mid xy$
+    in $\Z[i]$ and therefore 
+    $\alpha\mid x$ or $\alpha\mid y$ in $\Z[i]$. Thus 
+    $x\in (\alpha)\cap\Z=(p)$ or $y\in(\alpha)\cap\Z=(p)$. Hence
+    $p\mid x$ or $p\mid y$ in $\Z$, so $p$ is a prime number. 
+
+    Let $\beta\in\Z[i]$ be such that $p=\alpha\beta$. 
+    Then 
+    \[
+    p^2=N(p)=N(\alpha\beta)=N(\alpha)N(\beta).
+    \]
+    Thus $N(\alpha)\in\{p,p^2\}$, 
+    as $N(\alpha)\ne1$ because $\alpha\not\in\mathcal{U}(\Z[i])$. 
+    
+    Assume first that $N(\alpha)=p$. Write $\alpha=a+bi$ 
+    for $a,b\in\Z$. If $p=2$, then 
+    \[
+    \alpha\in\{1+i,1-i,-1+i,-1-i\}.
+    \]
+    If $p\equiv1\bmod 4$, 
+    then $p=N(\alpha)=a^2+b^2$. If $p\equiv3\bmod 4$, 
+    then $p=N(\alpha)=a^2+b^2$, a contradiction to Theorem \ref{thm:Fermat}. 
+    
+    Assume now that $N(\alpha)=p^2$. Then $\beta\in\mathcal{U}(\Z[i])$.
+    If $p=2$, 
+    then $\alpha$ is not irreducible, as 
+    $\alpha\in\{2,-2,2i,-2i\}$. 
+    If $p\equiv3\bmod 4$, then $\alpha\in\{p,-p,pi,-pi\}$.  If $p\equiv1\bmod 4$, then 
+    $p=\gamma\overline{\gamma}$ for some irreducible 
+    $\gamma$ 
+    such that $N(\gamma)=p$ (see Exercise \ref{xca:p=1(4)}). 
+    Thus $\alpha$ is not irreducible, 
+    a contradiction. 
+\end{sol}   
 
 %\section*{Lecture 5}
 
