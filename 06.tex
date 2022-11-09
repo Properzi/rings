@@ -11,8 +11,7 @@
 \index{Representation!degree}
 The \textbf{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. Note that
 if $V$ is finite-dimensional, say $\dim V=n$, fixing a basis of $V$ we get a \textbf{matrix representation} 
-$\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context we will use either
-representations on vector spaces or matrix representations.  
+$\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will use either representations on vector spaces or matrix representations.  
 
 \begin{example}
 	We use group representations to show that 
@@ -42,7 +41,7 @@ representations on vector spaces or matrix representations.
 		0&-1	
 	\end{pmatrix}
 	\begin{pmatrix}
-		1&0\\
+		1&1\\
 		0&-1	
 	\end{pmatrix}
 	=\begin{pmatrix}
@@ -70,7 +69,7 @@ groups.
 
 \begin{example}
 \index{Representation!trivial}
-	If $G$ is a group, then $\rho\colon G\to\C^\times$, $g\mapsto 1$, 
+	If $G$ is a group, then $\rho\colon G\to\GL_1(\C)=\C^\times$, $g\mapsto 1$, 
 	is a representation. This representation is known as the \textbf{trivial (complex) representation} of $G$. 	
 \end{example}
 
@@ -121,7 +120,8 @@ groups.
 	\arrow["{\psi_g}"', from=2-1, to=2-2]
 	\arrow["T", from=1-2, to=2-2]
 \end{tikzcd}\]
-    commutes, i.e. $\psi_gT=T\rho_g$ for all $g\in G$.
+    commutes for all $g\in G$, this means that 
+    $\psi_gT=T\rho_g$ for all $g\in G$.
 \end{definition}
 
 It is convenient to introduce an alternative
@@ -140,8 +140,8 @@ map $T\colon V\to W$ is invariant if and only if
 \[
 T(g\cdot v)=g\cdot T(v)
 \]
-for all $v\in V$ and $g\in G$. Note
-that although we use the same notation for different representations there is no risk of confusion. 
+for all $v\in V$ and $g\in G$. 
+Although we use the same notation for different representations, there is no risk of confusion. 
 
 \begin{definition}
 	\index{Representations!equivalence}
@@ -154,7 +154,7 @@ representations or matrix representations.
 
 \begin{example}
 \label{xca:change_of_basis}
-Let $\rho\colon G\to\GL(V)$ be a representation, say of degree 
+Let $\rho\colon G\to\GL(V)$ be a representation, say, of degree 
 $n=\dim V$. Choose a basis 
 $B=\{v_1,\dots,v_n\}$ of $V$ and let 
 \[
@@ -163,14 +163,19 @@ T\colon V\to\C^n,
 \sum_{i=1}^n\lambda_iv_i\mapsto (\lambda_1,\dots,\lambda_n)
 \]
 the isomorphism that takes coordinates 
-with respect to the basis $B$.
-Then 
+for the basis $B$. For each $g\in G$, 
+the composition of linear maps 
 \[
-\psi\colon G\to\GL(C^n),
-\quad 
-g\mapsto T\rho T^{-1},
+\C^n\xrightarrow[]{T^{-1}}V\xrightarrow[]{\rho_g} V
+\xrightarrow[]{T}\C^n
 \]
-is a representation of $G$ equivalent to $\rho$.   
+produces a representation 
+$\psi\colon G\to\GL(C^n)$
+%\quad 
+%g\mapsto T\rho T^{-1},
+%\]
+is a representation 
+of $G$ equivalent to $\rho$.   
 \end{example}
 
 \begin{example}
@@ -375,7 +380,7 @@ Note that if $\rho\colon G\to\GL(V)$ is completely reducible and
 $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible representations 
 $\rho_i\colon G\to\GL(V_i)$, $i\in\{1,\dots,n\}$, then 
 each $V_i$ is an invariant subspace of $V$ and $V=V_1\oplus \cdots V_n$. 
-Moreover, on some basis of $V$ the matrix  
+Moreover, on some basis of $V$, the matrix  
 $\rho_g$ can be written as 
 \[
 \rho_g=\begin{pmatrix}
@@ -390,7 +395,7 @@ $\rho_g$ can be written as
 \index{Representation!decomposable}
 \index{Representation!indecomposable}
 A representation
-$\rho\colon G\to\GL(V)$ is \textbf{decomposable} if $V$ can be decomposed as $V=S\otimes T$
+$\rho\colon G\to\GL(V)$ is \textbf{decomposable} if $V$ can be decomposed as $V=S\oplus T$
 where $S$ and $T$ are non-zero invariant subspaces of $V$. 
 \end{definition}
 
@@ -499,13 +504,13 @@ Weyl's trick has several interesting consequences:
 \begin{proof}
 	The first claim follows from Example \ref{xca:change_of_basis} and 
 	Weyl's trick. The second claim, from 1) and
-	Proposition \ref{pro:irr_or_dec}. Finally 3) follows immediately 
+	Proposition \ref{pro:irr_or_dec}. Finally, 3) follows immediately 
 	from Weyl's trick, as unitary matrices are diagonalizable.  
 \end{proof}
 
 \begin{exercise}
 \label{xca:not_decomposable}
-    If $G$ is an infinite group it is not longer true that every non-zero representation
+    If $G$ is an infinite group, it is no longer true that every non-zero representation
     is either irreducible or decomposable. Find an example.
 \end{exercise}
 
