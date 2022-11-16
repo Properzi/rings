@@ -235,10 +235,24 @@ V\times W\to X,
 \]
 such that $\{v_i\otimes w_j:1\leq i\leq k,\,1\leq j\leq l\}$ is a  
 basis of $X$. The tensor product of $V$ and $W$ is unique up to isomorphism 
-and it is denoted by $V\otimes W$. Note that
+and is denoted by $V\otimes W$. Note that
 \[
 \dim(V\otimes W)=(\dim V)(\dim W).
 \]
+Note that every element of $V\otimes W$ is of the form
+\[
+\sum_{i,j}\lambda_{ij}v_i\otimes v_j
+\]
+and not of the form $v\otimes w$ for $v\in V$ and $w\in W$. 
+
+The bilinearity of tensor products is crucial. 
+For example,
+\begin{align*}
+    (v_1+v_3)\otimes (3w_1+w_2) 
+    &=v_1\otimes (3w_1+w_2)+v_3\otimes (3w_1+w_2)\\
+    &=v_1\otimes (3w_1)+v_1\otimes w_2+v_3\otimes (3w_1)+v_3\otimes w_2\\
+    &=3v_1\otimes w_1+v_1\otimes w_2+3v_3\otimes w_1+v_3\otimes w_2.
+\end{align*}
 
 \begin{definition}
 	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. The \textbf{tensor product} of $\rho$ and $\psi$ is the representation of $G$ given by 
@@ -263,7 +277,7 @@ A direct calculation shows that the tensor product of representations is indeed 
 \end{proposition}
 
 \begin{proof}
-	For each $g\in G$ the map $\rho_g$ is diagonalizable. Let $\{v_1,\dots,v_n\}$
+	For each $g\in G$, the map $\rho_g$ is diagonalizable. Let $\{v_1,\dots,v_n\}$
 	be a basis of eigenvectors of $\rho_g$ and let $\lambda_1,\dots,\lambda_n\in\C$ be such that
 	$\rho_g(v_i)=\lambda_iv_i$ for all $i\in\{1,\dots,n\}$. Similarly, 
 	let $\{w_1,\dots,w_m\}$ be a basis of 
@@ -284,7 +298,7 @@ A direct calculation shows that the tensor product of representations is indeed 
 	\]
 \end{proof}
 
-For completeness we mention without proof that
+For completeness, we mention without proof that
 it is also possible to define the dual $\rho^*\colon G\to\GL(V^*)$  
 of a representation
 $\rho\colon G\to\GL(V)$ by the formula
@@ -378,7 +392,7 @@ for all $v\in V$.
 
     It is a routine calculation to show that $T\mapsto T^{\#}$ is a linear map. The map
     $T\mapsto T^{\#}$ is surjective since 
-    if $T\in\Hom_G(V,V)$, then  
+    if $T\in\Hom_G(V,W)$, then  
 	\[
 	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g(v)
 	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
