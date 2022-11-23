@@ -1,6 +1,6 @@
 \chapter{}
 
-We now prove Schur's orthogonality relations. We need some preliminary material. First recall that 
+We now prove Schur's orthogonality relations. We need some preliminary material. First, recall that 
 the matrix $E_{ij}$ is given by 
 \[
 (E_{ij})_{kl}=\delta_{ik}\delta_{jl},
@@ -10,7 +10,7 @@ the matrix $E_{ij}$ is given by
     0 & \text{otherwise}.
 \end{cases}
 \]
-If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation, then
+If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of a finite group $G$, then
 $\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
 \[
 \chi_\rho(g)=\sum_{i=1}^n\rho_{ii}(g).
@@ -26,7 +26,7 @@ $(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
   Thus  
   \begin{align*}
       (E_{ki}^\#)_{lj} &= \frac{1}{|G|}\sum_{g\in G}(\psi_{g^{-1}}E_{ki}\rho_g)_{lj}\\
-      &=\frac{1}{|G|}\sum_{g\in G}\sum_{p,q}\psi_{lq}(g^{-1})(E_{ki})_{qp}(\rho_{ij}(g))_{pj}\\
+      &=\frac{1}{|G|}\sum_{g\in G}\sum_{p,q}\psi_{lq}(g^{-1})(E_{ki})_{qp}\rho_{pj}(g)\\
       &=\frac{1}{|G|}\sum_{g\in G}\psi_{lk}(g^{-1})\rho_{ij}(g)\\
       &=\frac{1}{|G|}\sum_{g\in G}\overline{\psi_{kl}(g)}\rho_{ij}(g)=\langle \rho_{ij},\psi_{kl}\rangle.\qedhere
   \end{align*}
@@ -34,7 +34,7 @@ $(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
 
 \begin{theorem}[Schur]
 \index{Schur's!theorem}
-    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. 
+    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. 
     Then the following statements hold:
     \begin{enumerate}
         \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ if $\rho$ and $\psi$ are not equivalent.
@@ -61,7 +61,7 @@ Now we can prove Schur's first orthogonality relation.
 \begin{theorem}[Schur]
 \index{Schur's!theorem}
 \index{Schur's!first orthogonality relation}
-Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. Then
 \[
 \langle\chi_\rho,\chi_\psi\rangle=
 \begin{cases}
@@ -77,8 +77,8 @@ Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible represent
         \langle\chi_\rho,\chi_\psi\rangle
         &=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\overline{\chi_\psi}(g)\\
         %&=\frac{1}{|G|}\sum_{g\in G}\sum_{i=1}^n\sum_{j=1}^m\rho_{ii}(g)\overline{\psi_{jj}(g)}\\
-        &=\sum_{1=1}^n\sum_{j=1}^m\frac{1}{|G|}\rho_{ii}(g)\overline{\psi_{jj}(g)}
-        =\sum_{1=1}^n\sum_{j=1}^m\frac{1}{|G|}\langle \rho_{ii},\psi_{jj}\rangle
+        &=\sum_{1=1}^n\sum_{j=1}^m\sum_{g\in G}\frac{1}{|G|}\rho_{ii}(g)\overline{\psi_{jj}(g)}\\
+        &=\sum_{1=1}^n\sum_{j=1}^m\langle \rho_{ii},\psi_{jj}\rangle
         =\begin{cases}
             1 & \text{if $\rho\simeq\psi$,}\\
             0 & \text{otherwise.}
@@ -86,36 +86,23 @@ Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible represent
     \end{align*}
 \end{proof}
 
-Schur's theorem has several important corollaries.
+Schur's theorem has several 
+corollaries.
 
+\begin{exercise}
 If $\rho\colon G\to\GL(V)$ is a unitary irreducible representation 
 of degree $n$, then
 \[
 \{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
 \]
 is an orthonormal set of size $n^2$.
+\end{exercise}
 
 % \begin{corollary}
 %     If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
 %     $\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}$ is an orthonormal set.
 % \end{corollary}
 
-\begin{corollary}
-     A finite group has finitely many classes of irreducible representations. 
-\end{corollary}
-
-\begin{proof}
-     Let $G$ be a finite group. 
-     Every isomorphism class of representations of $G$ contains a unitary representation. 
-     Since $\dim L(G)=|G|$, 
-     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
-     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
-    irreducible representations of $G$. At the moment, we do not know whether $r$ is finite. 
-    For each $k$ let $n_k=\deg\rho_k$. Since
-     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
-     form a non-zero orthonormal set of $L(G)$, it follows that
-     $r\leq n_1^2+\cdots+ n_r^2\leq|G|$.
-\end{proof}
 
 Let $G$ be a finite group. Since $G$ has only finitely many non-equivalent 
 irreducible representation, we will often say
@@ -172,6 +159,24 @@ are conjugacy classes of $G$, then
 \]
 
 \begin{corollary}
+     A finite group has finitely many classes of irreducible representations. 
+\end{corollary}
+
+\begin{proof}
+     Let $G$ be a finite group. 
+     Every isomorphism class of representations of $G$ contains a unitary representation. 
+     Since $\dim L(G)=|G|$, 
+     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
+     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
+    irreducible representations of $G$. At the moment, we do not know whether $r$ is finite. 
+    For each $k$ let $n_k=\deg\rho_k$. Since
+     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
+     form a non-zero orthonormal set of $L(G)$, it follows that
+     $r\leq n_1^2+\cdots+ n_r^2\leq|G|$.
+\end{proof}
+
+
+\begin{corollary}
     Let $G$ be a finite group. There are at most $K(G)$ equivalence classes of irreducible representations of $G$.
 \end{corollary}
 
@@ -190,7 +195,7 @@ we write $m\rho=\rho\oplus\cdots\oplus\rho$ ($m$-times).
 
 \begin{theorem}
     Let $\rho_1,\dots,\rho_r$ be the irreducible representations of a finite group $G$. If 
-	$\rho=\sum_{i_1}^rm_j\rho_j$ where $m_1,\dots m_r\in\Z_{\geq0}$, then
+	$\rho=\sum_{j=1}^rm_j\rho_j$ where $m_1,\dots m_r\in\Z_{\geq0}$, then
     $m_i=\langle \chi_\rho,\chi_i\rangle$ for all $i\in\{1,\dots,r\}$. 
 \end{theorem}
 
@@ -203,10 +208,10 @@ we write $m\rho=\rho\oplus\cdots\oplus\rho$ ($m$-times).
 \end{proof}
 
 The theorem states that the decomposition of a representation $\rho$ into irreducibles 
-is unique and that it is determined (up to equivalence) by its character.
+is unique and is determined (up to equivalence) by its character.
 
 \begin{corollary}
-    A representation $\rho$ is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
+    A representation $\rho$ of a finite group is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
 \end{corollary}
 
 \begin{proof}
@@ -216,9 +221,10 @@ is unique and that it is determined (up to equivalence) by its character.
 \end{proof}
 
 \begin{exercise}
-    Let $\rho\colon H\to\GL(V)$ be an irreducible
+    Let $G$ and $H$ be finite groups. 
+    If $\rho\colon H\to\GL(V)$ is an irreducible
     representation of $H$ and 
-    $f\colon G\to H$ be a surjective group homomorphism. Prove that the composition $\rho\circ f\colon G\to\GL(V)$ is an irreducible representation. 
+    $f\colon G\to H$ is a surjective group homomorphism, then the composition $\rho f\colon G\to\GL(V)$ is an irreducible representation. 
 \end{exercise}
 
 Recall that the left regular representation of a finite group $G$
@@ -279,23 +285,23 @@ Now several corollaries.
     &=\frac{1}{|G|}\sum_{g\in G}\sum_{i,j,k}\lambda_{ijk}(\rho_k)_{ij}(g^{-1}xg)
     =\sum_{i,j,k}\lambda_{ijk} \frac{1}{|G|}\sum_{g\in G}(\rho_k)_{ij}(g^{-1}xg). 
     \end{align*}
-    Let $T=(\rho_k)_x\colon V\to V$. Then
+    Let $T=(\rho_k)_x=\rho_k(x)\colon V\to V$. Then
     \[
     T^{\#}=\frac{1}{|G|}\sum_{g\in G}(\rho_k)_{g^{-1}}(\rho_k)_x(\rho_k)_g
     =\frac{1}{|G|}\sum_{g\in G}(\rho_k)(g^{-1}xg)
-    =\frac{1}{\dim V}\chi_k(x)\id
+    =\frac{1}{n_k}\chi_k(x)\id
     \]
     by the Ergodic theorem and because 
     $\rho_k$ is a group homomorphism. Thus 
     \[
     f(x)=\sum_{i,j,k}\lambda_{ijk} \left((\rho_k)_x\right)_{ij}
-    =\sum_{i,j,k}\lambda_{ijk}\frac{1}{\dim V}\chi_k(x)\delta_{ij}
-    =\sum_{i,k}\lambda_{ijk}\frac{1}{n_k}\chi_k(x).\qedhere 
+    =\sum_{i,j,k}\lambda_{ijk}\frac{1}{n_k}\chi_k(x)\delta_{ij}
+    =\sum_{i,k}\lambda_{iik}\frac{1}{n_k}\chi_k(x).\qedhere 
     \]
     This implies that $\dim C(G)\leq r$ and the claim follows. 
 \end{proof}
 
-In the following exercise, the reader is asked to provide a proof of the second 
+In the following exercise, the reader is asked to prove the second 
 Schur's orthogonality relation. 
 
 \begin{exercise}
@@ -311,10 +317,6 @@ Schur's orthogonality relation.
 \end{exercise}
 
 \topic{Examples}
-
-This chapter contains examples of character tables. Then we
-study modules over rings, submodules, module homomorphisms
-and finitely-generated modules. 
 
 Let $G$ be a finite group and $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. Without loss of generality
 we may assume that $\chi_1$ is the trivial character, i.e. $\chi_1(g)=1$ for all $g\in G$. 
@@ -625,7 +627,7 @@ Compute the character table of $\Sym_4$.
     The group $Q_8$ is generated by $\{i,j\}$ and the map $\rho\colon Q_8\to\GL_2(\C)$, 
     \[
     i\mapsto\begin{pmatrix}
-    i&0\\0&-i
+    \sqrt{-1}&0\\0&-\sqrt{-1}
     \end{pmatrix},
     \quad
     j\mapsto\begin{pmatrix}
@@ -693,213 +695,292 @@ Compute the character table of $\Sym_4$.
     Compute the character table of the dihedral group of eight elements. 
 \end{exercise}
 
-\topic{An application (optional)}
-
-Let $N$ be a normal subgroup of $G$ 
-and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
-If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
-is a representation of $G/N$ with 
-character
-$\widetilde{\chi}$, the composition 
-$\rho=\widetilde{\rho}\circ\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
-is a representation of $G$. 
-Thus
-\[
-\chi(g)=\trace{\rho_g}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
-\]
-In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
-is the \textbf{lifting} to $G$ of the character 
-$\widetilde{\chi}$ of $G/N$. 
-
-\begin{proposition}
-If $\chi\in\Irr(G)$, then 
-\[
-\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
-\]
-is a normal subgroup of $G$. 
-\end{proposition}
-
-\begin{proof}
-Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
-$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
-$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
-$\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
-$\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
-\[
-n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
-\]
-Since each $\lambda_i$ is a root of one,  
-$\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
-\end{proof}
-
-\index{Kernel!of a character}
-If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
-is the \textbf{kernel} of $\chi$. 
-
-\begin{theorem}[Correspondence theorem]
-\index{Correspondence theorem!for characters}
-Let $N$ be a normal subgroup of a finite group $G$. There exists
-a bijective correspondence 
-\[
-\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
-N\subseteq\ker\chi\}
-\]
-that maps irreducible characters to irreducible characters.
-\end{theorem}
-
-\begin{proof}
-If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
-then
-\[
-\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
-\]
-and thus $N\subseteq\ker\chi$. 
-
-If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representationn
-with character $\chi$. 
-Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
-is well-defined: 
-\[
-gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
-\]
-Moreover, $\widetilde{\rho}$ is a representation, as 
-\[
-\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
-\]
-If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
-$\widetilde{\chi}(gN)=\chi(g)$.
-
-We now prove that $\chi$ is irreducible if and only if 
-$\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
-\begin{align*}
-\text{$U$ is invariant}
-%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
-&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
-&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
-\shortintertext{Thus}
-\chi\text{ is irreducible }&\Longleftrightarrow
-\rho\text{ is irreducible }\\
-&\Longleftrightarrow\widetilde{\rho}\text{ is irreducible }\Longleftrightarrow
-\widetilde{\chi}\text{ is irreducible }\qedhere.
-\end{align*}
-\end{proof}
-
-\begin{example}
-    Let $G=\Sym_4$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. We know that $N$ is normal in $G$ 
-    and that $G/N=\langle a,b\rangle\simeq\Sym_3$, where 
-    $a=(123)N$ and $b=(12)N$. 
-    The character table of $G/N$ is 
-    \begin{center}
-		\begin{tabular}{|c|rrr|}
-			\hline
-			%& $1$ & $3$ & $2$\tabularnewline
-			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
-			\hline 
-			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
-			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
-			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
-			\hline
-		\end{tabular}
-	\end{center}
-    For each $i\in\{1,2,3\}$ we compute the lifting $\chi_i$ to $G$ of the character  
-    $\widetilde{\chi}_i$ of $G/N$. 
-    Since $(12)(34)\in N$ and $(13)(1234)=(12)(34)\in N$, 
-    \begin{align*}
-        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
-        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
-    \end{align*}
-    Since the characters $\widetilde{\chi_i}$ are irreducibles, 
-    the liftings $\chi_i$ are also irreducibles. With this process
-    we obtain the following irreducible characters of $G$:
-    	\begin{center}
-		\begin{tabular}{|c|rrrrr|}
-			\hline
-			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
-			\hline 
-			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
-			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
-			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
-			\hline
-		\end{tabular}
-	\end{center}
-\end{example}
-
-The character table of a group can be used to find the lattice 
-of normal subgroups. In particular, the character table detect simple groups. 
-
-\begin{lemma}
-    Let $G$ be a finite group and 
-    let $g,h\in G$. Then $g$ and $h$ 
-    are conjugate if and only if 
-    $\chi(g)=\chi(h)$ for all
-    $\chi\in\Char(G)$. 
-\end{lemma}
-
-\begin{proof}
-    If $g$ and $h$ are conjugate, then $\chi(g)=\chi(h)$, as characters are class functions
-    of $G$.
-    Conversely, if $\chi(g)=\chi(h)$ for all $\chi\in\Char(G)$, then 
-    $f(g)=f(h)$ for all class function $f$ of $G$, 
-    as characters $G$ generate the space of class functions of $G$. In particular, 
-    $\delta(g)=\delta(h)$, where
-    \[
-    \delta(x)=\begin{cases}
-    1 & \text{if $x$ and $g$ are conjugate},\\
-    0 & \text{otherwise}.
-    \end{cases}
-    \]
-    This implies that $g$ and $h$ are conjugate.
-\end{proof}
-
-As a consequence, we get that 
-\begin{equation}
-\label{eq:kernels}
-\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
-\end{equation}
-Indeed, if $g\in\ker\chi$ for all $\chi\in\Irr(G)$, then $g=1$ since 
-the lemma implies that $g$ and $1$ are conjugate
-because 
-$\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
-
-\begin{proposition}
-\label{pro:normal}
-    Let $G$ be a finite group. 
-    If $N$ is a normal subgroup of $G$, 
-    then there exist characters
-    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
-    such that
-    \[
-    N=\bigcap_{i=1}^k\ker\chi_i.
-    \]
-\end{proposition}
-
-\begin{proof}
-    Apply the previous remark to the group $G/N$ to obtain that 
-    \[
-    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
-    \]
-    Assume that $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
-    We lift the irreducible characters of $G/N$ to $G$ 
-    to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
-    of $G$ such that 
-    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
-    If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
-    \[
-    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
-    \]
-    for all $i\in\{1,\dots,k\}$. This implies that
-    \[
-    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
-    \]
-    that is $g\in N$. 
-\end{proof}
+%\topic{An application (optional)}
+%
+%Let $N$ be a normal subgroup of $G$ 
+%and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
+%If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
+%is a representation of $G/N$ with 
+%character
+%$\widetilde{\chi}$, the composition 
+%$\rho=\widetilde{\rho}\circ\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
+%is a representation of $G$. 
+%Thus
+%\[
+%\chi(g)=\trace{\rho_g}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
+%\]
+%In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
+%is the \textbf{lifting} to $G$ of the character 
+%$\widetilde{\chi}$ of $G/N$. 
+%
+%\begin{proposition}
+%If $\chi\in\Irr(G)$, then 
+%\[
+%\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
+%\]
+%is a normal subgroup of $G$. 
+%\end{proposition}
+%
+%\begin{proof}
+%Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
+%$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
+%$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
+%$\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
+%$\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
+%\[
+%n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
+%\]
+%Since each $\lambda_i$ is a root of one,  
+%$\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
+%\end{proof}
+%
+%\index{Kernel!of a character}
+%If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
+%is the \textbf{kernel} of $\chi$. 
+%
+%\begin{theorem}[Correspondence theorem]
+%\index{Correspondence theorem!for characters}
+%Let $N$ be a normal subgroup of a finite group $G$. There exists
+%a bijective correspondence 
+%\[
+%\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
+%N\subseteq\ker\chi\}
+%\]
+%that maps irreducible characters to irreducible characters.
+%\end{theorem}
+%
+%\begin{proof}
+%If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
+%then
+%\[
+%\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+%\]
+%and thus $N\subseteq\ker\chi$. 
+%
+%If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representation
+%with character $\chi$. 
+%Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
+%is well-defined: 
+%\[
+%gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+%\]
+%Moreover, $\widetilde{\rho}$ is a representation, as 
+%\[
+%\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
+%\]
+%If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
+%$\widetilde{\chi}(gN)=\chi(g)$.
+%
+%We now prove that $\chi$ is irreducible if and only if 
+%$\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
+%\begin{align*}
+%\text{$U$ is invariant}
+%%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
+%&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
+%&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
+%\shortintertext{Thus}
+%\chi\text{ is irreducible }&\Longleftrightarrow
+%\rho\text{ is irreducible }\\
+%&\Longleftrightarrow\widetilde{\rho}\text{ is irreducible }\Longleftrightarrow
+%\widetilde{\chi}\text{ is irreducible }\qedhere.
+%\end{align*}
+%\end{proof}
+%
+%\begin{example}
+%    Let $G=\Sym_4$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. We know that $N$ is normal in $G$ 
+%    and that $G/N=\langle a,b\rangle\simeq\Sym_3$, where 
+%    $a=(123)N$ and $b=(12)N$. 
+%    The character table of $G/N$ is 
+%    \begin{center}
+%		\begin{tabular}{|c|rrr|}
+%			\hline
+%			%& $1$ & $3$ & $2$\tabularnewline
+%			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
+%			\hline 
+%			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
+%			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+%			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%    For each $i\in\{1,2,3\}$ we compute the lifting $\chi_i$ to $G$ of the character  
+%    $\widetilde{\chi}_i$ of $G/N$. 
+%    Since $(12)(34)\in N$ and $(13)(1234)=(12)(34)\in N$, 
+%    \begin{align*}
+%        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
+%        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
+%    \end{align*}
+%    Since the characters $\widetilde{\chi_i}$ are irreducibles, 
+%    the liftings $\chi_i$ are also irreducibles. With this process
+%    we obtain the following irreducible characters of $G$:
+%    	\begin{center}
+%		\begin{tabular}{|c|rrrrr|}
+%			\hline
+%			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
+%			\hline 
+%			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
+%			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
+%			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%\end{example}
+%
+%The character table of a group can be used to find the lattice 
+%of normal subgroups. In particular, the character table detect simple groups. 
+%
+%\begin{lemma}
+%    Let $G$ be a finite group and 
+%    let $g,h\in G$. Then $g$ and $h$ 
+%    are conjugate if and only if 
+%    $\chi(g)=\chi(h)$ for all
+%    $\chi\in\Char(G)$. 
+%\end{lemma}
+%
+%\begin{proof}
+%    If $g$ and $h$ are conjugate, then $\chi(g)=\chi(h)$, as characters are class functions
+%    of $G$.
+%    Conversely, if $\chi(g)=\chi(h)$ for all $\chi\in\Char(G)$, then 
+%    $f(g)=f(h)$ for all class function $f$ of $G$, 
+%    as characters $G$ generate the space of class functions of $G$. In particular, 
+%    $\delta(g)=\delta(h)$, where
+%    \[
+%    \delta(x)=\begin{cases}
+%    1 & \text{if $x$ and $g$ are conjugate},\\
+%    0 & \text{otherwise}.
+%    \end{cases}
+%    \]
+%    This implies that $g$ and $h$ are conjugate.
+%\end{proof}
+%
+%As a consequence, we get that 
+%\begin{equation}
+%\label{eq:kernels}
+%\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+%\end{equation}
+%Indeed, if $g\in\ker\chi$ for all $\chi\in\Irr(G)$, then $g=1$ since 
+%the lemma implies that $g$ and $1$ are conjugate
+%because 
+%$\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
+%
+%\begin{proposition}
+%\label{pro:normal}
+%    Let $G$ be a finite group. 
+%    If $N$ is a normal subgroup of $G$, 
+%    then there exist characters
+%    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
+%    such that
+%    \[
+%    N=\bigcap_{i=1}^k\ker\chi_i.
+%    \]
+%\end{proposition}
+%
+%\begin{proof}
+%    Apply the previous remark to the group $G/N$ to obtain that 
+%    \[
+%    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
+%    \]
+%    Assume that $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
+%    We lift the irreducible characters of $G/N$ to $G$ 
+%    to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
+%    of $G$ such that 
+%    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+%    If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
+%    \[
+%    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
+%    \]
+%    for all $i\in\{1,\dots,k\}$. This implies that
+%    \[
+%    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
+%    \]
+%    that is $g\in N$. 
+%\end{proof}
+%
+%\index{Group!simple}
+%Recall that a non-trivial group is \textbf{simple} if it contains no non-trivial normal 
+%proper subgroups. Examples of simple groups are cyclic groups of prime order
+%and the alternating groups $\Alt_n$ for $n\geq5$. 
+%As a corollary of Proposition \ref{pro:normal}, 
+%we can use the character table to detect simple groups.
+%
+%\begin{proposition}
+%    Let $G$ be a finite group. Then $G$ is not simple if and only if 
+%    there exists a non-trivial irreducible character $\chi$ such that
+%    $\chi(g)=\chi(1)$ 
+%    for some $g\in G\setminus\{1\}$. 
+%\end{proposition}
+%
+%\begin{proof}
+%    If $G$ is not simple, there exists a normal subgroup $N$ of $G$ such that
+%    $N\ne G$ and $N\ne\{1\}$. 
+%    By Proposition \ref{pro:normal}, there exist characters 
+%    $\chi_1,\dots,\chi_k\in\Irr(G)$
+%    such that 
+%    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
+%    In particular, there exists a non-trivial character
+%    $\chi_i$ such that $\ker\chi_i\ne\{1\}$. Thus 
+%    there exists $g\in G\setminus\{1\}$ such that
+%    $\chi_i(g)=\chi_i(1)$. 
+%    
+%    Assume now that there exists a non-trivial character $\chi$ 
+%    such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
+%    and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
+%    Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
+%\end{proof}
+%
+%\begin{example}
+%\index{Mathieu's group $M_9$}
+%    If there exists a group $G$ with
+%    a character table 
+%    of the form
+%    \begin{center}
+%		\begin{tabular}{|c|rrrrrr|}
+%			\hline
+%			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+%			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+%			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+%		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+%			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+%			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
+%	Mathieu's group $M_{9}$ has precisely this character table! 
+%\end{example}
+%
+%\begin{example}
+%    Let $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+%    If there exists a group $G$ with a character table
+%    of the form
+%    \begin{center}
+%		\begin{tabular}{|c|rrrrrr|}
+%			\hline
+%			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+%			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+%			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+%		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+%			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+%			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}    
+%	then $G$ is simple. Note that such a group $G$ would have order 
+%	$\sum_{i=1}^6\chi_i(1)^2=168$. 
+%	The group  
+%	\[
+%	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
+%	\]
+%	is a simple group that has precisely this character table!  
+%\end{example}
+%
+\topic{Finite simple groups (optional)}
 
 \index{Group!simple}
 Recall that a non-trivial group is \textbf{simple} if it contains no non-trivial normal 
 proper subgroups. Examples of simple groups are cyclic groups of prime order
 and the alternating groups $\Alt_n$ for $n\geq5$. 
-As a corollary of Proposition \ref{pro:normal}, 
-we can use the character table to detect simple groups.
+We can use the character table to detect simple groups:
 
 \begin{proposition}
     Let $G$ be a finite group. Then $G$ is not simple if and only if 
@@ -908,23 +989,7 @@ we can use the character table to detect simple groups.
     for some $g\in G\setminus\{1\}$. 
 \end{proposition}
 
-\begin{proof}
-    If $G$ is not simple, there exists a normal subgroup $N$ of $G$ such that
-    $N\ne G$ and $N\ne\{1\}$. 
-    By Proposition \ref{pro:normal}, there exist characters 
-    $\chi_1,\dots,\chi_k\in\Irr(G)$
-    such that 
-    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
-    In particular, there exists a non-trivial character
-    $\chi_i$ such that $\ker\chi_i\ne\{1\}$. Thus 
-    there exists $g\in G\setminus\{1\}$ such that
-    $\chi_i(g)=\chi_i(1)$. 
-    
-    Assume now that there exists a non-trivial character $\chi$ 
-    such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
-    and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
-    Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
-\end{proof}
+The proof is out of the scope of this course. 
 
 \begin{example}
 \index{Mathieu's group $M_9$}
@@ -944,7 +1009,7 @@ we can use the character table to detect simple groups.
 		\end{tabular}
 	\end{center}
 	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
-	Mathieu's group $M_{9}$ has precisely this character table! 
+	Mathieu's group $M_{9}$ has this character table! 
 \end{example}
 
 \begin{example}
@@ -963,18 +1028,17 @@ we can use the character table to detect simple groups.
 			\hline
 		\end{tabular}
 	\end{center}    
-	then $G$ is simple. Note that such a group $G$ would have order 
+	then $G$ is simple. Note that such a 
+        group $G$ would have order 
 	$\sum_{i=1}^6\chi_i(1)^2=168$. 
 	The group  
 	\[
 	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
 	\]
-	is a simple group that has precisely this character table!  
+	is a simple group that has this character table!  
 \end{example}
 
-\topic{Finite simple groups (optional)}
-
-Character theory is one of the key tools in the 
+Character theory is one of the tools in the 
 classification of finite simple groups. 
 One of the first non-trivial applications
 one finds of character theory is 
@@ -986,22 +1050,22 @@ the following result:
     prime numbers $p$ and $q$. Then $G$ is cyclic. 
 \end{theorem}
 
-The proof is a basic application of character theory. 
-Is not at all hard, but it is out of the scope of this course. Burnside's theorem
-is important and generalizes in many different directions. 
+The proof uses character theory. 
+It is not hard, but it is out of the scope of this course. Burnside's theorem
+is essential and generalizes in many different directions. 
 
 \begin{theorem}[Feit--Thompson]
 \index{Feit--Thompson theorem}
 Let $G$ be a finite simple group of odd order. Then $G$ is cyclic. 
 \end{theorem}
 
-The proof is extremely hard and occupies a full volume of 
+The proof is hard and occupies a full volume of 
 the \emph{Pacific Journal of Mathematics}, see~\cite{MR166261}.  
 Feit--Thompson theorem was formally verified 
 by the computer proof assistant Coq, 
 see~\cite{MR3111271} for the announcement. 
 
-The proof of Feit--Thompson theorem suggest the following conjecture:
+The proof of Feit--Thompson theorem suggests the following conjecture:
 
 \begin{conjecture}[Feit--Thompson]
 \index{Feit--Thompson conjecture}
@@ -1009,7 +1073,7 @@ There are not distinct prime numbers $p$ and $q$ such that
 $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
 \end{conjecture}
 
-The conjecture is still open, see \cite{MR297686} for some partial results. 
+The conjecture is still open; see \cite{MR297686} for some partial results. 
 
 Feit--Thompson theorem is one of the starting points
 of the classification of finite simple groups (CFSG). 
@@ -1029,18 +1093,18 @@ of the following families:
 \end{enumerate}
 \end{theorem}
 
-Groups of Lie type are finite analogs of simple Lie groups such as 
+Groups of Lie type are finite analogs of simple Lie groups, such as 
 $\SL_n(\C)$. A typical example
 of a finite simple group of Lie type is
 $\PSL_n(p)$ for some prime number $p$, which is defined
 as $\SL_n(p)$ over its center. 
 
 The sporadic groups are 26 groups that do not follow a systematic pattern. 
-The first five of the sporadic groups were discovered by Mathieu in the 1860s and the other 21 
+The first five of the sporadic groups were discovered by Mathieu in the 1860s, and the other 21 
 were found between 1965 and 1975.
 Several of these groups were predicted to exist before they were constructed, sometimes
 just knowing their character tables! 
-The full list of sporadic simple groups is:
+The full list of sporadic simple groups is as follows:
 \begin{itemize}
 \item Mathieu groups $M_{11}$, $M_{12}$, $M_{22}$, $M_{23}$ and $M_{24}$.
 \item Janko groups $J_1$, $J_2$, $J_3$ and $J_4$.
@@ -1070,7 +1134,7 @@ which is a subgroup of $\Sym_{11}$ of order 7920. The group
 $M_{11}$ contains ten irreducible characters, so the
 character table of $M_{11}$ is essentially a $10\times 10$ matrix. Let us
 use the computer software \lstinline{GAP} 
-to see how the character table looks like:
+to see the character table:
 
 \begin{lstlisting}
 gap> Display(CharacterTable("M11"));
@@ -1130,7 +1194,7 @@ The largest sporadic simple group is the \textbf{Monster group} $M$ and has orde
 \]
 which is roughly $8\times 10^{53}$. 
 The monster group was predicted by Fischer and Griess. 
-Griess proved the existence of the Monster group realizing it as
+Griess proved the existence of the Monster group, realizing it as
 the automorphism group of a certain space of dimension 196884. 
 The group $M$ can be represented as
 a subgroup of $\GL_{196883}(\C)$. It has 194 conjugacy classes, so 
