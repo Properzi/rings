@@ -410,7 +410,7 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
     $n_1x=n_1(1x)=(n_11)x=0x=0$ 
     and hence $n_1\geq n$. 
     
-    Finally we prove 3). If $n$ is not prime, say
+    Finally, we prove 3). If $n$ is not prime, say
     $n=rs$ with $1<r,s<n$. Then 
     \[
     0=n1=(rs)1=(r1)(s1)
@@ -423,6 +423,15 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
     $R=\Z/p\times\Z/p$ be a ring with the usual point-wise operations. 
     Prove that $\ch R=p$ and that $R$ has zero divisors. 
 \end{exercise}
+
+\begin{exercise}[binomial theorem]
+\index{Binomial theorem}
+    Let $R$ be a commutative ring and $n\geq1$. Prove that
+    if $a,b\in R$, then 
+    \[
+    (a+b)^n=\sum_{k=0}^n\binom{n}{k}a^kb^{n-k}.
+    \]
+\end{exercise}    
 
 \begin{exercise}
 \label{xca:freshman_dream}
@@ -438,6 +447,17 @@ Hint: Use induction on $n$ and the fact that the prime number $p$ divides
 $\binom{p}{k}$ for all $k\in\{1,2,\dots,p-1\}$. Alternatively, one could use
 that the prime number $p$ divides $\binom{p^n}{k}$ for all 
 $k\in\{1,2,\dots,p^n-1\}$. 
+
+\begin{exercise}
+\index{Non-commutative binomial theorem}
+    Let $R$ be a ring and $n\geq1$. 
+    For $a,b\in R$, let $A(x)=(a+b)x-xb$. 
+    Prove that
+    if $a,b\in R$, then 
+    \[
+    (a+b)^n=\sum_{k=0}^n\binom{n}{k}A^k(1)b^{n-k}.
+    \] 
+\end{exercise}
 
 
 \topic{Group algebras}
