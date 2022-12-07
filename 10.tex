@@ -43,8 +43,8 @@ For example, $\Z=(1)=(2,3)$ and $\Z\ne (2)$.
 \end{exercise}
 
 If $f\in\Hom_R(M,N)$ and $M$ is finitely generated, then 
-$f(M)$ is finitely generated. We can prove something stronger. For that purpose,
-we need exact sequences. 
+$f(M)$ is finitely generated. To prove this and other similar results, 
+we introduce exact sequences (of modules and module homomorphisms). 
 A sequence 
 	\begin{equation}
 	\label{eq:exacta1}	
@@ -87,8 +87,11 @@ where $f(m)=(m,0)$ and $g(m,n)=n$, is exact.
      \end{enumerate}
 \end{exercise}
 
-Find a finitely generated module that contains a submodule that 
-it not finitely generated. 
+\begin{exercise}
+\label{xca:submodule_notfg}
+Find a finitely generated module that contains a submodule 
+that is not finitely generated. 
+\end{exercise}
 
 \begin{proposition}
     Let $R$ be a ring and $M$ be a module over $R$. 
@@ -249,7 +252,7 @@ Let $R$ be an integral domain.
 Prove that $K(R)$ is a field. 
 \end{exercise}
 
-To prove that $K(R)$ is a field one first needs to prove that 
+To prove that $K(R)$ is a field, one first needs to prove that 
 the operations~\eqref{eq:K(R)} are well-defined. For example, let us check the addition is well-defined. 
 If $r/s\sim r'/s'$ and $r_1/s_1\sim r_1'/s_1'$, then
 $r/s+r_1/s_1\sim r'/s'+r_1'/s_1'$. In fact, 
@@ -269,17 +272,20 @@ since $r/s\sim r'/s'$, it follows that $rs'-r's=0$. Similarly, $r_1s_1'-r_1's_1=
     Let $R$ be a ring, $M$ be a module over $R$ and $X$ be a subset of $M$. We say that
     $X$ is \textbf{linearly independent} if for each $k\in\Z_{>0}$, $r_1,\dots,r_k\in R$
     and $m_1,\dots,m_k\in X$ such that $\sum_{i=1}^kr_i\cdot m_i=0$, then 
-    $r_1=\cdots=r_k=0$. 
+    $r_1=\cdots=r_k=0$.  
 \end{definition}
 
 In any ring, the set $\{1\}$ is linearly independent. 
 
+A set is said to be 
+\textbf{linearly dependent} if it is not linearly independent.
+    
 \begin{examples}\
 \begin{enumerate}
-    \item $\{2,3\}$ is a linear dependent subset of $\Z$.
+    \item $\{2,3\}$ is a linearly dependent subset of $\Z$.
     \item $\{2\}$ is a linearly dependent subset of $\Z/4$.
     \item Let $R=\Z$, $M=\Q$ and $x\in M\setminus\{0\}$. 
-        Then $\{x\}$ is linearly independent subset of $M$. Is $y\in M\setminus\{x\}$, then
+        Then $\{x\}$ is a linearly independent subset of $M$. Is $y\in M\setminus\{x\}$, then
         $\{x,y\}$ is linearly dependent.  
 \end{enumerate}    
 \end{examples}
@@ -298,8 +304,7 @@ Let $R=M_2(\R)$ and $M=\begin{pmatrix}
     set and it is not linearly independent. 
 \end{examples}
 
-One can prove, however, that each 
-basis of a module is a minimal generating set. 
+However, one can prove that each module's basis is a minimal generating set. 
 % roman 4.4, page 116
 
 \begin{exercise}
@@ -348,8 +353,8 @@ vector spaces are free.
 \end{exercise}
 
 The previous exercise states that modules over division rings 
-are very much like vector spaces over fields. In particular, 
-such modules have dimension.
+are like vector spaces over fields. In particular, 
+such modules have dimensions.
 
 \begin{example}
     $\R[X]$ is a free module (over $\R$) with basis $\{1,X,X^2,\dots\}$. 
@@ -362,7 +367,7 @@ such modules have dimension.
 \end{exercise}
 
 \begin{example}
-If $u\in\mathcal{U}(R)$, then $\{u\}$ is a basis of $\prescript{}{R}R$. Converely, if $R$ is an integral domain and 
+If $u\in\mathcal{U}(R)$, then $\{u\}$ is a basis of $\prescript{}{R}R$. Conversely, if $R$ is an integral domain and 
 $\{z\}$ is a basis of $\prescript{}{R}R$, then $z\in\mathcal{U}(R)$. Since 
 $1=yz$ for some $y\in R$, it follows that $zy=1$, as  
 \[
@@ -378,7 +383,7 @@ is a module (over $R$) with
 $(f+g)(x)=f(x)+g(x)$ and $(rf)(x)=rf(x)$ for all $f,g\in R^{(I)}$, $x\in I$ and $r\in R$. 
 Note that 
 every element 
-of $R^{(I})$ can be written uniquely as
+of $R^{(I)}$ can be written uniquely as
 a finite sum of the form 
 \[
 \sum_{i\in I}r_i\delta_i,
@@ -534,7 +539,7 @@ $f(m_i)=\delta_i$ for all $i\in I$, where
 We claim that $f$ is an isomorphism. We first prove that the map $f$ is surjective: if $(r_i)_{i\in I}\in R^{(I)}$, then
 $f(\sum r_i\cdot m_i)=(r_i)_{i\in I}$. Let us prove that $f$ is injective: 
 \[
-0=f(\sum r_i\cdot m_i)=\sum r_i\cdot f(m_i)=\sum r_i\cdot e_i\implies r_i=0\text{ for all $i\in I$}.\qedhere
+0=f(\sum r_i\cdot m_i)=\sum r_i\cdot f(m_i)=\sum r_i\cdot\delta_i\implies r_i=0\text{ for all $i\in I$}.\qedhere
 \]
 \end{proof}
 
@@ -546,7 +551,7 @@ Every module is (isomorphic to) a quotient of a free module.
 Let $M$ be a module. We claim that there exists a free module $L$ and a surjective homomorphism $f\in\Hom_R(L,M)$. Then
 $L/\ker f\simeq M$. Let $\{m_i:i\in I\}$
 be a generating set of $M$ (note that such a generating set always exists, as one could take, for example, the set
-$\{m:m\in M\}$) and let $L=R^{(I)}$. Then $L$ is free and $f\colon R^{(I)}\to M$, $e_i\mapsto m_i$, is a surjective 
+$\{m:m\in M\}$) and let $L=R^{(I)}$. Then $L$ is free and $f\colon R^{(I)}\to M$, $\delta_i\mapsto m_i$, is a surjective 
 homomorphism.
 \end{proof}
 
@@ -561,6 +566,18 @@ Another important property of free modules: free modules are
 \end{proposition}
 
 \begin{proof}
+    We will prove that 
+    there exists a homomorphism $\varphi$ that makes
+    the diagram
+    \[\begin{tikzcd}
+	& M \\
+	N & T & 0
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["h", from=1-2, to=2-2]
+	\arrow["\varphi"', dashed, from=1-2, to=2-1]
+\end{tikzcd}\]
+    commutative. 
 	Let $\{m_i:i\in I\}$ be a basis of $M$. Since $f$ is surjective, for each
 	$i\in I$ there exists $n_i\in N$ such that $f(n_i)=h(m_i)$. Since  $M$ is
 	free, there exists a unique homomorphism $\varphi\colon M\to N$ such that
@@ -587,8 +604,17 @@ that we will use later:
 \end{proposition}
 
 \begin{proof}
-	The previous proposition 
-	implies that there exists a module homomorphism $h\colon C\to B$
+    By considering the diagram
+\[\begin{tikzcd}
+	& C \\
+	B & C & 0
+	\arrow["g"', from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[equal, no head, from=1-2, to=2-2]
+	\arrow["h"', dashed, from=1-2, to=2-1]
+\end{tikzcd}\]
+	the previous proposition 
+	yields a homomorphism $h\colon C\to B$
 	such that $gh=\id_C$. In fact, let $\{c_i:i\in I\}$ be a basis of $C$.
 	For each $i\in I$ let $b_i\in B$ be such that $g(b_i)=c_i$. The map 
 	$h\colon C\to B$, $h(\sum r_i\cdot c_i)=\sum r_i\cdot b_i$, is a module homomorphism 
@@ -677,7 +703,8 @@ for all $j\in\{1,\dots,n\}$. Thus $n=\dim V$.
 The previous result can be proved for non-commutative rings. 
 
 \begin{definition}
-Let $R$ be an integral domain. If $M$ is a finitely generated module, we define
+Let $R$ be an integral domain. If $M$ is a free 
+finitely generated module, we define
 the \textbf{rank} of $M$ as the size of a basis of $M$. If $M$ is not finitely generated, 
 we say that the rank of $M$ is infinite. 
 \end{definition}
