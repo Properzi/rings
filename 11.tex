@@ -17,7 +17,7 @@ $\rank(N)\leq\rank(F)$.
 	$N=(r)$ for some $r\in R$. If $r=0$, then $N=\{0\}$ and the result holds. If $r\ne 0$, then 
 	$\{r\}$ is basis of $N$ (since $R$ is a domain) and the result holds.
 	
-	Assume now that the result holds for all free module of rank $<n$. Let $F$ be a free module of
+	Assume now that the result holds for all free modules of rank $<n$. Let $F$ be a free module of
 	rank $n$ and 
 	$\{f_1,\dots,f_n\}$ be basis of $F$. Let $F_n=(f_1,\dots,f_{n-1})$. By the inductive hypothesis, 
 	$U=N\cap F_n$ is free of rank $\leq n-1$. Let 
@@ -26,7 +26,7 @@ $\rank(N)\leq\rank(F)$.
 	\[
 	f=\sum_{i=1}^n r_i\cdot f_i.
 	\]
-	There exists a well-defined homomorphism 
+	There exists a well-defined surjective homomorphism 
 	\[
 	\varphi\colon F\to R,
 	\quad
@@ -233,7 +233,7 @@ with
 We claim that 
 $V$ is a torsion module, that is $V=T(V)$. Let $n=\dim V$. If $v\in V$, 
 then $\{v,T(v),\dots,T^n(v)\}$ is linearly dependent, as it has 
-$n+1$ elements. In particular, there exist $a_0,\dots,a_n\in K$ not all zero such that
+$n+1$ elements. In particular, there exist $a_0,\dots,a_n\in\R$ not all zero such that
 \[
 0=\sum_{i=0}^n a_iT^i(v)=\left(\sum_{i=0}^n a_iX^i\right)\cdot v.
 \]
@@ -280,13 +280,13 @@ $\ker f=\{0\}$. Thus
 r\cdot M=f(M)\simeq M.
 \]
 
-To finish the proof we show that $r\cdot M\subseteq F$. Let $m\in M$. Since $M=(X)$, there exist $s_1,\dots,s_m\in R$
+To finish the proof, we show that $r\cdot M\subseteq F$. Let $m\in M$. Since $M=(X)$, there exist $s_{i_1},\dots,s_{i_m}\in R$
 such that 
-$m=\sum s_i x_i$. Then 
+$m=\sum s_j\cdot x_{i_j}$. Then 
 \[
-r\cdot m=\sum (rs_i)\cdot x_i=\sum s_i\cdot (r\cdot x_i)\in F,
+r\cdot m=\sum (rs_{i_j})\cdot x_{i_j}=\sum s_{i_j}\cdot (r\cdot x_{i_j})\in F,
 \]
-as each $r\cdot x_i\in r\cdot X\subseteq F$. In particular, since 
+as each $r\cdot x_{i_j}\in r\cdot X\subseteq F$. In particular, since 
 $R$ is commutative, $r\cdot M$ is a submodule of $F$ and hence $r\cdot M$ is a free module.  
 \end{proof}
 
