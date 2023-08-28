@@ -71,6 +71,39 @@ It is time to give a very nice number-theoretical application.
     $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ or $a^2+b^2\equiv 2\bmod 4$. 
 \end{proof}
 
+An alternative proof of the implication 
+$1)\implies 2)$ goes as follows: if $p=4k+1$ is prime, then 
+$x=(2k)!$ is such that $x^2\equiv -1\bmod p$. By Wilson's theorem, 
+\[
+(p-1)! = (4k)!\equiv \bmod p.
+\]
+Moreover,  
+\begin{align*}
+(4k)!&\equiv(4k)(4k-1)\cdots(2k+2)(2k+1)(2k)(2k-1)\cdots1\bmod p\\
+&\equiv-1(-2)\cdots(-2k+1)(-2k)(2k)(2k-1)\cdots1\bmod p\\
+&\equiv(-1)^{2k}(2k)!(2k)!\bmod p.
+\end{align*}
+Hence $x=(2k)!$ is such that $x^2\equiv -1\bmod p$.
+
+\begin{exercise}
+    Decompose the prime 41 as a sum of two squares. 
+\end{exercise}
+
+The previous exercise can be solved by using computers and 
+a beautiful formula of Gauss that uses binomial coefficients. Let $p=4k+1$ be a prime number. 
+If 
+\[
+a=\left\langle \frac12\binom{2k}{k}\right\rangle, 
+\quad
+b=\langle (2k)!a\rangle,
+\]
+where $\langle x\rangle$ denotes the 
+residue of $x$ modulo $p$ of absolute value smaller than $p/2$, 
+then $p=a^2+b^2$. Simple and beautiful as it is, Gauss's formula does not seem to be of any real computational value. 
+
+In \cite{MR1041889}, the author employs the Euclidean algorithm to determine efficiently 
+the decomposition of a prime number $p=4k+1$ as the sum of two squares.
+
 \begin{exercise}
 \label{xca:p=3(4)}
     Let $\alpha\in\Z[i]$ be such that $N(\alpha)=p^2$ 
@@ -90,10 +123,21 @@ It is time to give a very nice number-theoretical application.
 Find the irreducible elements of $\Z[i]$. 
 \end{exercise}
 
-\index{Eisenstein integers}
-The following exercise is about \textbf{Eisenstein integers}. 
+As a consequence of Theorem \ref{thm:Fermat}
+one can prove the following result: An integer $n\geq2$ can be written as a sum of two squares if and only if its prime decomposition contains no factor $p^k$, where 
+$p\equiv 3\bmod 4$ 
+and $k$ is odd. 
+
+The numbers that can be represented as the sums of two squares form the integer sequence \href{https://oeis.org/A001481}{A001481}: 
+\[
+0, 1, 2, 4, 5, 8, 9, 10, 13, 16, 17, 18, 20, 25, 26, 29, 32,\dots 
+\] 
+They form the set of all norms of Gaussian integers. 
+
 
 \begin{exercise}
+\index{Eisenstein integers}
+    This exercise is about \textbf{Eisenstein integers}. 
     \label{xca:Eisenstein}
     Let $\omega=e^{2\pi i/3}\in\C$ and $R=\Z[\omega]=\{a+b\omega:a,b\in\Z\}$. 
     Prove the following statements:
@@ -122,6 +166,7 @@ The following exercise is about \textbf{Eisenstein integers}.
             and prime numbers $p\in\Z$ with $p\equiv 2\bmod 3$.
     \end{enumerate}
 \end{exercise}
+
 
 \topic{Zorn's lemma}
 
