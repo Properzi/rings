@@ -1,5 +1,7 @@
 # Rings and modules
 
+[![DOI](https://zenodo.org/badge/401966965.svg)](https://zenodo.org/badge/latestdoi/401966965)
+
 ## Leandro Vendramin
 
 These are lecture notes for the course _Rings and modules_, taught by Leandro Vendramin 
