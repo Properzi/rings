@@ -29,13 +29,29 @@ A ring $R$ is said to be \textbf{commutative} if $xy=yx$ for all $x,y\in R$.
 $\Z$, $\Q$, $\R$, and $\C$ are commutative rings.
 \end{example}
 
+Most of the students will have some familiarity with
+real polynomials from their school days. 
+
 \begin{example}
+\index{Degree of a polynomial}
     The set  
     \[
 		\R[X]=\left\{\sum_{i=0}^na_iX^i:n\in\Z_{\geq0},\,a_0,\dots,a_n\in \R\right\}
     \]
     of real polynomials in one variable 
-    is a commutative ring with the usual operations. 
+    is a commutative ring with the usual operations.  
+    For example, if $f(X)=1+5X^3$ and $g(X)=3X-2X^3$, then
+    \begin{align*}
+        f(X)+g(X) &= 1+3X+3X^3,\\
+        f(X)g(X) &= 3X-2X^3+15X^4-10X^6.
+    \end{align*}
+    Recall that, if 
+    \[
+    f(X)=a_0+a_1X+a_2X^2+\cdots+a_nX^n
+    \]
+    and $a_n\ne0$, then $a_n$ is the \textbf{leading coefficient} of $f(X)$ and 
+    $n$ is the \textbf{degree} of $f(X)$. In this case, we use the notation 
+    $n=\deg f(X)$. 
 \end{example}
 
 More generally, if $R$ is a commutative ring, then $R[X]$ is a commutative ring. This construction
@@ -315,6 +331,21 @@ if $I=(x)$ for some $x\in R$.
 
 The division algorithm shows that every ideal of $\Z$ is principal, 
 see Exercise~\ref{xca:ideals_Z}.  
+
+The ring $\R[X]$ of real polynomials also has a division algorithm. Given the polynomials 
+$f(X)\in\R[X]$ and $g(X)\in\R[X]$ with $g(X)\ne 0$, there are  
+polynomials $q(X)\in\R[X]$ and $r(X)\in\R[X]$ such that 
+\[
+f(X)=q(X)g(X)+r(X),
+\]
+where $r(X)=0$ or $\deg r(X)<\deg g(X)$. 
+
+For example, 
+if $f(X)=2X^5-X$ and $g(X)=X^2+1$, then 
+\[
+f(X)=q(X)g(X)+r(X),
+\]
+where $q(X)=2X^3-2X$ and $r(X)=X$. 
 
 \begin{exercise}
 \label{xca:R[X]_principal}
