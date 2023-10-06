@@ -15,6 +15,145 @@ if $R=(x)$, then, in particular, $1\in R=(x)$ and hence $1=xy$ and $1=zx$ for so
 $z=z1=z(xy)=(zx)y=1y=y$ and hence $x$ is a unit. 
 \end{sol}
 
+\begin{sol}{xca:quotient_ring}
+From group theory, we know that $R/I$ is abelian group with addition 
+\[
+    (x+I)+(y+I)=(x+y)+I
+\]
+and neutral element $0+I=I$. 
+
+We have already seen that multiplication is well-defined. 
+As an example, we also showed that 
+the left distributive property holds, that is 
+\[
+ (x+I)\left((y+I)+(z+I)\right)=(x+I)(y+I)+(x+I)(z+I)
+\]
+for all $x,y,z\in R$. The right distributivity is similar: 
+\[
+ \left((x+I)+(y+I)\right)(z+I)=(x+I)(z+I)+(y+I)(z+I)
+\]
+for all $x,y,z\in R$. 
+Let us prove the associativity of the
+multiplication: 
+\begin{align*}
+    (x+I)\left((y+I)(z+I)\right) &= (x+I)(yz+I)\\
+    &=x(yz)+I\\
+    &=(xy)z+I\\
+    &=(xy+I)(z+I)\\
+    &=\left((x+I)(y+I)\right)(z+I).
+\end{align*}
+Finally, let us see why $1+I$ is the neutral element of the multiplication:
+\[
+(x+I)(1+I)=x1+I=x+I=1x+I=(1+I)(x+I)
+\]
+for all $x\in R$. 
+\end{sol}
+
+
+\begin{sol}{xca:first_iso}
+    We first note that $K=\ker f$ is an ideal of $R$. Thus $R/K$ is a ring. 
+    Let
+    \[
+    \varphi\colon R/K\to f(R),\quad x+K\mapsto f(x).
+    \]
+    
+    We first need
+    to prove that $\varphi$ is a well-defined map, that is
+    if $x+K=y+K$, then $f(x)=f(y)$. 
+    Thus we want to avoid situations as in the following picture: 
+\begin{center}
+\begin{tikzpicture}[scale=0.50]
+\draw[thick] (7,0) ellipse[x radius=2, y radius=2.5]+(2,2.5) node{$f(R)$};
+\draw[thick] (0,0) ellipse[x radius=3, y radius=2]+(2,2.25) node{$R/K$};
+\coordinate (a) at (0,0);
+\coordinate (z) at (6,1);
+\coordinate (y) at (6.5,-1);
+\fill (a) circle[radius=0.1] node[below]{$x+K=y+K$};
+\fill (y) circle[radius=0.1] node[right]{$f(x)$};
+\fill (z) circle[radius=0.1] node[right]{$f(y)$};
+\draw[-Latex, shorten <=5pt, shorten >=5pt] (a) to[out=20, in=160] (y);
+\draw[-Latex, shorten <=5pt, shorten >=5pt] (a) to[out=20, in=200] (z);
+\end{tikzpicture}
+\end{center}
+
+    
+    To prove this fact, we proceed as  
+    follows:
+    \begin{align*}
+    x+K=y+K &\implies x-y\in K=\ker f\\
+    &\implies f(x)-f(y)=f(x-y)=0\\
+    &\implies f(x)=f(y).
+    \end{align*}
+    
+    Now we need to prove that $\varphi$ is a ring homomorphism. First we
+    prove that $\varphi(1+K)=1$:
+    \[
+    \varphi(1+K)=f(1)=1.
+    \]
+    To finish the proof of the fact that $\varphi$ is a ring homomorphism, 
+    let $x,y\in R$. Then 
+    \begin{align*}
+        \varphi( (x+K)+(y+K)) &= \varphi(x+y+K)\\
+        &=f(x+y)\\
+        &=f(x)+f(y)\\
+        &=\varphi(x+K)+\varphi(y+K).
+    \shortintertext{and} 
+        \varphi( (x+K)(y+K)) &= \varphi(xy+K)\\
+        &=f(xy)\\
+        &=f(x)f(y)\\
+        &=\varphi(x+K)\varphi(y+K) 
+    \end{align*}
+    because $f$ is a ring homomorphism. 
+
+    The map $\varphi$ is clearly surjective, as 
+    if $y\ in f(R)$, then $y=f(x)$ for some $x\in R$. Then 
+    $\varphi(x+K)=f(x)=y$. 
+
+    Finally, we show that $\varphi$ is injective: 
+    \begin{align*}
+    \varphi(x+K)=\varphi(y+K) &\implies f(x)=f(y)\\
+    &\implies x-y\in K=\ker f\\
+    &\implies x+K=y+K.
+    \end{align*}
+\end{sol}
+
+\begin{sol}{xca:Z[i]/(1+3i)}
+    Let $\varphi\colon\Z\to\Z[i]\xrightarrow{\pi}\Z[i]/(1+3i)$, where $\pi$ denotes the canonical map. 
+    We claim that $\varphi$ is a surjective ring homomorphism with kernel $\ker\varphi=10\Z$. Then
+    $\Z/10\Z\simeq\varphi(\Z)=\Z[i]/(1+3i)$ by the first isomorphism theorem. 
+
+    Note first that $\varphi$ is a ring homomorphism, as it is 
+    the composition of ring homomorphisms. 
+    
+    We now show that $\ker\varphi=10\Z$: 
+    \begin{align*} 
+    m\in\ker\varphi&\Longleftrightarrow \varphi(m)+m\in (1+3i)\\
+    &\Longleftrightarrow m=(1+3i)(x+iy)\text{ 
+    for some $x,y\in\Z$}\\
+    &\Longleftrightarrow m=10x\text{ for some $x\in\Z$}\\
+    &\Longleftrightarrow m\in 10\Z.
+    \end{align*}
+
+    Finally, to see that $\varphi$ is surjective it is enough to 
+    see that $i\in\varphi(\Z)$, as 
+    then, for $a,b\in\Z$, one has 
+    $\varphi(a+3b)\equiv a+ib\bmod (1+3i)$. 
+    To show that $i\in\varphi(\Z)$
+    note
+    that $\varphi(3)=3\equiv i\bmod (1+3i)$, as $3-i=-i(1+3i)$. 
+\end{sol}
+
+\begin{sol}{xca:Z15}
+    Suppose there is an isomorphism $\varphi\colon Z[i]/I\to \Z/15$ for some 
+    ideal $I$. In particular, 
+    \[ 
+    \varphi(-1+I)+\varphi(1+I)=\varphi(I)=0
+    \]
+    and hence, since $\varphi(1+I)=1$, it follows that $\varphi(-1+I)=-1$. Since 
+    $i^2\equiv -1\bmod I$, one also has $\varphi(i^2+I)=-1$. But there are no
+    elements $x\in\Z/15$ such that $x^2=-1$, a contradiction. 
+\end{sol}
+
 \begin{sol}{xca:IJ}
     Let $K=\{uv:u\in I,\,v\in J\}$. Then
     $X^2\in K$ and $Y^2\in K$ but $X^2+Y^2\not\in K$, so $K$ is not an ideal.
