@@ -162,10 +162,10 @@ we consider $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
 	We want to find Gauss integers $\gamma,\delta\in\Z[i]$ such that 
 	\[
-	\frac{\alpha}{\beta}=\gamma+\frac{\delta}{\beta}
+        \alpha=\beta\delta+\gamma 
 	\]
 	and
-	$\varphi(\delta/\beta)=\varphi(\delta)/\varphi(\beta)<1$. Note that every complex
+	$\varphi(\gamma)<\varphi(\beta)$. Note that every complex
 	number $z\in\C$ can be written as $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. Indeed, this
 	follows from the fact that 
 	$\C$ is covered by open unit disks of radius one and centers in Gauss integers, see the following figure:
@@ -192,7 +192,8 @@ we consider $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	\[
 	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
 	\]
-	for some $r,s\in\Q$. Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
+	for some $r,s\in\Q$. We don't need to compute $r$ and $s$ explicitly! 
+        Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
 	$|s-n|\leq 1/2$. If $\delta=m+in$ and $\gamma=\alpha-\beta\delta$, then 
 	$\gamma\in R$, $\delta\in R$ and $\alpha=\beta\delta+\gamma$. If $\gamma\ne0$, then
 	\begin{align*}
