@@ -216,7 +216,8 @@ of $G$ equivalent to $\rho$.
     if $\rho_g(W)\subseteq W$ for all $g\in G$.
 \end{definition}
 
-If $\rho\colon G\to\GL(V)$ is a representation and $W\subseteq V$ is invariant, then
+Let $\rho\colon G\to\GL(V)$ be a representation. Then $\{0\}$ and $V$ are always   
+invariant subspaces of~$V$. Moreover, if $W\subseteq V$ is invariant, then
 the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation. The
 map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$. 
 
@@ -443,7 +444,7 @@ where $L_g(h)=gh$. With the inner product
 \[
 \left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g}
 \]
-the representation $L$ is unitary.
+the representation $L$ is unitary. Prove it! 
 \end{example}
 
 
@@ -463,7 +464,8 @@ irreducible or decomposable.
 
 \begin{proof}
 	If $\rho$ is not irreducible, there exists an invariant subspace $W$ of $V$ such that
-	$\{0\}\subsetneq W\subsetneq V$. 
+	$\{0\}\subsetneq W\subsetneq V$. Can we find an invariant complement? Yes, and this is because 
+        our representation is unitary.  
 	Then $V=W\oplus W^{\perp}$ as complex vector spaces, where 
 	$W^\perp\ne\{0\}$. So $\rho$ will be decomposable if we can prove that
 	$W^\perp$ is an invariant subspace of $V$. 
@@ -482,16 +484,22 @@ irreducible or decomposable.
 \end{theorem}
 
 \begin{proof}
-	Let $V=\C^n$ and 
-	$V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle_0$, be an inner
-    product on $V$. A straightforward calculation shows that
+    Let $V=\C^n$ and 
+    $V\times V\to\C$, $(v,w)\mapsto (v\mid w)$, be an inner
+    product on $V$. We use this particular notation for the inner product of $V$ because  
+    with this inner product, we will 
+    produce a new inner product (denoted by $(v,w)\mapsto \langle v, w\rangle$) that will turn $\rho$ 
+    into a unitary representation. 
+    
+    A straightforward calculation shows that
     \[
-    \langle v,w\rangle=\sum_{g\in G}\langle\rho_gv,\rho_gw\rangle_0
+    \langle v,w\rangle=\sum_{g\in G}(\rho_gv\mid \rho_gw)
     \]
-    is an inner product of $V$. Since
+    is an inner product of $V$.
+    Since
     \begin{align*}
-    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}\langle\rho_h\rho_gv,\rho_h\rho_gw\rangle_0\\
-    &=\sum_{h\in G}\langle\rho_{hg}v,\rho_{hg}w\rangle_0=\sum_{x\in G}\langle\rho_xv,\rho_xw\rangle_0=\langle v,w\rangle,
+    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}(\rho_h\rho_gv\mid \rho_h\rho_gw)\\
+    &=\sum_{h\in G}(\rho_{hg}v\mid\rho_{hg}w)=\sum_{x\in G}(\rho_xv\mid\rho_xw)=\langle v,w\rangle,
     \end{align*}
     the representation $\rho$ is unitary.
 \end{proof}
