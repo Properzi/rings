@@ -13,7 +13,9 @@ finite-dimensional representations of finite groups.
     by induction on $\dim V$.
     If $\dim V=1$, the result is trivial, as degree-one representations are irreducible. Assume that
     the result holds for representations of degree $\leq n$. Suppose that $\rho$ has degree $n+1$. 
-    If $\rho$ is irreducible, we are done. If not, write $V=S\oplus T$, where $S$ and $T$
+    If $\rho$ is irreducible, we are done. If not, use 
+    Proposition \ref{pro:irr_or_dec} to 
+    write $V=S\oplus T$, where $S$ and $T$
     are non-zero invariant subspaces of $V$. Since $\dim S<\dim V$ and $\dim T<\dim V$, it follows from
     the inductive hypothesis that
     both $S$ and $T$ are spaces of completely reducible representations. 
@@ -136,9 +138,9 @@ Two applications:
 
 \topic{Characters}
 
-This lecture is devoted to study character theory. Fix a group and consider
+This lecture is devoted to studying character theory. Fix a group and consider
 (matrix) representations of groups. How can we study those matrices? Since 
-equivalence of representations translates into equivalence of matrices, 
+the equivalence of representations translates into the equivalence of matrices, 
 it makes sense to use linear algebra. We can use 
 the characteristic polynomial of the matrix, 
 \[
@@ -150,7 +152,7 @@ the trace is particularly interesting.
 
 \begin{definition}
 	\index{Character}
-	Let $\rho\colon G\to\GL(V)$ be a representation. The \textbf{character} of $\rho$ 
+	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$. The \textbf{character} of $\rho$ 
 	is the map $\chi_\rho\colon G\to\C$, $g\mapsto\trace\rho_g$. 	
 \end{definition}
 
@@ -159,7 +161,7 @@ If a representation $\rho$ is irreducible, its character is said to be an
 representation. 
 
 \begin{proposition}
-	Let $\rho\colon G\to\GL(V)$ be a representation, $\chi$ be its character and $g\in G$.
+	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$, $\chi$ be its character and $g\in G$.
 	The following statements hold:
 	\begin{enumerate}
 		\item $\chi(1)=\dim V$. 

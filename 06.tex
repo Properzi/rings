@@ -9,12 +9,13 @@ relying solely on fundamental linear algebra principles over complex numbers.
 \begin{definition}
 	\index{Representation}
 	A \textbf{representation} (over the field $K$) of a group $G$ is a group homomorphism
-	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some vector space $V$ (over $K$).
+	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some non-zero finite-dimensional 
+        vector space $V$ (over $K$).
 \end{definition}
 
 \index{Representation!degree}
 The \textbf{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. Note that
-if $V$ is finite-dimensional, say $\dim V=n$, fixing a basis of $V$ we get a \textbf{matrix representation} 
+since $V$ is finite-dimensional, say $\dim V=n$, after fixing a basis of $V$ we get a \textbf{matrix representation} 
 $\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will use either representations on vector spaces or matrix representations.  
 
 \begin{example}
@@ -114,7 +115,7 @@ groups.
 \begin{definition}
 	\index{Invariant!map}
     Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
-    representations of a finite group $G$. A linear map $T\colon V\to W$ is said to be invariant
+    representations. A linear map $T\colon V\to W$ is said to be \textbf{invariant} 
     if the diagram
     \[\begin{tikzcd}
 	V & V \\
@@ -485,17 +486,26 @@ irreducible or decomposable.
 
 \begin{proof}
     Let $V=\C^n$ and 
-    $V\times V\to\C$, $(v,w)\mapsto (v\mid w)$, be an inner
-    product on $V$. We use this particular notation for the inner product of $V$ because  
+    $V\times V\to\C$, $(v,w)\mapsto (v\mid w)$, be an\footnote{It does not matter which inner product we have chosen. 
+    We use this particular notation for our inner product of $V$ because  
     with this inner product, we will 
     produce a new inner product (denoted by $(v,w)\mapsto \langle v, w\rangle$) that will turn $\rho$ 
-    into a unitary representation. 
-    
+    into a unitary representation.} inner
+    product on $V$. 
+   
     A straightforward calculation shows that
     \[
     \langle v,w\rangle=\sum_{g\in G}(\rho_gv\mid \rho_gw)
     \]
-    is an inner product of $V$.
+    is an inner product of $V$. For example, 
+    \begin{align*}
+    \langle v,w+w_1\rangle&=\sum_{g\in G}(v\mid w+w_1)\\
+    &=\sum_{g\in G}\left((v\mid w)+(v\mid w_1)\right)\\
+    &=\sum_{g\in G}(v\mid w)+\sum_{g\in G}(v\mid w_1)\\
+    &=\langle v,w\rangle+\langle v,w_1\rangle 
+    \end{align*}
+    holds for all $v,w,w_1\in V$. 
+    
     Since
     \begin{align*}
     \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}(\rho_h\rho_gv\mid \rho_h\rho_gw)\\
@@ -509,7 +519,8 @@ Weyl's trick has several interesting consequences:
 
 \begin{corollary}
 \label{cor:consequences}
-	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$. The following properties
+	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$. 
+ The following properties
 	hold:
 	\begin{enumerate}
 		\item $\rho$ is equivalent to a unitary representation.
