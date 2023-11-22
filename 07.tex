@@ -217,13 +217,6 @@ representation.
 
 If two representations are equivalent, their characters are equal.
 
-\begin{definition}
-	Let $G$ be a group and 
-	$f\colon G\to\C$ be a map. Then $f$ is a \textbf{class function} if
-	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	
-\end{definition}
-
-Characters are class functions. 
 
 \begin{proposition}
     If $\rho\colon G\to\GL(V)$ and
@@ -292,7 +285,7 @@ A direct calculation shows that the tensor product of representations is indeed 
 
 \begin{proposition}
   	If $\rho\colon G\to\GL(V)$ and
-    $\psi\colon G\to\GL(W)$ are representations, then
+    $\psi\colon G\to\GL(W)$ are representations of a finite group $G$, then
     \[
     \chi_{\rho\otimes\psi}=\chi_\rho\chi_\psi.
     \]
@@ -426,10 +419,12 @@ for all $v\in V$.
 If $\rho\colon G\to\GL(V)$ and $\psi\colon
 	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
 	V\to W$ is a linear map, then $T^{\#}=0$, as 
-	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma.
+	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma. We will use this
+ fact later in Schur's Theorem \ref{thm:Schur_technical}. 
 
 \begin{theorem}[Ergodic theorem]
 \index{Ergodic theorem}
+\label{thm:ergodic}
   Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
   If $T\colon V\to V$ is linear, then 
   $T^{\#}=(\dim V)^{-1}\trace(T)\id$.

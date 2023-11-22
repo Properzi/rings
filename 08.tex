@@ -34,6 +34,7 @@ $(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
 
 \begin{theorem}[Schur]
 \index{Schur's!theorem}
+\label{thm:Schur_technical}
     Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. 
     Then the following statements hold:
     \begin{enumerate}
@@ -46,7 +47,8 @@ $(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
     Let us prove the first claim. Since 
     $\rho$ and $\psi$ 
     are not equivalent, it follows from Schur's lemma that $\Hom_G(V,W)=\{0\}$.
-    Thus $E_{ki}^\#\in\Hom_G(V,W)=\{0\}$ by the Ergodic theorem. 
+    Thus $E_{ki}^\#\in\Hom_G(V,W)=\{0\}$ (see the comment 
+    before the ergodic theorem \ref{thm:ergodic}). 
     
     To prove the second claim, we use the previous lemma:
     \[
@@ -91,7 +93,8 @@ Schur's theorem has several
 corollaries.
 
 \begin{exercise}
-If $\rho\colon G\to\GL(V)$ is a unitary irreducible representation 
+Let $G$ be a finite group. 
+If $\rho\colon G\to\GL(V)$ is a unitary irreducible representation
 of degree $n$, then
 \[
 \{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
@@ -110,40 +113,6 @@ is an orthonormal set of size $n^2$.
 % We want to know how many irreducible representations are there. For that purpose, 
 % we need to study the space of class functions. 
 
-Recall that $L(G)=\{f\colon G\to\C\}$ is a vector space with
-\[
-    (f+g)(x)=f(x)+g(x),
-    \quad
-    (\lambda f)(x)=\lambda f(x),
-    \quad 
-    f,g\in L(G),\,\lambda\in\C,\,x\in G.
-\]
-Let $C(G)$ be the subspace of class functions. 
-We claim that $\dim C(G)=K(G)$, the number of conjugacy classes of $G$. If $C$ is a conjugacy class, 
-then 
-\[
-\delta_C\colon G\to\C,\quad
-\delta_C(x)=\begin{cases}
-    1 & \text{if $x\in C$,}\\
-    0 & \text{otherwise.}
-\end{cases}
-\]
-is a class function. Let us prove that the 
-set $\{\delta_C:C\text{ is a conjugacy class of $G$}\}$ is a basis of $C(G)$.  It is a generating set
-because each $f$ can be written as 
-\[
-f=\sum_{C}f(C)\delta_C.
-\]
-The $\delta_C$ are linearly independent because they are orthogonal: 
-If $C$ and $D$ 
-are conjugacy classes of $G$, then 
-\[
-\langle\delta_C,\delta_D\rangle=\frac{1}{|G|}\sum_{x\in G}\delta_C(x)\overline{\delta_D(x)}
-=\begin{cases}
-|C|/|G| & \text{if $C=D$},\\
-0 & \text{otherwise}.
-\end{cases}
-\]
 
 \begin{corollary}
      A finite group has finitely many classes of irreducible representations. 
@@ -183,6 +152,57 @@ by
 \Irr(G)=\{\chi_1,\dots,\chi_r\}.
 \]
 
+\begin{definition}
+	Let $G$ be a group and 
+	$f\colon G\to\C$ be a map. Then $f$ is a \textbf{class function} if
+	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	
+\end{definition}
+
+Characters are class functions. 
+
+Recall that $L(G)=\{f\colon G\to\C\}$ is a vector space with
+\[
+    (f+g)(x)=f(x)+g(x),
+    \quad
+    (\lambda f)(x)=\lambda f(x),
+    \quad 
+    f,g\in L(G),\,\lambda\in\C,\,x\in G.
+\]
+Let $C(G)$ be the subspace of class functions. 
+
+If $g\in G$, the conjugacy class of $g$ in $G$ 
+is the set $\{xgx^{-1}:x\in G\}$. Note that two conjugacy classes are either equal or disjoint. Moreover, 
+every group is a disjoint union of its conjugacy classes. 
+For example, the conjugacy classes of the group $\Sym_3$ are  
+$\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. Thus $\Sym_3$ has three conjugacy classes. 
+
+We claim that $\dim C(G)=K(G)$, the number of conjugacy classes of $G$. If $C$ is a conjugacy class, 
+then 
+\[
+\delta_C\colon G\to\C,\quad
+\delta_C(x)=\begin{cases}
+    1 & \text{if $x\in C$,}\\
+    0 & \text{otherwise.}
+\end{cases}
+\]
+is a class function.  
+Let us prove that the 
+set $\{\delta_C:C\text{ is a conjugacy class of $G$}\}$ is a basis of $C(G)$.  It is a generating set
+because each $f$ can be written as 
+\[
+f=\sum_{C}f(C)\delta_C.
+\]
+The $\delta_C$ are linearly independent because they are orthogonal: 
+If $C$ and $D$ 
+are conjugacy classes of $G$, then 
+\[
+\langle\delta_C,\delta_D\rangle=\frac{1}{|G|}\sum_{x\in G}\delta_C(x)\overline{\delta_D(x)}
+=\begin{cases}
+|C|/|G| & \text{if $C=D$},\\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
 
 \begin{corollary}
     Let $G$ be a finite group. There are at most $K(G)$ equivalence classes of irreducible representations of $G$.
@@ -193,13 +213,20 @@ by
     Irreducible characters 
     form an orthonormal set, thus they are linearly 
     independent. Since irreducible characters
-    are class functions, it follows that there are at most $K(G)$ irreducible different characters.  
+    are class functions (that is, they are constant on conjugacy classes), 
+    it follows that there are at most $K(G)$ irreducible different characters.  
 \end{proof}
 
 Let $m\in\Z_{>0}$. If $V$ is a vector space, we 
-write $mV=V\oplus\cdots\oplus V$ ($m$-times). Similarly,
+write \[
+mV=V\oplus\cdots\oplus V\quad\text{($m$-times)}.
+\]
+Similarly,
 if $\rho$ is a representation, 
-we write $m\rho=\rho\oplus\cdots\oplus\rho$ ($m$-times). 
+we write 
+\[
+m\rho=\rho\oplus\cdots\oplus\rho\quad\text{($m$-times)}.
+\]
 
 \begin{theorem}
     Let $\rho_1,\dots,\rho_r$ be the irreducible representations of a finite group $G$. If 
