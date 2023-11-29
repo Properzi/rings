@@ -6,13 +6,13 @@ The rest of the course will be devoted to studying modules over rings.
 We first start with the main definitions and basic examples.
 
 \begin{definition}
-    Let $R$ be a ring. A \textbf{module} (over $R$) is an abelian group
+    Let $R$ be a ring. A \textbf{module} (over $R$) is an abelian group (written additively) 
     $M$ with a map $R\times M\to M$, $(r,m)\mapsto r\cdot m$, such that
     the following conditions hold:
     \begin{enumerate}
-        \item $(r_1+r_2)\cdot m=r_1\cdot m+r_2\cdot m$ for all $r_1,r_2\in R$ y $m\in M$.
-		\item $r\cdot (m_1+m_2)=r\cdot m_1+r\cdot m_2$ for all $r\in R$ y $m_1,m_2\in M$.
-		\item $r_1\cdot (r_2\cdot m)=(r_1r_2)\cdot m$ for all $r_1,r_2\in R$ y $m\in M$.
+        \item $(r_1+r_2)\cdot m=r_1\cdot m+r_2\cdot m$ for all $r_1,r_2\in R$ and $m\in M$.
+		\item $r\cdot (m_1+m_2)=r\cdot m_1+r\cdot m_2$ for all $r\in R$ and $m_1,m_2\in M$.
+		\item $r_1\cdot (r_2\cdot m)=(r_1r_2)\cdot m$ for all $r_1,r_2\in R$ and $m\in M$.
 		\item $1\cdot m=m$ for all $m\in M$.	
     \end{enumerate}
 \end{definition}
@@ -30,10 +30,13 @@ Every abelian group is a module over $\Z$.
 \end{example}
 
 \begin{example}
+\label{exa:left_regular}
 Let $R$ be a ring. Then $R$ is a module (over $R$) with $x\cdot m=xm$. 
-This is the \textbf{(left) regular representation} of $R$, and it usually 
+This is the \textbf{(left) regular module} over $R$, and it usually 
 is denoted by $\prescript{}{R}R$. 
 \end{example}
+
+The module $\prescript{}{R}R$ is also known as the (left) regular representation of $R$. 
 
 \begin{example}
 If $R$ is a ring, then $R^n=\{(x_1,\dots,x_n):x_1,\dots,x_n\in R\}$ 
@@ -62,11 +65,16 @@ for all $r_1,r_2\in R$ and $m\in M$.
 %
 \begin{example}
 Let $V$ be a finite-dimensional real vector space and $T\colon V\to V$ be a linear map.  
-Let $R=\R[X]$. Then $M=\R^n$ with 
+Let $R=\R[X]$. Then $M=V$ with 
 \[
 \left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v)
 \]	
-is a module (over $R$).   
+is a module (over $R$), where we use the following notation: for $v\in V$, we write 
+\[
+    T^0(v)=v,\quad 
+    T^1(v)=T(v)v,\quad 
+    T^2(v)=T(T(v))\dots 
+\]
 \end{example}
 
 \begin{example}
@@ -106,7 +114,7 @@ $3\cdot 2=0$ but $3\ne 0$ (in $\Z$) and $2\ne 0$ (in $\Z/6$).
 
 \begin{definition}
 	Let $M$ be a module. A subset $N$ of $M$ is a \textbf{submodule} of $M$ if 
-	$(N,+)$ is a subgroup of $(M,+)$ and 
+	$N$ is a subgroup of $M$ and $R\cdot N\subseteq N$, that is 
 	$x\cdot n\in N$ for all $x\in R$ and $n\in N$. 
 \end{definition}
 
@@ -128,7 +136,7 @@ of $M$ if and only if $N$ is a left ideal of $R$.
 \end{example}
 
 \begin{example}
-If $V$ is a vector space and $T\colon V\to V$ is a linear map, then
+If $V$ is a finite-dimensional real vector space and $T\colon V\to V$ is a linear map, then
 $V$ is a module (over $\R[X]$) with  
 \[
 \left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v).
@@ -310,12 +318,12 @@ are the only submodules of $M$.
 
 \begin{exercise}
 \label{xca:commuting}
-Let $V$ be a real vector space and $T\colon V\to V$ be a linear map. Then 
+Let $V$ be a finite-dimensional real vector space and $T\colon V\to V$ be a linear map. Then 
 $V$ is a module over $\R[X]$ with  
 \[
 \left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
 \]
-Prove that a module homomorphism $g\colon V\to V$ commutes with $T$. 
+Prove that any module homomorphism $g\colon V\to V$ commutes with $T$. 
 % \[
 % (g\circ T)(v)=g(T(v))=g(X\cdot v)=X\cdot g(v)=T(g(v))=(T\circ g)(v)
 % \]
@@ -407,7 +415,7 @@ the diagram
 \end{tikzcd}
 \]
 is commutative, that is 
-$\varphi\circ\pi =f$.  
+$\varphi\pi =f$.  
 \end{enumerate}
 
 Recall that if $S$ and $T$ are submodules of a module $M$, then 
@@ -429,10 +437,10 @@ The \textbf{isomorphism theorems} hold:
 \begin{example}
 If $K$ is a field and $V$ is a module over $K$, then $V$ is, by definition, a vector space over $K$. 
 If $S$ and $T$ are subspaces of $V$, then they are submodules of $V$. 
-By the isomorphism theorem, $(S+T)/T\simeq S/(S\cap T)$ 
+By the isomorphism theorem, $(S+T)/S\simeq T/(S\cap T)$ 
 as vector spaces. By applying dimension,  
 \[
-\dim(S+T)-\dim T=\dim(S)-\dim(S\cap T).
+\dim(S+T)-\dim S=\dim T-\dim(S\cap T).
 \]
 \end{example}
 
