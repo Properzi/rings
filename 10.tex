@@ -42,6 +42,11 @@ For example, $\Z=(1)=(2,3)$ and $\Z\ne (2)$.
     $M$ is a finite-dimensional complex vector space. 
 \end{exercise}
 
+\begin{example}
+    Let $R$ be a ring. The left regular $R$-module $R^3$ is finitely generated 
+    by $e_1=(1,0,0)$, $e_2=(0,1,0)$ and $e_3=(0,0,1)$. 
+\end{example}
+
 If $f\in\Hom_R(M,N)$ and $M$ is finitely generated, then 
 $f(M)$ is finitely generated. To prove this and other similar results, 
 we introduce exact sequences (of modules and module homomorphisms). 
@@ -133,26 +138,32 @@ that is not finitely generated.
     stabilizes, that is there exists $n$ such that $M_k=M_{n+k}$ for all $k$. 	
 \end{definition}
 
+Let $M$ be a module and $X$ be a non-empty 
+family of submodules of $M$. We say that $S\in X$ is a \textbf{maximal 
+element} (with respect to the inclusion) if $S\subseteq T$ for some $T\in X$ implies $S=T$. 
+
 \begin{proposition}
 Let $M$ be a module. The following statements are equivalent:
 \begin{enumerate}
 \item $M$ is noetherian.
-\item Submodules of $M$ are finitely generated.
-\item Every non-empty family of submodules of $M$ has a maximal element (with respect to the inclusion).	
+\item All submodules of $M$ are finitely generated.
+\item Every non-empty family of submodules of $M$ has a maximal element. 	
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	We first prove $2)\implies1)$. If $S_1\subseteq S_2\subseteq\cdots$ is a sequence of submodules of $M$, 
-	it follows that $S=\cup_{i\geq 1}S_i$ is a submodule of $M$. Since $S$ is finitely generated, 
+	We first prove $2)\implies1)$. If $S_1\subseteq S_2\subseteq\cdots$ is an increasing 
+        sequence of submodules of $M$, 
+	it follows that $S=\cup_{i\geq 1}S_i$ is a submodule\footnote{In general, the union of submodules is not a submodule. Here $\cup_jS_j$ is a submodule because we have an increasing sequence $S_1\subseteq S_2\subseteq\cdots$ of submodules.} 
+ of $M$. Since $S$ is finitely generated, 
 	$S=(x_1,\dots,x_n)$ for some $x_1,\dots,x_n\in M$. It follows that 
 	$x_1,\dots,x_n\in S_N$ for some positive integer $N$. Thus 
 	$S\subseteq S_N$ and hence $S_N=S_{N+k}$ for all $k$. 
 	
 	We now prove $1)\implies3)$. Let $F$ be a non-empty family of submodules of $M$ with no maximal elements. 
-	Let $S_1\in F$. Since $S_1$ is not maximal, there exists $S_2\in F$ such that $S_1\subsetneq S_2$. 
+	Let $S_1\in F$. Since $S_1$ is not maximal in $F$, there exists $S_2\in F$ such that $S_1\subsetneq S_2$. 
 	Having constructed with this method the submodules $S_1\subsetneq\dots\subsetneq S_k$, since $S_k$ is not
-	maximal, there exists $S_{k+1}\in F$ such that $S_k\subsetneq S_{k+1}$. 
+	maximal in $F$, there exists $S_{k+1}\in F$ such that $S_k\subsetneq S_{k+1}$. 
 	This means that the sequence 
 	$S_1\subsetneq S_2\subsetneq\cdots$ does not stabilize. 
 	
@@ -170,6 +181,8 @@ Let $M$ be a module. The following statements are equivalent:
 	$N=(n_1,\dots,n_k,x)$, a contradiction
 	to $x\not\in N$. 
 \end{proof}
+
+The previous theorem shows that every noetherian module is finitely generated. 
 
 \begin{exercise}
 \label{xca:Pruffer}
@@ -517,13 +530,13 @@ $g$ is injective. Since
 \[
 g(lu-kv)=lg(u)-kg(v)=lk-kl=0,
 \]
-it follows that $lu-kv=0$ and thus $k=l=0$, as $\{u,v\}$ is linearly independent, a constradiction
+it follows that $lu-kv=0$ and thus $k=l=0$, as $\{u,v\}$ is linearly independent, a contradiction
 \end{example}
 
 Another important property:
 
 \begin{proposition}
-If $M$ is a free $R$-moodule, then $M\simeq R^{(I)}$ for some set $I$.
+If $M$ is a free $R$-module, then $M\simeq R^{(I)}$ for some set $I$.
 \end{proposition}
 
 \begin{proof}
