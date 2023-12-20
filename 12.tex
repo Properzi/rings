@@ -401,7 +401,7 @@ $C_1\leftrightarrow C_2$ to transform $A$ into
 To obtain zeros in positions $(1,2)$, $(1,3)$, $(2,1)$ and $(2,3)$ we 
 apply 
 $R_2\leftarrow 6R_1-R_2$, $R_3\leftarrow 5R_1-R_3$ and 
-$C_1\leftarrow 3C_1-C_2$. Then out matrix turns into   
+$C_2\leftarrow 3C_1-C_2$. Then out matrix turns into   
 \[
 \begin{pmatrix}
 	1 & 0 & 0\\
@@ -507,7 +507,7 @@ and relations $12m_2=0$ and $4(m_1+2m_2+m_3)=0$. The first column operation
 corresponds to multiplying on the right by 
 the matrix $I-2E_{12}=\begin{pmatrix}1&-2&0\\0&1&0\\0&0&1\end{pmatrix}$ and
 the second one to right multiplication by the matrix
-$I-E_{13}=\begin{pmatrix}1&0&1\\0&1&0\\0&0&1\end{pmatrix}$. 
+$I-E_{13}=\begin{pmatrix}1&0&-1\\0&1&0\\0&0&1\end{pmatrix}$. 
 Finally, interchange the first two rows to obtain
 the Smith's normal form of $A$: 
 \[
@@ -544,7 +544,7 @@ P=
         0&0&1
     \end{pmatrix}
     \begin{pmatrix}
-        1&0&1\\
+        1&0&-1\\
         0&1&0\\
         0&0&1
     \end{pmatrix}
@@ -574,7 +574,7 @@ A=\begin{pmatrix}
 	2 & 2 & 6 & 8
 \end{pmatrix}.
 \]
-Apply $F_1\leftrightarrow F_3$ and then $F_2\leftarrow F_1+F_2$ to obtain 
+Apply $R_1\leftrightarrow R_3$ and then $R_2\leftarrow R_1+R_2$ to obtain 
 \[
 \begin{pmatrix}
 	2 & 2 & 6 & 8\\
@@ -599,7 +599,7 @@ Apply $C_4\leftarrow C_4-C_2$ to get
 	0 & 0 & 22 & 0
 \end{pmatrix}. 
 \]
-Note that $4\nmid 22$. Apply $F_2\leftarrow F_2+F_3$, $C_3\leftarrow C_3-5C_2$, $C_3\leftarrow C_2$, $F_3\leftarrow F_3-11F_2$ and 
+Note that $4\nmid 22$. Apply $R_2\leftarrow R_2+R_3$, $C_3\leftarrow C_3-5C_2$, $C_3\leftarrow C_2$, $R_3\leftarrow R_3-11R_2$ and 
 $C_3\leftarrow C_3-C_2$ to get 
 \[
 \begin{pmatrix}
