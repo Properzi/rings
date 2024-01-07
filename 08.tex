@@ -10,11 +10,40 @@ the matrix $E_{ij}$ is given by
     0 & \text{otherwise}.
 \end{cases}
 \]
-If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of a finite group $G$, then
+
+Let $G$ be a finite group. 
+Recall that $L(G)=\{f\colon G\to\C\}$ is a vector space with
+\[
+    (f+g)(x)=f(x)+g(x),
+    \quad
+    (\lambda f)(x)=\lambda f(x),
+    \quad 
+    f,g\in L(G),\,\lambda\in\C,\,x\in G.
+\]
+The dimension of $L(G)$ is $|G|$. For $x\in G$, 
+let 
+\[
+\delta_x\colon G\to\C,\quad \delta_x(y)=\begin{cases}
+    1 & \text{if $x=y$},\\
+    0 & \text{otherwise.}
+    \end{cases}
+\]
+Then the set
+$\{\delta_x:x\in G\}$ is a basis of $G$. 
+
+If $\alpha\colon G\to\C$ and $\beta\colon G\to\C$ 
+are maps, we consider the inner product
+\[
+\langle\alpha,\beta\rangle=\frac{1}{|G|}\sum_{g\in G}\alpha(g)\overline{\beta(g)}.
+\]
+
+If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of $G$, then
 $\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
 \[
 \chi_\rho(g)=\sum_{i=1}^n\rho_{ii}(g).
 \]
+
+
 
 \begin{lemma}
 Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
@@ -122,7 +151,7 @@ is an orthonormal set of size $n^2$.
      Let $G$ be a finite group. 
      Every isomorphism class of representations of $G$ contains a unitary representation (Corollary \ref{cor:consequences}). 
      Since $\dim L(G)=|G|$, every linearly independent set 
-     of vectors from $L(G)$ have at most $|G|$ elements. By
+     of vectors from $L(G)$ has at most $|G|$ elements. By
      Schur's theorem \ref{thm:Schur}, the entries
      of inequivalent unitary representations of $G$ 
      form an orthogonal set of non-zero vectors of $L(G)$. Thus
@@ -160,15 +189,7 @@ by
 
 Characters are class functions. 
 
-Recall that $L(G)=\{f\colon G\to\C\}$ is a vector space with
-\[
-    (f+g)(x)=f(x)+g(x),
-    \quad
-    (\lambda f)(x)=\lambda f(x),
-    \quad 
-    f,g\in L(G),\,\lambda\in\C,\,x\in G.
-\]
-Let $C(G)$ be the subspace of class functions. 
+Let $C(G)$ be the subspace of $L(G)$ of class functions. 
 
 If $g\in G$, the \textbf{conjugacy class} of $g$ in $G$ 
 is the set $\{xgx^{-1}:x\in G\}$. Note that two conjugacy classes are either equal or disjoint. Moreover, 
