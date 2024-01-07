@@ -124,6 +124,24 @@ for all $x\in R$.
     \end{align*}
 \end{sol}
 
+\begin{sol}{xca:sqrt2and3}
+Suppose there exists an isomorphism $f\colon \Q[\sqrt{2}]\to\Q[\sqrt{3}]$. 
+Since $f$ is additive and $f(1)=1$, $f(m)=m$ for all $m\in\Z$. Furthermore,
+$f(m/n)=m/n$ for all $m/n\in\Q$. This implies that $f(a+b\sqrt{2})=a+bf(\sqrt{2})$. 
+Let $z=f(\sqrt{2})$. Then 
+\[
+z^2=f(\sqrt{2})^2=f(2)=2
+\]
+and hence $z\in\{-\sqrt{2},\sqrt{2}\}$. But there are no numbers 
+$\Q[\sqrt{3}]$ whose square is $2$: if $\left(a+b\sqrt{3}\right)^2=2$ for some
+$a,b\in\Q$, then 
+\[
+2=\left(a+b\sqrt{3}\right)^2=a^2+3b^2+2ab\sqrt{3}.
+\]
+Since $\sqrt{3}\not\in\Q$, either $a=0$ or $b=0$. Both cases yield 
+a contradiction. 
+\end{sol}
+
 \begin{sol}{xca:Z[i]/(1+3i)}
     Let $\varphi\colon\Z\to\Z[i]\xrightarrow{\pi}\Z[i]/(1+3i)$, where $\pi$ denotes the canonical map. 
     We claim that $\varphi$ is a surjective ring homomorphism with kernel $\ker\varphi=10\Z$. Then
