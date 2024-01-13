@@ -39,6 +39,24 @@ is denoted by $\prescript{}{R}R$.
 The module $\prescript{}{R}R$ is also known as the (left) regular representation of $R$. 
 
 \begin{example}
+    Let $G$ be a finite group. If $\rho\colon G\to\GL(V)$ is a representation, 
+    then $V$ is a $\C[G]$-module with 
+    \[
+    g\cdot v=\rho_g(v)
+    \]
+    for $g\in G$ and $v\in V$.
+    
+    Conversely, if $V$ is a $\C[G]$-module and $V$ is a complex 
+    finite-dimensional vector space, then 
+    the map
+    \[
+    \rho\colon G\to\GL(V),\quad g\mapsto\rho_g,
+    \]
+    where $\rho_g(v)=g\cdot v$ for $v\in V$, 
+    is a representation of $G$. 
+\end{example}
+
+\begin{example}
 If $R$ is a ring, then $R^n=\{(x_1,\dots,x_n):x_1,\dots,x_n\in R\}$ 
 is a module (over $R$) with  
 $r\cdot (x_1,\dots,x_n)=(rx_1,\dots,rx_n)$. 
