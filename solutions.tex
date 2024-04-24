@@ -120,8 +120,8 @@ for all $x\in R$.
     \end{align*}
     because $f$ is a ring homomorphism. 
 
-    The map $\varphi$ is clearly surjective, as 
-    if $y\ in f(R)$, then $y=f(x)$ for some $x\in R$. Then 
+    The map $\varphi$ is surjective: 
+    if $y\in f(R)$, then $y=f(x)$ for some $x\in R$. Then 
     $\varphi(x+K)=f(x)=y$. 
 
     Finally, we show that $\varphi$ is injective: 
@@ -316,7 +316,10 @@ a contradiction.
     Since $p\equiv1\bmod4$, 
     $p$ is not prime in $\Z[i]$ (see Theorem \ref{thm:Fermat}). 
     Thus $p=\alpha\beta$ for some $\alpha,\beta\not\in\mathcal{U}(\Z[i])$. Hence $p^2=N(p)=N(\alpha)N(\beta)$. Since 
-    $N(\alpha)\ne 1$ and $N(\beta)\ne 1$, $N(\alpha)=N(\beta)=p$. 
+    $N(\alpha)\ne 1$ and $N(\beta)\ne 1$, 
+    \[ 
+    N(\alpha)=N(\beta)=p.
+    \]
     Therefore $\alpha\overline{\alpha}=N(\alpha)=p$. 
 \end{sol}
 
@@ -511,7 +514,7 @@ a contradiction.
 
 \begin{sol}{xca:freshman_dream}
     One approach to solve this exercise requires the following fact: 
-    $p$ is a prime and $1\leq k\leq p^n-1$, then $\binom{p^n}{k}$ is divisible by $p$.
+    $p$ is a prime number and $1\leq k\leq p^n-1$, then $\binom{p^n}{k}$ is divisible by $p$.
     Let us prove this claim. Write
     \[
     \binom{p^n}{k}=\frac{(p^n)!}{k!(p^n-k)!}=\frac{p^n}{k}\binom{p^n-1}{k-1}.
@@ -793,7 +796,7 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
     and hence $\{y_1,\dots,y_n\}$ generates $G$ and therefore 
     $\{y_1,\dots,y_n\}$ is a basis of $G$. 
     
-    Assume now that $\{y_1,\dots,y_n\}$ is a basis of $G$. There exist
+    Assume now that $\{y_1,\dots,y_n\}$ is a basis of $G$. There exist matrices 
     $A=(a_{ij})\in M_n(\Z)$ and $B=(b_{ij})\in M_n(\Z)$ such that
     \[
     y_i=\sum_{j=1}^{n}a_{ij}x_j,\quad
