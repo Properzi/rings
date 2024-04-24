@@ -135,9 +135,9 @@ The numbers that can be represented as the sums of two squares form the integer 
 They form the set of all norms of Gaussian integers. 
 
 
-\begin{exercise}
+\begin{exercise}[Eisenstein integers]
 \index{Eisenstein integers}
-    This exercise is about \textbf{Eisenstein integers}. 
+    %This exercise is about \textbf{Eisenstein integers}. 
     \label{xca:Eisenstein}
     Let $\omega=e^{2\pi i/3}\in\C$ and $R=\Z[\omega]=\{a+b\omega:a,b\in\Z\}$. 
     Prove the following statements:
@@ -452,7 +452,9 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
     
     Let us prove 2). Let $n_1=\min\{k\in\Z_{>0}:k1=0\}$. Clearly 
     $n\geq n_1$. For $x\in R$,
-    $n_1x=n_1(1x)=(n_11)x=0x=0$ 
+    \[ 
+    n_1x=n_1(1x)=(n_11)x=0x=0
+    \]
     and hence $n_1\geq n$. 
     
     Finally, we prove 3). If $n$ is not prime, say
@@ -488,7 +490,7 @@ Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
     \end{enumerate}
 \end{exercise}
 
-Hint: Use induction on $n$ and the fact that the prime number $p$ divides 
+Hint: Proceed by induction on $n$ and use the fact that the prime number $p$ divides 
 $\binom{p}{k}$ for all $k\in\{1,2,\dots,p-1\}$. Alternatively, one could use
 that the prime number $p$ divides $\binom{p^n}{k}$ for all 
 $k\in\{1,2,\dots,p^n-1\}$. 

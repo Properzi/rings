@@ -2,6 +2,8 @@
 
 \subsection{Noetherian modules}
 
+We first start with a very easy exercise. 
+
 \begin{exercise}
 \label{xca:modules_intersection}
     Let $M$ be a module. 
@@ -112,9 +114,11 @@ that is not finitely generated.
     (r_1,\dots,r_k)\mapsto \sum_{j=1}^kr_j\cdot m_j,
     \]
     is a surjective module homomorphism. The first isomorphism theorem implies that 
-    $R^k/\ker\varphi\simeq\varphi(R^k)=M$. 
+    \[ 
+    R^k/\ker\varphi\simeq\varphi(R^k)=M.
+    \]
     
-    Now assume that there exists a 
+    Conversely, assume that there exists a 
     surjective module homomorphism $\varphi\colon R^k\to M$. Since 
     $R^k=(e_1,\dots,e_k)$, where 
     \[
@@ -123,9 +127,9 @@ that is not finitely generated.
     0 & \text{if $i\ne j$},
     \end{cases}
     \]
-    it follows that $\{\varphi(e_1),\dots,\varphi(e_k)\}$ generates $\varphi(R^k)=M$. Indeed, 
-    if $m\in M$, we write $m=\varphi(r_1,\dots,r_k)$ for some $(r_1,\dots,r_k)\in R^k$ 
-    and hence 
+    it follows that $\{\varphi(e_1),\dots,\varphi(e_k)\}$ generates $\varphi(R^k)=M$. To prove this, note that  
+    if $m\in M$, by the surjectivity of $\varphi$, we write $m=\varphi(r_1,\dots,r_k)$ for some $(r_1,\dots,r_k)\in R^k$ 
+    Hence  
     \[
     m=\varphi(r_1,\dots,r_k)=\varphi\left(\sum_{i=1}^k r_i\cdot e_i\right)
     =\sum_{i=1}^kr_i\cdot\varphi(e_i).\qedhere
@@ -515,7 +519,9 @@ $f(m_i)=n_i$ for all $i\in I$.
 
 \begin{proof}[Sketch of the proof]
 Note that the unique homomorphism $f\colon M\to N$ is defined as 
-$f(\sum r_i\cdot m_i)=\sum r_i\cdot n_i$.  	
+\[ 
+f(\sum r_i\cdot m_i)=\sum r_i\cdot n_i.\qedhere 
+\]
 \end{proof}
 
 Another application:
@@ -540,7 +546,7 @@ If $M$ is a free $R$-module, then $M\simeq R^{(I)}$ for some set $I$.
 \end{proposition}
 
 \begin{proof}
-Suppose that $M$ has basis $\{m_i:i\in I\}$. There exists a unique homomorphism
+Suppose that $M$ has basis $\{m_i:i\in I\}$. Then there exists a unique homomorphism
 $f\in\Hom_R(M,R^{(I)})$ such that  
 $f(m_i)=\delta_i$ for all $i\in I$, where 
 \[
@@ -573,7 +579,8 @@ Another important property of free modules: free modules are
 
 \begin{proposition}
 	\label{pro:free=>projective}
-	If $M$ is a free module and $f\in\Hom_R(N,T)$ is surjective and
+    Let $M$, $N$ and $T$ be $R$-modules. Assume that $M$ is free. 
+	If $f\in\Hom_R(N,T)$ be surjective and
 	$h\in\Hom_R(M,T)$, then there exists $\varphi\in\Hom_R(M,N)$ such that
 	$f\varphi=h$. 
 \end{proposition}
@@ -613,7 +620,7 @@ that we will use later:
         \arrow[from=1-4, to=1-5]
     \end{tikzcd}
 	\]
-	be an exact sequence of modules.  If $C$ is free, then $A\oplus C\simeq B$. 
+	be an exact sequence of $R$-modules.  If $C$ is free, then $A\oplus C\simeq B$. 
 \end{proposition}
 
 \begin{proof}

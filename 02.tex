@@ -55,8 +55,7 @@ xy-x_1y_1=xy-x_1y+x_1y-x_1y_1=(x-x_1)y+x_1(y-y_1)\in I.
 	(x+I)(y+I)=(xy)+I,
 	\]
 	is a ring and the canonical map $R\to R/I$, $x\mapsto x+I$, 
-	is a surjective
-	ring homomorphism with kernel $I$. 
+	is a surjective ring homomorphism with kernel~$I$. 
 \end{theorem}
 
 We have already seen that multiplication is well-defined. 
@@ -341,7 +340,9 @@ Let $R$ be a commutative ring. If $I$ and $J$ are coprime ideals, then $IJ=I\cap
 \begin{proof}
 Let $x\in I\cap J$. Since $I$ and $J$ are coprime, 
 $1=u+v$ for some $u\in I$ and $v\in J$, 
-$x=x1=x(u+v)=xu+xv\in IJ$. 	
+\[ 
+x=x1=x(u+v)=xu+xv\in IJ\qedhere.
+\]
 \end{proof}
 
 \begin{exercise}
@@ -402,7 +403,7 @@ to use the direct product of rings. See Example~\ref{exa:direct_rings}.
 \end{corollary}
 
 \begin{proof}
-	Let $\pi_I\colon R\to R/I$ and $\pi_J\colon R\to R/J$ be the canonical maps. A straightforward
+	Let $\pi_I\colon R\to R/I$ and $\pi_J\colon R\to R/J$ be the canonical maps. A direct 
 	calculation shows that the
 	map $\varphi\colon R\to R/I\times R/J$, $x\mapsto (\pi_I(x),\pi_J(x))$, 
 	is a ring homomorphism with $\ker\varphi=I\cap J$. For example, to prove
@@ -413,8 +414,9 @@ to use the direct product of rings. See Example~\ref{exa:direct_rings}.
             &= (\pi_I(x),\pi_J(x))(\pi_I(y),\pi_J(y))\\
             &= \varphi(x)\varphi(y). 
         \end{align*}
-	
- We use now the Chinese remainder theorem to prove that the map $\varphi$ is surjective. If $(u+I,v+J)\in R/I\times R/J$, 
+
+ We now claim that the map $\varphi$ is surjective. To prove this, 
+ we will use the Chinese remainder theorem. If $(u+I,v+J)\in R/I\times R/J$, 
 	then there exists $x\in R$ such that 
 	$x-u\in I$ and $x-v\in J$. This translates into the surjectivity of $\varphi$,
  as \[

@@ -138,7 +138,7 @@ This implies that the rows of $AQ$ are relations with respect to the generating 
 $\{n_1,\dots,n_k\}$. 
 Let $\psi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot n_i$.
 
-Let us prove that the rows of $AQ$ generate $\ker\psi$ with respect to $\{n_1,\dots,n_k\}$. 
+The rows of $AQ$ generate $\ker\psi$ with respect to $\{n_1,\dots,n_k\}$. 
 If $(r_1,\dots,r_k)\in \ker\psi$, then 
 $\sum_{i=1}^k r_i\cdot n_i=0$. Write 
 \[
@@ -218,8 +218,12 @@ to $\{n_1,\dots,n_k\}$ and $\{e_1,\dots,e_l\}$.
 \begin{proof}
 	The matrix $PAQ$ is the relations matrix with respect to 
 	the generating set $\{m_1,\dots,m_k\}$ of $M$ and respect to the relations submodule 
-	given by the rows of $PAQ$.  If $\varphi\colon R^k\to
-	M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, then 
+	given by the rows of $PAQ$.  If 
+    \[ 
+    \varphi\colon R^k\to M,\quad 
+    (r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i,
+    \]
+    then 
 	$R^k/\ker\varphi\simeq M$, as $\varphi$ is a surjective homomorphism. For each 
 	$j\in\{r+1,\dots,k\}$ let $a_j=0$.  Let 
 	\[
@@ -471,7 +475,12 @@ zero columns.
 
 \begin{example}
 Let $M$ be the abelian group with generators $m_1,m_2,m_3$ and relations 
-$8m_1+4m_2+8m_3=0$, $4m_1+8m_2+4m_3=0$. The matrix of relations is then 
+\[ 
+8m_1+4m_2+8m_3=0, 
+\quad 
+4m_1+8m_2+4m_3=0.
+\]
+The matrix of relations is then 
 \[
 A=\begin{pmatrix}
 8 & 4 & 8\\
@@ -503,11 +512,22 @@ la matrix
 \end{pmatrix},
 \]
 which corresponds to generators $\{m_1+2m_2+m_3,m_2\}$ 
-and relations $12m_2=0$ and $4(m_1+2m_2+m_3)=0$. The first column operation
+and relations 
+\[ 
+12m_2=0,\quad 
+4(m_1+2m_2+m_3)=0.
+\]
+The first column operation
 corresponds to multiplying on the right by 
-the matrix $I-2E_{12}=\begin{pmatrix}1&-2&0\\0&1&0\\0&0&1\end{pmatrix}$ and
+the matrix 
+\[ 
+I-2E_{12}=\begin{pmatrix}1&-2&0\\0&1&0\\0&0&1\end{pmatrix}
+\]
+and
 the second one to right multiplication by the matrix
-$I-E_{13}=\begin{pmatrix}1&0&-1\\0&1&0\\0&0&1\end{pmatrix}$. 
+\[ 
+I-E_{13}=\begin{pmatrix}1&0&-1\\0&1&0\\0&0&1\end{pmatrix}.
+\]
 Finally, interchange the first two rows to obtain
 the Smith's normal form of $A$: 
 \[
@@ -517,8 +537,12 @@ the Smith's normal form of $A$:
 \end{pmatrix}.
 \]
 This matrix corresponds to 
-the set of generators $\{m_2,m_1+2m_2+m_3\}$ and relations $4(m_1+2m_2+m_3)=0$ and
-$12m_2=0$. The column operation used corresponds to left multiplication by the 
+the set of generators $\{m_2,m_1+2m_2+m_3\}$ and relations 
+\[ 
+4(m_1+2m_2+m_3)=0,\quad 
+12m_2=0.
+\]
+The column operation used corresponds to left multiplication by the 
 permutation matrix 
 $\begin{pmatrix}0&1\\1&0\end{pmatrix}$. 
 Thus  $M\simeq\Z/4\times\Z/{12}$. We also obtained that
