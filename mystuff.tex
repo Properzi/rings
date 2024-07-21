@@ -3,14 +3,18 @@
 \usepackage{listings}
 \usepackage{tikz-cd}
 \usepackage{datetime}
-\usepackage{mathptmx}
 \usepackage{amssymb}
-\usepackage{newtxtext}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
 \usepackage{mdframed}
 \usepackage{textcomp}
 \usepackage{colortbl}
+
+% For Dyslexic replace the next three lines by 
+%\usepackage{fontspec}
+%\setmainfont{OpenDyslexic}
+%\usepackage{mathptmx}
+%\usepackage{newtxtext}
 
 \usepackage[margin=1in,footskip=.25in]{geometry}
 
@@ -108,6 +112,24 @@ left=.5cm
 \newcommand{\Soc}{\operatorname{Soc}}
 \newcommand{\Core}{\operatorname{Core}}
 \newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+
+% column vector
+\newcount\colveccount
+\newcommand*\colvec[1]{
+\global\colveccount#1
+\begin{pmatrix}
+        \colvecnext
+        }
+        \def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+        \\
+        \expandafter\colvecnext
+        \else
+\end{pmatrix}
+\fi
+}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}

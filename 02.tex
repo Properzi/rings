@@ -312,8 +312,8 @@ ideals of $\Z$, then $I=(a)$ and $J=(b)$ for some $a,b\in\Z$. Then Bezout's theo
 states that 
 \begin{align*}
 \text{$a$ and $b$ are coprime}
-\Longleftrightarrow 1=ra+sb\text{ for some $r,s\in\Z$}
-\Longleftrightarrow\text{ $I$ and $J$ are coprime.}
+&\Longleftrightarrow 1=ra+sb\text{ for some $r,s\in\Z$}\\
+&\Longleftrightarrow\text{ $I$ and $J$ are coprime.}
 \end{align*}
 
 If $I$ and $J$ are ideals of $R$, then 
@@ -327,7 +327,10 @@ for $u\in I$ and $v\in J$?
 \begin{exercise}
     \label{xca:IJ}
     Let $R=\R[X,Y]$ and $I=J=(X,Y)$. Prove that the
-    set $\{uv:u\in I,\,v\in J\}$ is not an ideal of $R$.
+    set \[
+    \{uv:u\in I,\,v\in J\}
+    \]
+    is not an ideal of $R$.
 \end{exercise}
 
 Note that $IJ\subseteq I\cap J$. Equality does not hold in general. Take
@@ -407,7 +410,11 @@ to use the direct product of rings. See Example~\ref{exa:direct_rings}.
 	calculation shows that the
 	map $\varphi\colon R\to R/I\times R/J$, $x\mapsto (\pi_I(x),\pi_J(x))$, 
 	is a ring homomorphism with $\ker\varphi=I\cap J$. For example, to prove
- that $\varphi(xy)=\varphi(x)\varphi(y)$ we proceed as follows: if $x,y\in R$, then 
+ that 
+ \[
+ \varphi(xy)=\varphi(x)\varphi(y)
+ \]
+ we proceed as follows: if $x,y\in R$, then 
         \begin{align*}
             \varphi(xy) &= (\pi_I(xy),\pi_J(xy))\\
             &= (\pi_I(x)\pi_I(y),\pi_J(x)\pi_J(y))\\
