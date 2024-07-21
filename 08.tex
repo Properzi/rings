@@ -270,11 +270,14 @@ The theorem states that the decomposition of a representation $\rho$ into irredu
 is unique and is determined (up to equivalence) by its character.
 
 \begin{corollary}
-    A representation $\rho$ of a finite group is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
+    A representation $\rho$ of a finite group with character $\chi_\rho$ is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
 \end{corollary}
 
 \begin{proof}
-    We first decompose $\rho$ as a sum of irreducibles, say $\rho=\sum_{j=1}^rm_j\rho_j$ with $m_1,\dots,m_r\geq0$. Then
+    We first decompose $\rho$ as a sum of irreducibles, say \[
+    \rho=\sum_{j=1}^rm_j\rho_j
+    \]
+    with $m_1,\dots,m_r\geq0$. Then
     $\langle\chi_\rho,\chi_\rho\rangle=\sum_{j=1}^rm_j^2$. Now $\langle\chi_\rho,\chi_\rho\rangle=1$ if and only if
     there is exactly one $j$ such that $m_j=1$ and $m_i=0$ for all $i\ne j$.  
 \end{proof}
@@ -622,8 +625,11 @@ Compute the character table of $\Sym_4$.
 			size & $1$ & $4$ & $4$ & $3$ 
 		\end{tabular}
 	\end{center}
-	Since $[\Alt_4,\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\}$,
-	$\Alt_4/[\Alt_4,\Alt_4]$ has three elements. Thus $\Alt_4$ has three degree-one irreducibles and
+	Since 
+ \[
+ [\Alt_4,\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\},
+ \]
+	the quotient $\Alt_4/[\Alt_4,\Alt_4]$ has three elements. Thus $\Alt_4$ has three degree-one irreducibles and
 	an irreducible character of degree three. Let 
 	$\omega=\exp(2\pi i/3)$ be a primitive cubic root of 1. If $\chi$
 	is a non-trivial degree-one character, then 

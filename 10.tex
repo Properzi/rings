@@ -230,7 +230,10 @@ If $R$ is noetherian and $M$ is a finitely generated module, then $M$ is noether
 
 \begin{proof}
     Assume that $M=(m_1,\dots,m_k)$. There exists a surjective homomorphism  
-$R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, where
+\[
+R^k\to M,\quad (r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i,
+\]
+where
 $R^k=\oplus_{i=1}^k R$. Since $R$ is noetherian, $R^k$ is noetherian. Thus $M$ is noetherian.	
 \end{proof}
 
@@ -555,6 +558,7 @@ $f(m_i)=\delta_i$ for all $i\in I$, where
 	0 & \text{si $i\ne j$.}
 	\end{cases}	
 \]	
+
 We claim that $f$ is an isomorphism. We first prove that the map $f$ is surjective: if $(r_i)_{i\in I}\in R^{(I)}$, then
 $f(\sum r_i\cdot m_i)=(r_i)_{i\in I}$. Let us prove that $f$ is injective: 
 \[
@@ -711,7 +715,10 @@ if $f\in V$, then
 f=\sum_{i=1}^n f(e_i)f_i,
 \]
 as these homomorphisms coincide in the elements of a basis of $M$, that is 
-$f(e_j)=(\sum_{i=1}^n f(e_i)f_i)(e_j)$ for all $j\in\{1,\dots,n\}$.    
+\[
+f(e_j)=(\sum_{i=1}^n f(e_i)f_i)(e_j)
+\]
+for all $j\in\{1,\dots,n\}$.    
 Moreover, $\{f_1,\dots,f_n\}$ is linearly independent, as if $0=\sum_{i=1}^n\lambda_if_i$, 
 then, evaluating on each $e_j$, it follows that 
 \begin{align*}

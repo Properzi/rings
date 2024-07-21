@@ -65,8 +65,10 @@ the polynomial ring $R[X,Y]$ in two commuting variables $X$ and $Y$ and coeffici
 $R[X,Y]=(R[X])[Y]$. One can also define the ring  
 $R[X_1,\dots,X_n]$ of polynomials 
 in $n$ commuting variables $X_1,\dots,X_n$ with coefficients in $R$ as 
-$R[X_1,\dots,X_n]
-=(R[X_1,\dots,X_{n-1}])[X_n]$.
+\[
+R[X_1,\dots,X_n]
+=(R[X_1,\dots,X_{n-1}])[X_n].
+\]
 
 \begin{example}
     If $A$ is an abelian group, then 
@@ -178,7 +180,9 @@ equality $a+b\sqrt{2}=c+d\sqrt{2}$ implies $a=c$ and $b=d$?
 \begin{example}
     \index{Center!of a ring}
     If $R$ is a ring, then the \textbf{center} 
-    $Z(R)=\{x\in R:xy=yx\text{ for all $y\in R$}\}$ 
+    \[
+    Z(R)=\{x\in R:xy=yx\text{ for all $y\in R$}\}
+    \]
     is a subring of $R$. 
 \end{example}
 
@@ -406,8 +410,11 @@ the definition
 of a ring homomorphism $f$ one needs $f(1)=1$.  
 
 \begin{example}
-The map $f\colon\Z/6\to\Z/6$, $x\mapsto 3x$, is not a ring homomorphism because
-$f(1)=3$. 	
+The map $f\colon\Z/6\to\Z/6$, $x\mapsto 3x$, satisfies 
+\[
+f(xy)=f(x)f(y)\quad\text{and}\quad f(x+y)=f(x)+f(y)
+\]
+for all $x,y\in\Z/6$. However, $f$ is not a ring homomorphism because~$f(1)=3$. 	
 \end{example}
  
 If $R$ is a ring, then  

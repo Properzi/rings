@@ -124,7 +124,8 @@ groups.
 	\arrow["T"', from=1-1, to=2-1]
 	\arrow["{\psi_g}"', from=2-1, to=2-2]
 	\arrow["T", from=1-2, to=2-2]
-\end{tikzcd}\]
+\end{tikzcd}
+\]
     commutes for all $g\in G$, this means that 
     $\psi_gT=T\rho_g$ for all $g\in G$.
 \end{definition}
@@ -199,14 +200,14 @@ of $G$ equivalent to $\rho$.
     \begin{pmatrix}
         \cos(2\pi m/n) & -\sin(2\pi m/n)\\
         \sin(2\pi m/n) & \cos(2\pi m/n)
-    \end{pmatrix}
+    \end{pmatrix},
     \shortintertext{and}
     &\psi\colon G\to\GL_2(\C),\quad
     m\mapsto
     \begin{pmatrix}
         e^{2\pi im/n} & 0\\
         0 & e^{-2\pi im/n}
-    \end{pmatrix}
+    \end{pmatrix},
     \end{align*}
     are equivalent, as $\rho_mT=T\psi_m$ for all $m\in G$ if $T=\begin{pmatrix}
         i&-i\\
@@ -227,8 +228,10 @@ the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation.
 map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$. 
 
 \begin{example}
-	If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations
-	and $T\colon V\to W$ is an invariant map, then the \textbf{kernel} 
+	If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations of a given group $G$ 
+	and 
+ $T\colon V\to W$
+ is an invariant map, then the \textbf{kernel} 
 	\[
 	\ker T=\{v\in V:T(v)=0\}
 	\]
