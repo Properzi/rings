@@ -9,7 +9,7 @@ the presence of the variable $X$ allows us to utilize formal derivatives
 
 \begin{definition}
 \index{Ring}
-A \textbf{ring} is a non-empty set $R$ with two binary operations, the addition
+A \emph{ring} is a non-empty set $R$ with two binary operations, the addition
 $R\times R\to R$, $(x,y)\mapsto x+y$, and the multiplication
 $R\times R\to R$, $(x,y)\mapsto xy$, such that
 the following properties hold:
@@ -27,7 +27,7 @@ writes the identity element $1_R$ as $1$ if there is no risk of confusion.
 
 \begin{definition}
 \index{Ring!commutative}
-A ring $R$ is said to be \textbf{commutative} if $xy=yx$ for all $x,y\in R$. 
+A ring $R$ is said to be \emph{commutative} if $xy=yx$ for all $x,y\in R$. 
 \end{definition}
 
 \begin{example}
@@ -54,8 +54,8 @@ real polynomials from their school days.
     \[
     f(X)=a_0+a_1X+a_2X^2+\cdots+a_nX^n
     \]
-    and $a_n\ne0$, then $a_n$ is the \textbf{leading coefficient} of $f(X)$ and 
-    $n$ is the \textbf{degree} of $f(X)$. In this case, we use the notation 
+    and $a_n\ne0$, then $a_n$ is the \emph{leading coefficient} of $f(X)$ and 
+    $n$ is the \emph{degree} of $f(X)$. In this case, we use the notation 
     $n=\deg f(X)$. 
 \end{example}
 
@@ -106,7 +106,7 @@ Let $R$ be a ring. Prove the following facts:
     \[
     (1+i+j)(i+k)=i+k-1+ik+ji+jk=i+k-1-j-k+i=-1+2i-j,
     \]
-    as $ik=i(ij)=-j$ and $ji=-k$. This is the ring of real \textbf{quaternions}.
+    as $ik=i(ij)=-j$ and $ji=-k$. This is the ring of real \emph{quaternions}.
 \end{example}
 
 \begin{example}
@@ -139,12 +139,12 @@ with coefficients in $R$.
     \]
     The zero of $R\times S$ is $(0_R,0_S)$ and 
     the unit element of $R\times S$ is $(1_R,1_S)$. The ring 
-    $R\times S$ is known as the \textbf{direct product} of $R$ and $S$. 
+    $R\times S$ is known as the \emph{direct product} of $R$ and $S$. 
 \end{example}
 
 \begin{definition}
 \index{Subring}
-    Let $R$ be a ring. A \textbf{subring} $S$ of $R$ is a subset $S$ such that
+    Let $R$ be a ring. A \emph{subring} $S$ of $R$ is a subset $S$ such that
     $(S,+)$ is a subgroup of $(R,+)$ such that $1\in S$ and 
     if $x,y\in S$, then $xy\in S$. 
 \end{definition}
@@ -154,10 +154,10 @@ For example, $\Z\subseteq\Q\subseteq\R\subseteq\C$ is a chain of subrings.
 \begin{example}
     \index{Gauss integers}
     $\Z[i]=\{a+bi:a,b\in\Z\}$ is a subring of $\C$. 
-    This is known as the ring of \textbf{Gauss integers}.  
+    This is known as the ring of \emph{Gauss integers}.  
 \end{example}
 
-A \textbf{square-free} integer is an integer that is divisible by 
+A \emph{square-free} integer is an integer that is divisible by 
 no perfect square other than 1. Some examples: 2, 3, 5, 6, 7, and 10. 
 The numbers 4, 8, 9, and 12 are not square-free. 
 
@@ -179,7 +179,7 @@ equality $a+b\sqrt{2}=c+d\sqrt{2}$ implies $a=c$ and $b=d$?
 
 \begin{example}
     \index{Center!of a ring}
-    If $R$ is a ring, then the \textbf{center} 
+    If $R$ is a ring, then the \emph{center} 
     \[
     Z(R)=\{x\in R:xy=yx\text{ for all $y\in R$}\}
     \]
@@ -202,7 +202,7 @@ is the additive inverse of $s$ as an element of $R$.
 \begin{definition}
 \index{Units}
 	Let $R$ be a ring. An element $x\in R$ is 
-	a \textbf{unit} if there exists $y\in R$ such that $xy=yx=1$. 
+	a \emph{unit} if there exists $y\in R$ such that $xy=yx=1$. 
 \end{definition}
 
 The set $\mathcal{U}(R)$ of units of a ring $R$ form 
@@ -216,7 +216,7 @@ Compute $\mathcal{U}(\R[X])$.
 
 \begin{definition}
 	\index{Ring!division}
-	A \textbf{division ring} is a ring $R$ 
+	A \emph{division ring} is a ring $R$ 
 	such that $\mathcal{U}(R)=R\setminus\{0\}$.  	
 \end{definition}
 
@@ -226,7 +226,7 @@ an arbitrary element $a1+bi+cj+dk\in H(\R)$.
 
 \begin{definition}
 \index{Field}
-	A \textbf{field} is a commutative division ring with $1\ne 0$. 
+	A \emph{field} is a commutative division ring with $1\ne 0$. 
 \end{definition}
 
 For example, $\Q$, $\R$, and $\C$ are fields. 
@@ -249,7 +249,7 @@ is a field. What is the inverse of a non-zero element of the form $x+y\sqrt[3]{2
 
 \begin{definition}
 \index{Ideal!left}
-	Let $R$ be a ring. A \textbf{left ideal} of $R$ is a subset $I$ such that 
+	Let $R$ be a ring. A \emph{left ideal} of $R$ is a subset $I$ such that 
 	$(I,+)$ is a subgroup of $(R,+)$ and such that $RI\subseteq I$, 
 	i.e. $ry\in I$ for all $r\in R$ and $y\in I$. 
 \end{definition}
@@ -279,7 +279,7 @@ example of a right ideal that is not a left ideal?
 
 \begin{definition}
 \index{Ideal}	
-Let $R$ be a ring. An \textbf{ideal} of $R$ 
+Let $R$ be a ring. An \emph{ideal} of $R$ 
 is a subset that is both a left and a right ideal of $R$. 
 \end{definition}
  
@@ -358,7 +358,7 @@ A similar exercise is to find the ideals of any division ring.
 
 \begin{definition}
 \index{Ideal!principal}
-Let $R$ be a ring and $I$ be an ideal of $R$. Then $I$ is \textbf{principal}
+Let $R$ be a ring and $I$ be an ideal of $R$. Then $I$ is \emph{principal}
 if $I=(x)$ for some $x\in R$. 	
 \end{definition}
 
@@ -399,7 +399,7 @@ A division ring (and, in particular, a field) has only two ideals.
 
 \begin{definition}
 \index{Ring!homomorphism}
-Let $R$ and $S$ be rings. A map $f\colon R\to S$ is a \textbf{ring homomorphism}  
+Let $R$ and $S$ be rings. A map $f\colon R\to S$ is a \emph{ring homomorphism}  
 if $f(1)=1$, $f(x+y)=f(x)+f(y)$ and $f(xy)=f(x)f(y)$ for all $x,y\in R$. 	
 \end{definition}
 
@@ -438,7 +438,7 @@ Let $x_0\in\R$. The evaluation map $\R[X]\to\R$, $f\mapsto f(x_0)$,
 is a ring homomorphism. 	
 \end{example}
 
-The \textbf{kernel} of a ring homomorphism
+The \emph{kernel} of a ring homomorphism
 $f\colon R\to S$ is the subset
 \[
 \ker f=\{x\in R:f(x)=0\}.

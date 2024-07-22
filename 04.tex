@@ -57,12 +57,12 @@
 \end{exercise}
 
 \begin{definition}
-	Let $R$ be an integral domain. Then $R$ is \textbf{principal} 
+	Let $R$ be an integral domain. Then $R$ is \emph{principal} 
 	(or a principal ideal domain) if
 	every ideal $I$ of $R$ is of the form $I=(x)$ for some $x\in R$.   
 \end{definition}
 
-An ideal $I$ of the form $I=(x)$ for some $x$ is called a \textbf{principal ideal}. 
+An ideal $I$ of the form $I=(x)$ for some $x$ is called a \emph{principal ideal}. 
 
 The rings $\Z$ and $\R[X]$ are both principal. 
 
@@ -143,7 +143,7 @@ because $\Z$ is a principal domain.
 \end{example}
 
 \begin{definition}
-	Let $R$ be an integral domain. We say that $R$ is an \textbf{euclidean domain}
+	Let $R$ be an integral domain. We say that $R$ is an \emph{euclidean domain}
 	if there exists a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$ such that
 	for every $x,y\in R$ with $y\ne 0$ there exist $q,r\in R$ such that 
 	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
@@ -181,7 +181,21 @@ consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	$\C$ is covered by open unit disks of radius one and centers in Gauss integers, see the following figure:
 	%Figure \ref{fig:covering}. 
 
-
+	\begin{figure}[ht]
+		\centering
+	\begin{tikzpicture} 
+\draw[dashed] (0,0) grid (3,3); 
+\foreach \i in {0,...,3}     
+\foreach \j in {0,...,3}         
+\fill (\i,\j) circle (2pt);  
+\draw[red,thick](1,1) circle (1);
+\draw[red,thick](2,1) circle (1);
+\draw[red,thick](1,2) circle (1);
+\draw[red,thick](2,2) circle (1);
+\end{tikzpicture}
+%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
+\label{fig:covering}
+\end{figure}
 	
 	Now let $\alpha=a+ib$ and $\beta=c+id$, where $a,b,c,d\in\Z$.  
 	Write 
@@ -202,21 +216,7 @@ consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	\end{align*}	
 \end{example}
 
-	\begin{figure}
-		\centering
-	\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick](1,1) circle (1);
-\draw[red,thick](2,1) circle (1);
-\draw[red,thick](1,2) circle (1);
-\draw[red,thick](2,2) circle (1);
-\end{tikzpicture}
-%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
-\label{fig:covering}
-\end{figure}
+
 
 In $\Z[i]$ the division algorithm does not have uniqueness. In fact, 
 if $\alpha,\beta\in\Z[i]$ and $\alpha=\beta\delta+\gamma$ 
@@ -314,7 +314,7 @@ see \cite{MR967349}, \cite{MR3665445} or \cite{MR314831}.
 
 \begin{definition}
 	Let $R$ be an integral domain. Then $R$ is a 
-	\textbf{unique factorization domain}
+	\emph{unique factorization domain}
 	if the following statements hold:
 	\begin{enumerate}
 	\item Each $x\in R\setminus\{0\}$ that is not a unit can be written as $x=c_1\cdots c_n$ for irreducibles $c_1,\dots,c_n$. 
@@ -408,7 +408,7 @@ Let us show that the converse of Theorem \ref{thm:PID=>UFD} does not hold.
 
 \begin{exercise}
 \label{xca:content}
-	A polynomial $f\in\Z[X]$ is \textbf{primitive} if
+	A polynomial $f\in\Z[X]$ is \emph{primitive} if
 	the greatest common divisors of its coefficients is equal to one. 
 	Let $f\in\Z[X]$ be a non-constant polynomial. If $f=af_1$ for some $a\in\Z$ and some
 	primitive polynomial $f_1$, then $a$ is the greatest common divisor of the coefficients of $f$. 	
