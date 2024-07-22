@@ -181,21 +181,7 @@ consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	$\C$ is covered by open unit disks of radius one and centers in Gauss integers, see the following figure:
 	%Figure \ref{fig:covering}. 
 
-	\begin{figure}
-		\centering
-	\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick](1,1) circle (1);
-\draw[red,thick](2,1) circle (1);
-\draw[red,thick](1,2) circle (1);
-\draw[red,thick](2,2) circle (1);
-\end{tikzpicture}
-%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
-\label{fig:covering}
-\end{figure}
+
 	
 	Now let $\alpha=a+ib$ and $\beta=c+id$, where $a,b,c,d\in\Z$.  
 	Write 
@@ -215,6 +201,22 @@ consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	&<\varphi(\beta).
 	\end{align*}	
 \end{example}
+
+	\begin{figure}
+		\centering
+	\begin{tikzpicture} 
+\draw[dashed] (0,0) grid (3,3); 
+\foreach \i in {0,...,3}     
+\foreach \j in {0,...,3}         
+\fill (\i,\j) circle (2pt);  
+\draw[red,thick](1,1) circle (1);
+\draw[red,thick](2,1) circle (1);
+\draw[red,thick](1,2) circle (1);
+\draw[red,thick](2,2) circle (1);
+\end{tikzpicture}
+%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
+\label{fig:covering}
+\end{figure}
 
 In $\Z[i]$ the division algorithm does not have uniqueness. In fact, 
 if $\alpha,\beta\in\Z[i]$ and $\alpha=\beta\delta+\gamma$ 
