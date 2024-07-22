@@ -8,14 +8,14 @@ relying solely on fundamental linear algebra principles over complex numbers.
 
 \begin{definition}
 	\index{Representation}
-	A \textbf{representation} (over the field $K$) of a group $G$ is a group homomorphism
+	A \emph{representation} (over the field $K$) of a group $G$ is a group homomorphism
 	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some non-zero finite-dimensional 
         vector space $V$ (over $K$).
 \end{definition}
 
 \index{Representation!degree}
-The \textbf{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. Note that
-since $V$ is finite-dimensional, say $\dim V=n$, after fixing a basis of $V$ we get a \textbf{matrix representation} 
+The \emph{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. Note that
+since $V$ is finite-dimensional, say $\dim V=n$, after fixing a basis of $V$ we get a \emph{matrix representation} 
 $\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will use either representations on vector spaces or matrix representations.  
 
 \begin{example}
@@ -75,7 +75,7 @@ groups.
 \begin{example}
 \index{Representation!trivial}
 	If $G$ is a group, then $\rho\colon G\to\GL_1(\C)=\C^\times$, $g\mapsto 1$, 
-	is a representation. This representation is known as the \textbf{trivial (complex) representation} of $G$. 	
+	is a representation. This representation is known as the \emph{trivial (complex) representation} of $G$. 	
 \end{example}
 
 \begin{example}
@@ -115,7 +115,7 @@ groups.
 \begin{definition}
 	\index{Invariant!map}
     Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
-    representations. A linear map $T\colon V\to W$ is said to be \textbf{invariant} 
+    representations. A linear map $T\colon V\to W$ is said to be \emph{invariant} 
     if the diagram
     \[\begin{tikzcd}
 	V & V \\
@@ -155,7 +155,7 @@ Although we use the same notation for different representations, there is no ris
 
 \begin{definition}
 	\index{Representations!equivalence}
-    The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \textbf{equivalent}
+    The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \emph{equivalent}
     if there exists a bijective map $T\colon V\to W$ invariant with respect to $\rho$ and $\psi$.
 \end{definition}
 
@@ -218,24 +218,24 @@ of $G$ equivalent to $\rho$.
 \begin{definition}
 	\index{Invariant!subspace}
     Let $\rho\colon G\to\GL(V)$
-    a representation. A subspace $W$ of $V$ is said to be \textbf{invariant} (with respect to $\rho$)
+    a representation. A subspace $W$ of $V$ is said to be \emph{invariant} (with respect to $\rho$)
     if $\rho_g(W)\subseteq W$ for all $g\in G$.
 \end{definition}
 
 Let $\rho\colon G\to\GL(V)$ be a representation. Then $\{0\}$ and $V$ are always   
 invariant subspaces of~$V$. Moreover, if $W\subseteq V$ is invariant, then
 the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation. The
-map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$. 
+map $\rho|_W$ is the \emph{restriction} of $\rho$ to $W$. 
 
 \begin{example}
 	If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations of a given group $G$ 
 	and 
  $T\colon V\to W$
- is an invariant map, then the \textbf{kernel} 
+ is an invariant map, then the \emph{kernel} 
 	\[
 	\ker T=\{v\in V:T(v)=0\}
 	\]
-	is an invariant of $V$ and the \textbf{image} 
+	is an invariant of $V$ and the \emph{image} 
 	\[
 		T(V)=\{T(v):v\in V\}
 	\]
@@ -246,7 +246,7 @@ map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$.
 \begin{definition}
 \index{Subrepresentation}
     Let $\rho\colon G\to\GL(V)$
-    a representation. A \textbf{subrepresentation} of $\rho$ is a restricted representation 
+    a representation. A \emph{subrepresentation} of $\rho$ is a restricted representation 
     of the form $\rho|_W\colon G\to\GL(W)$ for some invariant subspace $W$ of $V$.
 \end{definition}
 
@@ -277,7 +277,7 @@ map $\rho|_W$ is the \textbf{restriction} of $\rho$ to $W$.
 
 \begin{definition}
     \index{Representation!irreducible}
-    A representation $\rho\colon G\to\GL(V)$ is \textbf{irreducible} if
+    A representation $\rho\colon G\to\GL(V)$ is \emph{irreducible} if
     $\{0\}$ and $V$ are the only invariant subspaces of $V$.
 \end{definition}
 
@@ -354,7 +354,7 @@ is irreducible.
 
 \begin{example}
 Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be representations. One defines
-the \textbf{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ as 
+the \emph{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ as 
 \[
 \rho\oplus\psi\colon G\to\GL_{n+m}(\C),\quad
 g\mapsto 
@@ -374,7 +374,7 @@ as the set $V\times W$ with the complex vector space structure given by
 \]
 for all $v,v_1\in V$, $w,w_1\in W$ and $\lambda\in\C$. 
 If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations, 
-the \textbf{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ is then 
+the \emph{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ is then 
 \[
 \rho\oplus\psi\colon G\to\GL(V\oplus W),\quad
 g\mapsto (\rho\oplus\psi)_g,
@@ -387,7 +387,7 @@ invariant subspaces of $V\oplus W$.
 \begin{definition}
     \index{Representation!completely reducible}
     A representation $\rho\colon G\to\GL(V)$ is said to be 
-    \textbf{completely reducible}
+    \emph{completely reducible}
     if $\rho$ can be decomposed as
     $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible
     representations $\rho_1,\dots,\rho_n$ of $G$. 
@@ -412,12 +412,12 @@ $\rho_g$ can be written as
 \index{Representation!decomposable}
 \index{Representation!indecomposable}
 A representation
-$\rho\colon G\to\GL(V)$ is \textbf{decomposable} if $V$ can be decomposed as $V=S\oplus T$
+$\rho\colon G\to\GL(V)$ is \emph{decomposable} if $V$ can be decomposed as $V=S\oplus T$
 where $S$ and $T$ are non-zero invariant subspaces of $V$. 
 \end{definition}
 
 A representation is 
-\textbf{indecomposable} if it is not decomposable. 
+\emph{indecomposable} if it is not decomposable. 
 
 \begin{exercise}
 \label{xca:equivalence}
@@ -436,12 +436,12 @@ an inner product $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$.
 
 \begin{definition}
     \index{Representation!unitary}
-    A representation $\rho\colon G\to\GL(V)$ is \textbf{unitary} if
+    A representation $\rho\colon G\to\GL(V)$ is \emph{unitary} if
     $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
 \end{definition}
 
 \begin{example}
-Let $G$ be a finite group and $V=\C[G]$. The \textbf{left regular representation}
+Let $G$ be a finite group and $V=\C[G]$. The \emph{left regular representation}
 of $G$ is the representation
 \[
 L\colon G\to\GL(V),
@@ -462,7 +462,7 @@ If $V$ is a vector space and $W$ is a subspace of $V$,
 W^\perp = \{v\in V:\langle v,w\rangle=0\text{ for all $w\in W$}\}.
 \]
 is called the 
-\textbf{orthogonal complement} of $W$. The following result is extremely important: 
+\emph{orthogonal complement} of $W$. The following result is extremely important: 
 
 \begin{proposition}
 \label{pro:irr_or_dec}

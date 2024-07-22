@@ -6,7 +6,7 @@ The rest of the course will be devoted to studying modules over rings.
 We first start with the main definitions and basic examples.
 
 \begin{definition}
-    Let $R$ be a ring. A \textbf{module} (over $R$) is an abelian group (written additively) 
+    Let $R$ be a ring. A \emph{module} (over $R$) is an abelian group (written additively) 
     $M$ with a map $R\times M\to M$, $(r,m)\mapsto r\cdot m$, such that
     the following conditions hold:
     \begin{enumerate}
@@ -32,7 +32,7 @@ Every abelian group is a module over $\Z$.
 \begin{example}
 \label{exa:left_regular}
 Let $R$ be a ring. Then $R$ is a module (over $R$) with $x\cdot m=xm$. 
-This is the \textbf{(left) regular module} over $R$, and it usually 
+This is the \emph{(left) regular module} over $R$, and it usually 
 is denoted by $\prescript{}{R}R$. 
 \end{example}
 
@@ -103,7 +103,7 @@ If $\{M_i:i\in I\}$ is a family of $R$-modules, then
 is an $R$-module with 
 $x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$, 
 where $(m_i)_{i\in I}$ denotes the map $I\to M_i$, $i\mapsto m_i$.
-This module is the \textbf{direct product} of the family $\{M_i:i\in I\}$.
+This module is the \emph{direct product} of the family $\{M_i:i\in I\}$.
 \end{example}
 %
 \begin{example}
@@ -113,7 +113,7 @@ If $\{M_i:i\in I\}$ is family of $R$-modules, then
 \]
 is an $R$-module with 
 $x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$. 
-This module is the \textbf{direct sum} of the family $\{M_i:i\in I\}$. 
+This module is the \emph{direct sum} of the family $\{M_i:i\in I\}$. 
 \end{example}
 %
 %\begin{exercise}
@@ -131,7 +131,7 @@ $3\cdot 2=0$ but $3\ne 0$ (in $\Z$) and $2\ne 0$ (in $\Z/6$).
 \end{exercise}
 
 \begin{definition}
-	Let $M$ be a module. A subset $N$ of $M$ is a \textbf{submodule} of $M$ if 
+	Let $M$ be a module. A subset $N$ of $M$ is a \emph{submodule} of $M$ if 
 	$N$ is a subgroup of $M$ and $R\cdot N\subseteq N$, that is 
 	$x\cdot n\in N$ for all $x\in R$ and $n\in N$. 
 \end{definition}
@@ -177,7 +177,7 @@ is a submodule of $M$.
 
 \begin{definition}
 Let $M$ and $N$ be modules over $R$. 
-A map $f\colon M\to N$ is a \textbf{module homomorphism} if $f(x+y)=f(x)+f(y)$ and 
+A map $f\colon M\to N$ is a \emph{module homomorphism} if $f(x+y)=f(x)+f(y)$ and 
 $f(r\cdot x)=r\cdot f(x)$ for all $x,y\in M$ and $r\in R$. 
 \end{definition}
 
@@ -191,12 +191,12 @@ Let $f\in\Hom_R(M,N)$.
 \end{enumerate}
 \end{exercise}
 
-If $f\in\Hom_R(M,N)$, the \textbf{kernel} of $f$ is the submodule  
+If $f\in\Hom_R(M,N)$, the \emph{kernel} of $f$ is the submodule  
 \[
 \ker f=f^{-1}(\{0\})=\{m\in M:f(m)=0\}
 \]
-of $M$. We say that $f$ is a \textbf{monomorphism} (resp. \textbf{epimorphism}) 
-if $f$ is injective (resp. surjective). Moreover, $f$ is an \textbf{isomorphism} 
+of $M$. We say that $f$ is a \emph{monomorphism} (resp. \emph{epimorphism}) 
+if $f$ is injective (resp. surjective). Moreover, $f$ is an \emph{isomorphism} 
 if $f$ is
 bijective. 
 
@@ -272,14 +272,14 @@ Later we will see a similar exercise for surjective module homomorphisms.
 	a contradiction, as $f$ is injective.    
 \end{example}
 
-If $N$ and $N_1$ are submodules of $M$, we say that $M$ is the \textbf{direct sum} of $N$ and $N_1$
+If $N$ and $N_1$ are submodules of $M$, we say that $M$ is the \emph{direct sum} of $N$ and $N_1$
 if $M=N+N_1$ and $N\cap N_1=\{0\}$. In this case, we write $M=N\oplus N_1$. Note that if
 $M=N\oplus N_1$, then each $m\in M$ can be written uniquely as $m=n+n_1$ for some
  $n\in N$ and $n_1\in N_1$. 
 Such a decomposition exists because $M=N+N_1$. If $m\in M$ can be written as 
 $m=n+n_1=n'+n_1'$ for some $n,n'\in N$ and $n_1,n_1'\in N_1$, then 
 $-n'+n=n_1'-n_1\in N\cap N_1=\{0\}$ and hence $n=n'$ and $n_1=n_1'$. If $M=N\oplus N_1$, the submodule
-$N$ (resp. $N_1$) is a \textbf{direct summand} of $M$ and the submodule $N_1$ (resp $N$) is a \textbf{complement} of $N$ 
+$N$ (resp. $N_1$) is a \emph{direct summand} of $M$ and the submodule $N_1$ (resp $N$) is a \emph{complement} of $N$ 
 in $M$.   	
 
 \begin{example}
@@ -301,7 +301,7 @@ there are module homomorphisms $i\colon N\to M$ and $p\colon M\to N$
 such that $pi=\id_N$. In this case, $M=\ker p\oplus i(N)$.  
 \end{exercise}
 
-The \textbf{direct sum} of submodules can be defined for finitely many summands. 
+The \emph{direct sum} of submodules can be defined for finitely many summands. 
 If $V_1,\dots,V_n$ are submodules of $M$, we say that $M=V_1\oplus\cdots\oplus V_n$ 
 if every $m\in M$ can be written uniquely as $m=v_1+\cdots+v_n$ for some $v_1\in V_1,\dots,v_n\in V_n$. 
 
@@ -355,7 +355,7 @@ $f\in\Hom_R(M,N)$, then $r\cdot f\colon M\to N$, $m\mapsto f(r\cdot m)$.
 \end{exercise}
 
 Let $M$ be a module, and $N$ be a submodule of $M$. In particular, $M/N$ is an abelian group, and the map $\pi\colon M\to M/N$, $m\mapsto m+N$, is a surjective group homomorphism with kernel equal to $N$. We claim
-that the \textbf{quotient} $M/N$ is a module with  
+that the \emph{quotient} $M/N$ is a module with  
 \[
 r\cdot (m+N)=(r\cdot m)+N,\quad
 r\in R,\,m\in M. 
@@ -443,7 +443,7 @@ both $S\cap T$ and
 S+T=\{s+t:s\in S,\,t\in T\}
 \]
 are submodules of $M$. 
-The \textbf{isomorphism theorems} hold:
+The \emph{isomorphism theorems} hold:
 \begin{enumerate}
 	\item If $f\in\Hom_R(M,N)$, then $M/\ker f\simeq f(M)$.
 	\item If $T\subseteq N\subseteq M$ are submodules, then  
