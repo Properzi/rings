@@ -99,7 +99,7 @@ b=\langle (2k)!a\rangle,
 \]
 where $\langle x\rangle$ denotes the 
 residue of $x$ modulo $p$ of absolute value smaller than $p/2$, 
-then $p=a^2+b^2$. Simple and beautiful as it is, Gauss's formula does not seem to be of any real computational value. 
+then it follows that $p=a^2+b^2$. Simple and beautiful as it is, Gauss's formula does not seem to be of any real computational value. 
 
 In \cite{MR1041889}, the author employs the Euclidean algorithm to determine efficiently 
 the decomposition of a prime number $p=4k+1$ as the sum of two squares.
@@ -514,15 +514,21 @@ $k\in\{1,2,\dots,p^n-1\}$.
 We now discuss an important family of examples. 
 Fix a field $K$. 
 For a finite group $G$, let $K[G]$ be the vector space (over $K$)
-with basis $\{g:g\in G\}$. Then $K[G]$ is a ring
+with basis $\{g:g\in G\}$. 
+Thus $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
+Moreover, $K[G]$ is a ring
 with
 \[
 \left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
 =\sum_{g,h\in G}\lambda_g\mu_h(gh).
 \] 
+Note that $K[G]$ is commutative if and only if $G$ is abelian. 
 
 \begin{example}
-    Let $\Sym_3=\{\id,(12),(13),(23),(123),(132)\}$ 
+    Let 
+    \[
+    \Sym_3=\{\id,(12),(13),(23),(123),(132)\}
+    \]
     the symmetric group in three letters. Every element of $\C[\Sym_3]$
     is of the form 
     \[
@@ -552,29 +558,32 @@ with
     as $(13)(12)=(123)$. 
 \end{example}
 
-Thus $K[G]$ is a ring and also a vector space (over $K$) and these structures
-are somewhat compatible. Note that
+Note that $K[G]$ is a ring and also a vector space (over $K$) and these structures
+are somewhat compatible, as the formulas 
 \[
 (\lambda a+\mu b)c=\lambda (ac)+\mu (bc),\quad
 a(\lambda b+\mu c)=\lambda (ab)+\mu (ac)
 \]
-for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
+hold for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
 
 \begin{definition}
 \index{Algebra}
-Let $A$ be a ring. Then $A$ is an algebra (over the field $K$) if $A$ is a vector space (over $K$)
+Let $A$ be a ring and $K$ be a field. Then $A$ is a \emph{$K$-algebra} (or an \emph{algebra} 
+over the field $K$) if $A$ is a vector space (over $K$)
 such that $\lambda(ab)=(\lambda a)b=a(\lambda b)$ for all $\lambda\in K$ and $a,b\in A$. 
 \end{definition}
 
-Other examples of algebras are 
-polynomial rings $K[X]$ and $K[X,Y]$ and matrix rings $M_n(K)$.  
+The fields $\R$ and $\C$ are examples of $\R$-algebras. 
+Other examples of $\R$-algebras are the 
+polynomial rings $\R[X]$ and $\R[X,Y]$ and the matrix rings $M_n(\R)$.  
 
 \begin{example}
 	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
 \end{example}
 
-The ring $K[G]$ is commutative if and only if $G$ is abelian. Moreover,
-$K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
+\begin{example}
+    Let $G$ be a finite group and $K$ be a field. Then $K[G]$ is a $K$-algebra. 
+\end{example}
 
 \begin{example}
 	Let $G=\langle g:g^3=1\rangle=\{1,g,g^2\}\simeq C_3$ be the cyclic group of order three. 
@@ -599,19 +608,27 @@ is isomorphic to $\C[X]/(X^n-1)$.
 	\[
 	(a1+bg)(c1+gd)=(ac+bd)1+(ad+bc)g.
 	\]
-	Prove that the map $\C[G]\to \C\times \C$, $a1+bg\mapsto (a+b,a-b)$, 
+	Prove that the map 
+ \[
+ \C[G]\to \C\times \C,\quad a1+bg\mapsto (a+b,a-b),
+ \]
 	is a linear isomorphism of rings. 
 \end{exercise}
 
 \begin{exercise}
 	Let $K=\Z/2$ and $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. 
-	Prove that the map $K[G]\to\begin{pmatrix}
+	Prove that the map 
+ \[
+ K[G]\to\begin{pmatrix}
 		K&K\\
 		0&K
-	\end{pmatrix}$, $a1+bg\mapsto\begin{pmatrix}
+	\end{pmatrix},\quad 
+ a1+bg\mapsto\begin{pmatrix}
 		a+b&b\\
 		0&a+b		
-	\end{pmatrix}$, is a linear isomorphism of rings.
+	\end{pmatrix},
+    \]
+    is a linear isomorphism of rings.
 \end{exercise}
 
 The group ring has the following property, which is left as an exercise. 

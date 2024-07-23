@@ -182,6 +182,7 @@ by
 \]
 
 \begin{definition}
+\index{Class function}
 	Let $G$ be a group and 
 	$f\colon G\to\C$ be a map. Then $f$ is a \emph{class function} if
 	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	
@@ -189,7 +190,6 @@ by
 
 Characters are class functions. 
 
-Let $C(G)$ be the subspace of $L(G)$ of class functions. 
 
 If $g\in G$, the \emph{conjugacy class} of $g$ in $G$ 
 is the set $\{xgx^{-1}:x\in G\}$. Note that two conjugacy classes are either equal or disjoint. Moreover, 
@@ -197,17 +197,24 @@ every group is a disjoint union of its conjugacy classes.
 For example, the conjugacy classes of the group $\Sym_3$ are  
 $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. Thus $\Sym_3$ has three conjugacy classes. 
 
-We claim that $\dim C(G)=K(G)$, the number of conjugacy classes of $G$. If $C$ is a conjugacy class, 
+Let $C(G)$ be the subspace of $L(G)$ of class functions. 
+
+\begin{proposition}
+    Let $G$ be a finite group. Then $\dim C(G)=K(G)$, the number of conjugacy classes of $G$.
+\end{proposition}
+
+\begin{proof}
+If $C$ is a conjugacy class, 
 then 
 \[
 \delta_C\colon G\to\C,\quad
 \delta_C(x)=\begin{cases}
     1 & \text{if $x\in C$,}\\
-    0 & \text{otherwise.}
+    0 & \text{otherwise,}
 \end{cases}
 \]
 is a class function.  
-Let us prove that the 
+It is enough to prove that the 
 set $\{\delta_C:C\text{ is a conjugacy class of $G$}\}$ is a basis of $C(G)$.  It is a generating set
 because each $f$ can be written as 
 \[
@@ -223,6 +230,8 @@ are conjugacy classes of $G$, then
 0 & \text{otherwise}.
 \end{cases}
 \]
+From this the claim follows. 
+\end{proof}
 
 
 \begin{corollary}
@@ -1119,7 +1128,8 @@ the following result:
 \end{theorem}
 
 The proof uses character theory. 
-It is not hard, but it is out of the scope of this course. Burnside's theorem
+It is not hard, but it is out of the scope of this course. 
+Burnside's theorem
 is essential and generalizes in many different directions. 
 
 \begin{theorem}[Feit--Thompson]
@@ -1127,30 +1137,41 @@ is essential and generalizes in many different directions.
 Let $G$ be a finite simple group of odd order. Then $G$ is cyclic. 
 \end{theorem}
 
-The proof is hard and occupies a full volume of 
-the \emph{Pacific Journal of Mathematics}, see~\cite{MR166261}.  
-Feit--Thompson theorem was formally verified 
-by the computer proof assistant Coq, 
+The proof is hard and occupies a full volume~\cite{MR166261} of 
+the \emph{Pacific Journal of Mathematics} (see Figure~\ref{fig:FeitThompson}).   
+The theorem was formally verified 
+by the computer proof assistant \lstinline{Coq}, 
 see~\cite{MR3111271} for the announcement. 
 
-The proof of Feit--Thompson theorem suggests the following conjecture:
+The proof of the Feit--Thompson theorem suggests the following conjecture:
 
-\begin{conjecture}[Feit--Thompson]
-\index{Feit--Thompson conjecture}
-There are not distinct prime numbers $p$ and $q$ such that
-$\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
-\end{conjecture}
+\begin{problem}[Feit--Thompson]
+\index{The Feit--Thompson conjecture}
+Are there distinct prime numbers $p$ and $q$ such that
+$\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$? 
+\end{problem}
 
-The conjecture is still open; see \cite{MR297686} for some partial results. 
+The conjecture states that there are no such prime numbers. 
+The problem is still open; see \cite{MR297686} for some partial results. 
 
-Feit--Thompson theorem is one of the starting points
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{FeitThompson.pdf}
+    \caption{The proof of the Feit--Thompson theorem occupies a full volume of 
+the Pacific Journal of Mathematics.}
+    \label{fig:FeitThompson}
+\end{figure}
+
+The Feit--Thompson theorem is one of the starting points
 of the classification of finite simple groups (CFSG). 
 This classification is one
 of the deepest theorems 
-of the 20th century.
+of the 20th century. The proof consists of tens of thousands 
+of pages in several hundred journal articles written 
+by about 100 authors, published mostly between 1955 and 2004.
 
 \begin{theorem}[CFSG]
 \index{Classification of simple groups}
+\label{thm:CFSG}
 Let $G$ be a finite simple group. Then $G$ lies in one (or more) 
 of the following families:
 \begin{enumerate}
@@ -1167,7 +1188,7 @@ of a finite simple group of Lie type is
 $\PSL_n(p)$ for some prime number $p$, which is defined
 as $\SL_n(p)$ over its center. 
 
-The sporadic groups are 26 groups that do not follow a systematic pattern. 
+The \emph{sporadic simple groups} are 26 groups that do not follow a systematic pattern. 
 The first five of the sporadic groups were discovered by Mathieu in the 1860s, and the other 21 
 were found between 1965 and 1975.
 Several of these groups were predicted to exist before they were constructed, sometimes
@@ -1267,3 +1288,11 @@ the automorphism group of a certain space of dimension 196884.
 The group $M$ can be represented as
 a subgroup of $\GL_{196883}(\C)$. It has 194 conjugacy classes, so 
 the character table is a $194\times 194$ array. 
+
+\begin{problem}
+    Formalize the proof of Theorem \ref{thm:CFSG} in a proof assistant. 
+\end{problem}
+
+It is precisely due to the vastness of the theorem’s proof, that it is very suitable for formalization. Currently, only mathematicians with an extremely deep understanding of the subject can understand parts of the proof. 
+By formalizing the proof in a proof assistant such as \lstinline{Coq} or \lstinline{Lean}, 
+the complete proof could be verified at once. 
