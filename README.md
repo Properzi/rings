@@ -8,7 +8,7 @@ These are lecture notes for the course _Rings and modules_, taught by Leandro Ve
 at Vrije Universiteit Brussel.
 
 ## PDF
-[Here](https://github.com/vendramin/rings/blob/main/book.pdf) is the PDF. [Here](https://github.com/vendramin/rings/blob/main/dyslexic.pdf) is a dyslexic-friendly version.
+[Here](https://github.com/vendramin/rings/blob/main/notes.pdf) is the PDF. [Here](https://github.com/vendramin/rings/blob/main/dyslexic.pdf) is a dyslexic-friendly version.
 
 ## License
 
