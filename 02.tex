@@ -339,7 +339,9 @@ If $I$ and $J$ are ideals of $R$, then
 \[
 	IJ=\left\{\sum_{i=1}^mu_iv_i:m\in\Z_{\geq0},\,u_1,\dots,u_m\in I,\,v_1,\dots,v_m\in J\right\}
 \]
-is an ideal of $R$. 
+is an ideal of $R$. Note that 
+$IJ$ is the set of all finite sum of elements of the form $uv$ for $u\in I$ and $v\in J$. 
+For example, if $I=(u)$ and $J=(v)$, then $IJ=(uv)$. 
 Why we need to consider finite sums of elements of the form $uv$
 for $u\in I$ and $v\in J$?
 
@@ -420,6 +422,7 @@ For the following result, we need
 to use the direct product of rings. See Example~\ref{exa:direct_rings}. 
 
 \begin{corollary}
+\label{cor:chinese}
 	Let $R$ be a commutative ring. If $I$ and $J$ are coprime ideals of $R$, 
 	then $R/(I\cap J)\simeq R/I\times R/J$.
 \end{corollary}
@@ -452,38 +455,43 @@ to use the direct product of rings. See Example~\ref{exa:direct_rings}.
 	$R/(I\cap J)\simeq R/I\times R/J$ by the first isomorphism theorem. 
 \end{proof}
 
+\begin{example}
+    If $n$ and $m$ are coprime integers, then
+    \[
+    \Z/(nm)\simeq \Z/n\times \Z/m
+    \]
+    as rings. This follows from Corollary \ref{cor:chinese} with 
+    $R=\Z$, $I=(n)$ and $J=(m)$. 
+\end{example}
+
 Let $R$ be a commutative ring and $I_1,\dots,I_n$ be ideals of $R$. Then
-\[
-I_1\cdots I_n=\left\{
-	\sum_{i=1}^mu_{i_1}\cdots u_{i_n}:m\in\Z_{\geq0},\,u_{i_1},\dots,u_{i_n}\in I_{i_j}
-\right\}
-\]
-is an ideal of $R$. If $I_1$ and $I_j$ are coprime for all $j\in\{2,\dots,n\}$, 
+$I_1\cdots I_n$, defined as the set of all finite sums of the form 
+$x_1\cdots x_n$ such that $x_j\in I_j$ for all $j\in\{1,\dots,n\}$, 
+is an ideal of $R$. For example, if $I_j=(x_j)$ for all $j\in\{1,\dots,n\}$, 
+then $I_1\cdots I_j=(x_1\dots x_j)$. 
+
+If $I_1$ and $I_j$ are coprime for all $j\in\{2,\dots,n\}$, 
 then $I_1$ and $I_2\cdots I_n$ are coprime. If $I_i$ and $I_j$ are coprime
 whenever $i\ne j$, then 
+$I_1\cap\cdots\cap I_n=I_1\cdots I_n$ and 
 \[
 R/(I_1\cap\cdots\cap I_n)\simeq R/I_1\times\cdots\times R/I_n.
 \]
 
-With small changes, the Chinese remainder theorem can be proved 
-in arbitrary non-commutative rings, see for example 
-\cite[Chapter III, Theorem 2.25]{MR600654}. 
+Applying the previous observations in the case of the ring of integers, we get the following result: If $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$ is the factorization 
+of $n$ into powers of distinct primes, then 
+\[
+\Z/n\simeq \Z/(p^{\alpha_1})\times\cdots \times \Z/(p^{\alpha_k})
+\]
+as rings. 
 
-\begin{bonus}[Lagrange's interpolation theorem]
-\index{Lagrange's interpolation theorem}
-	The Chinese remainder theorem proves the following well-known result. 
-	Let $x_1,\dots,x_k\in\R$ be such that $x_i\ne x_j$ whenever $i\ne j$ 
-	and $y_1,\dots,y_k\in\R$. Then there exists $f(X)\in\R[X]$ such that
-	\[
-	\begin{cases}
-		f(X)\equiv y_1\bmod (X-x_1),\\
-		f(X)\equiv y_2\bmod (X-x_2),\\
-		\phantom{f(X)}\vdots\\
-		f(X)\equiv y_k\bmod (X-x_k).  	
-	\end{cases}
- 	\]
- 	The solution $f(X)$ is unique modulo $(X-x_1)(X-x_2)\cdots (X-x_n)$. 
+\begin{bonus}
+\index{Euler $\varphi$-function}
+    Let $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$ be the factorization 
+    of $n$ into powers of distinct primes. Prove that 
+    $\varphi(n)=\varphi(p_1^{\alpha_1})\cdots \varphi(p_k^{\alpha_k})$, where $\varphi$ is the Euler $\varphi$-function. 
 \end{bonus}
+
 
 % exercise: every map $\Z/p\to\Z/p$ is a polynomial map
 % todo: ejercicios de cuentas, hay que usar minipages o algo simliar
@@ -537,4 +545,22 @@ in arbitrary non-commutative rings, see for example
 	each integer is divisible by a perfect square $\ne 1$. 	
 \end{bonus}
 
+\begin{bonus}[Lagrange's interpolation theorem]
+\index{Lagrange's interpolation theorem}
+	The Chinese remainder theorem proves the following well-known result. 
+	Let $x_1,\dots,x_k\in\R$ be such that $x_i\ne x_j$ whenever $i\ne j$ 
+	and $y_1,\dots,y_k\in\R$. Then there exists $f(X)\in\R[X]$ such that
+	\[
+	\begin{cases}
+		f(X)\equiv y_1\bmod (X-x_1),\\
+		f(X)\equiv y_2\bmod (X-x_2),\\
+		\phantom{f(X)}\vdots\\
+		f(X)\equiv y_k\bmod (X-x_k).  	
+	\end{cases}
+ 	\]
+ 	The solution $f(X)$ is unique modulo $(X-x_1)(X-x_2)\cdots (X-x_n)$. 
+\end{bonus}
 
+With small changes, the Chinese remainder theorem can be proved 
+in arbitrary non-commutative rings, see for example 
+\cite[Chapter III, Theorem 2.25]{MR600654}. 
