@@ -343,24 +343,24 @@ we need the following lemma.
 Let $N\in\Z$ be a non-zero square-free integer and $R=\Z[\sqrt{N}]$. Then 
 the map 
 \[
-	N\colon R\to\Z_{\geq0},
+	\operatorname{norm}\colon R\to\Z_{\geq0},
 \quad a+b\sqrt{N}\mapsto 
 |a^2-Nb^2|,
 \]
 satisfies the following properties:
 \begin{enumerate}
-	\item $N(\alpha)=0$ if and only if $\alpha=0$. 
-	\item $N(\alpha\beta)=N(\alpha)N(\beta)$ for all $\alpha,\beta\in R$. 
-	\item $\alpha\in\mathcal{U}(\Z[\sqrt{N}])$ if and only if $N(\alpha)=1$. 
-	\item If $N(\alpha)$ is prime in $\Z$, then $\alpha$ is irreducible in $R$. 
+	\item $\operatorname{norm}(\alpha)=0$ if and only if $\alpha=0$. 
+	\item $\operatorname{norm}(\alpha\beta)=\operatorname{norm}(\alpha)\operatorname{norm}(\beta)$ for all $\alpha,\beta\in R$. 
+	\item $\alpha\in\mathcal{U}(\Z[\sqrt{N}])$ if and only if $\operatorname{norm}(\alpha)=1$. 
+	\item If $\operatorname{norm}(\alpha)$ is prime in $\Z$, then $\alpha$ is irreducible in $R$. 
 \end{enumerate}	
 \end{lemma}
 
 \begin{proof}
 	The first three items are left as exercises. Let us prove 4). 
 	If $\alpha=\beta\gamma$ for some $\beta,\gamma\in R$, then
-	$N(\alpha)=N(\beta)N(\gamma)$. Since $N(\alpha)\in\Z$ is a prime number, it follows that
-	$N(\beta)=1$ or $N(\gamma)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
+	$\operatorname{norm}(\alpha)=\operatorname{norm}(\beta)\operatorname{norm}(\gamma)$. Since $\operatorname{norm}(\alpha)\in\Z$ is a prime number, it follows that
+	$\operatorname{norm}(\beta)=1$ or $\operatorname{norm}(\gamma)=1$. Thus $\beta\in\mathcal{U}(R)$ or $\gamma\in\mathcal{U}(R)$. 	
 \end{proof}
 
 \begin{exercise}
