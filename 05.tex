@@ -60,7 +60,7 @@ It is time to give a very nice number-theoretical application.
     We now prove that $3)\implies 4)$. If $p=(a+bi)(c+di)$ with $a+bi\not\in\mathcal{U}(\Z[i])$
     and  $c+di\not\in\mathcal{U}(\Z[i])$, then
     \[
-    p^2=N(p)=N(a+bi)N(c+di)=(a^2+b^2)(c^2+d^2)
+    p^2=\norm(p)=\norm(a+bi)\norm(c+di)=(a^2+b^2)(c^2+d^2)
     \]
     in $\Z$. Since $\Z$ has unique factorization, it follows that $p=a^2+b^2$. 
     
@@ -106,7 +106,7 @@ the decomposition of a prime number $p=4k+1$ as the sum of two squares.
 
 \begin{exercise}
 \label{xca:p=3(4)}
-    Let $\alpha\in\Z[i]$ be such that $N(\alpha)=p^2$ 
+    Let $\alpha\in\Z[i]$ be such that $\norm(\alpha)=p^2$ 
     for some prime number $p\in\Z$ with $p\equiv3\bmod 4$. 
     Prove that $\alpha$ is irreducible. 
 \end{exercise}
@@ -149,15 +149,15 @@ They form the set of all norms of Gaussian integers.
         \[
         N\colon R\to\Z_{\geq0},
         \quad
-        N(a+b\omega)=a^2-ab+b^2,
+        \norm(a+b\omega)=a^2-ab+b^2,
         \]
         is multiplicative and 
-        satisfies $N(\alpha)=\alpha\overline{\alpha}$
+        satisfies $\norm(\alpha)=\alpha\overline{\alpha}$
         for all $\alpha\in R$. 
         \item $\mathcal{U}(R)=\{1,-1,\omega,-\omega,\omega^2,-\omega^2\}$.
         \item $R$ is a euclidean domain.
-        \item If $N(\alpha)$ is a prime number, then $\alpha$ is irreducible. 
-        \item If $N(\alpha)=p^2$ for some 
+        \item If $\norm(\alpha)$ is a prime number, then $\alpha$ is irreducible. 
+        \item If $\norm(\alpha)=p^2$ for some 
             prime number $p$ with $p\equiv 2\bmod 3$, then 
             $\alpha$ is irreducible. 
         \item If $p\equiv 1\bmod 3$, then 

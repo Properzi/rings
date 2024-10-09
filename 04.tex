@@ -6,15 +6,15 @@
 		\item $x$ is irreducible. 
 	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
 	\[
- 4=N(x)=N(\alpha)N(\beta).
+ 4=\norm(x)=\norm(\alpha)\norm(\beta).
  \]
- Thus $N(\alpha)\in\{1,2,4\}$. 
+ Thus $\norm(\alpha)\in\{1,2,4\}$. 
 	Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. 
-	If $N(\alpha)=a^2+3b^2=2$, then $b=0$ and hence
-	$a^2=2$, a contradiction. If $N(\alpha)=1$, then $\alpha\in\mathcal{U}(R)$.
-	If $N(\alpha)=4$, then $N(\beta)=1$ and $\beta\in\mathcal{U}(R)$. 
+	If $\norm(\alpha)=a^2+3b^2=2$, then $b=0$ and hence
+	$a^2=2$, a contradiction. If $\norm(\alpha)=1$, then $\alpha\in\mathcal{U}(R)$.
+	If $\norm(\alpha)=4$, then $\norm(\beta)=1$ and $\beta\in\mathcal{U}(R)$. 
 %
-%	If $N(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
+%	If $\norm(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
 %	both have the same parity. 
 %	
 %	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
@@ -106,11 +106,11 @@ The rings $\Z$ and $\R[X]$ are both principal.
     a contradiction because $x+y+u-2v\in\Z$. 
 	
 	Now assume that $I=(\alpha)$ for some $\alpha$. Then $\alpha\mid 2$ and $\alpha\mid 1+\sqrt{-5}$. Then
-	$N(\alpha)\mid 4$ and $N(\alpha)\mid 6$, because $N(2)=4$ and $N(1+\sqrt{-5})=6$. 
-	Thus $N(\alpha)\in\{1,2\}$. If we write
+	$\norm(\alpha)\mid 4$ and $\norm(\alpha)\mid 6$, because $\norm(2)=4$ and $\norm(1+\sqrt{-5})=6$. 
+	Thus $\norm(\alpha)\in\{1,2\}$. If we write
 	$\alpha=a+b\sqrt{-5}$ for $a,b\in\Z$, then it follows that 
-	$a^2+5b^2=N(\alpha)$. Clearly, $N(\alpha)\ne 2$, as $a^2=2$ has no solution in $\Z$.
-	Now $N(\alpha)= 1$ implies that $\alpha\in\mathcal{U}(R)$ and hence 
+	$a^2+5b^2=\norm(\alpha)$. Clearly, $\norm(\alpha)\ne 2$, as $a^2=2$ has no solution in $\Z$.
+	Now $\norm(\alpha)= 1$ implies that $\alpha\in\mathcal{U}(R)$ and hence 
 	$I=R$, a contradiction.   
 \end{example}
 
@@ -168,7 +168,7 @@ The previous examples suggest why for the definition of a euclidean domain one n
 consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$. 
 
 \begin{example}
-	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(\alpha)=N(\alpha)$. Let 
+	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(\alpha)=\norm(\alpha)$. Let 
 	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
 	We want to find Gauss integers $\gamma,\delta\in\Z[i]$ such that 
 	\[
@@ -242,22 +242,22 @@ for the remainder $\gamma$.
 				\[
 				-1+i=(1+2i)0+(-1+i)
 				\]
-				with $N(-1+i)=2<N(\beta)=5$. 
+				with $\norm(-1+i)=2<\norm(\beta)=5$. 
 		\item If $\alpha-\gamma=\beta_1$, where $-2+i=\beta_1=\beta i$, then 
 			$\gamma=1$ and 
 			\[
 			-1+i=(1+2i)i+(-1)
 			\]
-			with $N(-1)=1<N(\beta)=5$. 
+			with $\norm(-1)=1<\norm(\beta)=5$. 
 		\item If $\alpha-\gamma=\beta_2$, where $-1+3i=\beta_2=\beta (1+i)$, 
 			then $\gamma=2i$ and  
 			\[
 			-1+i=(1+2i)(1+i)+(-2i)
 			\]
-			and $N(-2i)=4<N(\beta)=5$. 
+			and $\norm(-2i)=4<\norm(\beta)=5$. 
 	\end{enumerate}
 %	We note that the case $\alpha-\gamma=\beta$ yields $\gamma=-2-i$ and thus
-%	$N(\gamma)=N(\beta)=5$.  
+%	$\norm(\gamma)=\norm(\beta)=5$.  
 \end{example}
 
 \begin{figure}
@@ -334,8 +334,8 @@ However, not all these rings admit are unique factorization domains.
 	\[
 	10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
 	\]	
-	Note that $N(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
-	if $2=\alpha\beta$, then $4=N(2)=N(\alpha)N(\beta)$. 
+	Note that $\norm(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
+	if $2=\alpha\beta$, then $4=\norm(2)=\norm(\alpha)\norm(\beta)$. 
 	Similarly, $5$ is irreducible. It is an exercise to prove that 
 	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
 \end{example}
