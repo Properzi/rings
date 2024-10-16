@@ -168,18 +168,44 @@ The previous examples suggest why for the definition of a euclidean domain one n
 consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$. 
 
 \begin{example}
-	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(\alpha)=\norm(\alpha)$. Let 
-	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
-	We want to find Gauss integers $\gamma,\delta\in\Z[i]$ such that 
+	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(a+bi)=a^2+b^2$. Note that
+ in this case, $\varphi$ is a multiplicative function in $\C$, that is
+ \[
+ \varphi(\alpha\beta)=\varphi(\alpha)\varphi(\beta)
+ \]
+ for all $\alpha,\beta\in\C$. 
+ 
+ 	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
+	We want to find $\gamma,\delta\in\Z[i]$ such that 
 	\[
-        \alpha=\beta\delta+\gamma 
+        \alpha=\beta\delta+\gamma,\quad 
+        \varphi(\gamma)<\varphi(\beta).
 	\]
-	and
-	$\varphi(\gamma)<\varphi(\beta)$. Note that every complex
-	number $z\in\C$ can be written as $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. Indeed, this
+    So we need to find $\delta\in R$ and $\gamma\in R$ such that 
+    \[
+    \frac{\alpha}{\beta}=\delta+\frac{\gamma}{\beta},
+    \quad 
+    \varphi(\gamma/\beta)<1. 
+    \]
+    
+    Note that every complex
+	number $z\in\C$ can be written\footnote{For example, 
+    the complex number 
+    \[
+    z=\sqrt{2}+\frac{i}{3}
+    \]
+    can be written as 
+    $z=\xi+\eta$, where 
+    \[
+    \xi=1+i\in\Z[i],\quad 
+    \eta=(\sqrt{2}-1)+\left(\frac13-1\right)i=(\sqrt{2}-1)-\frac23i. 
+    \]
+    A direct calculation shows that $\varphi(\eta)<1$.} 
+    as $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. In fact, 
+    this
 	follows from the fact that 
-	$\C$ is covered by open unit disks of radius one and centers in Gauss integers, see the following figure:
-	%Figure \ref{fig:covering}. 
+	$\C$ is covered by open unit disks of radius one and 
+    centers $\Z[i]$, see the following figure:
 
 	\begin{figure}[ht]
 		\centering
@@ -209,8 +235,8 @@ consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$.
 	\begin{align*}
 	\varphi(\gamma)&=\varphi\left(\beta\left(\frac{\alpha}{\beta}-\delta\right)\right)
 	=\varphi(\beta)\varphi\left(\frac{\alpha}{\beta}-\delta\right)\\
-	&=\varphi(\beta)\varphi((r-m)+i(s-n))
-	=\varphi(\beta)((r-m)^2+(s-n)^2)\\
+	&=\varphi(\beta)\varphi((r-m)+i(s-n))\\
+	&=\varphi(\beta)((r-m)^2+(s-n)^2)\\
 	&\leq\varphi(\beta)(1/4+1/4)\\
 	&<\varphi(\beta).
 	\end{align*}	
