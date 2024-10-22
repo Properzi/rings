@@ -1,4 +1,5 @@
 \section{Lecture: 30/10/2024}
+\label{6}
 
 We will dedicate three lectures to the development of the character theory for complex representations 
 of finite groups. Our approach will remain entirely elementary, 
@@ -67,10 +68,12 @@ $\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will 
 	\] 
 \end{example}
 
-The previous example shows the power of group representations, even for infinite groups.   
-However, in this course, we will work with complex finite-dimensional 
-representations of finite
-groups.  
+The previous example demonstrates the power of group representations, even for infinite groups. 
+However, in this course, we will focus on complex finite-dimensional representations of finite groups.
+
+\begin{convention}
+    In Lectures \ref{6}, \ref{7}, and \ref{8}, we will focus on complex representations of finite groups, unless stated otherwise.
+\end{convention}
 
 \begin{example}
 \index{Representation!trivial}
@@ -79,7 +82,7 @@ groups.
 \end{example}
 
 \begin{example}
-	The sign yields a representation of $\Sym_n$. It is the group homomorphism
+	The sign of permutations yields a representation of $\Sym_n$. It is the group homomorphism
 	$\Sym_n\to\C^\times$, $\sigma\mapsto\sgn(\sigma)$.  	
 \end{example}
 
@@ -156,7 +159,8 @@ Although we use the same notation for different representations, there is no ris
 \begin{definition}
 	\index{Representations!equivalence}
     The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \emph{equivalent}
-    if there exists a bijective map $T\colon V\to W$ invariant with respect to $\rho$ and $\psi$.
+    if there exists a bijective linear 
+    map $T\colon V\to W$ invariant with respect to $\rho$ and $\psi$.
 \end{definition}
 
 If the representations $\rho$ and 
@@ -174,14 +178,19 @@ $B=\{v_1,\dots,v_n\}$ of $V$ and let
 \[
 T\colon V\to\C^n,
 \quad
-\sum_{i=1}^n\lambda_iv_i\mapsto (\lambda_1,\dots,\lambda_n)
+\sum_{i=1}^n\lambda_iv_i\mapsto (\lambda_1,\dots,\lambda_n),
 \]
-the isomorphism that takes coordinates 
+be the isomorphism that takes coordinates 
 for the basis $B$. For each $g\in G$, 
 the composition of linear maps 
-\[
-\C^n\xrightarrow[]{T^{-1}}V\xrightarrow[]{\rho_g} V
-\xrightarrow[]{T}\C^n
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXENebiJdLFsyLDAsIlYiXSxbMSwwLCJWIl0sWzMsMCwiXFxDXm4iXSxbMCwyLCJUXnstMX0iXSxbMiwxLCJcXHJob19nIl0sWzEsMywiVCJdLFswLDMsIiIsMix7ImN1cnZlIjozfV1d
+\[\begin{tikzcd}
+	{\C^n} & V & V & {\C^n}
+	\arrow["{T^{-1}}", from=1-1, to=1-2]
+	\arrow["{\rho_g}", from=1-2, to=1-3]
+	\arrow["T", from=1-3, to=1-4]
+\end{tikzcd}
 \]
 produces a representation 
 $\psi\colon G\to\GL(C^n)$
@@ -217,8 +226,8 @@ of $G$ equivalent to $\rho$.
 
 \begin{definition}
 	\index{Invariant!subspace}
-    Let $\rho\colon G\to\GL(V)$
-    a representation. A subspace $W$ of $V$ is said to be \emph{invariant} (with respect to $\rho$)
+    Let $\rho\colon G\to\GL(V)$ be a representation. 
+    A subspace $W$ of $V$ is said to be \emph{invariant} (with respect to $\rho$)
     if $\rho_g(W)\subseteq W$ for all $g\in G$.
 \end{definition}
 
@@ -235,7 +244,7 @@ map $\rho|_W$ is the \emph{restriction} of $\rho$ to $W$.
 	\[
 	\ker T=\{v\in V:T(v)=0\}
 	\]
-	is an invariant of $V$ and the \emph{image} 
+	is an invariant subspace of $V$ and the \emph{image} 
 	\[
 		T(V)=\{T(v):v\in V\}
 	\]
@@ -246,7 +255,7 @@ map $\rho|_W$ is the \emph{restriction} of $\rho$ to $W$.
 \begin{definition}
 \index{Subrepresentation}
     Let $\rho\colon G\to\GL(V)$
-    a representation. A \emph{subrepresentation} of $\rho$ is a restricted representation 
+    be a representation. A \emph{subrepresentation} of $\rho$ is a restricted representation 
     of the form $\rho|_W\colon G\to\GL(W)$ for some invariant subspace $W$ of~$V$.
 \end{definition}
 
@@ -322,7 +331,7 @@ In the following example, it is crucial using real representations.
     \end{pmatrix}
     \begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}\in S.
     \]
-    We claim that $\{s,t\}$ are linearly independent. If not, there exists $\lambda\in\R$ such that
+    We claim that $\{s,t\}$ is linearly independent. If not, there exists $\lambda\in\R$ such that
     $\lambda s=t$. Thus $\lambda x_0=y_0$, $\lambda y_0=z_0$ and $\lambda z_0=x_0$. This implies that
     $\lambda^3x_0=x_0$. Since $x_0\ne 0$ (because if $x_0=0$, then $y_0=z_0=0$, a contradiction), it follows that
     $\lambda=1$ and hence $x_0=y_0=z_0$, a contradiction because $x_0+y_0+z_0=0$.
@@ -353,6 +362,7 @@ given by
 is irreducible.
 
 \begin{example}
+\label{exa:direct_sum_reps}
 Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be representations. One defines
 the \emph{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ as 
 \[
@@ -430,9 +440,14 @@ A representation is
 	\end{enumerate}	
 \end{exercise}
 
-Since we are considering finite-dimensional vector spaces, our vector spaces are
-Hilbert spaces, so they have
-an inner product $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$.
+Since we are considering finite-dimensional vector spaces, our vector spaces admit 
+an \emph{inner product}, that is a map $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$, 
+that satisfies the following properties:
+\begin{enumerate}
+    \item $\langle y,x\rangle=\overline{\langle x,y\rangle}$ for all $x,y\in V$, where $\overline{a+bi}=a-bi$ denotes the complex conjugate.
+    \item $\langle ax+by,z\rangle=a\langle x,z\rangle+b\langle y,z\rangle$ for all $x,y,z\in V$ and $a,b\in\C$.
+    \item $\langle x,x\rangle>0$ for all $x\in V$ and $\langle x,x\rangle=0$ if $x=0$. 
+\end{enumerate}
 
 \begin{definition}
     \index{Representation!unitary}
@@ -459,7 +474,7 @@ the representation $L$ is unitary. Prove it!
 
 If $V$ is a vector space and $W$ is a subspace of $V$, 
 \[
-W^\perp = \{v\in V:\langle v,w\rangle=0\text{ for all $w\in W$}\}.
+W^\perp = \{v\in V:\langle v,w\rangle=0\text{ for all $w\in W$}\}, 
 \]
 is called the 
 \emph{orthogonal complement} of $W$. The following result is extremely important: 
@@ -474,7 +489,7 @@ irreducible or decomposable.
 	If $\rho$ is not irreducible, there exists an invariant subspace $W$ of $V$ such that
 	$\{0\}\subsetneq W\subsetneq V$. Can we find an invariant complement? Yes, and this is because 
         our representation is unitary.  
-	Then $V=W\oplus W^{\perp}$ as complex vector spaces, where 
+	We know that $V=W\oplus W^{\perp}$ as complex vector spaces, where 
 	$W^\perp\ne\{0\}$. So $\rho$ will be decomposable if we can prove that
 	$W^\perp$ is an invariant subspace of $V$. 
 	Let $v\in W^\perp$, $w\in W$ and $g\in G$. Then  
@@ -549,5 +564,5 @@ Weyl's trick has several interesting consequences:
     is either irreducible or decomposable. Find an example.
 \end{exercise}
 
-For the previous exercise consider the representation $\Z\to\GL_2(\C)$, 
+For the previous exercise. consider the representation $\Z\to\GL_2(\C)$, 
 $1\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}$. 
