@@ -174,7 +174,9 @@ They form the set of all norms of Gaussian integers.
 \subsection{Zorn's lemma}
 
 \begin{definition}
-A non-empty set $R$ is said to be a \emph{partially ordered set} (or poset, for short) 
+\index{Poset}
+\index{Partially ordered set}
+A non-empty set $R$ is said to be a \emph{partially ordered set} (or \emph{poset}, for short) 
 if there is a subset $X\subseteq R\times R$ such that
 \begin{enumerate}
     \item $(r,r)\in X$ for all $r\in R$, 
@@ -185,7 +187,11 @@ if there is a subset $X\subseteq R\times R$ such that
 
 The set $X$ is a partial order relation on $R$.  
 We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreover, 
-$r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$.
+$r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$. With this notation, the conditions
+needed to define a poset are the following:
+\begin{enumerate}
+    \item $r\leq r$
+\end{enumerate}
 
 \begin{definition}
 Let $R$ be a poset and $r,s\in R$. Then $r$ and $s$ are \emph{comparable}
@@ -329,7 +335,7 @@ the identity of a ring.
 \begin{proof}
 	Let $X=\{J:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
 	Since $I\in X$, it follows that $X$ is non-empty. Moreover, $X$ is a poset
-	with respect to inclusion. If $C$ is a chain in $X$ (say for example
+	with respect to inclusion. If $C$ is a chain in $X$ (for example, $C$ could be   
 	an increasing sequence
 	\[
 	I_1\subseteq I_2\subseteq\cdots
