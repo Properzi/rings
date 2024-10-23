@@ -185,7 +185,7 @@ if there is a subset $X\subseteq R\times R$ such that
 
 The set $X$ is a partial order relation on $R$.  
 We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreover, 
-$r<s$ if and only if $r\leq s$ and $r\ne s$. 
+$r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$.
 
 \begin{definition}
 Let $R$ be a poset and $r,s\in R$. Then $r$ and $s$ are \emph{comparable}
@@ -198,13 +198,39 @@ if either $r\leq s$ or $s\leq r$.
     $\{1,2\}$ and $\{3,4\}$ of $U$ are elements of $T$ that are not comparable. 
 \end{example}
 
+\index{Hasse diagram}
+Is there a good pictorial representation of a poset? A \emph{Hasse diagram} is a common way to represent one. It is a graph in which the vertices represent the elements of the poset. Elements connected by an arrow are comparable, while elements not connected are incomparable. Specifically, if $x$ and $y$ are elements of a poset, we draw an arrow from $x$ to $y$ if and only if $x \neq y$ and there is no element $z$ such that $x \leq z \leq y$.
+
+\begin{example}
+   The \emph{Hasse diagram} of the set of all subsets of $\{a,b,c\}$, 
+   ordered by inclusion, is the following:
+\[\begin{tikzcd}
+	& {\{a,b,c\}} \\
+	{\{a,b\}} & {\{a,c\}} & {\{b,c\}} \\
+	{\{a\}} & {\{b\}} & {\{c\}} \\
+	& \emptyset
+	\arrow[from=2-1, to=1-2]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=2-3, to=1-2]
+	\arrow[from=3-1, to=2-1]
+	\arrow[from=3-1, to=2-2]
+	\arrow[from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-3]
+	\arrow[from=3-3, to=2-2]
+	\arrow[from=3-3, to=2-3]
+	\arrow[from=4-2, to=3-1]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-2, to=3-3]
+\end{tikzcd}\]
+\end{example}
+
 \begin{definition}
     Let $R$ be a poset and $r\in R$. Then $r$ is \emph{maximal} in $R$ if 
     $r\leq t$ implies $r=t$. 
 \end{definition}
 
 \begin{example}
-    $\Z$ has no maximal elements. 
+    $\Z$ with the poset structure given by the usual ordering, has no maximal elements. 
 \end{example}
 
 \begin{example}
@@ -514,162 +540,3 @@ $k\in\{1,2,\dots,p^n-1\}$.
     \] 
 \end{bonus}
 
-\subsection{Group algebras}
-
-We now discuss an important family of examples. 
-Fix a field $K$. 
-For a finite group $G$, let $K[G]$ be the vector space (over $K$)
-with basis $\{g:g\in G\}$. 
-Thus $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
-Moreover, $K[G]$ is a ring
-with
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
-=\sum_{g,h\in G}\lambda_g\mu_h(gh).
-\] 
-Note that $K[G]$ is commutative if and only if $G$ is abelian. 
-
-\begin{example}
-    Let 
-    \[
-    \Sym_3=\{\id,(12),(13),(23),(123),(132)\}
-    \]
-    the symmetric group in three letters. Every element of $\C[\Sym_3]$
-    is of the form 
-    \[
-    a\id+b(12)+c(13)+d(23)+e(123)+f(132)
-    \]
-    for some $a,b,c,d,e,f\in\C$. For example, 
-    \[
-    \alpha=5\id +3(123)\quad\text{ and }\quad 
-    \beta=-4\id+(132)
-    \]
-    are elements of
-    $\C[\Sym_3]$. We compute
-    \begin{align*}
-    \alpha+\beta &=1\id+3(123)+(132)
-    \shortintertext{and}
-    \alpha\beta &=(5\id +3(123))(-4\id+(132))\\
-    &=-20\id +5(132)-12(123)+3(123)(132)\\
-    &=-20\id +5(132)-12(123)+3\id\\
-    &=-17\id+ 5(132)-12(123).
-    \end{align*}
-    Another example:
-    \begin{align*}
-    (\id+5(13))(2\id-(12))
-    &=2\id-(12)+10(13)-5(13)(12)\\
-    &=2\id-(12)+10(13)-5(123),
-    \end{align*}
-    as $(13)(12)=(123)$. 
-\end{example}
-
-Note that $K[G]$ is a ring and also a vector space (over $K$) and these structures
-are somewhat compatible, as the formulas 
-\[
-(\lambda a+\mu b)c=\lambda (ac)+\mu (bc),\quad
-a(\lambda b+\mu c)=\lambda (ab)+\mu (ac)
-\]
-hold for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
-
-\begin{definition}
-\index{Algebra}
-Let $A$ be a ring and $K$ be a field. Then $A$ is a \emph{$K$-algebra} (or an \emph{algebra} 
-over the field $K$) if $A$ is a vector space (over $K$)
-such that $\lambda(ab)=(\lambda a)b=a(\lambda b)$ for all $\lambda\in K$ and $a,b\in A$. 
-\end{definition}
-
-The fields $\R$ and $\C$ are examples of $\R$-algebras. 
-Other examples of $\R$-algebras are the 
-polynomial rings $\R[X]$ and $\R[X,Y]$ and the matrix rings $M_n(\R)$.  
-
-\begin{example}
-	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
-\end{example}
-
-\begin{example}
-    Let $G$ be a finite group and $K$ be a field. Then $K[G]$ is a $K$-algebra. 
-\end{example}
-
-\begin{example}
-	Let $G=\langle g:g^3=1\rangle=\{1,g,g^2\}\simeq C_3$ be the cyclic group of order three. 
-	If $\alpha=a_11+_2g+a_3g^2$ and $\beta=b_11+b_2g+b_3g^2$, then
-	\[
-		\alpha\beta=(a_1b_1+a_2b_3+a_3b_2)1+(a_1b_2+a_2b_1+a_3b_3)g+a_1b_3+a_2b_2+a_3b_1)g^2.
-	\]
-	One can check that $\C[G]\simeq\C[X]/(X^3-1)$. 
-\end{example}
-
-In general, one proves that the group algebra of $C_n$, the cyclic group of order $n\geq2$, 
-is isomorphic to $\C[X]/(X^n-1)$.
-
-\begin{exercise}
-\label{xca:RC3}
-	Prove that $\R[C_3]\simeq\R\times\C$. 	
-\end{exercise}
-
-\begin{exercise}
-	Let $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. The product
-	of $\C[G]$ is 
-	\[
-	(a1+bg)(c1+gd)=(ac+bd)1+(ad+bc)g.
-	\]
-	Prove that the map 
- \[
- \C[G]\to \C\times \C,\quad a1+bg\mapsto (a+b,a-b),
- \]
-	is a linear isomorphism of rings. 
-\end{exercise}
-
-\begin{exercise}
-	Let $K=\Z/2$ and $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. 
-	Prove that the map 
- \[
- K[G]\to\begin{pmatrix}
-		K&K\\
-		0&K
-	\end{pmatrix},\quad 
- a1+bg\mapsto\begin{pmatrix}
-		a+b&b\\
-		0&a+b		
-	\end{pmatrix},
-    \]
-    is a linear isomorphism of rings.
-\end{exercise}
-
-The group ring has the following property, which is left as an exercise. 
-Let $A$ be an algebra and
-$G$ be a finite group. If $f\colon G\to\mathcal{U}(A)$ is a group homomorphism, 
-then there exists a unique algebra homomorphism $\varphi\colon K[G]\to A$ such that
-$\varphi|_G=f$. 
-
-\begin{example}
-	Let $\D_3=\langle r,s:r^3=s^2=1,\,srs^{-1}=r^{-1}\rangle$ be the dihedral
-	group of six elements. We claim that 
-	\[
-	\C[\D_3]\simeq\C\times\C\times M_2(\C).
-	\]
-	Let $\omega$ be a primitive cubic root of one. Let 
-	\[
-	R=\begin{pmatrix}
-		\omega&0\\
-		0&\omega^2	
-	\end{pmatrix},
-	\quad
-	S=\begin{pmatrix}
-		0&1\\
-		1&0
-	\end{pmatrix}.
- 	\]
- 	One easily checks that $SRS^{-1}=R^{-1}$ and $R^3=S^2=\begin{pmatrix}
-		1&0\\
-		0&1	
-	\end{pmatrix}$. It follows that there exists a group homomorphism
-	$G\to\C\times\C\times M_2(\C)$ such that
-	$r\mapsto (1,1,R)$ and $s\mapsto (1,-1,S)$. This group homomorphism
-	is a ring isomorphism.  
-\end{example}
-
-
-
-
- 
