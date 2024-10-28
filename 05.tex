@@ -190,7 +190,9 @@ We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreo
 $r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$. With this notation, the conditions
 needed to define a poset are the following:
 \begin{enumerate}
-    \item $r\leq r$
+    \item $r\leq r$ for all $r\in R$,
+    \item if $r\leq s$ and $s\leq t$, then $r\leq t$, and 
+    \item if $r\leq s$ and $s\leq r$, then $r=s$. 
 \end{enumerate}
 
 \begin{definition}
