@@ -358,6 +358,58 @@ it helps to have in mind the following diagram:
 \end{tikzcd}
 \]
 
+\subsection{Direct products and direct sums}
+
+In Example~\ref{exa:direct_rings}, we defined the \emph{direct product} of rings. There is another similar, yet important, construction.
+
+\begin{definition}
+\label{def:direct_ideals}
+\index{Direct sum of ideals}
+Let $R$ be a ring and $I$ and $J$ be ideals of $R$. We say that 
+$R=I\oplus J$ (that is, $R$ is a \emph{direct sum} of ideals) 
+if $R=I+J$ and $I\cap J=\{0\}$.  
+\end{definition}
+
+\begin{exercise}
+\label{xca:uniqueness}
+    Let $R$ be a ring and $I$ and $J$ be ideals of $R$. 
+    Prove that $R=I\oplus J$ as a direct sum of ideals if and only if 
+    every element $r\in R$ can be written uniquely as 
+    $r=u+v$ for $u\in I$ and $v\in J$.
+\end{exercise}
+
+The following exercise illustrates the relationship between decomposing a 
+ring as a direct product of two rings and as a direct sum of two ideals:
+
+\begin{exercise}
+\label{xca:products}
+    Let $R$ be a ring. Prove that $R$ admits a decomposition 
+    $R=S\times T$ as a direct product of rings if and only if $R$ admits a decomposition 
+    $R=I+J$ as a direct sum of ideals. 
+\end{exercise}
+
+The constructions in Example~\ref{exa:direct_rings} and Definition~\ref{def:direct_ideals}
+can be generalized to a finite number of objects. 
+If $R$ is a ring and $I_1,\dots,I_n$ are ideals of $R$, we say 
+$R$ is the \emph{direct sum} of the ideals $I_1,\dots,I_n$, 
+that is 
+\[
+R=I_1\oplus\cdots\oplus I_n, 
+\]
+if $R=I_1+\cdots+I_n$ and 
+for every $i\in\{1,\dots,n\}$
+\[
+I_i\cap (I_1+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n)=\{0\}.
+\]
+
+As we did in Exercise~\ref{xca:uniqueness}, one can prove that 
+$R=I_1\oplus\cdots\oplus I_n$ as a direct sum of ideals
+if and only if every $r\in R$ can be written uniquely 
+as $r=e_1+\cdots+e_n$ for $e_1\in I_1,\dots,e_n\in I_n$. Moreover, $R$ admits a decomposition 
+$R=R_1\times\cdots\times R_n$ as a direct product 
+of rings if and only if $R$ admits a decomposition 
+$R=I_1\oplus\cdots\oplus I_n$ as 
+a direct sum of ideals. 
 
 \subsection{The Chinese remainder theorem}
 
