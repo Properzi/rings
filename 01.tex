@@ -400,6 +400,8 @@ that every ideal of $K[X]$ is principal.
 
 A division ring (and, in particular, a field) has only two ideals. 
 
+\subsection{Ring homomorphisms}
+
 \begin{definition}
 \index{Ring!homomorphism}
 Let $R$ and $S$ be rings. A map $f\colon R\to S$ is a \emph{ring homomorphism}  
@@ -457,6 +459,16 @@ is a subring of $S$. In general, $f(R)$ is not an ideal of $S$.
 \begin{example}
 The inclusion $\Z\hookrightarrow\Z[X]$ is a ring homomorphism. Then
 $2\Z$ is an ideal of $\Z$ but not an ideal of $\Z[X]$. 
+\end{example}
+
+\begin{example}
+    Let $R$ and $S$ be rings and $R\times S$ be the direct product (see Example~\ref{exa:direct_rings}). 
+    The map $R\to R\times S$, $r\mapsto (r,0)$ is an injective ring homomorphism. The 
+    map 
+    \[
+    \pi_R\colon R\times S\to R,\quad (r,s)\mapsto r,
+    \]
+    is a surjective ring homomorphism with $\ker\pi_R=\{(0,s):s\in S\}=\{0\}\times S$. 
 \end{example}
 
 \begin{example}
