@@ -603,8 +603,18 @@ that satisfies the following properties:
     \item $\langle x,x\rangle>0$ for all $x\in V$ and $\langle x,x\rangle=0$ if $x=0$. 
 \end{enumerate}
 
+For example, if $V=\C^n$, $v=\colvec{3}{v_1}{\vdots}{v_n}\in V$ and $w=\colvec{3}{w_1}{\vdots}{w_n}\in V$, 
+then the \emph{usual inner product} between $v$ and $w$ 
+is given by
+\begin{equation}
+    \label{eq:inner_product}
+V\times V\to\C,\quad 
+(v,w)\mapsto v_1\overline{w_1}+\cdots+v_n\overline{w_n}.
+\end{equation}
+
 \begin{definition}
     \index{Representation!unitary}
+    Let $V$ be a finite-dimensional complex vector space with inner product $(v,w)\mapsto\langle v,w\rangle$. 
     A representation $\rho\colon G\to\GL(V)$ is \emph{unitary} if
     $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
 \end{definition}
@@ -617,9 +627,9 @@ L\colon G\to\GL(V),
 \quad
 g\mapsto L_g,
 \]
-where $L_g(h)=gh$. With the inner product
+where $L_g(h)=gh$. With respect to the inner product
 \[
-\left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g}
+\left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g},
 \]
 the representation $L$ is unitary. Prove it! 
 \end{example}
@@ -662,7 +672,7 @@ irreducible or decomposable.
 
 \begin{proof}
     Let $V=\C^n$ and 
-    $V\times V\to\C$, $(v,w)\mapsto (v\mid w)$, be an\footnote{It does not matter which inner product we have chosen. 
+    $V\times V\to\C$, $(v,w)\mapsto v\cdot w$, be an\footnote{It does not matter which inner product we have chosen. 
     We use this particular notation for our inner product of $V$ because  
     with this inner product, we will 
     produce a new inner product (denoted by $(v,w)\mapsto \langle v, w\rangle$) that will turn $\rho$ 
@@ -671,24 +681,59 @@ irreducible or decomposable.
    
     A straightforward calculation shows that
     \[
-    \langle v,w\rangle=\sum_{g\in G}(\rho_gv\mid \rho_gw)
+    \langle v,w\rangle=\sum_{g\in G}(\rho_gv)\cdot (\rho_gw)
     \]
     is an inner product of $V$. For example, 
     \begin{align*}
-    \langle v,w+w_1\rangle&=\sum_{g\in G}(v\mid w+w_1)\\
-    &=\sum_{g\in G}\left((v\mid w)+(v\mid w_1)\right)\\
-    &=\sum_{g\in G}(v\mid w)+\sum_{g\in G}(v\mid w_1)\\
+    \langle v,w+w_1\rangle&=\sum_{g\in G}v\cdot(w+w_1)\\
+    &=\sum_{g\in G}\left(v\cdot w+v\cdot w_1\right)\\
+    &=\sum_{g\in G}v\cdot w+\sum_{g\in G}v\cdot w_1\\
     &=\langle v,w\rangle+\langle v,w_1\rangle 
     \end{align*}
     holds for all $v,w,w_1\in V$. 
     
     Since
     \begin{align*}
-    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}(\rho_h\rho_gv\mid \rho_h\rho_gw)\\
-    &=\sum_{h\in G}(\rho_{hg}v\mid\rho_{hg}w)=\sum_{x\in G}(\rho_xv\mid\rho_xw)=\langle v,w\rangle,
+    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}(\rho_h\rho_gv)\cdot(\rho_h\rho_gw)\\
+    &=\sum_{h\in G}(\rho_{hg}v)\cdot(\rho_{hg}w)=\sum_{x\in G}(\rho_xv)\cdot(\rho_xw)=\langle v,w\rangle,
     \end{align*}
     the representation $\rho$ is unitary.
 \end{proof}
+
+\begin{example}
+    Let $A=\begin{pmatrix}
+        -1 & -1\\
+        -1 & 0
+    \end{pmatrix}$. Since $A^3=I$, we can use this matrix to 
+    represent the (multiplicative) cyclic group 
+    \[
+    C_3=\langle g:g^3=1\rangle
+    \]
+    of order three. Note that the map $1\mapsto g$ yields an isomorphism 
+    $C_3\simeq \Z/3$. 
+        
+    The map $\rho\colon \Z/3\to\GL_2(\C)$, $1\mapsto A$, is a group homomorphism. In particular, we have a representation $C_3\to\GL(V)$, where $V=\C^2$ with the usual inner product given by \eqref{eq:inner_product}, that is 
+    \[
+    v\cdot w=v^T\overline{w}
+    \]
+    for $v,w\in V$. 
+    For example, the inner product between the vectors $\colvec{2}{1}{i}$ and $\colvec{2}{1}{2}$
+    is 
+    \[
+    (1,-i)\colvec{2}{1}{2}=1+2i.
+    \]
+    Since $A\in M_2(\R)$, we compute 
+    \[
+    \langle v,w\rangle=v^T\overline{w}+(Av)^T\overline{(Aw)}+(A^2v)^T\overline{(A^2w)}=v^T\left (I+A^TA+(A^2)^TA^2\right)\overline{w}
+    \]
+    and this is an invariant inner product on $V$. Note that 
+    \[
+        B=I+A^TA+(A^2)^TA^2=\begin{pmatrix}
+            4&2\\
+            2&4
+        \end{pmatrix}.
+    \]
+\end{example}
 
 \label{rho_diagonalizable}
 Weyl's trick has several interesting consequences:  
