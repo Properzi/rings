@@ -347,20 +347,28 @@ a contradiction.
 \begin{sol}{xca:p=1(4)}
     Since $p\equiv1\bmod4$, 
     $p$ is not prime in $\Z[i]$ (see Theorem \ref{thm:Fermat}). 
-    Thus $p=\alpha\beta$ for some $\alpha,\beta\not\in\mathcal{U}(\Z[i])$. Hence $p^2=N(p)=N(\alpha)N(\beta)$. Since 
-    $N(\alpha)\ne 1$ and $N(\beta)\ne 1$, 
+    Thus $p=\alpha\beta$ for some $\alpha,\beta\not\in\mathcal{U}(\Z[i])$. Hence $p^2=\operatorname{norm}(p)=\operatorname{norm}(\alpha)\operatorname{norm}(\beta)$. Since 
+    $\operatorname{norm}(\alpha)\ne 1$ and $\operatorname{norm}(\beta)\ne 1$, 
     \[ 
-    N(\alpha)=N(\beta)=p.
+    \operatorname{norm}(\alpha)=\operatorname{norm}(\beta)=p.
     \]
-    Therefore $\alpha\overline{\alpha}=N(\alpha)=p$. 
+    Therefore $\alpha\overline{\alpha}=\operatorname{norm}(\alpha)=p$. 
 \end{sol}
 
 \begin{sol}{xca:Z[i]irreducibles}
-    We claim that (up to units) the irreducible
-    elements of $\Z[i]$ are $1+i$, $a+bi$, where 
-    $a,b\in Z$ and $a^2+b^2=p$ with $p$ a prime number
-    such that $p\equiv1\bmod 4$, and a prime number $p$ with 
-    $p\equiv3\bmod 4$.
+    We claim that the set of irreducible
+    elements of $\Z[i]$ 
+    is the union of these 3 subsets:
+    \[
+    \{1+i,1-i,-1+i,-1-i\}
+    \]
+    \[
+    \{a+bi\mid a,b\in \Z, a^2+b^2=p \text{ prime
+    s.t. }p\equiv1\bmod 4\}
+    \]
+    \[
+    \{p,-p,ip,-ip\mid p \text{ prime }p\equiv3\bmod 4\}
+    \]
     
     Let $\alpha\in\Z[i]$ be irreducible. Then $\alpha$ is
     prime in $\Z[i]$. We claim that $p\in (\alpha)$ for some
@@ -379,30 +387,23 @@ a contradiction.
     Let $\beta\in\Z[i]$ be such that $p=\alpha\beta$. 
     Then 
     \[
-    p^2=N(p)=N(\alpha\beta)=N(\alpha)N(\beta).
+    p^2=\operatorname{norm}(p)=\operatorname{norm}(\alpha\beta)=\operatorname{norm}(\alpha)\operatorname{norm}(\beta).
     \]
-    Thus $N(\alpha)\in\{p,p^2\}$, 
-    as $N(\alpha)\ne1$ because $\alpha\not\in\mathcal{U}(\Z[i])$. 
+    Thus $\operatorname{norm}(\alpha)\in\{p,p^2\}$, 
+    as $\operatorname{norm}(\alpha)\ne1$ because $\alpha\not\in\mathcal{U}(\Z[i])$. 
     
-    Assume first that $N(\alpha)=p$. Write $\alpha=a+bi$ 
-    for $a,b\in\Z$. If $p=2$, then 
-    \[
-    \alpha\in\{1+i,1-i,-1+i,-1-i\}.
-    \]
-    If $p\equiv1\bmod 4$, 
-    then $p=N(\alpha)=a^2+b^2$. If $p\equiv3\bmod 4$, 
-    then $p=N(\alpha)=a^2+b^2$, a contradiction to Theorem \ref{thm:Fermat}. 
+    Assume first that $\operatorname{norm}(\alpha)=p$. By Lemma \ref{lem:norm},
+    every such $\alpha$ is irreducible. It remains to check which prime numbers $p$ can be written as $\operatorname{norm}(\alpha)$.
+    Write $\alpha=a+bi$ 
+    for $a,b\in\Z$. So $p=\operatorname{norm}(\alpha)=a^2+b^2$ 
+    and by Theorem \ref{thm:Fermat}, we have that $p=2$
+    or $p\equiv1\bmod 4$.
+    Moreover if $p=2$, then $a^2=b^2=1$, so $\alpha\in\{1+i,1-i,-1+i,-1-i\}$.
     
-    Assume now that $N(\alpha)=p^2$. Then $\beta\in\mathcal{U}(\Z[i])$.
-    If $p=2$, 
-    then $\alpha$ is not irreducible, as 
-    $\alpha\in\{2,-2,2i,-2i\}$. 
-    If $p\equiv3\bmod 4$, then $\alpha\in\{p,-p,pi,-pi\}$.  If $p\equiv1\bmod 4$, then 
-    $p=\gamma\overline{\gamma}$ for some irreducible 
-    $\gamma$ 
-    such that $N(\gamma)=p$ (see Exercise \ref{xca:p=1(4)}). 
-    Thus $\alpha$ is not irreducible, 
-    a contradiction. 
+    Assume now that $\operatorname{norm}(\alpha)=p^2$. Then $\beta\in\mathcal{U}(\Z[i])$.
+    So $p=\alpha\beta\in\{\alpha,-\alpha, i\alpha,-i\alpha\}$.
+    Therefore $\alpha\in\{p,-p,ip,-ip\}$ and is irreducible. 
+    Hence, by Theorem \ref{thm:Fermat}, $p\equiv3\bmod 4$.
 \end{sol}   
 
 %\section*{Lecture 5}
