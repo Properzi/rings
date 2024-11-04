@@ -243,6 +243,61 @@ a contradiction.
     $a=(xa)a\in IJ$.
 \end{sol}
 
+\begin{sol}{xca:Hilbert_powerseries}
+    We want to imitate the proof of Hilbert's Theorem, but the degree used for polynomials cannot be used for power series.
+    So we define the \emph{order} of a power series 
+    $f=\sum_{i\geq 0}a_iX^i$ the smallest $d\in \Z_{\geq 0}$ such that $a_d\neq 0$. We also define the order of 0 as 0.
+    
+    We must show that every ideal of $R[\![X]\!]$ is finitely generated.
+    Assume that
+	there is an ideal $I$ of $R[\![X]\!]$ that is not finitely generated. In particular, $I\ne\{0\}$.
+	Let $f_1(X)\in I\setminus\{0\}$ be of minimal order $n_1$. 
+	Since $I$ is not finitely generated, it follows that 
+	$I\ne (f_1(X))$. Let $f_2(X)\in I\setminus (f_1(X))$ be
+	of minimal order $n_2$.
+    In particular, the minimality of the order of $f_1(X)$ implies that 
+	$n_2\geq n_1$. 
+	We continue with this procedure. For $i>1$ let 
+	$f_i(X)\in I$ be a series of minimal order $n_i$ such that  
+	such that $f_i(X)\not\in(f_1(X),\dots,f_{i-1}(X))$ (note
+	that such an $f_i(X)$ exists because $I$ is not finitely generated). 
+	Moreover, $n_i\geq n_{i-1}$. This happens because 
+	if $n_i<n_{i-1}$, then
+	$f_i(X)\not\in (f_1(X),\dots,f_{i-1}(X))$, which contradicts
+	the minimality of $n_{i-1}=\deg f_{i-1}(X)$. 
+	For each $i\geq1$ 
+	let $a_i$ be the coefficient of $f_i(X)$ 
+    related to its order, that is
+	\[
+	f_i(X)=a_iX^{n_i}+\cdots,
+	\]
+	where the dots denote a series of 
+	order $>n_i$. Note that 
+	$a_i\ne 0$ for all $i\geq 1$. 
+	
+	Let $J=(a_1,a_2,\dots)$. Since $R$ is noetherian, the sequence
+	\[
+	(a_1)\subseteq (a_1,a_2)\subseteq\cdots(a_1,a_2,\dots,a_k)\subseteq\cdots
+	\]
+	stabilizes, so we may assume that 
+	$J=(a_1,\dots,a_m)$ for some $m\in\Z_{>0}$. 
+	In particular, there exist $u_1,\dots,u_m\in R$ such that 
+	\[
+	a_{m+1}=\sum_{i=1}^m u_ia_i.
+	\]
+	Let 
+	\[
+	g(X)=\sum_{i=1}^mu_if_i(X)X^{n_{m+1}-n_i}\in (f_1(X),\dots,f_m(X))\subseteq I.
+	\]
+    The order of $g(X)$ is $n_{m+1}$ and the coefficient of $g(X)$ of degree $n_{m+1}$ is $\sum_{i=1}^mu_ia_i=a_{m+1}$.
+    Thus the order of $g(X)-f_{m+1}(X)$ is $<n_{m+1}$. 
+	
+	Since $f_{m+1}(X)\not\in (f_1(X)\dots,f_m(X))$ and $g(X)\in (f_1(X)\dots,f_m(X))$, 
+	\[
+	g(X)-f_{m+1}(X)\not\in (f_1(X),\dots,f_m(X)),
+	\]
+	a contradiction to the minimality of the order of $f_{m+1}$.  
+\end{sol}
 
 \begin{sol}{xca:principal=>noetherian}
 	Let $I_1\subsetneq I_2\subsetneq$ be a sequence of ideals of $R$.  
