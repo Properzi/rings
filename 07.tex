@@ -335,23 +335,29 @@ A direct calculation shows that the tensor product of representations is indeed 
 	\]
 \end{proof}
 
-We mention without proof that
-it is also possible to define the dual $\rho^*\colon G\to\GL(V^*)$  
-of a representation
-$\rho\colon G\to\GL(V)$ by the formula
+The following exercise defines \emph{dual representations}. 
+%map $\rho^*$ is called the \emph{dual representation} of $\rho$. 
+
+\begin{bonus}
+Let $G$ be a finite group and $\rho\colon G\to\GL(V)$ be a representation. 
+Prove that the map $\rho^*\colon G\to\GL(V^*)$ given by 
 \[
 (\rho^*_gf)(v)=f(\rho^{-1}_gv),\quad
-g\in G,\,f\in V^*\text{ and }v\in V.
+g\in G,\,f\in V^*\text{ and }v\in V,
 \]  
-We claim that the character of the dual representation is then 
-$\overline{\chi_\rho}$. Let $\{v_1,\dots,v_n\}$ be a basis of $V$
-and $\lambda_1,\dots,\lambda_n\in\C$ be such that $\rho_gv_i=\lambda_iv_i$ for all $i\in\{1,\dots,n\}$. If $\{f_1,\dots,f_n\}$ is the dual basis of $\{v_1,\dots,v_n\}$, then 
-\[
-(\rho^*_gf_i)(v_j)=f_i(\rho_g^{-1}v_j)
-=\overline{\lambda_j}f_i(v_j)
-=\overline{\lambda_j}\delta_{ij}
-\]
-and the claim follows. 
+is a representation of $G$ 
+with character $\overline{\chi_\rho}$. 
+% Moreover, 
+% the character of the dual representation is then 
+% $\overline{\chi_\rho}$. Let $\{v_1,\dots,v_n\}$ be a basis of $V$
+% and $\lambda_1,\dots,\lambda_n\in\C$ be such that $\rho_gv_i=\lambda_iv_i$ for all $i\in\{1,\dots,n\}$. If $\{f_1,\dots,f_n\}$ is the dual basis of $\{v_1,\dots,v_n\}$, then 
+% \[
+% (\rho^*_gf_i)(v_j)=f_i(\rho_g^{-1}v_j)
+% =\overline{\lambda_j}f_i(v_j)
+% =\overline{\lambda_j}\delta_{ij}
+% \]
+% and the claim follows. 
+\end{bonus}
 %\begin{proposition}
 %	
 %\end{proposition}
@@ -384,92 +390,429 @@ and the claim follows.
 %	\]	
 %\end{proof}
 
+\subsection{The Artin--Wedderburn theorem}
+
+In this section we will discuss a celebrated 
+decomposition theorem of complex group algebras
+of finite groups. 
+
+\begin{theorem}[Artin--Wedderburn]
+\label{thm:ArtinWedderburn}
+\index{Artin--Wedderburn theorem}
+Let $G$ be a finite group. Then $G$ has exactly $k$ finitely
+many non-equivalent irreducible representations
+and there is an algebra isomorphism 
+\begin{equation}
+    \label{eq:ArtinWedderburn}
+    \C[G]\simeq \prod_{i=1}^k M_{n_i}(\C)
+\end{equation}
+for $n_1,\dots,n_k\geq1$. 
+\end{theorem}
+
+We will not prove the Artin--Wedderburn theorem
+in this course. We will, however, 
+discuss some consequences of \eqref{eq:ArtinWedderburn}. 
+Let $G$ be a finite group. Then the following statements hold: 
+\begin{enumerate}
+    \item $G$ admits exactly $k$ (in particular, at most finitely many) 
+    non-equivalent
+    irreducible representations, say $\rho_1,\dots,\rho_k$, where 
+    $n_j=\deg\rho_j$ for all $j\in\{1,\dots,k\}$. 
+    \item $|G|=n_1^2+\cdots+n_k^2$.
+    \item $k$ equals the number of conjugacy classes of $G$. 
+\end{enumerate}
+
+Since $G$ has only finitely many non-equivalent 
+irreducible representations, we will often say
+that 
+\[
+\rho_1,\dots,\rho_r
+\]
+are \emph{the} irreducible representations of $G$, where it is assumed that
+the $\rho_i$ form a complete set of 
+representatives of irreducible representations of $G$. For each $i$ we write
+$\chi_i=\chi_{\rho_i}$. The set of irreducible characters will be denoted
+by 
+\[
+\Irr(G)=\{\chi_1,\dots,\chi_r\}.
+\]
+
+
 \subsection{Schur's orthogonality relations}
 
-Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a finite group
-$G$. Since $V$ and $W$ are vector spaces, the set 
+For a finite group $G$, the set                             
 \[
-\Hom(V,W)=\{T\colon V\to W:\text{$T$ is linear}\}
+L(G)=\{f\colon G\to\C\}
 \]
-is a vector space with 
-\begin{align*}
-&(\lambda T)(v)=\lambda T(v) && \text{for all $\lambda\in\C$ and all $v\in V$,}\\ 
-&(T+T_1)(v)=T(v)+T_1(v) &&\text{for all $v\in V$.}
-\end{align*}
-We claim that the set $\Hom_G(V,W)$ of invariant maps
-is a subspace of $\Hom(V,W)$. Indeed, the zero map is clearly invariant. If $T,T_1\in\Hom_G(V,W)$ 
-and $\lambda\in\C$, then
+is a complex vector space with
 \[
-(T+\lambda T_1)(\rho_g v)
-=T(\rho_gv)+\lambda T_1(\rho_gv)
-=\psi_gT(v)+\lambda \psi_gT_1(v)
-=\psi_g((T+\lambda T_1)(v))
+    (f+g)(x)=f(x)+g(x),
+    \quad
+    (\lambda f)(x)=\lambda f(x),
+    \quad 
+    f,g\in L(G),\,\lambda\in\C,\,x\in G.
 \]
-for all $v\in V$. 
- 
+
 \begin{proposition}
-	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations
-	and $T\colon V\to W$ be a linear map. Then
-	\[
-	T^{\#}=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\in\Hom_G(V,W).
-	\]
-	Moreover, the map $\Hom(V,W)\to\Hom_G(V,W)$, $T\mapsto T^{\#}$, is linear and surjective.  
+\label{pro:dimL(G)=|G|}
+    Let $G$ be a finite group. Then $\dim L(G)=|G|$. 
 \end{proposition}
 
 \begin{proof}
-  Let $h\in G$ and $v\in V$. Then 
-  \begin{align*}
-	T^{\#}\rho_h(v)
-	&=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\rho_h(v)
-	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_{gh}(v)\\
-	&=\frac{1}{|G|}\sum_{x\in G}\psi_{hx^{-1}}T\rho_x(v)
-	=\frac{1}{|G|}\sum_{x\in G}\psi_h\psi_{x^{-1}}T\rho_x(v)
-	=\psi_hT^{\#}(v).
-      \end{align*}
+For $x\in G$, 
+let 
+\[
+\delta_x\colon G\to\C,\quad \delta_x(y)=\begin{cases}
+    1 & \text{if $x=y$},\\
+    0 & \text{otherwise.}
+    \end{cases}
+\]
 
-    It is a routine calculation to show that $T\mapsto T^{\#}$ is a linear map. The map
-    $T\mapsto T^{\#}$ is surjective since 
-    if $T\in\Hom_G(V,W)$, then  
-	\[
-	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g(v)
-	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
-	=T(v)
-      \]
-    holds for all $v\in V$, so $T^{\#}=T$.  
+To prove the claim it is enough to show that 
+$\{\delta_x:x\in G\}$ is a basis of $G$, as the size of this set equals the
+number of conjugacy classes of $G$. 
+We first prove that $\{\delta_x:x\in G\}$  is a generating set: every function
+$\alpha\in L(G)$ can be written as
+\[
+\alpha=\sum_{g\in G}\alpha(x)\delta_g.
+\]
+Moreover, the set $\{\delta_x:x\in G\}$ is linearly independent: if 
+\[
+\sum_{g\in G}\lambda_g\delta_g=0
+\]
+for some scalars $\lambda_g$, $g\in G$, then, after evaluating in each $x\in G$, one gets that 
+\[
+0%=\left(\sum_{g\in G}\lambda_g\delta_g\right)(0)
+=\sum_{g\in G}\lambda_g\delta_g(x)=\lambda_x
+\]
+for all $x\in G$. 
 \end{proof}
 
-If $\rho\colon G\to\GL(V)$ and $\psi\colon
-	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
-	V\to W$ is a linear map, then $T^{\#}=0$, as 
-	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma. We will use this
- fact later in Schur's Theorem \ref{thm:Schur_technical}. 
+If $\alpha\colon G\to\C$ and $\beta\colon G\to\C$ 
+are maps, we consider the inner product
+\[
+\langle\alpha,\beta\rangle=\frac{1}{|G|}\sum_{g\in G}\alpha(g)\overline{\beta(g)}.
+\]
 
-\begin{theorem}[Ergodic theorem]
-\index{Ergodic theorem}
-\label{thm:ergodic}
-  Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
-  If $T\colon V\to V$ is linear, then 
-  $T^{\#}=(\dim V)^{-1}\trace(T)\id$.
+If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of $G$, then
+$\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
+\[
+\chi_\rho(g)=\sum_{i=1}^n\rho_{ii}(g).
+\]
+
+
+\begin{theorem}[Schur]
+\index{Schur's!theorem}
+\label{thm:Schur_technical}
+    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. 
+    Then the following statements hold:
+    \begin{enumerate}
+        \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ if $\rho$ and $\psi$ are not equivalent.
+        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{lj}}$.
+    \end{enumerate}
+\end{theorem}
+
+We leave the proof for later (see \S\ref{subsection:Schur_proof}). Instead, we explore several consequences of Theorem~\ref{thm:Schur_technical}. 
+We begin with Schur's \emph{first orthogonality relation}.
+
+\begin{theorem}[Schur]
+\index{Schur's!theorem}
+\index{Schur's!first orthogonality relation}
+\label{thm:Schur}
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. Then
+\[
+\langle\chi_\rho,\chi_\psi\rangle=
+\begin{cases}
+1 & \text{if $\rho\simeq\psi$,}\\
+0 & \text{otherwise.}
+\end{cases}
+\]
 \end{theorem}
 
 \begin{proof}
-  The previous proposition and Schur's lemma imply that
-  $T^{\#}=\lambda\id$ for some $\lambda\in\C$.
-  We now compute the trace of $T^{\#}$. On the one hand, 
-  \[
-	\trace(T^{\#})=\trace(\lambda\id)=(\dim V)\lambda.
-  \]
-  On the other hand.  
-  \[
-	\trace(T^{\#})
-	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho_g)
-	=\frac{1}{|G|}\sum_{g\in G}\trace(T)
-	=\trace(T),
-  \]
-  as $\trace(ABA^{-1})=\trace(B)$ for all $A$ and $B$. 
-  Hence 
-  \[
-  \trace(T^{\#})=(\dim V)^{-1}\trace(T)\id.\qedhere 
-  \]
+    Let $n=\dim V$ and $m=\dim W$. We compute
+    \begin{align*}
+        \langle\chi_\rho,\chi_\psi\rangle
+        &=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\overline{\chi_\psi}(g)\\
+        %&=\frac{1}{|G|}\sum_{g\in G}\sum_{i=1}^n\sum_{j=1}^m\rho_{ii}(g)\overline{\psi_{jj}(g)}\\
+        &=\sum_{1=1}^n\sum_{j=1}^m\sum_{g\in G}\frac{1}{|G|}\rho_{ii}(g)\overline{\psi_{jj}(g)}\\
+        &=\sum_{1=1}^n\sum_{j=1}^m\langle \rho_{ii},\psi_{jj}\rangle
+        =\begin{cases}
+            1 & \text{if $\rho\simeq\psi$,}\\
+            0 & \text{otherwise.}
+        \end{cases}\qedhere
+    \end{align*}
 \end{proof}
 
+Schur's theorem has several 
+corollaries.
+
+\begin{exercise}
+Let $G$ be a finite group. 
+If $\rho\colon G\to\GL(V)$ is a unitary irreducible representation
+of degree $n$, then
+\[
+\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}
+\]
+is an orthonormal set of size $n^2$.
+\end{exercise}
+
+% \begin{corollary}
+%     If $\rho\colon G\to\GL(V)$ is an irreducible representaion of degree $n$, then
+%     $\{\sqrt{n}\rho_{ij}:1\leq i,j\leq n\}$ is an orthonormal set.
+% \end{corollary}
+
+Combining Weyl's trick with Proposition~\ref{pro:dimL(G)=|G|}
+and Theorem~\ref{thm:Schur} 
+we obtain the following result: 
+
+% If $G$ is a finite group, let $K(G)$ be the number of conjugacy classes of $G$. 
+% We want to know how many irreducible representations are there. For that purpose, 
+% we need to study the space of class functions. 
+
+\begin{exercise}
+     Prove that a finite group has at most 
+     finitely many classes of irreducible representations. 
+\end{exercise}
+
+% \begin{proof}
+%      Let $G$ be a finite group. 
+%      Every isomorphism class of representations of $G$ contains a unitary representation (Corollary \ref{cor:consequences}). 
+%      Since $\dim L(G)=|G|$, every linearly independent set 
+%      of vectors from $L(G)$ has at most $|G|$ elements. By
+%      Schur's theorem \ref{thm:Schur}, the entries
+%      of inequivalent unitary representations of $G$ 
+%      form an orthogonal set of non-zero vectors of $L(G)$. Thus
+%      there are at most $|G|$ equivalence classes of irreducible
+%      representations. 
+% %     it follows that $G$ admits $\leq|G|$ equivalence classes of irreducible representations. Let
+% %     $\rho_1,\dots\rho_r$ be the representatives of the isomorphism classes of the 
+% %    irreducible representations of $G$. At the moment, we do not know whether $r$ is finite. 
+% %    For each $k$ let $n_k=\deg\rho_k$. Since
+% %     the $n_1^2+\cdots n_r^2$ maps $\sqrt{n_k}(\rho_k)_{ij}$, $1\leq k\leq r$, $1\leq i,j\leq n_k$,
+% %     form a non-zero orthonormal set of $L(G)$, it follows that
+% %     $r\leq n_1^2+\cdots+ n_r^2\leq|G|$.
+% \end{proof}
+
+If $G$ is a group and $g\in G$, the \emph{conjugacy class} of $g$ in $G$ 
+is the set $\{xgx^{-1}:x\in G\}$. Note that two conjugacy classes are either equal or disjoint. Moreover, 
+every group is a disjoint union of its conjugacy classes. 
+
+\begin{example}
+    The conjugacy classes of the group $\Sym_3$ are  
+    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. Thus $\Sym_3$ has three conjugacy classes. 
+\end{example}
+
+\begin{definition}
+\index{Class function}
+	Let $G$ be a group and 
+	$f\colon G\to\C$ be a map. Then $f$ is a \emph{class function} if
+	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	 
+\end{definition}
+
+For a finite group $G$, we write $C(G)$ to denote the subset of $L(G)$ of class functions.
+
+Characters are examples of class functions. As a consequence, 
+$\Irr(G)\subseteq C(G)$. 
+
+
+
+\begin{exercise}
+Let $G$ be a finite group. Prove that $C(G)$ is a subspace of $L(G)$. 
+\end{exercise}
+
+\begin{proposition}
+    Let $G$ be a finite group. Then $\dim C(G)=K(G)$, the number of conjugacy classes of $G$.
+\end{proposition}
+
+\begin{proof}
+If $C$ is a conjugacy class, 
+then 
+\[
+\delta_C\colon G\to\C,\quad
+\delta_C(x)=\begin{cases}
+    1 & \text{if $x\in C$,}\\
+    0 & \text{otherwise,}
+\end{cases}
+\]
+is a class function.  
+It is enough to prove that the 
+set $\{\delta_C:C\text{ is a conjugacy class of $G$}\}$ is a basis of $C(G)$.  It is a generating set
+because each $f$ can be written as 
+\[
+f=\sum_{C}f(C)\delta_C.
+\]
+The $\delta_C$ are linearly independent because they are orthogonal: 
+If $C$ and $D$ 
+are conjugacy classes of $G$, then 
+\[
+\langle\delta_C,\delta_D\rangle=\frac{1}{|G|}\sum_{x\in G}\delta_C(x)\overline{\delta_D(x)}
+=\begin{cases}
+|C|/|G| & \text{if $C=D$},\\
+0 & \text{otherwise}.
+\end{cases}
+\]
+From this the claim follows. 
+\end{proof}
+
+
+\begin{corollary}
+    Let $G$ be a finite group. There are at most $K(G)$ equivalence classes of irreducible representations of $G$.
+\end{corollary}
+
+\begin{proof}
+    Non-equivalent representations have different characters. 
+    Irreducible characters 
+    form an orthonormal set, thus they are linearly 
+    independent. Since irreducible characters
+    are class functions (that is, they are constant on conjugacy classes), 
+    it follows that there are at most $K(G)$ irreducible different characters.  
+\end{proof}
+
+Let $m\in\Z_{>0}$. If $V$ is a vector space, we 
+write \[
+mV=V\oplus\cdots\oplus V\quad\text{($m$-times)}.
+\]
+Similarly,
+if $\rho$ is a representation, 
+we write 
+\[
+m\rho=\rho\oplus\cdots\oplus\rho\quad\text{($m$-times)}.
+\]
+
+\begin{theorem}
+    Let $\rho_1,\dots,\rho_r$ be the irreducible representations of a finite group $G$. If 
+	\[ 
+    \rho=\sum_{j=1}^rm_j\rho_j,
+    \]
+    where $m_1,\dots m_r\in\Z_{\geq0}$, then
+    $m_i=\langle \chi_\rho,\chi_i\rangle$ for all $i\in\{1,\dots,r\}$. 
+\end{theorem}
+
+\begin{proof}
+    Write $\chi_\rho=\sum_{j=1}^rm_j\chi_j$. Then
+    \[
+    \langle\chi_\rho,\chi_i\rangle=\sum_{j=1}^rm_j\langle\chi_j,\chi_i\rangle=m_i
+    \]
+    for all $i\in\{1,\dots,r\}$.
+\end{proof}
+
+The theorem states that the decomposition of a representation $\rho$ into irreducibles 
+is unique and is determined (up to equivalence) by its character.
+
+\begin{corollary}
+    A representation $\rho$ of a finite group with character $\chi_\rho$ is irreducible if and only if $\langle\chi_\rho,\chi_\rho\rangle=1$.
+\end{corollary}
+
+\begin{proof}
+    We first decompose $\rho$ as a sum of irreducibles, say \[
+    \rho=\sum_{j=1}^rm_j\rho_j
+    \]
+    with $m_1,\dots,m_r\geq0$. Then
+    $\langle\chi_\rho,\chi_\rho\rangle=\sum_{j=1}^rm_j^2$. Now $\langle\chi_\rho,\chi_\rho\rangle=1$ if and only if
+    there is exactly one $j$ such that $m_j=1$ and $m_i=0$ for all $i\ne j$.  
+\end{proof}
+
+\begin{exercise}
+    Let $G$ and $H$ be finite groups. 
+    If $\rho\colon H\to\GL(V)$ is an irreducible
+    representation of $H$ and 
+    $f\colon G\to H$ is a surjective group homomorphism, then the composition $\rho f\colon G\to\GL(V)$ is an irreducible representation. 
+\end{exercise}
+
+Recall that the left regular representation of a finite group $G$
+is the group homomorphism $L\colon G\to \GL(V)$, where $V$ is the complex vector space
+with basis $\{g:g\in G\}$ and $L_g(x)=gx$ for all $g,x\in G$. 
+
+\begin{theorem}
+    Let $G$ be a finite group and $L$ be its regular representation. 
+    Then $L=\sum_{j=1}^rn_j\rho_j$, where $n_j=\deg\rho_j$. 
+\end{theorem}
+
+\begin{proof}
+    Let $G=\{g_1,\dots,g_n\}$, $n=|G|$. If $g\in G$, since
+    $L_g(g_i)=gg_i$ for all $i$, 
+    the matrix of $L_g$ in the basis $\{g_1,\dots,g_n\}$ is then
+    \begin{gather*}
+    (L_g)_{ij}=\begin{cases}
+        1 & \text{if $g_i=gg_j$},\\
+        0 & \text{otherwise}.
+    \end{cases}
+    \shortintertext{Then}
+    \chi_L(g)=\trace(L_g)=\sum_{i=1}^n(L_g)_{ii}=\begin{cases}
+        |G| & \text{if $g=1$},\\
+        0 & \text{otherwise}.
+    \end{cases}
+    \end{gather*}
+    In particular, 
+    \[
+    \langle\chi_L,\chi_i\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_L(g)\overline{\chi_i(g)}
+    =\frac{1}{|G|}|G|\overline{\chi_i(1)}=n_i
+    \]
+    for all $i\in\{1,\dots,n\}$. 
+\end{proof}
+
+Now several consequences. 
+
+\begin{exercise}
+    Let $G$ be a finite group and $\rho_1,\dots,\rho_r$ be the irreducible representations of $G$. 
+    For each $k$ let $n_k=\deg\rho_k$. Prove that the following statements hold:
+    \begin{enumerate}
+        \item $|G|=n_1^2+\cdots+n_r^2$.
+        \item $\{\sqrt{n_k}(\rho_k)_{ij}:1\leq k\leq r,\,1\leq i,j\leq n_k\}$
+            is an orthonormal basis of $L(G)$. 
+    \end{enumerate}
+\end{exercise}
+
+Using the previous exercise, one gets a proof without using the Artin--Wedderburn theorem 
+of  the following result.
+
+\begin{bonus}
+    Let $G$ be a finite group and $\rho_1,\dots,\rho_r$ be the irreducible representations of $G$. 
+    For each $k$, let $n_k=\deg\rho_k$. Prove that 
+    $r$ is equal to the number of conjugacy classes of $G$. 
+\end{bonus}
+
+% \begin{proof}
+%     Since $\chi_L=\sum_{j=1}^rn_j\chi_j$, the first claim follows. 
+%     The second claim follows from the orthogonality relations. Let us prove the third claim. Let $f\in C(G)$ and write $f$ 
+%     as a linear combination of the $(\rho_k)_{ij}$, say
+%     \[
+%     f=\sum_{i,j,k}\lambda_{ijk}(\rho_k)_{ij},\quad\lambda_{ijk}\in\C.
+%     \]
+%     If $x\in G$, then 
+%     \begin{align*}
+%     f(x)&=\frac{1}{|G|}\sum_{g\in G}f(g^{-1}xg)\\
+%     &=\frac{1}{|G|}\sum_{g\in G}\sum_{i,j,k}\lambda_{ijk}(\rho_k)_{ij}(g^{-1}xg)
+%     =\sum_{i,j,k}\lambda_{ijk} \frac{1}{|G|}\sum_{g\in G}(\rho_k)_{ij}(g^{-1}xg). 
+%     \end{align*}
+%     Let $T=(\rho_k)_x=\rho_k(x)\colon V\to V$. Then
+%     \[
+%     T^{\#}=\frac{1}{|G|}\sum_{g\in G}(\rho_k)_{g^{-1}}(\rho_k)_x(\rho_k)_g
+%     =\frac{1}{|G|}\sum_{g\in G}(\rho_k)(g^{-1}xg)
+%     =\frac{1}{n_k}\chi_k(x)\id
+%     \]
+%     by the Ergodic theorem and because 
+%     $\rho_k$ is a group homomorphism. Thus 
+%     \[
+%     f(x)=\sum_{i,j,k}\lambda_{ijk} \left((\rho_k)_x\right)_{ij}
+%     =\sum_{i,j,k}\lambda_{ijk}\frac{1}{n_k}\chi_k(x)\delta_{ij}
+%     =\sum_{i,k}\lambda_{iik}\frac{1}{n_k}\chi_k(x).\qedhere 
+%     \]
+%     This implies that $\dim C(G)\leq r$ and the claim follows. 
+% \end{proof}
+
+In the following exercise, the reader is asked to prove the second 
+Schur's orthogonality relation. 
+
+\begin{exercise}
+    Let $G$ be a finite group and 
+    $C$ and $D$ be conjugacy classes of $G$. If $g\in C$ and $h\in D$, then
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}=
+    \begin{cases}
+    |G|/|C| & \text{if $C=D$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+\end{exercise}

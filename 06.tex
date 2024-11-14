@@ -186,8 +186,11 @@ $V$ is finite-dimensional, say $\dim V=n$, after fixing a basis of $V$ we get a 
 $\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will use either representations on vector spaces or matrix representations.  
 
 \begin{example}
-	We use group representations to show that 
-	$G=\langle x,y:x^2=y^2=1\rangle$ is infinite. Note that
+	We use group representations to show that the group 
+	\[
+    G=\langle x,y:x^2=y^2=1\rangle
+    \]
+    is infinite. Note that
 	\[
 	\rho\colon G\to\GL_2(\C),
 	\quad
@@ -282,7 +285,7 @@ However, in this course, we will focus on complex finite-dimensional representat
 %proof of the previous proposition. 
 %
 \begin{definition}
-	\index{Invariant!map}
+	\index{Invariant map}
     Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
     representations. A linear map $T\colon V\to W$ is said to be \emph{invariant} 
     if the diagram
@@ -320,20 +323,43 @@ map $T\colon V\to W$ is invariant if and only if
 T(g\cdot v)=g\cdot T(v)
 \]
 for all $v\in V$ and $g\in G$. 
-Although we use the same notation for different representations, there is no risk of confusion. 
+%Although we use the same notation for different representations, there is no risk of confusion. 
 
 \begin{definition}
 	\index{Representations!equivalence}
     The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \emph{equivalent}
     if there exists a bijective linear 
-    map $T\colon V\to W$ invariant with respect to $\rho$ and $\psi$.
+    map $T\colon V\to W$ invariant. 
 \end{definition}
 
 If the representations $\rho$ and 
 $\psi$ are equivalent, we write 
 $\rho\simeq\psi$. 
 
-Now we can understand why we can alternatively use
+\begin{example}
+    Let $G=\Z/n$. The representations
+    \begin{align*}
+    &\rho\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        \cos(2\pi m/n) & -\sin(2\pi m/n)\\
+        \sin(2\pi m/n) & \cos(2\pi m/n)
+    \end{pmatrix},
+    \shortintertext{and}
+    &\psi\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        e^{2\pi im/n} & 0\\
+        0 & e^{-2\pi im/n}
+    \end{pmatrix},
+    \end{align*}
+    are equivalent, as $\rho_mT=T\psi_m$ for all $m\in G$ if $T=\begin{pmatrix}
+        i&-i\\
+        1&1
+    \end{pmatrix}$.
+\end{example}
+
+The following example explains why we can alternatively use
 representations or matrix representations. 
 
 \begin{example}
@@ -359,35 +385,10 @@ the composition of linear maps
 \]
 produces a representation 
 $\psi\colon G\to\GL(C^n)$
-%\quad 
-%g\mapsto T\rho T^{-1},
-%\]
-is a representation 
 of $G$ equivalent to $\rho$.   
 \end{example}
 
-\begin{example}
-    Let $G=\Z/n$. The representations
-    \begin{align*}
-    &\rho\colon G\to\GL_2(\C),\quad
-    m\mapsto
-    \begin{pmatrix}
-        \cos(2\pi m/n) & -\sin(2\pi m/n)\\
-        \sin(2\pi m/n) & \cos(2\pi m/n)
-    \end{pmatrix},
-    \shortintertext{and}
-    &\psi\colon G\to\GL_2(\C),\quad
-    m\mapsto
-    \begin{pmatrix}
-        e^{2\pi im/n} & 0\\
-        0 & e^{-2\pi im/n}
-    \end{pmatrix},
-    \end{align*}
-    are equivalent, as $\rho_mT=T\psi_m$ for all $m\in G$ if $T=\begin{pmatrix}
-        i&-i\\
-        1&1
-    \end{pmatrix}$.
-\end{example}
+
 
 \begin{definition}
 	\index{Invariant!subspace}
@@ -401,20 +402,21 @@ invariant subspaces of~$V$. Moreover, if $W\subseteq V$ is invariant, then
 the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation. The
 map $\rho|_W$ is the \emph{restriction} of $\rho$ to $W$. 
 
-\begin{example}
-	If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations of a given group $G$ 
+\begin{exercise}
+\index{Invariant map!kernel}
+\index{Invariant map!image}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a given group $G$ 
 	and 
- $T\colon V\to W$
- is an invariant map, then the \emph{kernel} 
+ $T\colon V\to W$ be an invariant map. Prove that the \emph{kernel} 
 	\[
 	\ker T=\{v\in V:T(v)=0\}
 	\]
-	is an invariant subspace of $V$ and the \emph{image} 
+	is an invariant subspace of $V$ and that the \emph{image} 
 	\[
 		T(V)=\{T(v):v\in V\}
 	\]
 	is an invariant subspace of $W$. 
-\end{example}
+\end{exercise}
 
 
 \begin{definition}
@@ -635,8 +637,10 @@ v^T=(v_1,\dots,v_n),\quad
     $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
 \end{definition}
 
-\begin{example}
-Let $G$ be a finite group and $V=\C[G]$. The \emph{left regular representation}
+\begin{exercise}
+\index{Left regular representation}
+Let $G$ be a finite group and $V=\C[G]$ be the complex vector space with basis
+$\{g:g\in G\}$. The \emph{left regular representation}
 of $G$ is the representation
 \[
 L\colon G\to\GL(V),
@@ -648,7 +652,7 @@ where $L_g(h)=gh$. With respect to the inner product
 \left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g},
 \]
 the representation $L$ is unitary. Prove it! 
-\end{example}
+\end{exercise}
 
 
 
