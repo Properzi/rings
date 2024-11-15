@@ -411,18 +411,45 @@ for $n_1,\dots,n_k\geq1$.
 
 We will not prove the Artin--Wedderburn theorem
 in this course. We will, however, 
-discuss some consequences of \eqref{eq:ArtinWedderburn}. 
-Let $G$ be a finite group. Then the following statements hold: 
+discuss some consequences of \eqref{eq:ArtinWedderburn}. For any finite group $G$, 
+the following statements hold: 
 \begin{enumerate}
     \item $G$ admits exactly $k$ (in particular, at most finitely many) 
     non-equivalent
     irreducible representations, say $\rho_1,\dots,\rho_k$, where 
     $n_j=\deg\rho_j$ for all $j\in\{1,\dots,k\}$. 
-    \item $|G|=n_1^2+\cdots+n_k^2$.
-    \item $k$ equals the number of conjugacy classes of $G$. 
+    \item\label{it:|G|} $|G|=n_1^2+\cdots+n_k^2$.
+    \item\label{it:conjugacy_classes} $k$ equals the number of conjugacy classes of $G$. 
 \end{enumerate}
 
-Since $G$ has only finitely many non-equivalent 
+The first claim is included in the statement of the Artin--Wedderburn theorem. 
+To prove the second claim one simply needs to 
+take dimensions in \eqref{eq:ArtinWedderburn} to get 
+\[
+|G|=\dim\C[G]=\sum_{i=1}^k n_i^2.
+\]
+Let us prove the third claim. From~\eqref{eq:ArtinWedderburn} one gets 
+    \[
+                Z(\C[G])\simeq\prod_{i=1}^kZ(M_{n_i}(\C))\simeq\C^k.
+        \]
+        In particular, $\dim Z(\C[G])=k$. If $\alpha=\sum_{g\in
+        G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
+        G$. Thus
+        \[
+                \sum_{g\in G}\lambda_{hgh^{-1}}g=
+                \sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+        \]
+        and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis f
+or
+        $Z(\C[G])$ is given by elements of the form
+        \[
+                \sum_{g\in K}g,
+        \]
+        where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ equals
+        the number of conjugacy classes of $G$.
+
+\begin{convention}
+    Since a finite group $G$ has only finitely many non-equivalent 
 irreducible representations, we will often say
 that 
 \[
@@ -438,6 +465,8 @@ by
 \]
 
 
+\end{convention}
+
 \subsection{Schur's orthogonality relations}
 
 For a finite group $G$, the set                             
@@ -446,11 +475,11 @@ L(G)=\{f\colon G\to\C\}
 \]
 is a complex vector space with
 \[
-    (f+g)(x)=f(x)+g(x),
+    (\alpha+\beta)(x)=\alpha(x)+\beta(x),
     \quad
-    (\lambda f)(x)=\lambda f(x),
+    (\lambda\alpha)(x)=\lambda\alpha(x),
     \quad 
-    f,g\in L(G),\,\lambda\in\C,\,x\in G.
+    \alpha,\beta\in L(G),\,\lambda\in\C,\,x\in G.
 \]
 
 \begin{proposition}
@@ -488,11 +517,32 @@ for some scalars $\lambda_g$, $g\in G$, then, after evaluating in each $x\in G$,
 for all $x\in G$. 
 \end{proof}
 
-If $\alpha\colon G\to\C$ and $\beta\colon G\to\C$ 
-are maps, we consider the inner product
+A fundamental fact is that the space $L(G)$ admits an inner product. 
+
+\begin{exercise}
+Let $G$ be a finite group. The map 
 \[
-\langle\alpha,\beta\rangle=\frac{1}{|G|}\sum_{g\in G}\alpha(g)\overline{\beta(g)}.
+L(G)\times L(G)\to\C,\quad 
+(\alpha,\beta)\mapsto \langle\alpha,\beta\rangle=\frac{1}{|G|}\sum_{g\in G}\alpha(g)\overline{\beta(g)}
 \]
+is an inner product on $L(G)$. 
+\end{exercise}
+
+The space $L(G)$ is not new. The following exercise demonstrates that 
+$L(G)$ and $\C[G]$ are isomorphic as algebras. 
+
+\begin{bonus}
+Let $G$ be a finite group. Prove the following statements:
+\begin{enumerate}
+    \item $L(G)$ with the \emph{convolution product}
+    \[
+    (\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y)
+    \]
+    is an algebra. 
+    \item The map $\C[G]\to L(G)$, $g\mapsto\delta_g$,
+        is an algebra isomorphism.
+    \end{enumerate}
+\end{bonus}
 
 If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of $G$, then
 $\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
