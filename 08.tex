@@ -4,8 +4,28 @@
 \subsection{Proof of the orthogonality relations}
 \label{subsection:Schur_proof}
 
-Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a finite group
-$G$. Since $V$ and $W$ are vector spaces, the set 
+Let $G$ be a finite $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. We know that
+these representations are equivalent to matrix representations, say 
+$\rho\colon G\to\GL_n(\C)$
+and $\psi\colon G\to\GL_m(\C)$. Hence 
+we have well-defined matrices
+$(\rho_{ij})_{1\leq i,j\leq n}$ and 
+$(\psi_{kl})_{1\leq k,l\leq m}$, where 
+each $\rho_{ij}$ and $\psi_{kl}$ are
+functions $G\to\C$. Theorem~\ref{thm:Schur_technical} 
+states that 
+\[
+\langle\rho_{ij},\psi_{kl}\rangle=0, 
+\quad 
+1\leq i,j\leq n\text{ and }1\leq k,l\leq m, 
+\]
+if $\rho\not\simeq\psi$, and 
+\[
+\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{n}\delta_{ik}\delta_{lj},\quad 1\leq i,j,k,l\leq n.  
+\]
+
+Since $V$ and $W$ are complex 
+vector spaces, the set 
 \[
 \Hom(V,W)=\{T\colon V\to W:\text{$T$ is linear}\}
 \]
@@ -26,6 +46,7 @@ and $\lambda\in\C$, then
 for all $v\in V$. 
  
 \begin{proposition}
+\label{pro:T_invariant}
 	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations
 	and $T\colon V\to W$ be a linear map. Then
 	\[
@@ -60,7 +81,7 @@ If $\rho\colon G\to\GL(V)$ and $\psi\colon
 	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
 	V\to W$ is a linear map, then $T^{\#}=0$, as 
 	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma. We will use this
- fact later in Schur's Theorem \ref{thm:Schur_technical}. 
+ fact later in the proof of Schur's Theorem  \ref{thm:Schur_technical}. 
 
 \begin{theorem}[Ergodic theorem]
 \index{Ergodic theorem}
@@ -71,7 +92,8 @@ If $\rho\colon G\to\GL(V)$ and $\psi\colon
 \end{theorem}
 
 \begin{proof}
-  The previous proposition and Schur's lemma imply that
+  Since $T^{\#}\in\Hom_G(V,V)$ by Proposition~\ref{pro:T_invariant}, it follows
+  from Proposition~\ref{pro:Schur_consequence} that
   $T^{\#}=\lambda\id$ for some $\lambda\in\C$.
   We now compute the trace of $T^{\#}$. On the one hand, 
   \[
@@ -103,11 +125,39 @@ the matrix $E_{ij}$ is given by
     0 & \text{otherwise}.
 \end{cases}
 \]
+For example, in $\C^{3\times4}$, 
+\[
+E_{12}=\begin{pmatrix}
+    0&1&0&0\\
+    0&0&0&0\\
+    0&0&0&0
+\end{pmatrix},
+\quad 
+E_{32}=\begin{pmatrix}
+    0&0&0&0\\
+    0&0&0&0\\
+    0&1&0&0
+\end{pmatrix}.
+\]
+Note that each matrix $E_{ij}$ can be though as 
+a linear map, for example:
+\[
+E_{12}\colon\C^4\to\C^3,\quad 
+\colvec{4}{x_1}{x_2}{x_3}{x_4}\mapsto 
+E_{12}\colvec{4}{x_1}{x_2}{x_3}{x_4}
+=\colvec{3}{x_2}{0}{0}.
+\]
 
+Recall the rule for multiplying matrices. 
+Let $A=(a_{ij})\in\C^{r\times s}$ and $B=(b_{ij})\in\C^{s\times t}$. Then $AB\in\C^{r\times t}$ is given by 
+\[
+(AB)_{ij}=\sum_{k=1}^sa_{ik}b_{kj}.
+\]
 
 \begin{lemma}
-Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations. Then
-$(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$.
+Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be irreducible unitary representations. Then
+$(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$
+for all $1\leq k,l\leq m$ and $1\leq i,j\leq n$. 
 \end{lemma}
 
 \begin{proof}

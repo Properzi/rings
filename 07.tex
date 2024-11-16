@@ -132,6 +132,7 @@ The following result is simple and crucial.
 Two applications:
 
 \begin{proposition}
+\label{pro:Schur_consequence}
     If $G$ is finite, $\rho\colon G\to\GL(V)$ is an irreducible representation, and $T\colon V\to V$ is invariant, then 
     $T=\lambda\id$ for some $\lambda\in\C$. 
 \end{proposition}
@@ -544,8 +545,18 @@ Let $G$ be a finite group. Prove the following statements:
     \end{enumerate}
 \end{bonus}
 
-If $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$ is a representation of $G$, then
-$\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is given by
+If $\rho\colon G\to\GL_n(\C)$ is a matrix representation of $G$, then
+$\rho_g$ is the matrix
+\[
+\begin{pmatrix}
+    \rho_{11}(g) & \rho_{12}(g) & \cdots & \rho_{1n}(g)\\
+    \rho_{21}(g) & \rho_{22}(g) & \cdots & \rho_{2n}(g)\\
+    \vdots & \vdots & \ddots & \vdots\\
+    \rho_{n1}(g) & \rho_{n2}(g) & \cdots & \rho_{nn}(g)
+\end{pmatrix},
+\]
+where each $\rho_{ij}\colon G\to\C$ is a function. 
+In particular, the character of $\rho$ is given by
 \[
 \chi_\rho(g)=\sum_{i=1}^n\rho_{ii}(g).
 \]
@@ -554,11 +565,12 @@ $\rho_g$ is the matrix $(\rho_{ij}(g))$ and hence the character of $\rho$ is giv
 \begin{theorem}[Schur]
 \index{Schur's!theorem}
 \label{thm:Schur_technical}
-    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be irreducible representations of a finite group $G$. 
+    Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be irreducible representations of a finite group $G$. 
     Then the following statements hold:
     \begin{enumerate}
-        \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ if $\rho$ and $\psi$ are not equivalent.
-        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{lj}}$.
+        \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ for all $1\leq i,j\leq n$ and $1\leq k,l\leq m$ if $\rho$ and $\psi$ are not equivalent.
+        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{lj}}$ 
+        for all $1\leq i,j,k,l\leq n$.
     \end{enumerate}
 \end{theorem}
 
