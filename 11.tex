@@ -147,7 +147,7 @@ For $m\in M$ let
 \[
 \Ann(m)=\{r\in R:r\cdot m=0\}.
 \]  
-Note that $\Ann(M)=\cap_{m\in M}\Ann(m)$. 
+Note that $\Ann(M)=\bigcap_{m\in M}\Ann(m)$. 
 It is an exercise to show that both 
 $\Ann(M)$ and $\Ann(m)$ are ideals of $R$. 
 If $r\in R$, the annihilator of $r$ in $M$ 
@@ -227,19 +227,19 @@ The torsion generalizes the concept of elements of finite order in abelian group
 \end{example}
 
 \begin{example}
-If $V$ is a real finite-dimensional vector space and $T\colon V\to V$ 
+If $V$ is a real finite-dimensional vector space and $f\colon V\to V$ 
 is a linear transformation, $V$ is a module (over $\R[X]$) 
 with 
 \[
-\left(\sum_{i=0}^m a_iX^i\right)\cdot v=\sum_{i=0}^m a_iT^i(v).
+\left(\sum_{i=0}^m a_iX^i\right)\cdot v=\sum_{i=0}^m a_if^i(v).
 \]
 
 We claim that 
 $V$ is a torsion module, that is $V=T(V)$. Let $n=\dim V$. If $v\in V$, 
-then $\{v,T(v),\dots,T^n(v)\}$ is linearly dependent, as it has 
+then $\{v,f(v),\dots,f^n(v)\}$ is linearly dependent, as it has 
 $n+1$ elements. In particular, there exist $a_0,\dots,a_n\in\R$ not all zero such that
 \[
-0=\sum_{i=0}^n a_iT^i(v)=\left(\sum_{i=0}^n a_iX^i\right)\cdot v.
+0=\sum_{i=0}^n a_if^i(v)=\left(\sum_{i=0}^n a_iX^i\right)\cdot v.
 \]
 Thus $v\in T(V)$. 
 \end{example}
@@ -252,7 +252,7 @@ $T(M)=\{0\}$, then $M$ is free.
 
 \begin{proof}
 Without loss of generality, we may assume that $M$ is non-zero.
-By assumption, $M=(X)$, where $X$ is a finite set. 
+By assumption, $M=(X)$ for some finite set $X$. Without loss of generality, we may assume that $0\not\in X$. 
 If $x\in X$, then $r\cdot x=0\Longleftrightarrow r=0$, as $T(M)=\{0\}$. 
 Let $S=\{x_1,\dots,x_k\}\subseteq X$ 
 be maximal with respect to the following property:
