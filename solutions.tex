@@ -801,28 +801,28 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
 	The Smith's normal form yields 
 	\[
 		P=\begin{pmatrix}
-			1 & 1 & 0\\
+			0 & 1 & 0\\
 			1 & 0 & 0\\
-			-1 & -2 & 1
+			-2 & -2 & 1
 		\end{pmatrix},
 		\quad
 		Q=\begin{pmatrix}
-			1 & -1 & 1\\
-			0 & 0 & 1\\
-			0 & -1 & 2
+			1 & 1 & 1\\
+			0 & 1 & 1\\
+			0 & 0 & 1
 		\end{pmatrix},\quad
 		S=PAQ=\begin{pmatrix}
 			1 & 0 & 0\\
 			0 & 1 & 0\\
-			0 & 0 & 0
+			0 & 0 & 1
 		\end{pmatrix}.
 	\]
 	The solution of the integer linear system is then
 	$X=\begin{pmatrix}
-		1 + t\\
-		t\\
-		-5+2t
-	\end{pmatrix}$ for $t\in\Z$. 
+		1\\
+		0\\
+		5
+	\end{pmatrix}$. 
 \end{sol}
 
 \begin{sol}{xca:factors_260}
@@ -841,16 +841,18 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
 
 \begin{sol}{xca:C4}
     Let $A=\begin{pmatrix}
-    3 & 8 & 7 & 9\\
-    2 & 4 & 6 & 6\\
-    1 & 2 & 2 & 1
+    3 & 2 & 1 \\
+    8 & 4 & 2 \\
+    7 & 6 & 2\\
+    9 & 6 & 1
     \end{pmatrix}$.  
     The Smith's normal form of $A$  
     is $\begin{pmatrix}
-        1 & 0 & 0 & 0\\
-        0 & 1 & 0 & 0\\
-        0 & 0 & 4 & 0
-    \end{pmatrix}$. Thus the abelian group is isomorphic to $\Z/\Z\times\Z/\Z/\times\Z/4\Z\simeq\Z/4$.  
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 4 \\
+        0 & 0 & 0
+    \end{pmatrix}$. Thus the abelian group is isomorphic to $\Z/\Z\times\Z/\Z\times\Z/4\Z\simeq\Z/4$.  
 \end{sol}
 
 \begin{sol}{xca:Smith_Z[i]}
