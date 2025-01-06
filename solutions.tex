@@ -853,25 +853,39 @@ Let $T\colon V\to W$ be a bijective linear map such that $T\rho_g=\psi_gT$ for a
     \end{pmatrix}$. Thus the abelian group is isomorphic to $\Z/\Z\times\Z/\Z/\times\Z/4\Z\simeq\Z/4$.  
 \end{sol}
 
-\begin{sol}{xca:Smith_Z[i]}
-	The Smith's normal form is $\begin{pmatrix}
-		1 & 0\\
-		0 & -11+8i
-	\end{pmatrix}$. 
-\end{sol}
+% \begin{sol}{xca:Smith_Z[i]}
+% 	The Smith's normal form is $\begin{pmatrix}
+% 		1 & 0\\
+% 		0 & -11+8i
+% 	\end{pmatrix}$. 
+% \end{sol}
 
-\begin{sol}{xca:Smith_Q[X]}
-	The Smith normal form is 
-	\[
-		\begin{pmatrix}
-			1 & 0 & 0 & 0 \\
-			0 & 1 & 0 & 0 \\
-			0 & 0 & 1 & 0 \\
-			0 & 0 & 0 & f(X)
-		\end{pmatrix},
-	\]
-	where $f(X)=X^4 - 3 X^3 - 11 X^2 + 7X + 84$. 
-\end{sol}
+% \begin{sol}{xca:Smith_Q[X]}
+% 	The Smith normal form is 
+% 	\[
+% 		\begin{pmatrix}
+% 			1 & 0 & 0 & 0 \\
+% 			0 & 1 & 0 & 0 \\
+% 			0 & 0 & 1 & 0 \\
+% 			0 & 0 & 0 & f(X)
+% 		\end{pmatrix},
+% 	\]
+% 	where $f(X)=X^4 - 3 X^3 - 11 X^2 + 7X + 84$. 
+%     \begin{lstlisting}
+% P<x> := PolynomialAlgebra(Rationals());
+% A := Matrix(P, 4, 4, [7, x, 0, -x,\ 
+% > 0, x-3, 0, 3,\ 
+% > 0, 0, x-4, 0,\
+% > x-6, -1, 0, x+1]);
+% ElementaryDivisors(A);
+% [
+%     1,
+%     1,
+%     1,
+%     x^4 - 3*x^3 - 18*x^2 + 56*x
+% ]
+% \end{lstlisting}
+% \end{sol}
 
 \begin{sol}{xca:unimodular}
     Since $\det A\ne 0$, the set $\{y_1,\dots,y_n\}$ is linearly independent over $\Q$
