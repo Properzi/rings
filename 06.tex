@@ -172,7 +172,7 @@ $\varphi|_G=f$.
 \index{Representation!degree}
 The \emph{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. 
 
-Noet that a representation $\rho\colon G\to\GL(V)$
+Note that a representation $\rho\colon G\to\GL(V)$
 satisfies the following properties:
 \begin{enumerate}
     \item $\rho_{1_G}=\id$.
@@ -704,9 +704,10 @@ The following theorem is known as the \emph{Weyl trick}.
     \]
     is an inner product of $V$. For example, 
     \begin{align*}
-    \langle v,w+w_1\rangle&=\sum_{g\in G}v\cdot(w+w_1)\\
-    &=\sum_{g\in G}\left(v\cdot w+v\cdot w_1\right)\\
-    &=\sum_{g\in G}v\cdot w+\sum_{g\in G}v\cdot w_1\\
+    \langle v,w+w_1\rangle&=\sum_{g\in G}\rho_gv\cdot\rho_g(w+w_1)\\
+    &=\sum_{g\in G}\rho_gv\cdot \left(\rho_gw+\rho_gw_1\right)\\
+    &=\sum_{g\in G}\rho_gv\cdot \rho_gw+\rho_gv\cdot\rho_gw_1\\
+    &=\sum_{g\in G}\rho_gv\cdot \rho_gw+\sum_{g\in G}\rho_gv\cdot \rho_gw_1\\
     &=\langle v,w\rangle+\langle v,w_1\rangle 
     \end{align*}
     holds for all $v,w,w_1\in V$. 
@@ -739,7 +740,7 @@ The following theorem is known as the \emph{Weyl trick}.
     For example, the inner product between the vectors $\colvec{2}{1}{i}$ and $\colvec{2}{1}{2}$
     is 
     \[
-    (1,-i)\colvec{2}{1}{2}=1+2i.
+    (1,i)\colvec{2}{1}{2}=1+2i.
     \]
     Since $A\in M_2(\R)$, we compute 
     \[

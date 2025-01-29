@@ -438,10 +438,9 @@ Let us prove the third claim. From~\eqref{eq:ArtinWedderburn} one gets
         G$. Thus
         \[
                 \sum_{g\in G}\lambda_{hgh^{-1}}g=
-                \sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+                \sum_{g\in G}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
         \]
-        and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis f
-or
+        and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for
         $Z(\C[G])$ is given by elements of the form
         \[
                 \sum_{g\in K}g,
@@ -500,7 +499,7 @@ let
 
 To prove the claim it is enough to show that 
 $\{\delta_x:x\in G\}$ is a basis of $G$, as the size of this set equals the
-number of conjugacy classes of $G$. 
+number of elements of $G$. 
 We first prove that $\{\delta_x:x\in G\}$  is a generating set: every function
 $\alpha\in L(G)$ can be written as
 \[
@@ -569,7 +568,7 @@ In particular, the character of $\rho$ is given by
     Then the following statements hold:
     \begin{enumerate}
         \item $\langle\rho_{ij},\psi_{kl}\rangle=0$ for all $1\leq i,j\leq n$ and $1\leq k,l\leq m$ if $\rho$ and $\psi$ are not equivalent.
-        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{\dim V}\delta_{ik}\delta_{lj}}$ 
+        \item $\displaystyle{\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{n}\delta_{ik}\delta_{lj}}$ 
         for all $1\leq i,j,k,l\leq n$.
     \end{enumerate}
 \end{theorem}
@@ -792,7 +791,7 @@ is the group homomorphism $L\colon G\to \GL(V)$, where $V$ is the complex vector
 with basis $\{g:g\in G\}$ and $L_g(x)=gx$ for all $g,x\in G$. 
 
 \begin{theorem}
-    Let $G$ be a finite group and $L$ be its regular representation. 
+    Let $G$ be a finite group with irreducible representations $\rho_1,\dots,\rho_r$, and $L$ be its regular representation. 
     Then $L=\sum_{j=1}^rn_j\rho_j$, where $n_j=\deg\rho_j$. 
 \end{theorem}
 
