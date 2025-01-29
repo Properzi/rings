@@ -131,7 +131,7 @@ that is not finitely generated.
     \end{cases}
     \]
     it follows that $\{\varphi(e_1),\dots,\varphi(e_k)\}$ generates $\varphi(R^k)=M$. To prove this, note that  
-    if $m\in M$, by the surjectivity of $\varphi$, we write $m=\varphi(r_1,\dots,r_k)$ for some $(r_1,\dots,r_k)\in R^k$ 
+    if $m\in M$, by the surjectivity of $\varphi$, we write $m=\varphi(r_1,\dots,r_k)$ for some $(r_1,\dots,r_k)\in R^k$. 
     Hence  
     \[
     m=\varphi(r_1,\dots,r_k)=\varphi\left(\sum_{i=1}^k r_i\cdot e_i\right)
@@ -142,7 +142,7 @@ that is not finitely generated.
 \begin{definition}
     \index{Module!noetherian}
     A module $M$ is \emph{noetherian} if every sequence $M_1\subseteq M_2\subseteq\cdots$ of submodules of $M$ 
-    stabilizes, that is there exists $n$ such that $M_k=M_{n+k}$ for all $k$. 	
+    stabilizes, that is there exists an integer $n$ such that $M_n=M_{n+k}$ for all $k$. 	
 \end{definition}
 
 Let $M$ be a module and $X$ be a non-empty 
@@ -390,9 +390,9 @@ such modules have dimensions.
 \end{exercise}
 
 \begin{example}
-If $u\in\mathcal{U}(R)$, then $\{u\}$ is a basis of $\prescript{}{R}R$. Conversely, if $R$ is an integral domain and 
+If $u\in\mathcal{U}(R)$, then $\{u\}$ is a basis of $\prescript{}{R}R$. Conversely, if $R$ is a (not necessarily commutative) domain and 
 $\{z\}$ is a basis of $\prescript{}{R}R$, then $z\in\mathcal{U}(R)$. Since 
-$1=yz$ for some $y\in R$, it follows that $zy=1$, as  
+$1=yz$ for some $y\in R$, then it follows that $zy=1$, as  
 \[
 (zy-1)z=z(yz)-z=z1-z=z-z=0.
 \]	
@@ -643,10 +643,11 @@ that we will use later:
 \end{tikzcd}\]
 	the previous proposition 
 	yields a homomorphism $h\colon C\to B$
-	such that $gh=\id_C$. In fact, let $\{c_i:i\in I\}$ be a basis of $C$.
-	For each $i\in I$ let $b_i\in B$ be such that $g(b_i)=c_i$. The map 
-	$h\colon C\to B$, $h(\sum r_i\cdot c_i)=\sum r_i\cdot b_i$, is a module homomorphism 
 	such that $gh=\id_C$. 
+    %In fact, let $\{c_i:i\in I\}$ be a basis of $C$.
+	%For each $i\in I$ let $b_i\in B$ be such that $g(b_i)=c_i$. The %map 
+	%$h\colon C\to B$, $h(\sum r_i\cdot c_i)=\sum r_i\cdot b_i$, is a module homomorphism 
+	%such that $gh=\id_C$. 
 
 	Let $\varphi\colon A\oplus C\to B$, $(a,c)\mapsto f(a)+h(c)$. A simple
 	calculation shows that $\varphi$ is a module homomorphism. 
@@ -654,7 +655,7 @@ that we will use later:
 	We prove that $\varphi$ is 
 	injective. If $\varphi(a,c)=0$, then $f(a)+h(c)=0$. By applying $g$ we get that
 	$0=g(f(a))+g(h(c))=c$ and hence, since $f$ is injective and
-	$f(a)=0$, is follows that $(a,c)=(0,0)$. 
+	$f(a)=0$, it follows that $(a,c)=(0,0)$. 
 		
 	Now we prove that $\varphi$ is surjective. 
 	Let $b\in B$. 
@@ -709,8 +710,8 @@ For each $i\in\{1,\dots,n\}$ let
 \[
 f_i\colon M\to K,\quad
 e_j\mapsto\begin{cases}
-1 & \text{si $i=j$},\\
-0 & \text{si $i\ne j$}.
+1 & \text{if $i=j$},\\
+0 & \text{if $i\ne j$}.
 \end{cases}
 \]
 We claim that $\{f_1,\dots,f_n\}$ is basis of  $V$. It generates $V$, as  
