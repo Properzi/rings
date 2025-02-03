@@ -290,15 +290,17 @@ For example,
 \end{align*}
 
 \begin{definition}
-	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. The \emph{tensor product} of $\rho$ and $\psi$ is the representation of $G$ given by 
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations, and 
+    let $\{v_1,\dots,v_n\}$ be a basis of $V$ and $\{w_1,\dots,w_m\}$ a basis of $W$. 
+    The \emph{tensor product} of $\rho$ and $\psi$ is the representation of $G$ given by 
 	\begin{gather*}
 	\rho\otimes\psi\colon G\to\GL(V\otimes W),
 	\quad 
 	g\mapsto (\rho\otimes\psi)_g,
 	\shortintertext{where}
-	(\rho\otimes\psi)_g(v\otimes w)=\rho_g(v)\otimes \psi_g(w)
-	\end{gather*}
-	for $v\in V$ and $w\in W$.  	
+	(\rho\otimes\psi)_g(v_i\otimes w_j)=\rho_g(v_i)\otimes \psi_g(w_j),\quad 
+    i\in\{1,\dots,n\},\, j\in\{1,\dots,m\}. 
+	\end{gather*} 	
 \end{definition}
 
 A direct calculation shows that the tensor product of representations is indeed a representation. 
