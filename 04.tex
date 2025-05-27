@@ -1,485 +1,495 @@
 \section{Lecture -- Week 4}
 
-\begin{example}
-	Let $R=\Z[\sqrt{-3}]$ and $x=1+\sqrt{-3}$. 
-	\begin{enumerate}
-		\item $x$ is irreducible. 
-	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
-	\[
- 4=\norm(x)=\norm(\alpha)\norm(\beta).
- \]
- Thus $\norm(\alpha)\in\{1,2,4\}$. 
-	Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. 
-	If $\norm(\alpha)=a^2+3b^2=2$, then $b=0$ and hence
-	$a^2=2$, a contradiction. If $\norm(\alpha)=1$, then $\alpha\in\mathcal{U}(R)$.
-	If $\norm(\alpha)=4$, then $\norm(\beta)=1$ and $\beta\in\mathcal{U}(R)$. 
-%
-%	If $\norm(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
-%	both have the same parity. 
-%	
-%	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
-%	some $k,l\in\Z$, then 
-%	\[
-%	2=a^2+3b^2=4k^2+12l^2
-%	\]
-%	is divisible by 4, a contradiction.  
-%	
-%	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
-%	\[
-%	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
-%	\]
-%	is divisible by 4, a contradiction. 
-		\item $x$ is not prime. Note that 
-  \[
-  (1+\sqrt{-3})(1-\sqrt{-3})=4,
-  \]
-  then 
-		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
-		\[
-		(a-3b)+(a+b)\sqrt{-3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
-		\]
-		implies that $a-3b=2$ and $a+b=0$, which yields 
-		$a=1/2\not\in\Z$, a contradiction.
-	\end{enumerate}
-\end{example}
+The objective of the next five lectures is to extract certain properties inherent to integers and adapt them for broader applications. Initially, we will identify similarities between the ring of integers and the ring of real polynomials, 
+followed by a more in-depth exploration of these specific attributes in more general contexts. A pivotal similarity between integers and real polynomials lies in the existence of the division algorithm. Nevertheless, it is essential to emphasize that $\Z$ and $\R[X]$ are fundamentally distinct entities, like apples and oranges. For instance, in $\R[X]$, 
+the presence of the variable $X$ allows us to utilize formal derivatives 
+(with respect to $X$), a feature absent in the ring of integers. 
 
-\begin{exercise}
-	Let $R=\Z[\sqrt{-5}]$. 
-	\begin{enumerate}
-		\item Prove that $1+\sqrt{-5}$ and $1-\sqrt{-5}$ are irreducible in $R$. 
-		\item Prove that $2,3,1+\sqrt{-5}$ and $1-\sqrt{-5}$ are not associate in $R$.
-	\end{enumerate}
-\end{exercise}
-
-\begin{exercise}
-	Let $R=\Z[\sqrt{5}]$. 
-	Prove that $1+\sqrt{5}$ is irreducible and not prime in $R$. 	
-\end{exercise}
+\subsection{Rings}
 
 \begin{definition}
-	Let $R$ be an integral domain. Then $R$ is \emph{principal} 
-	(or a principal ideal domain) if
-	every ideal $I$ of $R$ is of the form $I=(x)$ for some $x\in R$.   
-\end{definition}
-
-An ideal $I$ of the form $I=(x)$ for some $x$ is called a \emph{principal ideal}. 
-
-The rings $\Z$ and $\R[X]$ are both principal. 
-
-\begin{example}
-	The ring $\Z[X]$ is not principal. For example, the ideal
-	$I=(2,X)$ is not principal. 
-	
-	First note that $I\ne\Z[X]$. In fact, if $I=\Z[X]$, then 
-	$1=2f(X)+Xg(X)$ for some polynomials $f(X),g(X)\in\Z[X]$. Then 
-	$1=2f(0)$, which implies that $-1/2=f(0)\in\Z$, a contradiction. 
-	
-	If $I=(h(X))$ for some $h(X)\in\Z[X]$, then $2=h(X)g(X)$ for some $g(X)\in\Z[X]$. This
-	implies that $\deg(h(X))=0$, so $h(X)=h(1)\in\Z$. In particular, $2=h(1)g(1)$ and hence
-	$h(1)\in\{-1,1,2,2\}$. Since $I\ne\Z[X]$, it follows that $h(X)=h(1)\not\in\{-1,1\}$. Now      
-	$X=h(X)f(X)$ for some $f(X)\in\Z[X]$. In particular, $\deg(f(X))=1$, so
-	we may assume that $f(X)=a_0+a_1X$ for $a_0,a_1\in\Z$ and $a_1\ne 0$. 	
-	It follows that 
-	\[
-	X=\pm 2f(X)=\pm2(a_0+a_1X)
-	\]
-	and therefore $\pm1/2=a_1\in\Z$, a contradiction.
-\end{example}
-
-\begin{exercise}
-\label{xca:principal=>noetherian}
-    Let $R$ be a principal domain. Prove that $R$ is noetherian.
-\end{exercise}
-
-\begin{example}
-	Let $R=\Z[\sqrt{-5}]$.  
-	The ideal $I=(2,1+\sqrt{-5})$ is not principal, so $R$ is not principal. 
-	
-	We first note that $I\ne R$. If not, there exist $x,y,u,v\in\Z$ such that 
-	\[
-	1=2(x+y\sqrt{-5})+(1+\sqrt{-5})(u+v\sqrt{-5})=(2x+u-5v)+\sqrt{-5}(2y+u+v).
-	\]
-	This implies that $1=2x+u-5v$ and $0=2y+u+v$. These formulas imply that
-	\[
-    1=2(x+y+u-2v),
-    \]
-    a contradiction because $x+y+u-2v\in\Z$. 
-	
-	Now assume that $I=(\alpha)$ for some $\alpha$. Then $\alpha\mid 2$ and $\alpha\mid 1+\sqrt{-5}$. Then
-	$\norm(\alpha)\mid 4$ and $\norm(\alpha)\mid 6$, because $\norm(2)=4$ and $\norm(1+\sqrt{-5})=6$. 
-	Thus $\norm(\alpha)\in\{1,2\}$. If we write
-	$\alpha=a+b\sqrt{-5}$ for $a,b\in\Z$, then it follows that 
-	$a^2+5b^2=\norm(\alpha)$. Clearly, $\norm(\alpha)\ne 2$, as $a^2=2$ has no solution in $\Z$.
-	Now $\norm(\alpha)= 1$ implies that $\alpha\in\mathcal{U}(R)$ and hence 
-	$I=R$, a contradiction.   
-\end{example}
-
-Sometimes primes and irreducibles coincide. 
-
-\begin{proposition}
-\label{pro:PID:irreducible=prime}
-	Let $R$ be a principal domain and $x\in R$. 
-	Then $x$ is irreducible if and only if $x$ is prime. 	
-\end{proposition}
-
-\begin{proof}
-	We only need to prove that if $x$ is irreducible, then $x$ is prime. Let us
-	assume that $x\mid yz$. Let $I=(x,y)$. Since $R$ is principal, $I=(a)$ for some $a\in R$. In particular, $x=ab$ for some $b\in R$. Since $x$ is irreducible, $a\in\mathcal{U}(R)$ or
-	$b\in\mathcal{U}(R)$. If $a\in\mathcal{U}(R)$, then $I=R$ and hence 
-	$1=xr+ys$ for some $r,s\in R$. Thus
-	\[
-	z=z1=z(xr+ys)=zxr+zys
-	\]
-	and therefore $x\mid z$. If $b\in\mathcal{U}(R)$, then $x$ and $a$ are associate
-	in $R$. Thus $I=(x)=(a)$ and hence $xt=y$ for some $t\in R$, that is $x\mid y$.  
-\end{proof}
-
-In the integers primes and irreducible coincide. This happens 
-because $\Z$ is a principal domain.
-
-\begin{example}
-	Since $\Z[\sqrt{-3}]$ have irreducible elements that are not prime, 
-	$\Z[\sqrt{-3}]$ is not a principal domain.
-\end{example}
-
-\begin{definition}
-	Let $R$ be an integral domain. We say that $R$ is an \emph{euclidean domain}
-	if there exists a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$ such that
-	for every $x,y\in R$ with $y\ne 0$ there exist $q,r\in R$ such that 
-	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
-\end{definition}
-
-Note that in the definition of euclidean domains, we do not ask for the uniqueness 
-of the quotient and the remainder. In fact, 
-we will meet important examples of euclidean domains where uniqueness
-in the division algorithm is not achieved. 
-
-\begin{example}
-	$\Z$ is a euclidean domain with $\varphi(x)=|x|$.
-\end{example}
-
-Do we have uniqueness in the previous example? 	
-
-\begin{example}
-	$\R[X]$ is a euclidean domain with $\varphi(f(X))=\deg(f(X))$. 	
-\end{example}
-
-The previous examples suggest why for the definition of a euclidean domain one needs to  
-consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$. 
-
-\begin{example}
-	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(a+bi)=a^2+b^2$. Note that
- in this case, $\varphi$ is a multiplicative function in $\C$, that is
- \[
- \varphi(\alpha\beta)=\varphi(\alpha)\varphi(\beta)
- \]
- for all $\alpha,\beta\in\C$. 
- 
- 	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
-	We want to find $\gamma,\delta\in\Z[i]$ such that 
-	\[
-        \alpha=\beta\delta+\gamma,\quad 
-        \varphi(\gamma)<\varphi(\beta).
-	\]
-    So we need to find $\delta\in R$ and $\gamma\in R$ such that 
-    \[
-    \frac{\alpha}{\beta}=\delta+\frac{\gamma}{\beta},
-    \quad 
-    \varphi(\gamma/\beta)<1. 
-    \]
-    
-    Note that every complex
-	number $z\in\C$ can be written\footnote{For example, 
-    the complex number 
-    \[
-    z=\sqrt{2}+\frac{i}{3}
-    \]
-    can be written as 
-    $z=\xi+\eta$, where 
-    \[
-    \xi=1+i\in\Z[i],\quad 
-    \eta=(\sqrt{2}-1)+\left(\frac13-1\right)i=(\sqrt{2}-1)-\frac23i. 
-    \]
-    A direct calculation shows that $\varphi(\eta)<1$.} 
-    as $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. In fact, 
-    this
-	follows from the fact that 
-	$\C$ is covered by open unit disks of radius one and 
-    centers $\Z[i]$, see the following figure:
-
-	\begin{figure}[ht]
-		\centering
-	\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick](1,1) circle (1);
-\draw[red,thick](2,1) circle (1);
-\draw[red,thick](1,2) circle (1);
-\draw[red,thick](2,2) circle (1);
-\end{tikzpicture}
-%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
-\label{fig:covering}
-\end{figure}
-	
-	Now let $\alpha=a+ib$ and $\beta=c+id$, where $a,b,c,d\in\Z$.  
-	Write 
-	\[
-	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
-	\]
-	for some $r,s\in\Q$. We don't need to compute $r$ and $s$ explicitly! 
-        Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
-	$|s-n|\leq 1/2$. If $\delta=m+in$ and $\gamma=\alpha-\beta\delta$, then 
-	$\gamma\in R$, $\delta\in R$ and $\alpha=\beta\delta+\gamma$. If $\gamma\ne0$, then
-	\begin{align*}
-	\varphi(\gamma)&=\varphi\left(\beta\left(\frac{\alpha}{\beta}-\delta\right)\right)
-	=\varphi(\beta)\varphi\left(\frac{\alpha}{\beta}-\delta\right)\\
-	&=\varphi(\beta)\varphi((r-m)+i(s-n))\\
-	&=\varphi(\beta)((r-m)^2+(s-n)^2)\\
-	&\leq\varphi(\beta)(1/4+1/4)\\
-	&<\varphi(\beta).
-	\end{align*}	
-\end{example}
-
-
-
-In $\Z[i]$ the division algorithm does not have uniqueness. In fact, 
-if $\alpha,\beta\in\Z[i]$ and $\alpha=\beta\delta+\gamma$ 
-for some $\delta,\gamma\in\Z[i]$, 
-then there are up to four possibilities 
-for the remainder $\gamma$.
-
-\begin{example}
-	Let $R=\Z[i]$ and 
-	$\alpha=-1+i$ and $\beta=1+2i$. Let $I=(\beta)$ be the ideal of $R$ generated by $\beta$. 
-	First, note that
-	\[
-	I=(\beta)=(1+2i)R=(1+2i)\Z+(1+2i)\Z i=(1+2i)\Z+(-2+i)\Z.
-	\]  
-	This allows us to draw the lattice of elements of $I$, 
-	that is the lattice formed by the multiples of $\beta$, see Figure~\ref{fig:Z[i]}. 
-	Since $\alpha-\gamma\in I=(\beta)$, there are at most four possibilities for writing
-	the division algorithm. 
-	In our particular example, we find three possible cases:
-	\begin{enumerate}
-		\item If $\alpha-\gamma=\beta_0$, where $0=\beta_0=\beta 0$, 
-			then $\gamma=\alpha=-1+i$ and 
-				\[
-				-1+i=(1+2i)0+(-1+i)
-				\]
-				with $\norm(-1+i)=2<\norm(\beta)=5$. 
-		\item If $\alpha-\gamma=\beta_1$, where $-2+i=\beta_1=\beta i$, then 
-			$\gamma=1$ and 
-			\[
-			-1+i=(1+2i)i+1
-            \]
-			with $\norm(-1)=1<\norm(\beta)=5$. 
-		\item If $\alpha-\gamma=\beta_2$, where $-1+3i=\beta_2=\beta (1+i)$, 
-			then $\gamma=-2i$ and  
-			\[
-			-1+i=(1+2i)(1+i)+(-2i)
-			\]
-			and $\norm(-2i)=4<\norm(\beta)=5$. 
-	\end{enumerate}
-%	We note that the case $\alpha-\gamma=\beta$ yields $\gamma=-2-i$ and thus
-%	$\norm(\gamma)=\norm(\beta)=5$.  
-\end{example}
-
-\begin{figure}
-\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick] 
-(2,0)--(0,1) node[anchor=east] {$\beta_1$} 
-(0,1)--(1,3) node[anchor=south] {$\beta_2$} 
-(1,3)--(3,2) node[anchor=west] {$\beta$} 
-(3,2)--(2,0) node[anchor=north] {$\beta_0$} ;
-\fill (1,1) circle (2pt) node[anchor=south west] {$\alpha$}  ;
-\fill (1,0) circle (2pt) node[anchor=north] {$-1$}  ;
-\fill (3,0) circle (2pt) node[anchor=north] {$1$}  ;
-\end{tikzpicture}
-\caption{Division algorithm in $\Z[i]$.}
-\label{fig:Z[i]}
-\end{figure}
-
-We know that $\Z$ and $\R[X]$ are both principal. The proofs 
-are very similar, as both use the division algorithm essentially in the same way. 
-The following result takes advantage of this fact. 
-
-\begin{proposition}
-	Let $R$ be a euclidean domain. Then $R$ is principal.	
-\end{proposition}
-
-\begin{proof}
-	Let $I$ be an ideal of $R$. If $I=\{0\}$, then $I=(0)$ and hence 
-	it is principal. So we may
-	assume that $I\ne\{0\}$. Let $y\in I\setminus\{0\}$ be such that
-	$\varphi(y)$ is minimal. We claim that $I=(y)$. 
-	If $z\in I$, then $z=yq+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
-	The minimality of $\varphi(y)$ implies that $r=0$. Thus $z=yq\in (y)$ and 
-	it follows that 
-	$I=(y)$. 
-\end{proof}
-
-\begin{example}\
-	Since $\Z[i]$ is euclidean, it is principal.
-\end{example}
- 
-\begin{example}
-	The rings $\Z[\sqrt{-5}]$ and $\Z[\sqrt{-3}]$ are
-	not euclidean. Why?
-\end{example}
-
-The ring $\Z[\frac{1+\sqrt{-19}}{2}]$ is an 
-example of a ring that is principal and not euclidean. We will not prove this
-fact in these notes. For a proof 
-see \cite{MR967349}, \cite{MR3665445} or \cite{MR314831}.
-
-\begin{definition}
-	Let $R$ be an integral domain. Then $R$ is a 
-	\emph{unique factorization domain}
-	if the following statements hold:
-	\begin{enumerate}
-	\item Each $x\in R\setminus\{0\}$ that is not a unit can be written as $x=c_1\cdots c_n$ for irreducibles $c_1,\dots,c_n$. 
-	\item If $x=c_1\cdots c_n=d_1\cdots d_m$ for irreducibles $c_1,\dots,c_n$ and $d_1,\dots,d_m$, then $n=m$ and there exists $\sigma\in\Sym_n$ such that $c_i$ and $d_{\sigma(i)}$ are
-		associate for all $i\in\{1,\dots,n\}$. 
-	\end{enumerate}
-\end{definition}
-
-It is important to remark that some rings 
-have factorizations and this factorization is not unique. 
-In fact, if $N$ is a square-free integer, $\Z[\sqrt{N}]$ is noetherian and hence it   
-has factorization. 
-However, not all these rings admit are unique factorization domains. 
-
-\begin{example}
-	The ring $R=\Z[\sqrt{-6}]$ is not a unique factorization domain. In fact,
-	\[
-	10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
-	\]	
-	Note that $\norm(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
-	if $2=\alpha\beta$, then $4=\norm(2)=\norm(\alpha)\norm(\beta)$. 
-	Similarly, $5$ is irreducible. It is an exercise to prove that 
-	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
-\end{example}
-
-\begin{theorem}
-\label{thm:PID=>UFD}
-	Let $R$ be a principal domain. 
-	Then $R$ is a unique factorization domain.
-\end{theorem}
-
-\begin{proof}
-	We divide the proof into three steps. 
-	\begin{claim}
-		$R$ is noetherian. 	
-	\end{claim}
-	
-	This is trivial, as every ideal is, in particular, finitely generated by assumption.   
-
-	\begin{claim}
-		$R$ admits factorizations. 	
-	\end{claim}
-	
-	Let $x\in R\setminus\{0\}$ be such that $x\not\in\mathcal{U}(R)$. If $x$ is irreducible, 
-	there is nothing to prove. If not, $x=x_1x_2$ with $x_1\not\in\mathcal{U}(R)$ and
-	$x_2\not\in\mathcal{U}(R)$. If $x_1$ and $x_2$ are both irreducibles, 
-	we are done. If not, say $x_1$ can be written as $x_1=x_{11}x_{12}$ with
-	$x_{11}\not\in\mathcal{U}(R)$ and $x_{12}\not\in\mathcal{U}(R)$. If this process
-	does not terminate, it means that there is a sequence of ideals
-	\[
-	(x)\subsetneq (x_1)\subsetneq (x_{11})\subsetneq\cdots 
-	\]
-	that does not stabilize, which contradicts the fact that $R$ is noetherian.  
-	
-	\begin{claim}
-		$R$ admits unique factorization.	
-	\end{claim}
-	
-	Let $x\in R$ be such that $x$ factorizes into irreducibles as 
-	$x=c_1\cdots c_n=d_1\cdots d_m$. 
-	Note that since $R$ is a principal domain, irreducibles and primes coincide by 
-	Proposition \ref{pro:PID:irreducible=prime}. 
-	We may assume that $n\leq m$. We proceed by 
-	induction on $m$. If $m=1$, then 
-	$n=1$ and $c_1=d_1$. If $m>1$, then, since $c_1$ is prime and 
-	$c_1\mid d_1\cdots d_m$, it follows that $c_1\mid d_j$ for some $j$, 
-	say $c_1\mid d_1$ (here is precisely where the permutation $\sigma$ appears). Since
-	$d_1$ is irreducible, $c_1$ and $d_1$ are associate, that is
-	$c_1=ud_1$ for some $u\in\mathcal{U}(R)$. Then
-	\[
-	c_1c_2\cdots c_n=(ud_1)c_2\cdots c_n=d_1d_2\cdots d_m. 
-	\]
-	Since $d_1\ne 0$,  
-	\[
-	d_1(uc_2\cdots c_n-d_2\cdots d_m)=0,
-	\]
-	which implies that $(uc_2)\cdots c_n=d_2\cdots d_m$ because $R$ is an integral domain. Note
-	that $uc_2$ is irreducible and hence 
-	the claim follows from the inductive hypothesis. 
-\end{proof}
-
-It is interesting to remark that the proof 
-of the previous theorem is exactly the proof
-one does for $\Z$. 
-
-\begin{example}
-	The ring $\Z[i]$ is a unique factorization domain. 	
-\end{example}
-
-Let us show that the converse of Theorem \ref{thm:PID=>UFD} does not hold. 
-
-\begin{exercise}
-\label{xca:content}
-	A polynomial $f\in\Z[X]$ is \emph{primitive} if
-	the greatest common divisor of its coefficients is equal to one. 
-	Let $f\in\Z[X]$ be a non-constant polynomial. If $f=af_1$ for some $a\in\Z$ and some
-	primitive polynomial $f_1$, then $|a|$ is the greatest common divisor of the coefficients of $f$. 	
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Gauss}
-Prove the following statements:
+\index{Ring}
+A \emph{ring} is a non-empty set $R$ with two binary operations, the addition
+$R\times R\to R$, $(x,y)\mapsto x+y$, and the multiplication
+$R\times R\to R$, $(x,y)\mapsto xy$, such that
+the following properties hold:
 \begin{enumerate}
-    \item Let $f,g\in\Z[X]$ be primitive polynomials. Prove that $fg$ is primitive.
-    \item Let $f\in\Z[X]$ be non-constant. Then
-$f$ is irreducible in $\Z[X]$ if and only if $f$ is primitive and 
-$f$ is irreducible in $\Q[X]$. 
+    \item $(R,+)$ is an abelian group.
+    \item $(xy)z=x(yz)$ for all $x,y,z\in R$.
+    \item $x(y+z)=xy+xz$ for all $x,y,z\in R$.
+    \item $(x+y)z=xz+yz$ for all $x,y,z\in R$.
+    \item There exists $1_R\in R$ such that $x1_R=1_Rx=x$ for all $x\in R$.
+\end{enumerate}
+\end{definition}
+
+Our definition of a ring is that of a ring with identity. In general one
+writes the identity element $1_R$ as $1$ if there is no risk of confusion.
+
+\begin{definition}
+\index{Ring!commutative}
+A ring $R$ is said to be \emph{commutative} if $xy=yx$ for all $x,y\in R$. 
+\end{definition}
+
+\begin{example}
+$\Z$, $\Q$, $\R$, and $\C$ are commutative rings.
+\end{example}
+
+Most of the students will have some familiarity with
+real polynomials from their school days. 
+
+\begin{example}
+\index{Degree of a polynomial}
+    The set  
+    \[
+		\R[X]=\left\{\sum_{i=0}^na_iX^i:n\in\Z_{\geq0},\,a_0,\dots,a_n\in \R\right\}
+    \]
+    of real polynomials in one variable 
+    is a commutative ring with the usual operations.  
+    For example, if $f(X)=1+5X^3$ and $g(X)=3X-2X^3$, then
+    \begin{align*}
+        f(X)+g(X) &= 1+3X+3X^3,\\
+        f(X)g(X) &= 3X-2X^3+15X^4-10X^6.
+    \end{align*}
+    Recall that, if 
+    \[
+    f(X)=a_0+a_1X+a_2X^2+\cdots+a_nX^n
+    \]
+    and $a_n\ne0$, then $a_n$ is the \emph{leading coefficient} of $f(X)$ and 
+    $n$ is the \emph{degree} of $f(X)$. In this case, we use the notation 
+    $n=\deg f(X)$. 
+\end{example}
+
+More generally, if $R$ is a commutative ring, then $R[X]$ is a commutative ring. This construction
+allows us to define 
+the polynomial ring $R[X,Y]$ in two commuting variables $X$ and $Y$ and coefficients in $R$ as 
+$R[X,Y]=(R[X])[Y]$. One can also define the ring  
+$R[X_1,\dots,X_n]$ of polynomials 
+in $n$ commuting variables $X_1,\dots,X_n$ with coefficients in $R$ as 
+\[
+R[X_1,\dots,X_n]
+=(R[X_1,\dots,X_{n-1}])[X_n].
+\]
+
+\begin{example}
+    If $A$ is an abelian group, then 
+    the set 
+    $\End(A)$ of group homomorphisms $A\to A$ is a ring with
+    \[
+    (f+g)(x)=f(x)+g(x),\quad
+    (fg)(x)=f(g(x)),\quad f,g\in\End(A)\text{ and }x\in A.
+    \]
+\end{example}
+
+If $X$ is a set, we write $|X|$ to denote 
+the size of $X$. 
+
+\begin{exercise}
+    \label{xca:basic_formulas}
+Let $R$ be a ring. Prove the following facts: 
+\begin{enumerate}
+    \item $x0=0x=0$ for all $x\in R$.
+    \item $x(-y)=-xy$ for all $x,y\in R$.
+    \item If $1=0$, then $|R|=1$. 
 \end{enumerate}
 \end{exercise}
 
-The first item of Exercise \ref{xca:Gauss} is known as Gauss' lemma.
-The second one is Gauss' theorem. These results should be used to prove
-the following result: 
-
-\begin{exercise}
-\label{xca:Z[X]_UFD}
-    Prove that $\Z[X]$ is a unique factorization domain. 
-\end{exercise}
-
-Finally, the example. 
-
 \begin{example}
-	The ring $\Z[X]$ is a unique factorization 
-	domain that is not a principal domain. 	
+    The real vector space $H(\R)=\{a1+bi+cj+dk:a,b,c,d\in\R\}$ with basis $\{1,i,j,k\}$ 
+    is a ring with the multiplication induced by
+    the formulas 
+    \[
+    i^2=j^2=k^2=-1,
+    \quad ij=k,
+    \quad jk=i,
+    \quad ki=j.
+    \]
+    As an example, let us perform a calculation in $H(\R)$: 
+    \[
+    (1+i+j)(i+k)=i+k-1+ik+ji+jk=i+k-1-j-k+i=-1+2i-j,
+    \]
+    as $ik=i(ij)=-j$ and $ji=-k$. This is the ring of real \emph{quaternions}.
 \end{example}
 
-The same technique could be used to prove that if 
-$R$ is a unique factorization domain, then $R[X]$ 
-is a unique factorization domain, see
-for example, \cite[Chapter III, Theorem 6.14]{MR600654}.  
+\begin{example}
+    Let $n\geq2$. 
+    The abelian group $\Z/n=\{0,1,\dots,n-1\}$ of integers modulo $n$ is a ring 
+    with the usual multiplication modulo $n$. 
+\end{example}
 
-\begin{exercise}
-    Prove that $\R[X,Y]$ is a unique factorization domain 
-    and the ideal $I=(X,Y)$ is not principal. 
+\begin{example}
+    Let $n\geq1$. 
+    The set $M_n(\R)$ of real $n\times n$ matrices is a ring with the usual matrix operations. Recall
+    that if $a=(a_{ij})$ and $b=(b_{ij})$, the multiplication $ab$ is given by
+    \[
+    (ab)_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.
+    \]
+    Note that $M_n(\R)$ is conmutative if and only if $n=1$. 
+\end{example}
+
+Similarly, for any ring $R$ one defines the ring $M_n(R)$ of $n\times n$ matrices
+with coefficients in $R$. 
+
+\begin{example}
+\label{exa:direct_rings}
+    \index{Product direct of rings}
+    Let $R$ and $S$ be rings. Then 
+    $R\times S=(\{(r,s):r\in R,s\in S\}$ 
+    is a ring with the operations 
+    \[
+    (r,s)+(r_1,s_1)=(r+r_1,s+s_1),\quad 
+    (r,s)(r_1,s_1)=(rr_1,ss_1).
+    \]
+    The zero of $R\times S$ is $(0_R,0_S)$ and 
+    the unit element of $R\times S$ is $(1_R,1_S)$. The ring 
+    $R\times S$ is known as the \emph{direct product} of $R$ and $S$. 
+\end{example}
+
+\begin{definition}
+\index{Subring}
+    Let $R$ be a ring. A \emph{subring} $S$ of $R$ is a subset $S$ such that
+    $(S,+)$ is a subgroup of $(R,+)$ such that $1\in S$ and 
+    if $x,y\in S$, then $xy\in S$. 
+\end{definition}
+
+For example, $\Z\subseteq\Q\subseteq\R\subseteq\C$ is a chain of subrings. 
+
+\begin{example}
+    \index{Gauss integers}
+    $\Z[i]=\{a+bi:a,b\in\Z\}$ is a subring of $\C$. 
+    This is known as the ring of \emph{Gauss integers}.  
+\end{example}
+
+A \emph{square-free} integer is an integer that is divisible by 
+no perfect square other than 1. Some examples: 2, 3, 5, 6, 7, and 10. 
+The numbers 4, 8, 9, and 12 are not square-free. 
+
+\begin{example}
+	Let $N$ be a square-free integer. Then $\Z[\sqrt{N}]$ is
+	a subring of $\C$.  	
+\end{example}
+
+If $N$ is a square-free integer, then 
+$a+b\sqrt{N}=c+d\sqrt{N}$ in $\Z[\sqrt{N}]$ 
+if and only if $a=c$ and $b=d$. Why?
+
+\begin{example}
+    $\Q[\sqrt{2}]=\{a+b\sqrt{2}:a,b\in\Q\}$ is a subring of $\R$. 
+\end{example}
+
+Why in the ring $\Q[\sqrt{2}]$ 
+equality $a+b\sqrt{2}=c+d\sqrt{2}$ implies $a=c$ and $b=d$?
+
+\begin{example}
+    \index{Center!of a ring}
+    If $R$ is a ring, then the \emph{center} 
+    \[
+    Z(R)=\{x\in R:xy=yx\text{ for all $y\in R$}\}
+    \]
+    is a subring of $R$. 
+\end{example}
+
+If $S$ is a subring of a ring $R$, then the zero-element 
+of $S$ is the zero-element of $R$, i.e., $0_R=0_S$. Moreover, 
+the additive inverse of an element $s\in S$ 
+is the additive inverse of $s$ as an element of $R$. 	
+
+\begin{exercise}\
+    \label{xca:subrings}
+\begin{enumerate}
+	\item If $S$ and $T$ are subrings of $R$, then $S\cap T$ is a subring of $R$.
+	\item If $R_1\subseteq R_2\subseteq\cdots$ is a sequence of subrings of $R$, then 
+	$\cup_{i\geq1}R_i$ is a subring of $R$. 
+\end{enumerate}
 \end{exercise}
 
-% Since $\R[X]$ is a unique factorization domain, $\R[X,Y]=\R[X])[Y]$
-% is a unique factorization domain. Assume that $I$ is principal and let $I=(f(X,Y))$ 
-% for some $f(X,Y)\in\R[X,Y]$. Since $X=f(X,Y)p(X,Y)$ and $Y=f(X,Y)q(X,Y)$
-% for some $p(X,Y)\in\R[X,Y]$ and $q(X,Y)\in\R[X,Y]$, it 
-% follows from comparing degrees that $f(X,Y)$ is constant. Thus $I=\R[X,Y]$,
-% a contradiction
+\begin{definition}
+\index{Units}
+	Let $R$ be a ring. An element $x\in R$ is 
+	a \emph{unit} if there exists $y\in R$ such that $xy=yx=1$. 
+\end{definition}
+
+The set $\mathcal{U}(R)$ of units of a ring $R$ form 
+a group with the multiplication. For example, $\mathcal{U}(\Z)=\{-1,1\}$ and 
+$\mathcal{U}(\Z/8)=\{1,3,5,7\}$. 
+
+\begin{exercise}
+\label{xca:units_R[X]}
+Compute $\mathcal{U}(\R[X])$.
+\end{exercise}
+
+\begin{definition}
+	\index{Ring!division}
+	A \emph{division ring} is a ring $R\neq\{0\}$ 
+	such that $\mathcal{U}(R)=R\setminus\{0\}$.  	
+\end{definition}
+
+\index{Quaternions}
+The ring $H(\R)$ of \emph{real quaternions} is a non-commutative division ring. Find the inverse of
+an arbitrary element $a1+bi+cj+dk\in H(\R)$. 
+
+\begin{definition}
+\index{Field}
+	A \emph{field} is a commutative division ring (with $1\ne 0$). 
+\end{definition}
+
+For example, $\Q$, $\R$, and $\C$ are fields. 
+If $p$ is a prime number, then $\Z/p$ is a field. 	
+
+\begin{exercise}
+\label{xca:Qsqrt2}
+	Prove that $\Q[\sqrt{2}]$ is a field. 
+	Find the multiplicative inverse of a non-zero element of the form 
+	$x+y\sqrt{2}\in\Q[\sqrt{2}]$.  
+\end{exercise}
+
+More challenging: Prove that 
+\[
+\Q[\sqrt[3]{2}]=\{x+y\sqrt[3]{2}+z\sqrt[3]{4}:x,y,z\in\Q\}
+\]
+is a field. What is the inverse of a non-zero element of the form $x+y\sqrt[3]{2}+z\sqrt[3]{4}$?
+
+\subsection{Ideals}
+
+\begin{definition}
+\index{Ideal!left}
+	Let $R$ be a ring. A \emph{left ideal} of $R$ is a subset $I\subseteq R$ such that 
+	$(I,+)$ is a subgroup of $(R,+)$ and $RI\subseteq I$, 
+	i.e. $ry\in I$ for all $r\in R$ and $y\in I$. 
+\end{definition}
+
+\index{Ideal!right}
+Similarly, one defines \emph{right ideals}, one needs 
+to replace the condition $RI\subseteq I$ by 
+the inclusion 
+$IR\subseteq I$. 
+
+\begin{example}
+Let $R=M_{2}(\mathbb{R})$. Then   
+\[
+I=\left(\begin{array}{cc}
+\mathbb{R} & \mathbb{R}\\
+0 & 0
+\end{array}\right)=\left\{ \left(\begin{array}{cc}
+x & y\\
+0 & 0
+\end{array}\right):x,y\in\mathbb{R}\right\} 
+\]
+is a right ideal $R$ that is not a left ideal. 
+\end{example}
+
+Can you find an 
+example of a right ideal that is not a left ideal?
+
+\begin{definition}
+\index{Ideal}	
+Let $R$ be a ring. An \emph{ideal} of $R$ 
+is a subset that is both a left and a right ideal of $R$. 
+\end{definition}
+ 
+If $R$ is a ring, then $\{0\}$ and $R$ are both ideals of $R$. 
+
+\begin{exercise}
+\label{xca:ideals}
+Let $R$ be a ring. 
+\begin{enumerate}
+\item If $\{I_\alpha:\alpha\in\Lambda\}$ is a collection of ideals of $R$, then $\cap_{\alpha}I_\alpha$ is an ideal of $R$.  	
+\item If $I_1\subseteq I_2\subseteq\cdots$ is a sequence of ideals of $R$, then $\cup_{i\geq1}I_i$ is an ideal of $R$. 
+\end{enumerate}
+\end{exercise}
+
+
+\begin{example}
+Let $R=\R[X]$. If $f(X)\in R$, then the set 
+\[
+(f(X))=\{f(X)g(X):g(X)\in R\}
+\]
+of multiples of $f(X)$ is an ideal of $R$. One can prove that this is the smallest 
+ideal of $R$ containing $f(X)$.  	
+\end{example}
+
+If $R$ is a ring and $X$ is a subset of $R$, one defines
+the ideal generated by $X$ as the smallest ideal of $R$ containing $X$, that is 
+\[
+(X)=\bigcap\{I:\text{$I$ ideal of $R$ such that $X\subseteq I$}\}.
+\]
+One proves that 
+\[
+(X)=\left\{\sum_{i=1}^mr_ix_is_i:m\in\Z_{\geq0},\,x_1,\dots,x_m\in X,\,r_1,\dots,r_m,s_1,\dots,s_m\in R\right\}, 
+\]
+where by convention, the empty sum is equal to zero. If $X=\{x_1,\dots,x_n\}$ is a finite
+set, then we write $(X)=(x_1,\dots,x_n)$. 
+
+\begin{exercise}
+\label{xca:ideals_Z}
+Prove that every ideal of $\Z$ is of the form $n\Z$ for some $n\geq0$. 	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:ideals_Zn}
+Let $n\geq2$. Find the ideals of $\Z/n$. 	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:ideals_R}
+Find the ideals of $\R$.	
+\end{exercise}
+
+A similar exercise is to find the ideals of any division ring.  
+
+\begin{exercise}
+\label{xca:ideals_matrices}
+    Let $R$ be a commutative ring. Prove that every ideal of $M_n(R)$ is 
+    of the form $M_n(I)$ for some ideal $I$ of $R$. 
+\end{exercise}
+
+%\begin{sol}{xca:ideals}
+%    Recall the formula $E_{ij}E_{jk}=E_{ik}$ for elementary matrices.  
+%    
+%    Let $J$ be an ideal of $M_n(R)$. For a matrix $A=(a_{ij})$,
+%    $E_{ki}AE_{jl}=a_{ij}E_{kl}$ for all $i,j,k,l$. Let 
+%    \[
+%    I=\{r\in R:rE_{11}\in J\}.
+%    \]
+%    Then $I$ is an ideal of $R$. Since $a_{ij}E_{11}=E_{1i}AE_{j1}$, 
+%    $J\subseteq M_n(I)$. 
+%    
+%    Conversely, if $A\in M_n(I)$, then $A$ is a sum of elements 
+%    of the form $rE_{ij}$ for $r\in I$. Thus $rE_{ij}\in J$ for $r\in I$ 
+%    and hence $A\in J$. 
+%\end{sol}
+
+
+\begin{definition}
+\index{Ideal!principal}
+Let $R$ be a ring and $I$ be an ideal of $R$. Then $I$ is \emph{principal}
+if $I=(x)$ for some $x\in R$. 	
+\end{definition}
+
+The division algorithm shows that every ideal of $\Z$ is principal, 
+see Exercise~\ref{xca:ideals_Z}.  
+
+The ring $\R[X]$ of real polynomials also has a division algorithm. Given the polynomials 
+$f(X)\in\R[X]$ and $g(X)\in\R[X]$ with $g(X)\ne 0$, there are  
+polynomials $q(X)\in\R[X]$ and $r(X)\in\R[X]$ such that 
+\[
+f(X)=q(X)g(X)+r(X),
+\]
+where $r(X)=0$ or $\deg r(X)<\deg g(X)$. 
+
+For example, 
+if $f(X)=2X^5-X$ and $g(X)=X^2+1$, then 
+\[
+f(X)=q(X)g(X)+r(X),
+\]
+where $q(X)=2X^3-2X$ and $r(X)=X$. 
+
+\begin{exercise}
+\label{xca:R[X]_principal}
+	Prove that every ideal of $\R[X]$ is principal. 
+\end{exercise}
+
+If $K$ is a field, there is a division algorithm in the 
+polynomial ring $K[X]$. Then one proves 
+that every ideal of $K[X]$ is principal.  
+
+\begin{exercise}
+\label{xca:x_unit}
+	Let $R$ be a commutative ring and $x\in R$. Prove that $x\in\mathcal{U}(R)$ if and only if
+	$(x)=R$. What happens if $R$ is non-commutative?
+\end{exercise}
+
+A division ring (and, in particular, a field) has only two ideals. 
+
+\subsection{Ring homomorphisms}
+
+\begin{definition}
+\index{Ring!homomorphism}
+Let $R$ and $S$ be rings. A map $f\colon R\to S$ is a \emph{ring homomorphism}  
+if $f(1)=1$, $f(x+y)=f(x)+f(y)$ and $f(xy)=f(x)f(y)$ for all $x,y\in R$. 	
+\end{definition}
+
+Our definition of a ring is that of a ring with identity. This means
+that the identity element $1$ of a ring $R$ 
+is part of the structure. For that reason, in 
+the definition
+of a ring homomorphism $f$ one needs $f(1)=1$.  
+
+\begin{example}
+The map $f\colon\Z/6\to\Z/6$, $x\mapsto 3x$, satisfies 
+\[
+f(xy)=f(x)f(y)\quad\text{and}\quad f(x+y)=f(x)+f(y)
+\]
+for all $x,y\in\Z/6$. However, $f$ is not a ring homomorphism because~$f(1)=3$. 	
+\end{example}
+ 
+If $R$ is a ring, then  
+the identity map $\id\colon R\to R$, $x\mapsto x$, is a ring homomorphism. 	
+
+\begin{example}
+The inclusions $\Z\hookrightarrow\Q\hookrightarrow\R\hookrightarrow\C$ 
+are ring homomorphisms. 	
+\end{example}
+
+More generally, if $S$ is a subring of a ring $R$, then the inclusion map 
+$S\hookrightarrow R$ is a ring homomorphism. 
+
+\begin{example}
+Let $R$ be a ring. 
+The map $\Z\to R$, $k\mapsto k1$, is a ring homomorphism. 	
+\end{example}
+
+\begin{example}
+Let $x_0\in\R$. The evaluation map $\R[X]\to\R$, $f\mapsto f(x_0)$, 
+is a ring homomorphism. 	
+\end{example}
+
+The \emph{kernel} of a ring homomorphism
+$f\colon R\to S$ is the subset
+\[
+\ker f=\{x\in R:f(x)=0\}.
+\]
+One proves that the kernel of $f$ is an ideal of $R$.  
+Moreover, recall from group theory that 
+$\ker f=\{0\}$ if and only if $f$ is injective. The image 
+\[
+f(R)=\{f(x):x\in R\}
+\]
+is a subring of $S$. In general, $f(R)$ is not an ideal of $S$. 
+
+\begin{example}
+The inclusion $\Z\hookrightarrow\Z[X]$ is a ring homomorphism. Then
+$2\Z$ is an ideal of $\Z$ but not an ideal of $\Z[X]$. 
+\end{example}
+
+\begin{example}
+    Let $R$ and $S$ be rings and $R\times S$ be the direct product (see Example~\ref{exa:direct_rings}). 
+    The map $R\to R\times S$, $r\mapsto (r,0)$ is an injective ring homomorphism. The 
+    map 
+    \[
+    \pi_R\colon R\times S\to R,\quad (r,s)\mapsto r,
+    \]
+    is a surjective ring homomorphism with $\ker\pi_R=\{(0,s):s\in S\}=\{0\}\times S$. 
+\end{example}
+
+\begin{example}
+	The map $\C\to M_2(\R)$, $a+bi\mapsto\begin{pmatrix}a&b\\-b&a\end{pmatrix}$, is an injective
+	ring homomorphism. 	
+\end{example}
+
+\begin{example}
+The map $\Z[i]\to\Z/5$, $a+bi\mapsto a+2b\bmod 5$, is a ring homomorphism 
+with $\ker f=\{a+bi:a+2b\equiv 0\bmod 5\}$. 	
+\end{example}
+
+\begin{exercise}
+\label{xca:Z6->Z15}
+There is no ring homomorphism $\Z/6\to\Z/15$. Why?	
+\end{exercise}
+
+\begin{exercise}
+If $f\colon\R[X]\to\R$ is a ring homomorphism 
+such that the restriction $f|_{\R}$ of 
+$f$ onto $\R$ is the identity, then there exists $x_0\in\R$ such that 
+$f$ is the evaluation map at~$x_0$. 
+\end{exercise}
+
