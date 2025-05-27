@@ -1,547 +1,692 @@
 \section{Lecture -- Week 5}
 
-The following picture shows 
-the relationships between 
-different classes of commutative domains:
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[node distance=4mm, >=latex',
-block/.style = {draw, rectangle, minimum height=10mm, minimum width=28mm,align=center}]
-    \node [block]                      (E)     {Euclidean};
-    \node [block, right=of E]       (P)   {Principal};
-    \node [block, right=of P]     (UF)  {Unique factorization};
-    \node [block, below=of UF]    (F) {Factorization};
-    \node [block, below=of P]     (N)  {Noetherian};
-    \path[draw,->] (E)      edge (P)
-                   (P)    edge (UF)
-                   (UF)   edge (F)
-                   (P)       edge (N)
-                   (N)   edge (F)
-                    ;
-    \end{tikzpicture}
-\end{figure}
+\subsection{Quotients}
 
-We also know that the  
-reverse implications do not hold. 
+Let $R$ be a ring and $I$ be an ideal of $R$. 
+Then $R/I$ is an abelian group
+with 
+\[
+(x+I)+(y+I)=(x+y)+I
+\]
+and the 
+\emph{canonical map} 
+$R\to R/I$, $x\mapsto x+I$,
+is a surjective group homomorphism with kernel $I$. Recall that 
+$R/I$ is the set of cosets $x+I$, where 
+\[
+x+I=y+I\Longleftrightarrow x-y\in I.
+\]
 
-It is time to give a very nice number-theoretical application.
+Note that here we only used
+that $I$ is an additive subgroup of $R$. We need an ideal to put a ring structure
+on the set $R/I$ of cosets modulo $I$. As in the case of the integers, 
+we use the following notation. For $x,y\in R$ 
+we write 
+\[
+x\equiv y\bmod I\Longleftrightarrow x-y\in I.
+\]
 
-\begin{theorem}[Fermat]
-\index{Fermat's theorem}
-\label{thm:Fermat}
-	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
-	\begin{enumerate}
-	    \item $p=2$ or $p\equiv1\bmod 4$.
-	    \item There exists $a\in\Z$ such that $a^2\equiv-1\bmod p$.
-	    \item $p$ is not irreducible in $\Z[i]$.
-	    \item $p=a^2+b^2$ for some $a,b\in\Z$.
-	\end{enumerate}
+How can we put a ring structure on $R/I$? It makes sense
+to define a multiplication on $R/I$ so that
+the canonical map $R\to R/I$ is a surjective ring homomorphism. For that purpose, 
+we define 
+\[
+(x+I)(y+I)=(xy)+I.
+\]
+Since $I$ is an ideal of $R$, this multiplication is well-defined. In fact, let 
+$x+I=x_1+I$ and $y+I=y_1+I$. We want to show that
+$xy+I=x_1y_1+I$. Since $x-x_1\in I$, 
+\[
+xy-x_1y=(x-x_1)y\in I
+\]
+because $I$ is a right ideal. Similarly, since $y-y_1\in I$, it follows that 
+\[
+x_1y-x_1y_1=x_1(y-y_1)\in I,
+\]
+as $I$ is a left ideal. Thus
+\[
+xy-x_1y_1=xy-x_1y+x_1y-x_1y_1=(x-x_1)y+x_1(y-y_1)\in I.
+\]
+
+\begin{theorem}
+\label{thm:quotient_ring}
+	Let $R$ be a ring and $I$ be an ideal of $R$. Then
+	$R/I$ with 
+	\[
+	(x+I)+(y+I)=(x+y)+I,\quad
+	(x+I)(y+I)=(xy)+I,
+	\]
+	is a ring and the canonical map $R\to R/I$, $x\mapsto x+I$, 
+	is a surjective ring homomorphism with kernel~$I$. 
 \end{theorem}
 
-\begin{proof}
-    We first prove that $1)\implies 2)$. If $p=2$, take $a=1$. If $p=4k+1$ for some $k\in\Z$, then
-    by Fermat's little theorem, the polynomial 
-    $X^{p-1}-1\in(\Z/p)[X]$ has roots $1,2,\dots,p-1$. Write
-    \[
-    (X-1)(X-2)\cdots (X-(p-1))=X^{p-1}-1=X^{4k}-1=(X^{2k}+1)(X^{2k}-1)
-    \]
-    in $(\Z/p)[X]$. Since $p$ is prime, $\Z/p$ is a field, and hence 
-    $(\Z/p)[X]$ is a unique factorization domain (because it is euclidean). Thus 
-    there exists $\alpha\in\Z/p$ such that $\alpha^{2k}+1=0$. To finish the proof
-    take $a=\alpha^k$. 
-    
-    We now prove that $2)\implies 3)$. If $a^2\equiv-1\bmod p$, then $a^2+1=kp$ 
-    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. Let us prove that $p$ is not prime in $\Z[i]$. 
-    We claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
-    $a-i=p(e+fi)$ for some $e,f\in\Z$ and this implies that $1=pf$, a contradiction. Similarly,
-    $p$ does not divide $a+i$. Thus $p$ is not prime in $\Z[i]$ 
-    and hence it is not irreducible in $\Z[i]$ (because in $\Z[i]$ primes and irreducible coincide). 
-    
-    We now prove that $3)\implies 4)$. If $p=(a+bi)(c+di)$ with $a+bi\not\in\mathcal{U}(\Z[i])$
-    and  $c+di\not\in\mathcal{U}(\Z[i])$, then
-    \[
-    p^2=\norm(p)=\norm(a+bi)\norm(c+di)=(a^2+b^2)(c^2+d^2)
-    \]
-    in $\Z$. Since $\Z$ has unique factorization, it follows that $p=a^2+b^2$. 
-    
-    Finally, we prove that $4)\implies 1)$. 
-    The only possible remainders after division by four are $0,1,2$ and $3$.  
-    For all $a$, either $a^2\equiv 0\bmod 4$ or $a^2\equiv 1\bmod 4$. 
-    If $p\equiv3\bmod 4$, then $p$ is never a sum of two squares, as 
-    $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ or $a^2+b^2\equiv 2\bmod 4$. 
-\end{proof}
-
-An alternative proof of the implication 
-$1)\implies 2)$ goes as follows: if $p=4k+1$ is prime, then 
-$x=(2k)!$ is such that $x^2\equiv -1\bmod p$. By Wilson's theorem, 
-\[
-(p-1)! = (4k)!\equiv \bmod p.
-\]
-Moreover,  
+We have already seen that multiplication is well-defined. 
+The rest of the proof is left as an exercise. As an example, we show that 
+the left distributive property holds
+in $R/I$ because it holds in $R$, that is 
 \begin{align*}
-(4k)!&\equiv(4k)(4k-1)\cdots(2k+2)(2k+1)(2k)(2k-1)\cdots1\bmod p\\
-&\equiv-1(-2)\cdots(-2k+1)(-2k)(2k)(2k-1)\cdots1\bmod p\\
-&\equiv(-1)^{2k}(2k)!(2k)!\bmod p.
+    (x+I)\left((y+I)+(z+I)\right) &= (x+I)(y+z+I)\\
+    &=x(y+z)+I\\
+    &=xy+xz+I\\
+    &=(xy+I)(xz+I)\\
+    &=(x+I)(y+I)+(x+I)(z+I).
 \end{align*}
-Hence $x=(2k)!$ is such that $x^2\equiv -1\bmod p$.
 
 \begin{exercise}
-    Decompose the prime 41 as a sum of two squares. 
+\label{xca:quotient_ring}
+    Prove Theorem \ref{thm:quotient_ring}.
 \end{exercise}
 
-The previous exercise can be solved by using computers and 
-a beautiful formula of Gauss that uses binomial coefficients. Let $p=4k+1$ be a prime number. 
-If 
-\[
-a=\left\langle \frac12\binom{2k}{k}\right\rangle, 
-\quad
-b=\langle (2k)!a\rangle,
-\]
-where $\langle x\rangle$ denotes the 
-residue of $x$ modulo $p$ of absolute value smaller than $p/2$, 
-then it follows that $p=a^2+b^2$. Simple and beautiful as it is, Gauss' formula does not seem to be of any real computational value. 
-
-In \cite{MR1041889}, the author employs the Euclidean algorithm to determine efficiently 
-the decomposition of a prime number $p=4k+1$ as the sum of two squares.
-
-\begin{exercise}
-\label{xca:p=3(4)}
-    Let $\alpha\in\Z[i]$ be such that $\norm(\alpha)=p^2$ 
-    for some prime number $p\in\Z$ with $p\equiv3\bmod 4$. 
-    Prove that $\alpha$ is irreducible. 
-\end{exercise}
-
-\begin{exercise}
-    \label{xca:p=1(4)}
-    Let $p\in\Z$ be a prime number such that $p\equiv1\bmod 4$.
-    Then $p=\alpha\overline{\alpha}$
-    for some $\alpha\in\Z[i]$ irreducible. 
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Z[i]irreducibles}
-Find the irreducible elements of $\Z[i]$. 
-\end{exercise}
-
-As a consequence of Theorem \ref{thm:Fermat}
-one can prove the following result: An integer $\geq2$ can be written as a sum of two squares if and only if its prime decomposition contains no factor $p^k$, where 
-$p\equiv 3\bmod 4$ 
-and $k$ is odd. 
-
-The numbers that can be represented as the sums of two squares form the integer sequence \href{https://oeis.org/A001481}{A001481}: 
-\[
-0, 1, 2, 4, 5, 8, 9, 10, 13, 16, 17, 18, 20, 25, 26, 29, 32,\dots 
-\] 
-They form the set of all norms of Gaussian integers. 
-
-
-\begin{bonus}[Eisenstein integers]
-\index{Eisenstein integers}
-    %This exercise is about \emph{Eisenstein integers}. 
-    \label{xca:Eisenstein}
-    Let $\omega=e^{2\pi i/3}\in\C$ and 
-    \[
-    R=\Z[\omega]=\{a+b\omega:a,b\in\Z\}.
+\begin{example}
+	Let $R=(\Z/3)[X]$ and $I=(2X^2+X+2)$ be the ideal of $R$ 
+	generated by the polynomial $2X^2+X+2$. 	If $f(X)\in R$, 
+	the division algorithm allows us to write
+	\[
+	f(X)=(2X^2+X+2)q(X)+r(X),
+	\]
+	for some $q(X),r(X)\in R$, where either $r(X)=0$ or $\deg r(X)<2$. 
+	This means
+	that $r(X)=aX+b$ for some $a,b\in\Z/3$.
+	Note that
+	\[
+    f(X)\equiv aX+b\bmod (2X^2+X+2)
     \]
-    Prove the following statements:
-    \begin{enumerate}
-        \item The map 
-        \[
-        N\colon R\to\Z_{\geq0},
-        \quad
-        \norm(a+b\omega)=a^2-ab+b^2,
-        \]
-        is multiplicative and 
-        satisfies $\norm(\alpha)=\alpha\overline{\alpha}$
-        for all $\alpha\in R$. 
-        \item $\mathcal{U}(R)=\{1,-1,\omega,-\omega,\omega^2,-\omega^2\}$.
-        \item $R$ is a euclidean domain.
-        \item If $\norm(\alpha)$ is a prime number, then $\alpha$ is irreducible. 
-        \item If $\norm(\alpha)=p^2$ for some 
-            prime number $p$ with $p\equiv 2\bmod 3$, then 
-            $\alpha$ is irreducible. 
-        \item If $p\equiv 1\bmod 3$, then 
-            $p=\gamma\overline{\gamma}$ for some 
-            irreducible $\gamma\in R$.
-        \item Up to multiplication by units, 
-            the irreducible elements of $R$ are $1-2\omega$, 
-            $a+b\omega$ with $a^2-ab+b^2=p$ and $p\equiv 1\bmod 3$, 
-            and prime numbers $p\in\Z$ with $p\equiv 2\bmod 3$.
-    \end{enumerate}
-\end{bonus}
-
-
-\subsection{Zorn's lemma}
-
-\begin{definition}
-\index{Poset}
-\index{Partially ordered set}
-A non-empty set $R$ is said to be a \emph{partially ordered set} (or \emph{poset}, for short) 
-if there is a subset $X\subseteq R\times R$ such that
-\begin{enumerate}
-    \item $(r,r)\in X$ for all $r\in R$, 
-    \item if $(r,s)\in X$ and $(s,t)\in X$, then $(r,t)\in X$, and 
-    \item if $(r,s)\in X$ and $(s,r)\in X$, then $r=s$. 
-\end{enumerate}
-\end{definition}
-
-The set $X$ is a partial order relation on $R$.  
-We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreover, 
-$r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$. With this notation, the conditions
-needed to define a poset are the following:
-\begin{enumerate}
-    \item $r\leq r$ for all $r\in R$,
-    \item if $r\leq s$ and $s\leq t$, then $r\leq t$, and 
-    \item if $r\leq s$ and $s\leq r$, then $r=s$. 
-\end{enumerate}
-
-\begin{definition}
-Let $R$ be a poset and $r,s\in R$. Then $r$ and $s$ are \emph{comparable}
-if either $r\leq s$ or $s\leq r$.
-\end{definition}
-
-\begin{example}
-    Let $U=\{1,2,3,4,5\}$ and $T$ be the set of subsets of $U$. Then $T$ is a poset
-    with the usual inclusion, that is $C\leq D$ if and only if $C\subseteq D$. The subsets
-    $\{1,2\}$ and $\{3,4\}$ of $U$ are elements of $T$ that are not comparable. 
+	for some $a,b\in\Z/3$, 
+	so the quotient ring $R/I$ has 
+	nine elements.  Can you find an expression for the product 
+	$(aX+b)(cX+d)$ in $R/I$?
 \end{example}
 
-\index{Hasse diagram}
-Is there a good pictorial representation of a poset? A \emph{Hasse diagram} is a common way to represent one. It is a graph in which the vertices represent the elements of the poset. Elements connected by an arrow are comparable, while elements not connected are incomparable. Specifically, if $x$ and $y$ are elements of a poset, we draw an arrow from $x$ to $y$ if and only if $x \neq y$ and there is no element $z$ such that $x < z < y$.
-
-\begin{example}
-   The \emph{Hasse diagram} of the set of all subsets of $\{a,b,c\}$, 
-   ordered by inclusion, is the following:
-\[\begin{tikzcd}
-	& {\{a,b,c\}} \\
-	{\{a,b\}} & {\{a,c\}} & {\{b,c\}} \\
-	{\{a\}} & {\{b\}} & {\{c\}} \\
-	& \emptyset
-	\arrow[from=2-1, to=1-2]
-	\arrow[from=2-2, to=1-2]
-	\arrow[from=2-3, to=1-2]
-	\arrow[from=3-1, to=2-1]
-	\arrow[from=3-1, to=2-2]
-	\arrow[from=3-2, to=2-1]
-	\arrow[from=3-2, to=2-3]
-	\arrow[from=3-3, to=2-2]
-	\arrow[from=3-3, to=2-3]
-	\arrow[from=4-2, to=3-1]
-	\arrow[from=4-2, to=3-2]
-	\arrow[from=4-2, to=3-3]
-\end{tikzcd}\]
-\end{example}
-
-\begin{definition}
-    Let $R$ be a poset and $r\in R$. Then $r$ is \emph{maximal} in $R$ if 
-    $r\leq t$ implies $r=t$. 
-\end{definition}
-
-\begin{example}
-    $\Z$ with the poset structure given by the usual ordering, has no maximal elements. 
-\end{example}
-
-\begin{example}
-Let $R=\{(x,y)\in\R^2:y\leq0\}$ with $(x_1,y_1)\leq(x_2,y_2)$ if and only if $x_1=x_2$ and $y_1\leq y_2$. Then
-$R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal elements.
-\end{example}
-
-\begin{definition}
-    Let $R$ be a poset and $S$ be a non-empty subset of $R$. An \emph{upper bound}
-    for $S$ is an element $u\in R$ such that $s\leq u$ for all $s\in S$. 
-\end{definition}
-
-An upper bound for $S$ might not be an element of $S$. 
-
-\begin{example}
-    Let $S=\{6\Z,12\Z,24\Z\}$ be a subset of the set $X$ 
-    of subgroups of $\Z$ partially ordered by 
-    the inclusion. Then 
-    $6\Z=6\Z\cup 12\Z\cup 24\Z$ is an upper bound of the subset~$S$ 
-    that is not maximal in $X$. 
-\end{example}
-
-\begin{example}
-    Let $R=\{\emptyset, \{1\},\{2\},\{3\},\{1,2\}\}$ partially ordered with
-    the inclusion, where $R$ is considered as a subset
-    of the power set of $X=\{1,2,3\}$. 
-    Then $\{3\}$ and $\{1,2\}$ are maximal elements of $R$. Moreover, 
-    $X$ is an upper bound for $R$. 
-\end{example}
-
-
-\begin{definition}
-    Let $R$ be a poset. A \emph{chain} is a non-empty subset $S$ of $R$ such that
-    any two elements of $S$ are comparable. 
-\end{definition}
-
-We now state \emph{Zorn's lemma}:
-
-\begin{quote}
-\index{Zorn's lemma}
-\color{blue!50!black}{\textit{Let $R$ be a poset such that 
-every chain in $R$ admits an upper bound in $R$. 
-Then $R$ contains a maximal element.}}
-\end{quote}
-
-% It is not intuitive\footnote{The mathematician
-% Jerry L. Bona has a nice joke about Zorn's lemma: 
-% \textit{The Axiom of Choice is obviously true, 
-% the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}
-% but it is logically equivalent to a more 
-% intuitive statement in set theory, the Axiom of Choice, 
-% which says every Cartesian product of non-empty sets is non-empty. 
-% It is more an axiom than a lemma. 
-% The reason for calling Zorn’s lemma a lemma rather 
-% than an axiom is purely historical. 
-
-It may not be intuitive\footnote{The mathematician
-Jerry L. Bona has a nice joke about Zorn's lemma: 
-\textit{The Axiom of Choice is obviously true, 
-the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}, but it is logically equivalent to a more intuitive statement in set theory: the \emph{Axiom of Choice}, which states that the Cartesian product of a collection of non-empty sets is non-empty. Zorn's lemma is an axiom, not a lemma. The reason it is called a lemma, rather than an axiom, is purely historical.
-
-\begin{definition}
-	\index{Ideal!maximal}
-	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \emph{maximal}
-	if $I\ne R$ and if $J$ is an ideal of $R$ such that $I\subseteq J$, then 
-	either $I=J$ or $J=R$. 
-\end{definition}
-
-If $p$ is a prime number, then $p\Z$ is a maximal ideal of $\Z$.
+\index{Isomorphism}
+An \emph{isomorphism} between the rings $R$ and $S$ is a bijective
+ring homomorphism $R\to S$. If such a homomorphism exists, then $R$ and $S$ are said to be isomorphic, and the notation is 
+$R\simeq S$. 
 
 \begin{exercise}
-Let $R$ be a commutative ring. Prove that $R$ is a 
-field if and only if $\{0\}$ is a maximal ideal of $R$. 	
+\label{xca:iso}
+    Prove that ring isomorphism is an equivalence relation.
 \end{exercise}
 
-\begin{exercise}
-\label{xca:maximal<=>field}
-Let $R$ be a commutative ring and $I$ be an ideal of $R$. Prove that $I$ is maximal
-if and only if $R/I$ is a field.  	
-\end{exercise}
+As it happens in the case of groups, 
+to understand quotient rings, one has 
+the first isomorphism theorem. 
 
-\index{Ideal!proper}
-An ideal $I$ of a ring $R$ is said to be \emph{proper}
-if $I\ne R$. 
-
-\begin{theorem}[Krull]
-\index{Krull's theorem}
-	Let $R$ be a ring. Each proper ideal $I$ of $R$ 
-	is contained in a maximal ideal. 
-	In particular, all rings have maximal ideals. 	
+\begin{theorem}[First isomorphism theorem]
+\index{First isomorphism theorem!for rings}
+\label{thm:ring_iso1}
+	If $f\colon R\to S$ is a ring homomorphism, then $R/\ker f\simeq f(R)$.  	
 \end{theorem}
 
-\begin{proof}
-	Let $X=\{J:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
-	Since $I\in X$, it follows that $X$ is non-empty. Moreover, $X$ is a poset
-	with respect to inclusion. If $C$ is a chain in $X$ (for example, $C$ could be   
-	an increasing sequence
+This is somewhat similar to the result one knows from group theory. 
+One needs to show that, if $I=\ker f$, then 
+the map $R/I\to f(R)$, $x+I\mapsto f(x)$, is a well-defined 
+bijective ring homomorphism. 
+
+\begin{exercise}
+\label{xca:first_iso}
+    Prove Theorem \ref{thm:ring_iso1}.
+\end{exercise}
+
+\begin{example}
+Let 
+\[
+R=\left\{\begin{pmatrix}
+a&b\\
+0&a
+\end{pmatrix}:a,b\in\Q\right\}
+\]
+with the usual matrix operations. 
+A direct calculation shows that the map $R\to\Q$, $\begin{pmatrix}a&b\\0&a\end{pmatrix}\mapsto a$, is a surjective 
+ring homomorphism with  
+\[
+\ker f=\left\{\begin{pmatrix}
+0&b\\
+0&0\end{pmatrix}:b\in\Q\right\}.
+\]
+Thus $R/\ker f\simeq\Q$. 	
+\end{example}
+
+\begin{example}
+    We will prove that 
 	\[
-	I_1\subseteq I_2\subseteq\cdots
+	\R[X]/(X^2+1)\simeq\C. 
 	\]
-	of proper ideals of $R$ containing $I$), then 
-	$\cup_{J\in C}J$ is an upper bound for $C$, as $\cup_{J\in C}J$ is an ideal and
-	$\cup_{J\in C}J\ne R$ because $1\not\in\cup_{J\in C}J$. 	Zorn's lemma implies that
-	there exists a maximal element $M\in X$. We claim that $M$ is a maximal ideal of $R$. The definition
-	of $X$ implies that $M$ is a proper ideal of $R$ that contains $I$. If $M_1$ is a proper ideal of $R$
-	such that $M\subseteq M_1$, it follows that $I\subseteq M_1$ and hence $M_1\in X$. The maximality
-	of $M$ implies that $M=M_1$.  
-\end{proof}
+    But before going into the technical proof, let us show how this
+    isomorphism works. 
+    Let $f(X)\in\R[X]$. 
+	The division algorithm on $\R[X]$ allows us to write
+	\[
+	f(X)=(X^2+1)q(X)+r(X)
+	\]
+	for some $q(X),r(X)\in\R[X]$, where $r(X)=0$ or $\deg r(X)<2$. Thus
+	$r(X)=aX+b$ for some $a,b\in\R$. This implies that
+	\[
+	f(X)\equiv aX+b\bmod (X^2+1).
+	\] 
+	It is quite easy to describe the ring operation of 
+	$\R[X]/(X^2+1)$. Clearly 
+	\[
+	(aX+b)+(cX+d)\equiv (a+c)X+(b+d)\bmod (X^2+1),
+	\]
+	Since $X^2\equiv -1\bmod (X^2+1)$,   	
+	\[
+	(aX+b)(cX+d)\equiv X(ad+bc)+(bd-ac), 
+	\]
+	which reminds us of the usual 
+	multiplication rule of the field of complex numbers. This means that, in practice, 
+	this quotient ring looks pretty much like the ring of 
+	complex numbers.
 
-In the proof of the previous theorem, we see that it is crucial to consider rings with 
-identity. 
+    Now is time to prove that
+	\[
+		\R[X]/(X^2+1)\simeq\C. 
+	\] 
+
+    Let $\varphi\colon \R[X]\to\C$, $f(X)\mapsto f(i)$, be the evaluation map. Then
+    $\varphi$ is a ring homomorphism. Moreover, $\varphi$ is surjective, as
+    $\varphi(a+bX)=a+bi$ for all $a,b\in\R$. 
+	
+	We claim that $\ker\varphi=(X^2+1)$, the ideal
+	of $\R[X]$ generated by the polynomial $X^2+1$.  
+    Clearly, every multiple of $X^2+1$, that is every polynomial
+    of the form $(X^2+1)g(X)$ for some $g(X)\in\R[X]$, belongs to the kernel of $\varphi$. 
+    Thus $(X^2+1)\subseteq\ker\varphi$. Conversely, if 
+    $f(X)\in\ker\varphi$, then $f(i)=0$. Thus 
+	\[
+        f(X)=(X-i)g(X)
+    \]
+    for some $g(X)\in\R[X]$. Since $f(X)\in\R[X]$, 
+    $f(-i)=0$ and hence $g(-i)=0$. Thus $X+i$ divides $g(X)$. Therefore 
+    \[
+        f(X)=(X-i)(X+i)h(X)=(X^2+1)h(X)
+    \]
+    for some $h(X)\in\R[X]$. Therefore $f(X)\in (X^2+1)$. 
+	
+	By the first 
+    isomorphism theorem, 
+    \[
+	\R[X]/\ker\varphi=\R[X]/(X^2+1)\simeq\C.
+	\] 
+\end{example}
 
 \begin{exercise}
-	Compute the maximal ideals of $\R[X]$ and $\C[X]$. 	
+	Prove that $\Z[\sqrt{-5}]\simeq\Z[X]/(X^2+5)$. 	
 \end{exercise}
 
-One can also compute the maximal ideals of $K[X]$ for any field $K$. 
+Similarly, if $N$ is a square-free integer, then 
+\[
+\Z[\sqrt{N}]\simeq\Z[X]/(X^2-N).
+\]
 
 \begin{exercise}
-	Let $R$ be a principal domain and $p\in R\setminus\{0\}$. 
-	Then $p$ is irreducible 
-	if and only if $(p)$ is maximal.	
-\end{exercise}
-
-\begin{definition}
-\index{Ideal!prime}
-Let $R$ be a commutative ring. A proper ideal $I$ of $R$ is said to be
-\emph{prime} if $xy\in I$ implies that $x\in I$ or $y\in I$. 
-\end{definition}
-
-If $p$ is a prime number, then $p\Z$ is a prime ideal of $\Z$.
-
-\begin{exercise}
-\label{xca:prime<=>domain}
-    Let $R$ be a commutative ring. 
-    Prove that an ideal $I$ of $R$ is prime if and only if $R/I$ is a domain. 
-\end{exercise}
-
-\begin{exercise}
-Let $R$ be a commutative ring. 
-\label{xca:maximal=>prime}
+\label{xca:ring_isos}
+Prove the following isomorphisms:
 \begin{enumerate}
-    \item Prove that maximal ideals are prime. 
-    \item Let $R=\Z[X]$. Prove that $(X)$ is a prime ideal that is not maximal.
-    \item Let $R$ be a principal domain. Prove that non-zero 
-    prime ideals are maximal. 
+	\item $\Z[X]/(7)\simeq (\Z/7)[X]$.
+	\item $\Q[\sqrt{2}]\simeq\Q[X]/(X^2-2)$.
+	\item $\R[X]/(X^2-1)\simeq\R\times\R$.
+	\item $\Q[X]/(X-2)\simeq\Q$.
+	\item $\R[X,Y]/(X)\simeq\R[Y]$. 
 \end{enumerate}
 \end{exercise}
 
-\begin{example}
-	The ideal $(X^2+2X+2)$ is maximal in $\Q[X]$ because
-	\[
-	X^2+2X+2=(X+1)^2+1
-	\]
-	has degree two and no rational roots. 
-	Hence $X^2+2X+2$ is irreducible in $\Q[X]$ and it generates 
-	a maximal ideal. 	
-\end{example}
-
-% \begin{exercise}
-% 	Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then 
-% 	$I$ is maximal if and only if $R/I$ is a field. 
-% \end{exercise}
-
-\begin{example}
-	Let $R=(\Z/2)[X]$ and $f(X)=X^2+X+1$. Since $f(X)$ is irreducible (because $\deg f(X)=2$ and
-	$f(X)$ has no roots in $\Z/2$, it follows that $(f(X))$ is a maximal ideal. 
-	Thus $R/I$ is a field. 
-\end{example}
-
 \begin{exercise}
-	Compute the maximal ideals of $\Z/n$. 	
+\label{xca:sqrt2and3}
+Are the rings $\Q[\sqrt{2}]$ and $\Q[\sqrt{3}]$ isomorphic?	
 \end{exercise}
 
 \begin{exercise}
-\label{xca:Jacobson}
-\index{Jacobson's radical}
-	Let $R$ be a commutative ring and $J(R)$ be the intersection of all maximal ideals 
-	of $R$. Prove that $x\in J(R)$ 
-	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is known
-	as the \emph{Jacobson's radical} of $R$. Note that $J(R)\ne R$.   
+\label{xca:continuos}
+	Let $R$ be the ring of continuous maps $[0,2]\to\R$, where the operations are given by 
+	\begin{align*}	    
+	(f+g)(x)&=f(x)+g(x),\\
+	(fg)(x)&=f(x)g(x).
+	\end{align*}
+	Prove that the set 
+	$I=\{f\in R:f(1)=0\}$ is an ideal of $R$ and that $R/I\simeq\R$.   	
 \end{exercise}
 
-We conclude the lecture with a different application of Zorn's lemma.  
+\begin{exercise}
+\label{xca:matrices}
+	Let $n\geq1$. 
+	Let $R$ be a ring and $I$ be an ideal of $R$. Prove that $M_n(I)$ is an ideal 
+	of $M_n(R)$ and that 
+    \[
+    M_n(R)/M_n(I)\simeq M_n(R/I).
+    \]
+\end{exercise}
 
-\begin{bonus}
-	Prove that every non-zero vector space has a basis.
-\end{bonus}
+\begin{exercise}
+    \label{xca:Z[sqrt10]/(2,sqrt10)}
+    Let $R=\Z[\sqrt{10}]$ and $I=(2,\sqrt{10})$. Prove that $R/I\simeq\Z/2$. 	
+\end{exercise}
 
-The previous exercise can be used to solve the following exercises:
+Hint: Use the ring homomorphism $\Z[\sqrt{10}]\to\Z/2$, $a+b\sqrt{10}\mapsto a\bmod 2$. 	
 
-\begin{bonus}
-\label{xca:extend}
-    Every linearly independent subset of a non-zero vector space
-    $V$ can be extended to a basis of $V$.
-\end{bonus} 
+\begin{exercise}
+\label{xca:Z[i]/(1+3i)}
+	Prove that $\Z[i]/(1+3i)\simeq\Z/10$. 	
+\end{exercise}
 
-Hint: If $X$ is a linearly independent set, a basis 
-of $V$ that contains $X$ will be found as a maximal linearly independent set 
-containing $X$. 
+Hint: Use 
+the ring homomorphism 
+\[
+\Z\hookrightarrow\Z[i]\xrightarrow{\pi}\Z[i]/(1+3i),
+\]
+where
+$\pi$ is the canonical map. 
 
-\begin{bonus}
-    Let $V$ be a vector space. Prove that every subspace $U$ of $V$ is a direct summand of $V$, that is
-    $V=U\oplus W$ for some subspace $W$ of $V$. 
-\end{bonus}
+\begin{exercise}
+\label{xca:Z15}
+	Prove that there is no ideal $I$ of $\Z[i]$ 
+	such that $\Z[i]/I\simeq\Z/15$. 
+\end{exercise}
 
-\begin{bonus}
-    Prove that every spanning set of a non-zero vector space
-    contains a basis. 
-\end{bonus}
+\begin{exercise}
+	Let $R=(\Z/2)[X]/(X^2+X+1)$. 
+	\begin{enumerate}
+		\item How many elements does $R$ have?
+		\item Can you recognize the additive group of $R$?
+		\item Prove that $R$ is a field. 	
+	\end{enumerate}
+\end{exercise}
 
-\begin{bonus}
-\label{xca:fx=cx}
-    Prove that there exists a group homomorphism $f\colon\R\to\R$ that 
-    is not of the form $f(x)=\lambda x$ for some $\lambda\in\R$. 
-\end{bonus}
+Recall that if $f\colon X\to Y$ is a map and $A\subseteq X$ and $B\subseteq Y$ are
+subsets, then
+\begin{align*}
+    f(A)=\{f(a):a\in A\},\quad 
+    f^{-1}(B)=\{x\in X:f(x)\in B\}.
+\end{align*}
+The following statements are easily proved:
+\begin{enumerate}
+	\item $A\subseteq f^{-1}(f(A))$. 
+	\item $A=f^{-1}(f(A))$ if $f$ is injective. 
+	\item $f(f^{-1}(B))\subseteq B$. 
+	\item $f(f^{-1}(B))=B$ if $f$ is surjective. 
+\end{enumerate}
 
+\begin{theorem}[Correspondence theorem]
+\index{Correspondence theorem!for rings}
+\label{thm:ring_correspondence}
+	Let $f\colon R\to S$ be a surjective ring homomorphism. There exists a
+	bijective correspondence between 
+	the set of ideals of $R$ containing $\ker f$ and
+	the set of ideals of $S$.  Moreover, if $f(I)=J$, then
+	$R/I\simeq S/J$. 
+\end{theorem}
 
-\begin{bonus}
-\label{xca:Rn=R}
-    Prove that the abelian groups $\R^n$ and $\R$ are isomorphic.
-\end{bonus}
+\begin{proof}[Sketch of the proof]
+Let $I$ be an ideal of $R$ containing $\ker f$ and
+let $J$ be an ideal of $S$. 
+We need to prove the following facts:
+\begin{enumerate}
+\item $f(I)$ is an ideal of $S$.
+\item $f^{-1}(J)$ is an ideal of $R$ containing $\ker f$. 
+\item $f(f^{-1}(J))=J$ and $f^{-1}(f(I))=I$. 
+\item If $f(I)=J$, then $R/I\simeq S/J$. 
+\end{enumerate}
+We only prove the fourth statement, the others are left as exercises. Note that
+the third claim implies that $f(I)=J$ if and only if $I=f^{-1}(J)$. 
+Let 
+$\pi\colon S\to S/J$ be the canonical map. The composition
+$g=\pi\circ f\colon R\to S/J$ is a surjective ring homomorphism and
+\[
+\ker g=\{x\in R:g(x)=0\}=\{x\in R:f(x)\in J\}=\{x\in R:x\in f^{-1}(J)=I\}=I.
+\]
+Then the first isomorphism theorem implies that $R/I\simeq S/J$.
+\end{proof}
 
-\begin{bonus}
-\label{xca:aut}
-    Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
-\end{bonus}
+\begin{exercise}
+    Prove Theorem \ref{thm:ring_correspondence}.
+\end{exercise}
 
-\subsection{The characteristic of a ring}
+As we did for groups, for the correspondence theorem, 
+it helps to have in mind the following diagram: 
+\[
+\begin{tikzcd}
+        && R \\
+        & I=f^{-1}(J) && f(R)=S \\
+        \ker f && f(I)=J \\
+        & {\{0\}}
+        \arrow["f", from=1-3, to=2-4]
+        \arrow[no head, from=1-3, to=2-2]
+        \arrow[no head, from=2-2, to=3-1]
+        \arrow["f", from=3-1, to=4-2]
+        \arrow["f", from=2-2, to=3-3]
+        \arrow[no head, from=3-3, to=4-2]
+        \arrow[no head, from=2-4, to=3-3]
+\end{tikzcd}
+\]
+
+\subsection{Direct products and direct sums}
+
+In Example~\ref{exa:direct_rings}, we defined the \emph{direct product} of rings. There is another similar, yet important, construction.
 
 \begin{definition}
-Let $R$ be a ring. If there is a least positive integer $n$ such that 
-$nx=0$ for all $x\in R$, then $R$ has \emph{characteristic} $n$, i.e. $\ch R=n$. If no such $n$ exists, 
-then $R$ is of characteristic zero. 
+\label{def:direct_ideals}
+\index{Direct sum of ideals}
+Let $R$ be a ring and $I$ and $J$ be ideals of $R$. We say that 
+$R=I\oplus J$ (that is, $R$ is a \emph{direct sum} of ideals) 
+if $R=I+J$ and $I\cap J=\{0\}$.  
 \end{definition}
 
-Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
+\begin{exercise}
+\label{xca:uniqueness}
+    Let $R$ be a ring and $I$ and $J$ be ideals of $R$. 
+    Prove that $R=I\oplus J$ as a direct sum of ideals if and only if 
+    every element $r\in R$ can be written uniquely as 
+    $r=u+v$ for $u\in I$ and $v\in J$.
+\end{exercise}
+
+The following exercise illustrates the relationship between decomposing a 
+ring as a direct product of two rings and as a direct sum of two ideals:
+
+\begin{exercise}
+\label{xca:products}
+    Let $R$ be a ring. Prove that $R$ admits a decomposition 
+    $R=S\times T$ as a direct product of rings if and only if $R$ admits a decomposition 
+    $R=I\oplus J$ as a direct sum of ideals. 
+\end{exercise}
+
+The constructions in Example~\ref{exa:direct_rings} and Definition~\ref{def:direct_ideals}
+can be generalized to a finite number of objects. 
+If $R$ is a ring and $I_1,\dots,I_n$ are ideals of $R$, we say 
+$R$ is the \emph{direct sum} of the ideals $I_1,\dots,I_n$, 
+that is 
+\[
+R=I_1\oplus\cdots\oplus I_n, 
+\]
+if $R=I_1+\cdots+I_n$ and 
+for every $i\in\{1,\dots,n\}$
+\[
+I_i\cap (I_1+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n)=\{0\}.
+\]
+The notation
+\[
+I_1+\cdots+\widehat{I_i}+\cdots+I_n=I_1+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n
+\]
+is typically used. 
+
+As we did in Exercise~\ref{xca:uniqueness}, one can prove that 
+$R=I_1\oplus\cdots\oplus I_n$ as a direct sum of ideals
+if and only if every $r\in R$ can be written uniquely 
+as $r=e_1+\cdots+e_n$ for $e_1\in I_1,\dots,e_n\in I_n$. Moreover, $R$ admits a decomposition 
+$R=R_1\times\cdots\times R_n$ as a direct product 
+of rings if and only if $R$ admits a decomposition 
+$R=I_1\oplus\cdots\oplus I_n$ as 
+a direct sum of ideals. 
+
+\subsection{The Chinese remainder theorem}
+
+We now work with commutative rings. 
+If $R$ is a commutative ring and $I$ and $J$ are ideals of $R$, then
+\[
+I+J=\{u+v:u\in I,\,v\in J\}
+\]
+is an ideal of $R$. The sum of ideals makes sense also in non-commutative rings.  
+
+\begin{definition}
+\index{Coprime ideals}
+\index{Comaximal ideals}
+	Let $R$ be a commutative ring. The ideals $I$ and $J$ of $R$ are said to be
+	\emph{coprime} if $R=I+J$.  
+\end{definition}
+
+The terminology is motivated by the following example. If $I$ and $J$ are
+ideals of $\Z$, then $I=(a)$ and $J=(b)$ for some $a,b\in\Z$. Then Bezout's theorem 
+states that 
+\begin{align*}
+\text{$a$ and $b$ are coprime}
+&\Longleftrightarrow 1=ra+sb\text{ for some $r,s\in\Z$}\\
+&\Longleftrightarrow\text{ $I$ and $J$ are coprime.}
+\end{align*}
+
+In some books, coprime ideals are called \emph{comaximal} ideals. 
+
+If $I$ and $J$ are ideals of $R$, then 
+\[
+	IJ=\left\{\sum_{i=1}^mu_iv_i:m\in\Z_{\geq0},\,u_1,\dots,u_m\in I,\,v_1,\dots,v_m\in J\right\}
+\]
+is an ideal of $R$. Note that 
+$IJ$ is the set of all finite sum of elements of the form $uv$ for $u\in I$ and $v\in J$. 
+For example, if $I=(u)$ and $J=(v)$, then $IJ=(uv)$. 
+Why we need to consider finite sums of elements of the form $uv$
+for $u\in I$ and $v\in J$?
+
+\begin{exercise}
+    \label{xca:IJ}
+    Let $R=\R[X,Y]$ and $I=J=(X,Y)$. Prove that the
+    set \[
+    \{uv:u\in I,\,v\in J\}
+    \]
+    is not an ideal of $R$.
+\end{exercise}
+
+Note that $IJ\subseteq I\cap J$. Equality does not hold in general. Take
+for example $R=\Z$ and $I=J=(2)$. Then $IJ=(4)\subsetneq (2)=I\cap J$. 
 
 \begin{proposition}
-    Let $R$ be a ring such that $\ch R=n>0$,
-    \begin{enumerate}
-        \item The map $f\colon \Z\to R$, $m\mapsto m1$, is a ring homomorphism and $\ker f=n\Z$.  
-        \item $n=\min\{k\in\Z_{>0}:k1=0\}$.
-        \item If $R$ is a domain, then $n$ is a prime number.
-    \end{enumerate}
+Let $R$ be a commutative ring. If $I$ and $J$ are coprime ideals, then $IJ=I\cap J$. 	
 \end{proposition}
 
 \begin{proof}
-    We leave 1) as an exercise. 
-    
-    Let us prove 2). Let $n_1=\min\{k\in\Z_{>0}:k1=0\}$. Clearly 
-    $n\geq n_1$. For $x\in R$,
-    \[ 
-    n_1x=n_1(1x)=(n_11)x=0x=0
-    \]
-    and hence $n_1\geq n$. 
-    
-    Finally, we prove 3). If $n$ is not prime, say
-    $n=rs$ with $1<r,s<n$. Then 
-    \[
-    0=n1=(rs)1=(r1)(s1)
-    \]
-    and hence $r1=0$ or $s1=0$, a contradiction. 
+Let $x\in I\cap J$. Since $I$ and $J$ are coprime, 
+$1=u+v$ for some $u\in I$ and $v\in J$, 
+\[ 
+x=x1=x(u+v)=xu+xv\in IJ\qedhere.
+\]
 \end{proof}
 
-\begin{exercise}
-    Let $p$ be a prime number and 
-    $R=\Z/p\times\Z/p$ be a ring with the usual point-wise operations. 
-    Prove that $\ch R=p$ and that $R$ has zero divisors. 
-\end{exercise}
-
-\begin{exercise}[binomial theorem]
-\index{Binomial theorem}
-    Let $R$ be a commutative ring and $n\geq1$. Prove that
-    if $a,b\in R$, then 
-    \[
-    (a+b)^n=\sum_{k=0}^n\binom{n}{k}a^kb^{n-k}.
-    \]
-\end{exercise}    
-
-\begin{exercise}
-\label{xca:freshman_dream}
-\index{Freshman's dream}
-    Let $R$ be a commutative ring of prime characteristic $p$. 
-    \begin{enumerate}
-        \item If $x,y\in R$, then $(x+y)^{p^n}=x^{p^n}+y^{p^n}$ for all $n\geq0$. 
-        \item The map $R\to R$, $x\mapsto x^{p^n}$, is a ring homomorphism for all $n\geq0$.
-    \end{enumerate}
-\end{exercise}
-
-Hint: Proceed by induction on $n$ and use the fact that the prime number $p$ divides 
-$\binom{p}{k}$ for all $k\in\{1,2,\dots,p-1\}$. Alternatively, one could use
-that the prime number $p$ divides $\binom{p^n}{k}$ for all 
-$k\in\{1,2,\dots,p^n-1\}$. 
-
 \begin{bonus}
-\index{Non-commutative binomial theorem}
-    Let $R$ be a ring and $n\geq1$. 
-    For $a,b\in R$, let $A(x)=(a+b)x-xb$. 
-    Prove that
-    if $a,b\in R$, then 
-    \[
-    (a+b)^n=\sum_{k=0}^n\binom{n}{k}A^k(1)b^{n-k}.
-    \] 
+\label{xca:strongly_regular}
+\index{Ring!strongly regular}
+    Let $R$ be a commutative ring. 
+    Prove that $I\cap J=IJ$ 
+    for all ideals $I$ and $J$ of $R$
+    if and only if $R$ is \emph{strongly regular}, 
+    that is  
+    for each $a\in R$ there 
+    exists $x\in R$ such that $a=xa^2$. 
 \end{bonus}
 
+One can also prove that if $R$ is a ring,
+$I\cap J=IJ$ holds 
+for all left ideals $I$ and $J$ of $R$ 
+if and only if $R$ is strongly regular. 
+% steps
+% Let $I$ be a left ideal of $R$. Since $RI=I=I\cap R=IR$, $I$ 
+% is an ideal of $R$. Let $a\in R$. Then $Ra=RaR$ and
+% $Ra=(Ra)(Ra)=(RaR)a=(Ra)a$ and hence $a=xa^2$ for some $x$. 
+% Conversely, let $a\in I\cap J$. There exists $x$ such that $a=xa^2$. Then
+% a=(xa)a\in IJ$. Claim: $I$ is an ideal of $R$. Let $a\in I$ and $r\in R$.
+% Then there exists $x$ such that $a=xa^2$. Since $xa$ is central, 
+% $ar=xa^2r$...
+%. https://ysharifi.wordpress.com/category/noncommutative-ring-theory-notes/von-neumann-regular-rings/
+
+
+\begin{theorem}[Chinese remainder theorem]
+\index{Chinese remainder theorem}
+Let $R$ be a commutative ring and $I$ and $J$ be coprime ideals of $R$. 
+If $u,v\in R$, then 
+there exists $x\in R$ such that 
+\[
+\begin{cases}	
+x\equiv u\bmod I,\\
+x\equiv v\bmod J.
+\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+Since the ideals $I$ and $J$ are coprime, $1=a+b$ for some $a\in I$ and $b\in J$. 
+Let $x=av+bu$. Then
+\[
+x-u=av+(b-1)u=av-au=a(v-u)\in I,
+\]
+that is $x\equiv u\bmod I$. Similarly, $x-v\in J$ and $x\equiv v\bmod J$.  	
+\end{proof}
+
+For the following result, we need 
+to use the direct product of rings. See Example~\ref{exa:direct_rings}. 
+
+\begin{corollary}
+\label{cor:chinese}
+	Let $R$ be a commutative ring. If $I$ and $J$ are coprime ideals of $R$, 
+	then $R/(I\cap J)\simeq R/I\times R/J$.
+\end{corollary}
+
+\begin{proof}
+	Let $\pi_I\colon R\to R/I$ and $\pi_J\colon R\to R/J$ be the canonical maps. A direct 
+	calculation shows that the
+	map $\varphi\colon R\to R/I\times R/J$, $x\mapsto (\pi_I(x),\pi_J(x))$, 
+	is a ring homomorphism with $\ker\varphi=I\cap J$. For example, to prove
+ that 
+ \[
+ \varphi(xy)=\varphi(x)\varphi(y)
+ \]
+ we proceed as follows: if $x,y\in R$, then 
+        \begin{align*}
+            \varphi(xy) &= (\pi_I(xy),\pi_J(xy))\\
+            &= (\pi_I(x)\pi_I(y),\pi_J(x)\pi_J(y))\\
+            &= (\pi_I(x),\pi_J(x))(\pi_I(y),\pi_J(y))\\
+            &= \varphi(x)\varphi(y). 
+        \end{align*}
+
+ We now claim that the map $\varphi$ is surjective. To prove this, 
+ we will use the Chinese remainder theorem. If $(u+I,v+J)\in R/I\times R/J$, 
+	then there exists $x\in R$ such that 
+	$x-u\in I$ and $x-v\in J$. This translates into the surjectivity of $\varphi$,
+ as \[
+ \varphi(x)=(\pi_I(x),\pi_J(x))=(x+I,x+J)=(u+I,v+J).
+ \]
+ Now
+	$R/(I\cap J)\simeq R/I\times R/J$ by the first isomorphism theorem. 
+\end{proof}
+
+\begin{example}
+    If $n$ and $m$ are coprime integers, then
+    \[
+    \Z/(nm)\simeq \Z/n\times \Z/m
+    \]
+    as rings. This follows from Corollary \ref{cor:chinese} with 
+    $R=\Z$, $I=(n)$ and $J=(m)$. 
+\end{example}
+
+Let $R$ be a commutative ring and $I_1,\dots,I_n$ be ideals of $R$. Then
+$I_1\cdots I_n$, defined as the set of all finite sums of the form 
+$x_1\cdots x_n$ such that $x_j\in I_j$ for all $j\in\{1,\dots,n\}$, 
+is an ideal of $R$. For example, if $I_j=(x_j)$ for all $j\in\{1,\dots,n\}$, 
+then $I_1\cdots I_j=(x_1\dots x_j)$. 
+
+If $I_1$ and $I_j$ are coprime for all $j\in\{2,\dots,n\}$, 
+then $I_1$ and $I_2\cdots I_n$ are coprime. If $I_i$ and $I_j$ are coprime
+whenever $i\ne j$, then 
+$I_1\cap\cdots\cap I_n=I_1\cdots I_n$ and 
+\[
+R/(I_1\cap\cdots\cap I_n)\simeq R/I_1\times\cdots\times R/I_n.
+\]
+
+Applying the previous observations in the case of the ring of integers, we get the following result: If $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$ is the factorization 
+of $n$ into powers of distinct primes, then 
+\[
+\Z/n\simeq \Z/(p_1^{\alpha_1})\times\cdots \times \Z/(p_k^{\alpha_k})
+\]
+as rings. 
+
+\begin{bonus}
+\index{Euler $\varphi$-function}
+    Let $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$ be the factorization 
+    of $n$ into powers of distinct primes. Prove that 
+    $\varphi(n)=\varphi(p_1^{\alpha_1})\cdots \varphi(p_k^{\alpha_k})$, where $\varphi$ is the Euler $\varphi$-function. 
+\end{bonus}
+
+
+% exercise: every map $\Z/p\to\Z/p$ is a polynomial map
+% todo: ejercicios de cuentas, hay que usar minipages o algo simliar
+%
+%\begin{exercise}
+%	Solve 
+%	\begin{enumerate}
+%	\item $\begin{cases}
+%		x\equiv 3\bmod 5,\\
+%		x\equiv 1\bmod 6.
+%		\end{cases}$
+%	\item $\begin{cases}
+%		x\equiv 5\bmod 7,\\
+%		x\equiv 7\bmod 11,\\
+%		x\equiv 3\bmod 13.
+%		\end{cases}$			
+%	\end{enumerate}
+%\end{exercise}
+
+The story says that, 
+instead of counting troops, 
+the Chinese generals would order them to 
+assemble in rows of different depths 
+(hence obtaining the remainder of the number 
+of soldiers modulo different integers) and then they 
+would use the theorem to 
+compute the size of the army.
+
+\begin{bonus}
+\label{xca:gather_people}
+	Let us gather people in the following way. When I 
+	count by three, there are two people left. 	When I count by four, 
+	there is one person left over and when I count by five there is
+	one missing. How many people are there?
+\end{bonus}
+
+\begin{bonus}
+\label{xca:no_solution}
+	Prove that 
+	\[
+	\begin{cases}
+		x\equiv 29\bmod 52,\\
+		x\equiv 19\bmod 72,
+		\end{cases}
+	\]
+	does not have a solution.
+\end{bonus}
+
+\begin{bonus}
+\label{xca:consecutive}
+	Find three consecutive integers such that the first one is divisible by a square, 
+	the second one is divisible by a cube and the third one is divisible by a fourth power. 	
+\end{bonus}
+
+\begin{bonus}
+\label{xca:perfect_square}
+	Prove that 
+	for each $n>0$ there are $n$ consecutive integers such that 
+	each integer is divisible by a perfect square $\ne 1$. 	
+\end{bonus}
+
+A special application of the Chinese remainder theorem leads to the construction of the Lagrange 
+interpolation polynomial.
+
+\begin{bonus}[Lagrange's interpolation theorem]
+\index{Lagrange's interpolation theorem}
+	The Chinese remainder theorem proves the following well-known result. 
+	Let $x_1,\dots,x_k\in\R$ be such that $x_i\ne x_j$ whenever $i\ne j$ 
+	and $y_1,\dots,y_k\in\R$. Then there exists $f(X)\in\R[X]$ such that
+	\[
+	\begin{cases}
+		f(X)\equiv y_1\bmod (X-x_1),\\
+		f(X)\equiv y_2\bmod (X-x_2),\\
+		\phantom{f(X)}\vdots\\
+		f(X)\equiv y_k\bmod (X-x_k).  	
+	\end{cases}
+ 	\]
+ 	The solution $f(X)$ is unique modulo $(X-x_1)(X-x_2)\cdots (X-x_n)$. 
+\end{bonus}
+
+% A similar application of the Chinese remainder theorem 
+% leads to the Hermite interpolation polynomial. Hermite interpolation computes a polynomial of degree less than $n$ such that the polynomial and its first few derivatives have the same values at $m<n$ given points as the given function and its first few derivatives at those points. The number of pieces of information, function values and derivative values, must add up to 
+% $n$.
+
+% Dedekind's theorem
+% https://en.wikipedia.org/wiki/Chinese_remainder_theorem
+
+With small changes, the Chinese remainder theorem can be proved 
+in arbitrary non-commutative rings, see for example 
+\cite[Chapter III, Theorem 2.25]{MR600654}. 
