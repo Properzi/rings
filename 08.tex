@@ -1,552 +1,1140 @@
 \section{Lecture -- Week 8}
+\label{8}
 
-The following picture shows 
-the relationships between 
-different classes of commutative domains:
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[node distance=4mm, >=latex',
-block/.style = {draw, rectangle, minimum height=10mm, minimum width=28mm,align=center}]
-    \node [block]                      (E)     {Euclidean};
-    \node [block, right=of E]       (P)   {Principal};
-    \node [block, right=of P]     (UF)  {Unique factorization};
-    \node [block, below=of UF]    (F) {Factorization};
-    \node [block, below=of P]     (N)  {Noetherian};
-    \path[draw,->] (E)      edge (P)
-                   (P)    edge (UF)
-                   (UF)   edge (F)
-                   (P)       edge (N)
-                   (N)   edge (F)
-                    ;
-    \end{tikzpicture}
-\end{figure}
+\subsection{Proof of the orthogonality relations}
+\label{subsection:Schur_proof}
 
-We also know that the  
-reverse implications do not hold. 
-
-It is time to give a very nice number-theoretical application.
-
-\begin{theorem}[Fermat]
-\index{Fermat's theorem}
-\label{thm:Fermat}
-	Let $p\in\Z_{>0}$ be a prime number. The following statements are equivalent:
-	\begin{enumerate}
-	    \item $p=2$ or $p\equiv1\bmod 4$.
-	    \item There exists $a\in\Z$ such that $a^2\equiv-1\bmod p$.
-	    \item $p$ is not irreducible in $\Z[i]$.
-	    \item $p=a^2+b^2$ for some $a,b\in\Z$.
-	\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    We first prove that $1)\implies 2)$. If $p=2$, take $a=1$. If $p=4k+1$ for some $k\in\Z$, then
-    by Fermat's little theorem, the polynomial 
-    $X^{p-1}-1\in(\Z/p)[X]$ has roots $1,2,\dots,p-1$. Write
-    \[
-    (X-1)(X-2)\cdots (X-(p-1))=X^{p-1}-1=X^{4k}-1=(X^{2k}+1)(X^{2k}-1)
-    \]
-    in $(\Z/p)[X]$. Since $p$ is prime, $\Z/p$ is a field, and hence 
-    $(\Z/p)[X]$ is a unique factorization domain (because it is euclidean). Thus 
-    there exists $\alpha\in\Z/p$ such that $\alpha^{2k}+1=0$. To finish the proof
-    take $a=\alpha^k$. 
-    
-    We now prove that $2)\implies 3)$. If $a^2\equiv-1\bmod p$, then $a^2+1=kp$ 
-    for some $k\in\Z$. Since $(a-i)(a+i)=a^2+1=kp$, then $p$ divides $(a-i)(a+i)$. Let us prove that $p$ is not prime in $\Z[i]$. 
-    We claim that $p$ does not divide $a-i$ in $\Z[i]$. Indeed, if $p\mid a-i$, then
-    $a-i=p(e+fi)$ for some $e,f\in\Z$ and this implies that $1=pf$, a contradiction. Similarly,
-    $p$ does not divide $a+i$. Thus $p$ is not prime in $\Z[i]$ 
-    and hence it is not irreducible in $\Z[i]$ (because in $\Z[i]$ primes and irreducible coincide). 
-    
-    We now prove that $3)\implies 4)$. If $p=(a+bi)(c+di)$ with $a+bi\not\in\mathcal{U}(\Z[i])$
-    and  $c+di\not\in\mathcal{U}(\Z[i])$, then
-    \[
-    p^2=\norm(p)=\norm(a+bi)\norm(c+di)=(a^2+b^2)(c^2+d^2)
-    \]
-    in $\Z$. Since $\Z$ has unique factorization, it follows that $p=a^2+b^2$. 
-    
-    Finally, we prove that $4)\implies 1)$. 
-    The only possible remainders after division by four are $0,1,2$ and $3$.  
-    For all $a$, either $a^2\equiv 0\bmod 4$ or $a^2\equiv 1\bmod 4$. 
-    If $p\equiv3\bmod 4$, then $p$ is never a sum of two squares, as 
-    $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ or $a^2+b^2\equiv 2\bmod 4$. 
-\end{proof}
-
-\begin{optional}
-An alternative proof of the implication 
-$1)\implies 2)$ goes as follows: if $p=4k+1$ is prime, then 
-$x=(2k)!$ is such that $x^2\equiv -1\bmod p$. By Wilson's theorem, 
+Let $G$ be a finite $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. We know that
+these representations are equivalent to matrix representations, say 
+$\rho\colon G\to\GL_n(\C)$
+and $\psi\colon G\to\GL_m(\C)$. Hence 
+we have well-defined matrices
+$(\rho_{ij})_{1\leq i,j\leq n}$ and 
+$(\psi_{kl})_{1\leq k,l\leq m}$, where 
+each $\rho_{ij}$ and $\psi_{kl}$ are
+functions $G\to\C$. Theorem~\ref{thm:Schur_technical} 
+states that 
 \[
-(p-1)! = (4k)!\equiv \bmod p.
+\langle\rho_{ij},\psi_{kl}\rangle=0, 
+\quad 
+1\leq i,j\leq n\text{ and }1\leq k,l\leq m, 
 \]
-Moreover,  
+if $\rho\not\simeq\psi$, and 
+\[
+\langle\rho_{ij},\rho_{kl}\rangle=\frac{1}{n}\delta_{ik}\delta_{lj},\quad 1\leq i,j,k,l\leq n.  
+\]
+
+Since $V$ and $W$ are complex 
+vector spaces, the set 
+\[
+\Hom(V,W)=\{T\colon V\to W:\text{$T$ is linear}\}
+\]
+is a vector space with 
 \begin{align*}
-(4k)!&\equiv(4k)(4k-1)\cdots(2k+2)(2k+1)(2k)(2k-1)\cdots1\bmod p\\
-&\equiv-1(-2)\cdots(-2k+1)(-2k)(2k)(2k-1)\cdots1\bmod p\\
-&\equiv(-1)^{2k}(2k)!(2k)!\bmod p.
+&(\lambda T)(v)=\lambda T(v) && \text{for all $\lambda\in\C$ and all $v\in V$,}\\ 
+&(T+T_1)(v)=T(v)+T_1(v) &&\text{for all $v\in V$.}
 \end{align*}
-Hence $x=(2k)!$ is such that $x^2\equiv -1\bmod p$.
-\end{optional}
-
-\begin{exercise}
-    Decompose the prime 41 as a sum of two squares. 
-\end{exercise}
-
-\begin{optional}
-The previous exercise can be solved by using computers and 
-a beautiful formula of Gauss that uses binomial coefficients. Let $p=4k+1$ be a prime number. 
-If 
+We claim that the set $\Hom_G(V,W)$ of invariant maps
+is a subspace of $\Hom(V,W)$. Indeed, the zero map is clearly invariant. If $T,T_1\in\Hom_G(V,W)$ 
+and $\lambda\in\C$, then
 \[
-a=\left\langle \frac12\binom{2k}{k}\right\rangle, 
-\quad
-b=\langle (2k)!a\rangle,
+(T+\lambda T_1)(\rho_g v)
+=T(\rho_gv)+\lambda T_1(\rho_gv)
+=\psi_gT(v)+\lambda \psi_gT_1(v)
+=\psi_g((T+\lambda T_1)(v))
 \]
-where $\langle x\rangle$ denotes the 
-residue of $x$ modulo $p$ of absolute value smaller than $p/2$, 
-then it follows that $p=a^2+b^2$. Simple and beautiful as it is, Gauss' formula does not seem to be of any real computational value. 
-\end{optional}
-
-In \cite{MR1041889}, the author employs the Euclidean algorithm to determine efficiently 
-the decomposition of a prime number $p=4k+1$ as the sum of two squares.
-
-\begin{exercise}
-\label{xca:p=3(4)}
-    Let $\alpha\in\Z[i]$ be such that $\norm(\alpha)=p^2$ 
-    for some prime number $p\in\Z$ with $p\equiv3\bmod 4$. 
-    Prove that $\alpha$ is irreducible. 
-\end{exercise}
-
-\begin{exercise}
-    \label{xca:p=1(4)}
-    Let $p\in\Z$ be a prime number such that $p\equiv1\bmod 4$.
-    Then $p=\alpha\overline{\alpha}$
-    for some $\alpha\in\Z[i]$ irreducible. 
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Z[i]irreducibles}
-Find the irreducible elements of $\Z[i]$. 
-\end{exercise}
-
-As a consequence of Theorem \ref{thm:Fermat}
-one can prove the following result: An integer $\geq2$ can be written as a sum of two squares if and only if its prime decomposition contains no factor $p^k$, where 
-$p\equiv 3\bmod 4$ 
-and $k$ is odd. 
-
-\begin{optional}
-The numbers that can be represented as the sums of two squares form the integer sequence \href{https://oeis.org/A001481}{A001481}: 
-\[
-0, 1, 2, 4, 5, 8, 9, 10, 13, 16, 17, 18, 20, 25, 26, 29, 32,\dots 
-\] 
-They form the set of all norms of Gaussian integers. 
-\end{optional}
-
-\begin{bonus}[Eisenstein integers]
-\index{Eisenstein integers}
-    %This exercise is about \emph{Eisenstein integers}. 
-    \label{xca:Eisenstein}
-    Let $\omega=e^{2\pi i/3}\in\C$ and 
-    \[
-    R=\Z[\omega]=\{a+b\omega:a,b\in\Z\}.
-    \]
-    Prove the following statements:
-    \begin{enumerate}
-        \item The map 
-        \[
-        N\colon R\to\Z_{\geq0},
-        \quad
-        \norm(a+b\omega)=a^2-ab+b^2,
-        \]
-        is multiplicative and 
-        satisfies $\norm(\alpha)=\alpha\overline{\alpha}$
-        for all $\alpha\in R$. 
-        \item $\mathcal{U}(R)=\{1,-1,\omega,-\omega,\omega^2,-\omega^2\}$.
-        \item $R$ is a euclidean domain.
-        \item If $\norm(\alpha)$ is a prime number, then $\alpha$ is irreducible. 
-        \item If $\norm(\alpha)=p^2$ for some 
-            prime number $p$ with $p\equiv 2\bmod 3$, then 
-            $\alpha$ is irreducible. 
-        \item If $p\equiv 1\bmod 3$, then 
-            $p=\gamma\overline{\gamma}$ for some 
-            irreducible $\gamma\in R$.
-        \item Up to multiplication by units, 
-            the irreducible elements of $R$ are $1-2\omega$, 
-            $a+b\omega$ with $a^2-ab+b^2=p$ and $p\equiv 1\bmod 3$, 
-            and prime numbers $p\in\Z$ with $p\equiv 2\bmod 3$.
-    \end{enumerate}
-\end{bonus}
-
-
-\subsection{Zorn's lemma}
-
-\begin{definition}
-\index{Poset}
-\index{Partially ordered set}
-A non-empty set $R$ is said to be a \emph{partially ordered set} (or \emph{poset}, for short) 
-if there is a subset $X\subseteq R\times R$ such that
-\begin{enumerate}
-    \item $(r,r)\in X$ for all $r\in R$, 
-    \item if $(r,s)\in X$ and $(s,t)\in X$, then $(r,t)\in X$, and 
-    \item if $(r,s)\in X$ and $(s,r)\in X$, then $r=s$. 
-\end{enumerate}
-\end{definition}
-
-The set $X$ is a partial order relation on $R$.  
-We will use the following notation: $(r,s)\in X$ if and only if $r\leq s$. Moreover, 
-$r<s$ if and only if $r\leq s$ and $r\ne s$. When we say that $R$ is a poset, we implicitly denote the partial order relation on $R$ by the symbol $\leq$. With this notation, the conditions
-needed to define a poset are the following:
-\begin{enumerate}
-    \item $r\leq r$ for all $r\in R$,
-    \item if $r\leq s$ and $s\leq t$, then $r\leq t$, and 
-    \item if $r\leq s$ and $s\leq r$, then $r=s$. 
-\end{enumerate}
-
-\begin{definition}
-Let $R$ be a poset and $r,s\in R$. Then $r$ and $s$ are \emph{comparable}
-if either $r\leq s$ or $s\leq r$.
-\end{definition}
-
-\begin{example}
-    Let $U=\{1,2,3,4,5\}$ and $T$ be the set of subsets of $U$. Then $T$ is a poset
-    with the usual inclusion, that is $C\leq D$ if and only if $C\subseteq D$. The subsets
-    $\{1,2\}$ and $\{3,4\}$ of $U$ are elements of $T$ that are not comparable. 
-\end{example}
-
-\index{Hasse diagram}
-Is there a good pictorial representation of a poset? A \emph{Hasse diagram} is a common way to represent one. It is a graph in which the vertices represent the elements of the poset. Elements connected by an arrow are comparable, while elements not connected are incomparable. Specifically, if $x$ and $y$ are elements of a poset, we draw an arrow from $x$ to $y$ if and only if $x \neq y$ and there is no element $z$ such that $x < z < y$.
-
-\begin{example}
-   The \emph{Hasse diagram} of the set of all subsets of $\{a,b,c\}$, 
-   ordered by inclusion, is the following:
-\[\begin{tikzcd}
-	& {\{a,b,c\}} \\
-	{\{a,b\}} & {\{a,c\}} & {\{b,c\}} \\
-	{\{a\}} & {\{b\}} & {\{c\}} \\
-	& \emptyset
-	\arrow[from=2-1, to=1-2]
-	\arrow[from=2-2, to=1-2]
-	\arrow[from=2-3, to=1-2]
-	\arrow[from=3-1, to=2-1]
-	\arrow[from=3-1, to=2-2]
-	\arrow[from=3-2, to=2-1]
-	\arrow[from=3-2, to=2-3]
-	\arrow[from=3-3, to=2-2]
-	\arrow[from=3-3, to=2-3]
-	\arrow[from=4-2, to=3-1]
-	\arrow[from=4-2, to=3-2]
-	\arrow[from=4-2, to=3-3]
-\end{tikzcd}\]
-\end{example}
-
-\begin{definition}
-    Let $R$ be a poset and $r\in R$. Then $r$ is \emph{maximal} in $R$ if 
-    $r\leq t$ implies $r=t$. 
-\end{definition}
-
-\begin{example}
-    $\Z$ with the poset structure given by the usual ordering, has no maximal elements. 
-\end{example}
-
-\begin{example}
-Let $R=\{(x,y)\in\R^2:y\leq0\}$ with $(x_1,y_1)\leq(x_2,y_2)$ if and only if $x_1=x_2$ and $y_1\leq y_2$. Then
-$R$ is a poset and each $(x,0)$ is maximal. Thus $R$ has infinitely many maximal elements.
-\end{example}
-
-\begin{definition}
-    Let $R$ be a poset and $S$ be a non-empty subset of $R$. An \emph{upper bound}
-    for $S$ is an element $u\in R$ such that $s\leq u$ for all $s\in S$. 
-\end{definition}
-
-An upper bound for $S$ might not be an element of $S$. 
-
-\begin{example}
-    Let $S=\{6\Z,12\Z,24\Z\}$ be a subset of the set $X$ 
-    of subgroups of $\Z$ partially ordered by 
-    the inclusion. Then 
-    $6\Z=6\Z\cup 12\Z\cup 24\Z$ is an upper bound of the subset~$S$ 
-    that is not maximal in $X$. 
-\end{example}
-
-\begin{example}
-    Let $R=\{\emptyset, \{1\},\{2\},\{3\},\{1,2\}\}$ partially ordered with
-    the inclusion, where $R$ is considered as a subset
-    of the power set of $X=\{1,2,3\}$. 
-    Then $\{3\}$ and $\{1,2\}$ are maximal elements of $R$. Moreover, 
-    $X$ is an upper bound for $R$. 
-\end{example}
-
-
-\begin{definition}
-    Let $R$ be a poset. A \emph{chain} is a non-empty subset $S$ of $R$ such that
-    any two elements of $S$ are comparable. 
-\end{definition}
-
-We now state \emph{Zorn's lemma}:
-
-\begin{quote}
-\index{Zorn's lemma}
-\color{blue!50!black}{\textit{Let $R$ be a poset such that 
-every chain in $R$ admits an upper bound in $R$. 
-Then $R$ contains a maximal element.}}
-\end{quote}
-
-% It is not intuitive\footnote{The mathematician
-% Jerry L. Bona has a nice joke about Zorn's lemma: 
-% \textit{The Axiom of Choice is obviously true, 
-% the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}
-% but it is logically equivalent to a more 
-% intuitive statement in set theory, the Axiom of Choice, 
-% which says every Cartesian product of non-empty sets is non-empty. 
-% It is more an axiom than a lemma. 
-% The reason for calling Zorn’s lemma a lemma rather 
-% than an axiom is purely historical. 
-
-It may not be intuitive\footnote{The mathematician
-Jerry L. Bona has a nice joke about Zorn's lemma: 
-\textit{The Axiom of Choice is obviously true, 
-the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}, but it is logically equivalent to a more intuitive statement in set theory: the \emph{Axiom of Choice}, which states that the Cartesian product of a collection of non-empty sets is non-empty. Zorn's lemma is an axiom, not a lemma. The reason it is called a lemma, rather than an axiom, is purely historical.
-
-\begin{definition}
-	\index{Ideal!maximal}
-	Let $R$ be a ring. An ideal $I$ of $R$ is said to be \emph{maximal}
-	if $I\ne R$ and if $J$ is an ideal of $R$ such that $I\subseteq J$, then 
-	either $I=J$ or $J=R$. 
-\end{definition}
-
-If $p$ is a prime number, then $p\Z$ is a maximal ideal of $\Z$.
-
-\begin{exercise}
-Let $R$ be a commutative ring. Prove that $R$ is a 
-field if and only if $\{0\}$ is a maximal ideal of $R$. 	
-\end{exercise}
-
-\begin{exercise}
-\label{xca:maximal<=>field}
-Let $R$ be a commutative ring and $I$ be an ideal of $R$. Prove that $I$ is maximal
-if and only if $R/I$ is a field.  	
-\end{exercise}
-
-\index{Ideal!proper}
-An ideal $I$ of a ring $R$ is said to be \emph{proper}
-if $I\ne R$. 
-
-\begin{theorem}[Krull]
-\index{Krull's theorem}
-	Let $R$ be a ring. Each proper ideal $I$ of $R$ 
-	is contained in a maximal ideal. 
-	In particular, all rings have maximal ideals. 	
-\end{theorem}
-
-\begin{proof}
-	Let $X=\{J:J\text{ is an ideal of $R$ such that }I\subseteq J\subsetneq R\}$.
-	Since $I\in X$, it follows that $X$ is non-empty. Moreover, $X$ is a poset
-	with respect to inclusion. If $C$ is a chain in $X$ (for example, $C$ could be   
-	an increasing sequence
-	\[
-	I_1\subseteq I_2\subseteq\cdots
-	\]
-	of proper ideals of $R$ containing $I$), then 
-	$\cup_{J\in C}J$ is an upper bound for $C$, as $\cup_{J\in C}J$ is an ideal and
-	$\cup_{J\in C}J\ne R$ because $1\not\in\cup_{J\in C}J$. 	Zorn's lemma implies that
-	there exists a maximal element $M\in X$. We claim that $M$ is a maximal ideal of $R$. The definition
-	of $X$ implies that $M$ is a proper ideal of $R$ that contains $I$. If $M_1$ is a proper ideal of $R$
-	such that $M\subseteq M_1$, it follows that $I\subseteq M_1$ and hence $M_1\in X$. The maximality
-	of $M$ implies that $M=M_1$.  
-\end{proof}
-
-In the proof of the previous theorem, we see that it is crucial to consider rings with 
-identity. 
-
-\begin{exercise}
-	Compute the maximal ideals of $\R[X]$ and $\C[X]$. 	
-\end{exercise}
-
-One can also compute the maximal ideals of $K[X]$ for any field $K$. 
-
-\begin{exercise}
-	Let $R$ be a principal domain and $p\in R\setminus\{0\}$. 
-	Then $p$ is irreducible 
-	if and only if $(p)$ is maximal.	
-\end{exercise}
-
-\begin{definition}
-\index{Ideal!prime}
-Let $R$ be a commutative ring. A proper ideal $I$ of $R$ is said to be
-\emph{prime} if $xy\in I$ implies that $x\in I$ or $y\in I$. 
-\end{definition}
-
-If $p$ is a prime number, then $p\Z$ is a prime ideal of $\Z$.
-
-\begin{exercise}
-\label{xca:prime<=>domain}
-    Let $R$ be a commutative ring. 
-    Prove that an ideal $I$ of $R$ is prime if and only if $R/I$ is a domain. 
-\end{exercise}
-
-\begin{exercise}
-Let $R$ be a commutative ring. 
-\label{xca:maximal=>prime}
-\begin{enumerate}
-    \item Prove that maximal ideals are prime. 
-    \item Let $R=\Z[X]$. Prove that $(X)$ is a prime ideal that is not maximal.
-    \item Let $R$ be a principal domain. Prove that non-zero 
-    prime ideals are maximal. 
-\end{enumerate}
-\end{exercise}
-
-\begin{example}
-	The ideal $(X^2+2X+2)$ is maximal in $\Q[X]$ because
-	\[
-	X^2+2X+2=(X+1)^2+1
-	\]
-	has degree two and no rational roots. 
-	Hence $X^2+2X+2$ is irreducible in $\Q[X]$ and it generates 
-	a maximal ideal. 	
-\end{example}
-
-% \begin{exercise}
-% 	Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then 
-% 	$I$ is maximal if and only if $R/I$ is a field. 
-% \end{exercise}
-
-\begin{example}
-	Let $R=(\Z/2)[X]$ and $f(X)=X^2+X+1$. Since $f(X)$ is irreducible (because $\deg f(X)=2$ and
-	$f(X)$ has no roots in $\Z/2$, it follows that $(f(X))$ is a maximal ideal. 
-	Thus $R/I$ is a field. 
-\end{example}
-
-\begin{exercise}
-	Compute the maximal ideals of $\Z/n$. 	
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Jacobson}
-\index{Jacobson's radical}
-	Let $R$ be a commutative ring and $J(R)$ be the intersection of all maximal ideals 
-	of $R$. Prove that $x\in J(R)$ 
-	if and only if $1-xy\in\mathcal{U}(R)$ for all $y\in R$. The ideal $J(R)$ is known
-	as the \emph{Jacobson's radical} of $R$. Note that $J(R)\ne R$.   
-\end{exercise}
-
-We conclude the lecture with a different application of Zorn's lemma.  
-
-\begin{bonus}
-	Prove that every non-zero vector space has a basis.
-\end{bonus}
-
-The previous exercise can be used to solve the following exercises:
-
-\begin{bonus}
-\label{xca:extend}
-    Every linearly independent subset of a non-zero vector space
-    $V$ can be extended to a basis of $V$.
-\end{bonus} 
-
-Hint: If $X$ is a linearly independent set, a basis 
-of $V$ that contains $X$ will be found as a maximal linearly independent set 
-containing $X$. 
-
-\begin{bonus}
-    Let $V$ be a vector space. Prove that every subspace $U$ of $V$ is a direct summand of $V$, that is
-    $V=U\oplus W$ for some subspace $W$ of $V$. 
-\end{bonus}
-
-\begin{bonus}
-    Prove that every spanning set of a non-zero vector space
-    contains a basis. 
-\end{bonus}
-
-\begin{bonus}
-\label{xca:fx=cx}
-    Prove that there exists a group homomorphism $f\colon\R\to\R$ that 
-    is not of the form $f(x)=\lambda x$ for some $\lambda\in\R$. 
-\end{bonus}
-
-
-\begin{bonus}
-\label{xca:Rn=R}
-    Prove that the abelian groups $\R^n$ and $\R$ are isomorphic.
-\end{bonus}
-
-\begin{bonus}
-\label{xca:aut}
-    Prove that if $G$ is a group such that $|G|>2$, then $|\Aut(G)|>1$.
-\end{bonus}
-
-\subsection{The characteristic of a ring}
-
-\begin{definition}
-Let $R$ be a ring. If there is a least positive integer $n$ such that 
-$nx=0$ for all $x\in R$, then $R$ has \emph{characteristic} $n$, i.e. $\ch R=n$. If no such $n$ exists, 
-then $R$ is of characteristic zero. 
-\end{definition}
-
-Easy examples: $\ch\Z=0$ and $\ch\Z/n=n$.
-
+for all $v\in V$. 
+ 
 \begin{proposition}
-    Let $R$ be a ring such that $\ch R=n>0$,
-    \begin{enumerate}
-        \item The map $f\colon \Z\to R$, $m\mapsto m1$, is a ring homomorphism and $\ker f=n\Z$.  
-        \item $n=\min\{k\in\Z_{>0}:k1=0\}$.
-        \item If $R$ is a domain, then $n$ is a prime number.
-    \end{enumerate}
+\label{pro:T_invariant}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations
+	and $T\colon V\to W$ be a linear map. Then
+	\[
+	T^{\#}=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\in\Hom_G(V,W).
+	\]
+	Moreover, the map $\Hom(V,W)\to\Hom_G(V,W)$, $T\mapsto T^{\#}$, is linear and surjective.  
 \end{proposition}
 
 \begin{proof}
-    We leave 1) as an exercise. 
-    
-    Let us prove 2). Let $n_1=\min\{k\in\Z_{>0}:k1=0\}$. Clearly 
-    $n\geq n_1$. For $x\in R$,
-    \[ 
-    n_1x=n_1(1x)=(n_11)x=0x=0
-    \]
-    and hence $n_1\geq n$. 
-    
-    Finally, we prove 3). If $n$ is not prime, say
-    $n=rs$ with $1<r,s<n$. Then 
-    \[
-    0=n1=(rs)1=(r1)(s1)
-    \]
-    and hence $r1=0$ or $s1=0$, a contradiction. 
+  Let $h\in G$ and $v\in V$. Then 
+  \begin{align*}
+	T^{\#}\rho_h(v)
+	&=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\rho_h(v)
+	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_{gh}(v)\\
+	&=\frac{1}{|G|}\sum_{x\in G}\psi_{hx^{-1}}T\rho_x(v)
+	=\frac{1}{|G|}\sum_{x\in G}\psi_h\psi_{x^{-1}}T\rho_x(v)
+	=\psi_hT^{\#}(v).
+      \end{align*}
+
+    It is a routine calculation to show that $T\mapsto T^{\#}$ is a linear map. The map
+    $T\mapsto T^{\#}$ is surjective since 
+    if $T\in\Hom_G(V,W)$, then  
+	\[
+	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g(v)
+	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
+	=T(v)
+      \]
+    holds for all $v\in V$, so $T^{\#}=T$.  
 \end{proof}
 
-\begin{exercise}
-    Let $p$ be a prime number and 
-    $R=\Z/p\times\Z/p$ be a ring with the usual point-wise operations. 
-    Prove that $\ch R=p$ and that $R$ has zero divisors. 
-\end{exercise}
+If $\rho\colon G\to\GL(V)$ and $\psi\colon
+	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
+	V\to W$ is a linear map, then $T^{\#}=0$, as 
+	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma. We will use this
+ fact later in the proof of Schur's theorem  \ref{thm:Schur_technical}. 
 
-\begin{exercise}[binomial theorem]
-\index{Binomial theorem}
-    Let $R$ be a commutative ring and $n\geq1$. Prove that
-    if $a,b\in R$, then 
+\begin{theorem}[Ergodic theorem]
+\index{Ergodic theorem}
+\label{thm:ergodic}
+  Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
+  If $T\colon V\to V$ is linear, then 
+  $T^{\#}=(\dim V)^{-1}\trace(T)\id$.
+\end{theorem}
+
+\begin{proof}
+  Since $T^{\#}\in\Hom_G(V,V)$ by Proposition~\ref{pro:T_invariant}, it follows
+  from Proposition~\ref{pro:Schur_consequence} that
+  $T^{\#}=\lambda\id$ for some $\lambda\in\C$.
+  We now compute the trace of $T^{\#}$. On the one hand, 
+  \[
+	\trace(T^{\#})=\trace(\lambda\id)=(\dim V)\lambda.
+  \]
+  On the other hand.  
+  \[
+	\trace(T^{\#})
+	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho_g)
+	=\frac{1}{|G|}\sum_{g\in G}\trace(T)
+	=\trace(T),
+  \]
+  as $\trace(ABA^{-1})=\trace(B)$ for all $A$ and $B$. 
+  Hence 
+  \[
+  \trace(T^{\#})=(\dim V)^{-1}\trace(T)\id.\qedhere 
+  \]
+\end{proof}
+
+
+
+We now prove Schur's orthogonality relations. We need some preliminary material. First, recall that 
+the matrix $E_{ij}$ is given by 
+\[
+(E_{ij})_{kl}=\delta_{ik}\delta_{jl},
+\qquad
+\delta_{xy}=\begin{cases}
+    1 & \text{if $x=y$},\\
+    0 & \text{otherwise}.
+\end{cases}
+\]
+For example, in $\C^{3\times4}$, 
+\[
+E_{12}=\begin{pmatrix}
+    0&1&0&0\\
+    0&0&0&0\\
+    0&0&0&0
+\end{pmatrix},
+\quad 
+E_{32}=\begin{pmatrix}
+    0&0&0&0\\
+    0&0&0&0\\
+    0&1&0&0
+\end{pmatrix}.
+\]
+Note that each matrix $E_{ij}$ can be though as 
+a linear map, for example:
+\[
+E_{12}\colon\C^4\to\C^3,\quad 
+\colvec{4}{x_1}{x_2}{x_3}{x_4}\mapsto 
+E_{12}\colvec{4}{x_1}{x_2}{x_3}{x_4}
+=\colvec{3}{x_2}{0}{0}.
+\]
+
+Recall the rule for multiplying matrices. 
+Let $A=(a_{ij})\in\C^{r\times s}$ and $B=(b_{ij})\in\C^{s\times t}$. Then $AB\in\C^{r\times t}$ is given by 
+\[
+(AB)_{ij}=\sum_{k=1}^sa_{ik}b_{kj}.
+\]
+
+\begin{lemma}
+Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be irreducible unitary representations. Then
+$(E_{ki}^\#)_{lj}=\langle\rho_{ij},\psi_{kl}\rangle$
+for all $1\leq k,l\leq m$ and $1\leq i,j\leq n$. 
+\end{lemma}
+
+\begin{proof}
+  Assume that $\rho$ is unitary. Then $\rho^{-1}_g=\rho_{g^{-1}}=\rho^*_g=\overline{\rho}_g^T$ for all $g\in G$. 
+  Thus  
+  \begin{align*}
+      (E_{ki}^\#)_{lj} &= \frac{1}{|G|}\sum_{g\in G}(\psi_{g^{-1}}E_{ki}\rho_g)_{lj}\\
+      &=\frac{1}{|G|}\sum_{g\in G}\sum_{p,q}\psi_{lq}(g^{-1})(E_{ki})_{qp}\rho_{pj}(g)\\
+      &=\frac{1}{|G|}\sum_{g\in G}\psi_{lk}(g^{-1})\rho_{ij}(g)\\
+      &=\frac{1}{|G|}\sum_{g\in G}\overline{\psi_{kl}(g)}\rho_{ij}(g)=\langle \rho_{ij},\psi_{kl}\rangle.\qedhere
+  \end{align*}
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Schur_technical}]
+    Let us prove the first claim. Since 
+    $\rho$ and $\psi$ 
+    are not equivalent, it follows from Schur's lemma that $\Hom_G(V,W)=\{0\}$.
+    Thus $E_{ki}^\#\in\Hom_G(V,W)=\{0\}$ (see the comment 
+    before the ergodic theorem \ref{thm:ergodic}). 
+    
+    To prove the second claim, we use the previous lemma:
     \[
-    (a+b)^n=\sum_{k=0}^n\binom{n}{k}a^kb^{n-k}.
+    (E_{ki}^\#)_{lj}=\langle\rho_{ij},\rho_{kl}\rangle
+    =\frac{1}{\dim V}(\trace E_{ki})\delta_{lj}
+    =\frac{1}{\dim V}\delta_{ki}\delta_{lj}.\qedhere
     \]
-\end{exercise}    
+\end{proof}
+
+
+\subsection{Examples}
+
+Let $G$ be a finite group and $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. Without loss of generality
+we may assume that $\chi_1$ is the trivial character, i.e. $\chi_1(g)=1$ for all $g\in G$. 
+Recall that $r$ is the number of conjugacy classes of $G$. Each $\chi_j$ is constant on conjugacy classes. 
+The \emph{character table} of 
+$G$ is given by 
+\begin{center}
+\begin{tabular}{|c|cccc|}
+\hline 
+ & $1$ & $k_{2}$ & $\cdots$ & $k_{r}$\tabularnewline
+ & $1$ & $g_{2}$ & $\cdots$ & $g_{r}$\tabularnewline
+\hline 
+$\chi_{1}$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+$\chi_{2}$ & $n_{2}$ & $\chi_{2}(g_{2})$ & $\cdots$ & $\chi_{2}(g_{r})$\tabularnewline
+$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+$\chi_{r}$ & $n_{r}$ & $\chi_{r}(g_{2})$ & $\cdots$ & $\chi_{r}(g_{r})$\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+where the $n_j$ are the degrees of the irreducible representations of $G$ and each $k_j$ is 
+the size of the conjugacy class of the element $g_j$. By convention, the character table
+contains not only the values of the irreducible characters of the group. 
+
+\begin{example}
+	Let $G=\langle g:g^4=1\rangle$ 
+	be the cyclic group of order four. The character table of $G$ is given by
+	\begin{center}
+		\begin{tabular}{|c|cccc|}
+			\hline 
+			& 1 & 1 & 1 & 1\tabularnewline
+			& $1$ & $g$ & $g^2$ & $g^{3}$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\lambda^{3}$\tabularnewline
+			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\lambda^{2}$\tabularnewline
+			$\chi_{4}$ & $1$ & $\lambda^{3}$ & $\lambda^{2}$ & $\lambda$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+% Let us see how to see this calculation in the computer:
+% \begin{lstlisting}
+% gap> C4 := CyclicGroup(4);;                       
+% gap> T := CharacterTable(C4);;
+% gap> Display(T);
+% CT1
+
+%      2  2  2  2  2
+
+%       1a 4a 2a 4b
+
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  A -1 -A
+% X.4     1 -A -1  A
+
+% A = E(4)
+%   = Sqrt(-1) = i
+% \end{lstlisting}
+% We need some remarks
+% \begin{enumerate}
+%     \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
+%     \item The function \lstinline{CharacterTable} computes some more information, not only the character table of the group. 
+%     esta función calcula algunas otras cosas. Por ejemplo:
+% \end{enumerate}
+% \begin{lstlisting}
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 4, 2, 4 ]
+% gap> SizesCentralizers(T);
+% [ 4, 4, 4, 4 ]
+% gap> SizesConjugacyClasses(T);
+% [ 1, 1, 1, 1 ]
+% \end{lstlisting}
+\end{example}
 
 \begin{exercise}
-\label{xca:freshman_dream}
-\index{Freshman's dream}
-    Let $R$ be a commutative ring of prime characteristic $p$. 
-    \begin{enumerate}
-        \item If $x,y\in R$, then $(x+y)^{p^n}=x^{p^n}+y^{p^n}$ for all $n\geq0$. 
-        \item The map $R\to R$, $x\mapsto x^{p^n}$, is a ring homomorphism for all $n\geq0$.
-    \end{enumerate}
+	Let $n\in\Z_{>0}$ be such that $n\geq2$. Let 
+$C_n=\langle g:g^n=1\rangle$ be the cyclic group of order $n$.
+\begin{enumerate}
+    \item Prove that the maps  
+        $\chi_j\colon C_n\to\C^\times$, $g^k\mapsto e^{2\pi ijk/n}$, where $j\in\{0,1,\dots,n-1\}$, 
+        are the irreducible representations of $C_n$. 
+    \item Let $\lambda$ be a primitive root of 1 of order $n$. Prove that 
+        the character table of $C_n$ of order $n$ is given by 
+	\begin{center}
+		\begin{tabular}{|c|ccccc|}
+			\hline 
+			& 1 & 1 & 1 & $\cdots$ & 1\tabularnewline
+			& $1$ & $g$ & $g^2$ & $\cdots$ & $g^{n-1}$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\cdots$ & $\lambda^{n-1}$\tabularnewline
+			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\cdots$ & $\lambda^{n-2}$\tabularnewline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+			$\chi_{n}$ & $1$ & $\lambda^{n-1}$ & $\lambda^{n-2}$ & $\cdots$ & $\lambda$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{enumerate}
 \end{exercise}
 
-Hint: Proceed by induction on $n$ and use the fact that the prime number $p$ divides 
-$\binom{p}{k}$ for all $k\in\{1,2,\dots,p-1\}$. Alternatively, one could use
-that the prime number $p$ divides $\binom{p^n}{k}$ for all 
-$k\in\{1,2,\dots,p^n-1\}$. 
-
-\begin{bonus}
-\index{Non-commutative binomial theorem}
-    Let $R$ be a ring and $n\geq1$. 
-    For $a,b\in R$, let $A(x)=(a+b)x-xb$. 
-    Prove that
-    if $a,b\in R$, then 
+\begin{exercise}
+    Let $A$ and $B$ be finite abelian groups. We write $\Irr(A)=\{\rho_1,\dots,\rho_r\}$ and 
+    $\Irr(B)=\{\phi_1,\dots,\phi_s\}$. Prove
+    that the maps 
     \[
-    (a+b)^n=\sum_{k=0}^n\binom{n}{k}A^k(1)b^{n-k}.
-    \] 
-\end{bonus}
+    \varphi_{ij}\colon A\times B\to\C^\times,\quad
+    (a,b)\mapsto\rho_i(a)\phi_j(b),
+    \]
+    where $i\in\{1,\dots,r\}$ and $j\in\{1,\dots,s\}$, are the irreducible representations of $A\times B$. 
+\end{exercise}
 
+Let us show a particular example of the previous exercise. 
+
+\begin{example}
+	The character table of the group $C_2\times C_2=\{1,a,b,ab\}$ is 
+	\begin{center}
+		\begin{tabular}{|c|rrrr|}
+			\hline 
+			& 1 & 1 & 1 & 1\tabularnewline
+			& $1$ & $a$ & $b$ & $ab$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_{3}$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_{4}$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+% 	Let us do this by computer:
+% \begin{lstlisting}
+% gap> Display(CharacterTable(AbelianGroup([2,2])));
+% CT2
+
+%      2  2  2  2  2
+
+%       1a 2a 2b 2c
+
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  1 -1 -1
+% X.4     1 -1 -1  1
+% \end{lstlisting}
+\end{example}
+
+%Clearly, the order in which the computer returns the irreducible characters is not %necessarily the same we used! 
+
+\begin{example}
+	The symmetric group $\Sym_3$ has three conjugacy classes. The representatives are 
+	$\id$, $(12)$ and $(123)$. There are three irreducible representations. We already found all the irreducible characters! 
+	The character table of $\Sym_3$ is given by 
+	\begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Let us recall how this table was computed. Degree-one irreducibles were easy to compute. 
+	To compute the third row of the table one possible approach is to use
+	the irreducible representation  
+	\[
+	(12)\mapsto \begin{pmatrix}-1&1\\0&1\end{pmatrix},
+	\quad
+	(123)\mapsto \begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+	\]
+    Then	
+    \begin{align*}
+		&\chi_3\left( (12) \right)=\trace\begin{pmatrix}-1&1\\0&1\end{pmatrix}=0,\\
+		&\chi_3\left( (123) \right)=\chi_3\left( (12)(23)\right)=\trace\begin{pmatrix}0&-1\\1&-1\end{pmatrix}=-1.
+	\end{align*}
+
+	We should remark that the irreducible representation mentioned is not really needed to
+	compute the third row of the character table. We can, for example, use the regular
+	representation $L$. The character of $L$ is given by 
+	\[
+		\chi_L(g)=\begin{cases}
+			6 & \text{if $g=\id$},\\
+			0 & \text{if $g\ne\id$}.
+		\end{cases}
+	\]
+	The equality $0=\chi_L\left( (12) \right)=1-1+2\chi_3( (12))$ implies that 
+	$\chi_3( (12))=0$ and the equality 
+    \[ 
+    0=\chi_L( (123))=1+1+2\chi_3( (123))
+    \]
+	implies that $\chi_3\left( (123) \right)=-1$. 
+
+	Another approach uses the orthogonality relations. We need to compute $\chi_3( (12) )$ and $\chi_3( (123))$. 
+	Let $a=\chi_3( (12) )$ and $b=\chi_3( (123))$. Then 
+    we get that $a=0$ and $b=-1$. We just need to solve  
+	\begin{align*}
+		0&=\langle \chi_3,\chi_1\rangle=\frac16(2+3a+2b),\\
+		0&=\langle \chi_3,\chi_2\rangle=\frac16(2-3a+2b).
+	\end{align*}
+	
+% 	Let us use the computer:
+% 	\begin{lstlisting}
+% gap> S3 := SymmetricGroup(3);;
+% gap> T := CharacterTable(S3);;
+% gap> Display(T);
+% CT3
+
+%      2  1  1  .
+%      3  1  .  1
+
+%       1a 2a 3a
+%     2P 1a 1a 3a
+%     3P 1a 2a 1a
+
+% X.1     1 -1  1
+% X.2     2  . -1
+% X.3     1  1  1
+% \end{lstlisting}
+% As we did before, some extra information was computed:
+% \begin{lstlisting}
+% gap> SizesConjugacyClasses(T);
+% [ 1, 3, 2 ]
+% gap> SizesCentralizers(T);
+% [ 6, 2, 3 ]
+% gap> SizesConjugacyClasses(T);
+% [ 1, 3, 2 ]
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 2, 3 ]
+% \end{lstlisting}
+\end{example}
+
+%A challenging exercise: 
+\begin{exercise}
+Compute the character table of $\Sym_4$. 
+\end{exercise}
+
+\begin{example}
+	We now compute the character table of the alternating group $\Alt_4$. This group has $12$ 
+	elements and four conjugacy classes.
+	\begin{center}
+		\begin{tabular}{c|cccc}
+			representative & $\id$ & $(123)$ & $(132)$ & $(123)$\tabularnewline
+			\hline
+			size & $1$ & $4$ & $4$ & $3$ 
+		\end{tabular}
+	\end{center}
+	Since 
+ \[
+ [\Alt_4,\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\},
+ \]
+	the quotient $\Alt_4/[\Alt_4,\Alt_4]$ has three elements. Thus $\Alt_4$ has three degree-one irreducibles and
+	an irreducible character of degree three. Let 
+	$\omega=\exp(2\pi i/3)$ be a primitive cubic root of 1. If $\chi$
+	is a non-trivial degree-one character, then 
+	$\chi\left( (123) \right)=\omega^j$
+	for some $j\in\{1,2\}$ and $\chi\left( (132) \right)=\omega^{2j}$. Since 
+	$(132)(134)=(12)(34)$ and 
+	the permutations $(134)$ and $(123)$ are conjugate,  
+	\[
+	\chi_i((12)(34))=\chi_i((132)(134))=\chi_i((132))\chi_i((134))=\omega^3=1
+	\]
+	for all $i\in\{1,2\}$. 
+	
+	To compute $\chi_4$ we use the regular representation. 
+	\begin{align*}
+		0&=\chi_L\left( (12)(34) \right)=1+1+1+3\chi_4\left( (12)(34) \right),\\
+		0&=\chi_L\left( (123) \right)=1+\omega+\omega^2+3\chi_4\left( (123) \right),\\
+		0&=\chi_L\left( (132) \right)=1+\omega+\omega^2+3\chi_4\left( (132) \right).
+	\end{align*}
+	Then we obtain that $\chi_4\left( (123) \right)=\chi_4\left( (132)
+	\right)=0$ and $\chi_4\left( (12)(34) \right)=-1$. Therefore, the character table of $\Alt_4$
+	is given by
+	\begin{center}
+		\begin{tabular}{|c|rrrr|}
+			\hline
+			& $\id$ & $(123)$ & $(132)$ & $(12)(34)$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $\omega$ & $\omega^2$ & $1$\tabularnewline
+			$\chi_3$ & $1$ & $\omega^2$ & $\omega$ & $1$\tabularnewline
+			$\chi_4$ & $3$ & $0$ & $0$ & $-1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+% 	Let us use the computer:
+% \begin{lstlisting}
+% gap> A4 := AlternatingGroup(4);;
+% gap> T := CharacterTable(A4);;
+% gap> Display(T);
+% CT5
+
+%      2  2  2  .  .
+%      3  1  .  1  1
+
+%       1a 2a 3a 3b
+%     2P 1a 1a 3b 3a
+%     3P 1a 2a 1a 1a
+
+% X.1     1  1  1  1
+% X.2     1  1  A /A
+% X.3     1  1 /A  A
+% X.4     3 -1  .  .
+
+% A = E(3)^2
+%   = (-1-Sqrt(-3))/2 = -1-b3
+% \end{lstlisting}
+% The symbol \lstinline{E(3)} denotes a primitive cubic root of 1, say our $\omega$. 
+% To save some space, the compute uses the symbol \lstinline{A} to denote the complex number $\omega^2$ (it is the same as \lstinline{E(3)^2}) and
+% the symbol \lstinline{/A} to denote the complex number $\omega$, the multiplicative inverse of $\omega^2$. 
+\end{example}
+
+\begin{example}
+    Let $Q_8=\{-1,1,i,-i,j,-j,k,-k\}$ be the quaternion group. 
+    The group $Q_8$ is generated by $\{i,j\}$ and the map $\rho\colon Q_8\to\GL_2(\C)$, 
+    \[
+    i\mapsto\begin{pmatrix}
+    \sqrt{-1}&0\\0&-\sqrt{-1}
+    \end{pmatrix},
+    \quad
+    j\mapsto\begin{pmatrix}
+    0&1\\-1&0
+    \end{pmatrix},
+    \]
+    is a representation.
+    The conjugacy classes of $Q_8$ are $\{1\}$, $\{-1\}$, $\{-i,i\}$, $\{-j,j\}$ and $\{-k,k\}$. 
+    So there are five irreducible representations. 
+    We can compute the character of $\rho$:
+    	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+		    \hline
+			& $1$ & $-1$ & $i$ & $j$ & $k$\tabularnewline
+			\hline
+			$\chi_\rho$ & 2 & 2 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Then $\rho$ is irreducible, as $\langle\chi_\rho,\chi_\rho\rangle=1$. 
+	
+	Since $[Q_8,Q_8]=\{-1,1\}=Z(Q_8)$, the quotient group $Q_8/[Q_8,Q_8]$ has four elements and
+	hence there are four irreducible degree-one representations. Since 
+	$Q_8$ is non-abelian, $Q_8/Z(Q_8)$ cannot be cyclic. 
+	This implies that 
+	$Q_8/[Q_8,Q_8]\simeq C_2\times C_2$. This allows us
+	to compute almost all the character table of $Q_8$. 
+		\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $-1$ & $i$ & $j$ & $k$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & \cellcolor{gray!30}{$1$} & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_3$ & $1$ & \cellcolor{gray!30}{$1$} & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_4$ & $1$ & \cellcolor{gray!30}{$1$} & $-1$ & $-1$ & $1$\tabularnewline
+			$\chi_5$ & $2$ & $-2$ & $0$ & $0$ & $0$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	It remains to compute $\chi_j(-1)$ for $j\in\{2,3,4\}$, these missing values are presented in shaded
+    cells. To compute these values that $\langle\chi_i,\chi_j\rangle=0$ whenever $i\ne j$. The calculations
+    are left as an exercise. 
+% 	To check our character table we can use the computer. 
+% \begin{lstlisting}
+% gap> Q8 := QuaternionGroup(8);;
+% gap> Display(CharacterTable(Q8));
+% CT6
+
+%      2  3  2  2  3  2
+
+%       1a 4a 4b 2a 4c
+%     2P 1a 2a 2a 1a 2a
+%     3P 1a 4a 4b 2a 4c
+
+% X.1     1  1  1  1  1
+% X.2     1 -1 -1  1  1
+% X.3     1 -1  1  1 -1
+% X.4     1  1 -1  1 -1
+% X.5     2  .  . -2  .
+% \end{lstlisting}
+\end{example}
+
+\begin{exercise}
+    Compute the character table of the dihedral group of eight elements. 
+\end{exercise}
+
+%\subsection{An application (optional)}
+%
+%Let $N$ be a normal subgroup of $G$ 
+%and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
+%If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
+%is a representation of $G/N$ with 
+%character
+%$\widetilde{\chi}$, the composition 
+%$\rho=\widetilde{\rho}\circ\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
+%is a representation of $G$. 
+%Thus
+%\[
+%\chi(g)=\trace{\rho_g}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
+%\]
+%In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
+%is the \emph{lifting} to $G$ of the character 
+%$\widetilde{\chi}$ of $G/N$. 
+%
+%\begin{proposition}
+%If $\chi\in\Irr(G)$, then 
+%\[
+%\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
+%\]
+%is a normal subgroup of $G$. 
+%\end{proposition}
+%
+%\begin{proof}
+%Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
+%$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
+%$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
+%$\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
+%$\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
+%\[
+%n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
+%\]
+%Since each $\lambda_i$ is a root of one,  
+%$\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
+%\end{proof}
+%
+%\index{Kernel!of a character}
+%If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
+%is the \emph{kernel} of $\chi$. 
+%
+%\begin{theorem}[Correspondence theorem]
+%\index{Correspondence theorem!for characters}
+%Let $N$ be a normal subgroup of a finite group $G$. There exists
+%a bijective correspondence 
+%\[
+%\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
+%N\subseteq\ker\chi\}
+%\]
+%that maps irreducible characters to irreducible characters.
+%\end{theorem}
+%
+%\begin{proof}
+%If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
+%then
+%\[
+%\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+%\]
+%and thus $N\subseteq\ker\chi$. 
+%
+%If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representation
+%with character $\chi$. 
+%Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
+%is well-defined: 
+%\[
+%gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+%\]
+%Moreover, $\widetilde{\rho}$ is a representation, as 
+%\[
+%\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
+%\]
+%If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
+%$\widetilde{\chi}(gN)=\chi(g)$.
+%
+%We now prove that $\chi$ is irreducible if and only if 
+%$\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
+%\begin{align*}
+%\text{$U$ is invariant}
+%%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
+%&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
+%&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
+%\shortintertext{Thus}
+%\chi\text{ is irreducible }&\Longleftrightarrow
+%\rho\text{ is irreducible }\\
+%&\Longleftrightarrow\widetilde{\rho}\text{ is irreducible }\Longleftrightarrow
+%\widetilde{\chi}\text{ is irreducible }\qedhere.
+%\end{align*}
+%\end{proof}
+%
+%\begin{example}
+%    Let $G=\Sym_4$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. We know that $N$ is normal in $G$ 
+%    and that $G/N=\langle a,b\rangle\simeq\Sym_3$, where 
+%    $a=(123)N$ and $b=(12)N$. 
+%    The character table of $G/N$ is 
+%    \begin{center}
+%		\begin{tabular}{|c|rrr|}
+%			\hline
+%			%& $1$ & $3$ & $2$\tabularnewline
+%			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
+%			\hline 
+%			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
+%			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+%			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%    For each $i\in\{1,2,3\}$ we compute the lifting $\chi_i$ to $G$ of the character  
+%    $\widetilde{\chi}_i$ of $G/N$. 
+%    Since $(12)(34)\in N$ and $(13)(1234)=(12)(34)\in N$, 
+%    \begin{align*}
+%        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
+%        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
+%    \end{align*}
+%    Since the characters $\widetilde{\chi_i}$ are irreducibles, 
+%    the liftings $\chi_i$ are also irreducibles. With this process
+%    we obtain the following irreducible characters of $G$:
+%    	\begin{center}
+%		\begin{tabular}{|c|rrrrr|}
+%			\hline
+%			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
+%			\hline 
+%			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
+%			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
+%			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%\end{example}
+%
+%The character table of a group can be used to find the lattice 
+%of normal subgroups. In particular, the character table detect simple groups. 
+%
+%\begin{lemma}
+%    Let $G$ be a finite group and 
+%    let $g,h\in G$. Then $g$ and $h$ 
+%    are conjugate if and only if 
+%    $\chi(g)=\chi(h)$ for all
+%    $\chi\in\Char(G)$. 
+%\end{lemma}
+%
+%\begin{proof}
+%    If $g$ and $h$ are conjugate, then $\chi(g)=\chi(h)$, as characters are class functions
+%    of $G$.
+%    Conversely, if $\chi(g)=\chi(h)$ for all $\chi\in\Char(G)$, then 
+%    $f(g)=f(h)$ for all class function $f$ of $G$, 
+%    as characters $G$ generate the space of class functions of $G$. In particular, 
+%    $\delta(g)=\delta(h)$, where
+%    \[
+%    \delta(x)=\begin{cases}
+%    1 & \text{if $x$ and $g$ are conjugate},\\
+%    0 & \text{otherwise}.
+%    \end{cases}
+%    \]
+%    This implies that $g$ and $h$ are conjugate.
+%\end{proof}
+%
+%As a consequence, we get that 
+%\begin{equation}
+%\label{eq:kernels}
+%\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+%\end{equation}
+%Indeed, if $g\in\ker\chi$ for all $\chi\in\Irr(G)$, then $g=1$ since 
+%the lemma implies that $g$ and $1$ are conjugate
+%because 
+%$\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
+%
+%\begin{proposition}
+%\label{pro:normal}
+%    Let $G$ be a finite group. 
+%    If $N$ is a normal subgroup of $G$, 
+%    then there exist characters
+%    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
+%    such that
+%    \[
+%    N=\bigcap_{i=1}^k\ker\chi_i.
+%    \]
+%\end{proposition}
+%
+%\begin{proof}
+%    Apply the previous remark to the group $G/N$ to obtain that 
+%    \[
+%    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
+%    \]
+%    Assume that $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
+%    We lift the irreducible characters of $G/N$ to $G$ 
+%    to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
+%    of $G$ such that 
+%    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+%    If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
+%    \[
+%    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
+%    \]
+%    for all $i\in\{1,\dots,k\}$. This implies that
+%    \[
+%    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
+%    \]
+%    that is $g\in N$. 
+%\end{proof}
+%
+%\index{Group!simple}
+%Recall that a non-trivial group is \emph{simple} if it contains no non-trivial normal 
+%proper subgroups. Examples of simple groups are cyclic groups of prime order
+%and the alternating groups $\Alt_n$ for $n\geq5$. 
+%As a corollary of Proposition \ref{pro:normal}, 
+%we can use the character table to detect simple groups.
+%
+%\begin{proposition}
+%    Let $G$ be a finite group. Then $G$ is not simple if and only if 
+%    there exists a non-trivial irreducible character $\chi$ such that
+%    $\chi(g)=\chi(1)$ 
+%    for some $g\in G\setminus\{1\}$. 
+%\end{proposition}
+%
+%\begin{proof}
+%    If $G$ is not simple, there exists a normal subgroup $N$ of $G$ such that
+%    $N\ne G$ and $N\ne\{1\}$. 
+%    By Proposition \ref{pro:normal}, there exist characters 
+%    $\chi_1,\dots,\chi_k\in\Irr(G)$
+%    such that 
+%    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
+%    In particular, there exists a non-trivial character
+%    $\chi_i$ such that $\ker\chi_i\ne\{1\}$. Thus 
+%    there exists $g\in G\setminus\{1\}$ such that
+%    $\chi_i(g)=\chi_i(1)$. 
+%    
+%    Assume now that there exists a non-trivial character $\chi$ 
+%    such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
+%    and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
+%    Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
+%\end{proof}
+%
+%\begin{example}
+%\index{Mathieu's group $M_9$}
+%    If there exists a group $G$ with
+%    a character table 
+%    of the form
+%    \begin{center}
+%		\begin{tabular}{|c|rrrrrr|}
+%			\hline
+%			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+%			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+%			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+%		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+%			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+%			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
+%	Mathieu's group $M_{9}$ has precisely this character table! 
+%\end{example}
+%
+%\begin{example}
+%    Let $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+%    If there exists a group $G$ with a character table
+%    of the form
+%    \begin{center}
+%		\begin{tabular}{|c|rrrrrr|}
+%			\hline
+%			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+%			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+%			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+%		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+%			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+%			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+%			\hline
+%		\end{tabular}
+%	\end{center}    
+%	then $G$ is simple. Note that such a group $G$ would have order 
+%	$\sum_{i=1}^6\chi_i(1)^2=168$. 
+%	The group  
+%	\[
+%	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
+%	\]
+%	is a simple group that has precisely this character table!  
+%\end{example}
+%
+\subsection{Finite simple groups (optional)}
+
+\index{Group!simple}
+Recall that a non-trivial group is \emph{simple} if it contains no non-trivial normal 
+proper subgroups. Examples of simple groups are cyclic groups of prime order
+and the alternating groups $\Alt_n$ for $n\geq5$. 
+We can use the character table to detect simple groups:
+
+\begin{proposition}
+    Let $G$ be a finite group. Then $G$ is not simple if and only if 
+    there exists a non-trivial irreducible character $\chi$ such that
+    $\chi(g)=\chi(1)$ 
+    for some $g\in G\setminus\{1\}$. 
+\end{proposition}
+
+The proof is out of the scope of this course. 
+
+\begin{example}
+\index{Mathieu's group $M_9$}
+    If there exists a group $G$ with
+    a character table 
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
+	Mathieu's group $M_{9}$ has this character table! 
+\end{example}
+
+\begin{example}
+    Let $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+    If there exists a group $G$ with a character table
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}    
+	then $G$ is simple. Note that such a 
+        group $G$ would have order 
+	$\sum_{i=1}^6\chi_i(1)^2=168$. 
+	The group  
+	\[
+	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
+	\]
+	is a simple group that has this character table!  
+\end{example}
+
+Character theory is one of the tools in the 
+classification of finite simple groups. 
+One of the first non-trivial applications
+one finds of character theory is 
+the following result:
+
+\begin{theorem}[Burnside]
+\index{Burnside's theorem}
+    Let $G$ be a finite simple group of order $p^aq^b$ for some
+    prime numbers $p$ and $q$. Then $G$ is cyclic. 
+\end{theorem}
+
+The proof uses character theory. 
+It is not hard, but it is out of the scope of this course. 
+Burnside's theorem
+is essential and generalizes in many different directions. 
+
+\begin{theorem}[Feit--Thompson]
+\index{Feit--Thompson theorem}
+Let $G$ be a finite simple group of odd order. Then $G$ is cyclic. 
+\end{theorem}
+
+The proof is hard and occupies a full volume~\cite{MR166261} of 
+the \emph{Pacific Journal of Mathematics} (see Figure~\ref{fig:FeitThompson}).   
+The theorem was formally verified 
+by the computer proof assistant \lstinline{Coq}, 
+see~\cite{MR3111271} for the announcement. 
+
+The proof of the Feit--Thompson theorem suggests the following conjecture:
+
+\begin{problem}[Feit--Thompson]
+\index{The Feit--Thompson conjecture}
+Are there distinct prime numbers $p$ and $q$ such that
+$\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$? 
+\end{problem}
+
+The conjecture states that there are no such prime numbers. 
+The problem is still open; see \cite{MR297686} for some partial results. 
+
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{FeitThompson.pdf}
+    \caption{The proof of the Feit--Thompson theorem occupies a full volume of 
+the Pacific Journal of Mathematics.}
+    \label{fig:FeitThompson}
+\end{figure}
+
+The Feit--Thompson theorem is one of the starting points
+of the classification of finite simple groups (CFSG). 
+This classification is one
+of the deepest theorems 
+of the 20th century. The proof consists of tens of thousands 
+of pages in several hundred journal articles written 
+by about 100 authors, published mostly between 1955 and 2004.
+
+\begin{theorem}[CFSG]
+\index{Classification of simple groups}
+\label{thm:CFSG}
+Let $G$ be a finite simple group. Then $G$ lies in one (or more) 
+of the following families:
+\begin{enumerate}
+    \item Cyclic groups of prime order.
+    \item $\Alt_n$ for $n\geq5$.
+    \item Finite groups of Lie type.
+    \item 26 sporadic simple groups.
+\end{enumerate}
+\end{theorem}
+
+Groups of Lie type are finite analogs of simple Lie groups, such as 
+$\SL_n(\C)$. A typical example
+of a finite simple group of Lie type is
+$\PSL_n(p)$ for some prime number $p$, which is defined
+as $\SL_n(p)$ over its center. 
+
+The \emph{sporadic simple groups} are 26 groups that do not follow a systematic pattern. 
+The first five of the sporadic groups were discovered by Mathieu in the 1860s, and the other 21 
+were found between 1965 and 1975.
+Several of these groups were predicted to exist before they were constructed, sometimes
+just knowing their character tables! 
+The full list of sporadic simple groups is as follows:
+\begin{itemize}
+\item Mathieu groups $M_{11}$, $M_{12}$, $M_{22}$, $M_{23}$ and $M_{24}$.
+\item Janko groups $J_1$, $J_2$, $J_3$ and $J_4$.
+\item Conway groups $Co_1$, $Co_2$ and $Co_3$.
+\item Fischer groups $Fi_{22}$, $Fi_{23}$ and $Fi_{24}$. 
+\item Higman–Sims group $HS$.
+\item McLaughlin group $McL$.
+\item Held group $He$.
+\item Rudvalis group $Ru$.
+\item Suzuki group $Suz$.
+\item O'Nan group $ON$.
+\item Harada–Norton group $HN$.
+\item Lyons group $Ly$.
+\item Thompson group $Th$.
+\item Baby Monster group $B$.
+\item Monster group $M$.
+\end{itemize}
+
+Mathieu groups can be realized 
+as automorphism groups of certain very complicated
+combinatorial structures known as \emph{Steiner systems}. 
+A concrete example: 
+\[
+M_{11}=\langle (123456789\,10\,11), (37\,11\,8)(4\,10\,56)\rangle,
+\]
+which is a subgroup of $\Sym_{11}$ of order 7920. The group
+$M_{11}$ contains ten irreducible characters, so the
+character table of $M_{11}$ is essentially a $10\times 10$ matrix. Let us
+use the computer software \lstinline{GAP} 
+to see the character table:
+
+\begin{lstlisting}
+> CharacterTable("M11");
+
+Character Table
+---------------
+
+
+----------------------------------------------------
+Class |    1   2   3   4    5    6   7   8    9   10
+Size  |    1 165 440 990 1584 1320 990 990  720  720
+Order |    1   2   3   4    5    6   8   8   11   11
+----------------------------------------------------
+p  =  2    1   1   3   2    5    3   4   4   10    9
+p  =  3    1   2   1   4    5    2   7   8    9   10
+p  =  5    1   2   3   4    1    6   8   7    9   10
+p  = 11    1   2   3   4    5    6   7   8    1    1
+----------------------------------------------------
+X.1   +    1   1   1   1    1    1   1   1    1    1
+X.2   +   10   2   1   2    0   -1   0   0   -1   -1
+X.3   0   10  -2   1   0    0    1  Z1 -Z1   -1   -1
+X.4   0   10  -2   1   0    0    1 -Z1  Z1   -1   -1
+X.5   +   11   3   2  -1    1    0  -1  -1    0    0
+X.6   0   16   0  -2   0    1    0   0   0   Z2 Z2#2
+X.7   0   16   0  -2   0    1    0   0   0 Z2#2   Z2
+X.8   +   44   4  -1   0   -1    1   0   0    0    0
+X.9   +   45  -3   0   1    0    0  -1  -1    1    1
+X.10  +   55  -1   1  -1    0   -1   1   1    0    0
+
+
+Explanation of Character Value Symbols
+--------------------------------------
+
+# denotes algebraic conjugation, that is,
+#k indicates replacing the root of unity w by w^k
+
+Z1     = (CyclotomicField(8: Sparse := true)) ! 
+[ RationalField() | 0, 1, 0, 1 ]
+
+Z2     = (CyclotomicField(11: Sparse := true)) ! 
+[ RationalField() | 0, 1, 0, 1,
+1, 1, 0, 0, 0, 1 ]    
+\end{lstlisting}
+% \begin{lstlisting}
+% gap> Display(CharacterTable("M11"));
+% M11
+
+%       2  4  4  1  3  .  1  3  3   .   .
+%       3  2  1  2  .  .  1  .  .   .   .
+%       5  1  .  .  .  1  .  .  .   .   .
+%      11  1  .  .  .  .  .  .  .   1   1
+
+%         1a 2a 3a 4a 5a 6a 8a 8b 11a 11b
+%      2P 1a 1a 3a 2a 5a 3a 4a 4a 11b 11a
+%      3P 1a 2a 1a 4a 5a 2a 8a 8b 11a 11b
+%      5P 1a 2a 3a 4a 1a 6a 8b 8a 11a 11b
+%     11P 1a 2a 3a 4a 5a 6a 8a 8b  1a  1a
+
+% X.1      1  1  1  1  1  1  1  1   1   1
+% X.2     10  2  1  2  . -1  .  .  -1  -1
+% X.3     10 -2  1  .  .  1  A -A  -1  -1
+% X.4     10 -2  1  .  .  1 -A  A  -1  -1
+% X.5     11  3  2 -1  1  . -1 -1   .   .
+% X.6     16  . -2  .  1  .  .  .   B  /B
+% X.7     16  . -2  .  1  .  .  .  /B   B
+% X.8     44  4 -1  . -1  1  .  .   .   .
+% X.9     45 -3  .  1  .  . -1 -1   1   1
+% X.10    55 -1  1 -1  . -1  1  1   .   .
+
+% A = E(8)+E(8)^3
+%   = Sqrt(-2) = i2
+% B = E(11)+E(11)^3+E(11)^4+E(11)^5+E(11)^9
+%   = (-1+Sqrt(-11))/2 = b11
+% \end{lstlisting}
+
+Thus the character table of the Mathieu group $M_{11}$ is
+given by
+\begin{center}
+		\begin{tabular}{|c|cccccccccc|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 10 & 2 & 1 & 2 & 0 & -1 & 0 & 0 & -1 & -1 \tabularnewline
+			$\chi_{3}$ & 10 & -2 & 1 & 0 & 0 & 1 & $\alpha$ & $-\alpha$ & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 10 & -2 & 1 & 0 & 0 & 1 & $-\alpha$ & $\alpha$ & -1 & -1\tabularnewline
+		    $\chi_{5}$ & 11 & 3 & 2 &-1 & 1 & 0 & -1 & -1 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 16 & 0 & -2 & 0 & 1 & 0 & 0 & 0 & $\beta$ & $1/\beta$\tabularnewline
+			$\chi_{7}$ & 16 & 0 & -2 & 0 & 1 & 0 & 0 & 0 & $1/\beta$ & $\beta$\tabularnewline
+			$\chi_{8}$ & 44 & 4 &-1 & 0 &-1 & 1 & 0 & 0 & 0 & 0\tabularnewline
+			$\chi_{9}$ & 45 & -3 & 0 & 1 & 0 & 0 &-1 &-1 &  1 & 1\tabularnewline
+			$\chi_{10}$ & 55 & -1 & 1 & -1 & 0 & -1 & 1 & 1 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}    
+\end{center}
+where $\alpha=\sqrt{-2}$ and $\beta=\frac{-1-\sqrt{-11}}{2}$. 
+
+The largest sporadic simple group is the \emph{Monster group} $M$ and has order
+\[
+808017424794512875886459904961710757005754368000000000, 
+\]
+which is roughly $8\times 10^{53}$. 
+The monster group was predicted by Fischer and Griess. 
+Griess proved the existence of the Monster group, realizing it as
+the automorphism group of a certain space of dimension 196884. 
+The group $M$ can be represented as
+a subgroup of $\GL_{196883}(\C)$. It has 194 conjugacy classes, so 
+the character table is a $194\times 194$ array. 
+
+\begin{problem}
+    Formalize the proof of Theorem \ref{thm:CFSG} in a proof assistant. 
+\end{problem}
+
+It is precisely due to the vastness of the theorem’s proof, that it is very suitable for formalization. Currently, only mathematicians with an extremely deep understanding of the subject can understand parts of the proof. 
+By formalizing the proof in a proof assistant such as \lstinline{Coq} or \lstinline{Lean}, 
+the complete proof could be verified at once. 
