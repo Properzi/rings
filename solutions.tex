@@ -26,18 +26,156 @@
 \end{enumerate}
 \end{sol}
 
-% \begin{sol}{xca:subrings}\
-%     \begin{enumerate}
-%         \item To see that $S\cap T$ is a subring, we first note that
-%             $S\cap T$ is a subgroup of $(R,+)$, as  
-%             the intersection of subgroups is a subgroup. Since $S$ and $T$ are subrings, $1\in S\cap T$. 
-%             Now let $x,y\in S\cap T$. Then 
-%             $xy\in S$ and $xy\in T$, because $S$ and $T$ 
-%             are subrings. Thus $xy\in S\cap T$. 
-        
-%     \end{enumerate}
-% \end{sol}
+ \begin{sol}{xca:subrings}\
+     \begin{enumerate}
+         \item To see that $S\cap T$ is a subring, we first note that
+             $S\cap T$ is a subgroup of $(R,+)$, as  
+             the intersection of subgroups is a subgroup. Since $S$ and $T$ are subrings, $1\in S\cap T$. 
+             Now let $x,y\in S\cap T$. Then 
+             $xy\in S$ and $xy\in T$, because $S$ and $T$ 
+             are subrings. Thus $xy\in S\cap T$. 
+        \item To see that $\cup_{i\geq1}R_i$ is a subring, we first note that $\left(\cup_{i\geq1}R_i, +\right)$ is a subgroup of $(R,+)$  as the union of a sequence of subgroups is a subgroup.
+        Since $R_i$ are subrings, $1\in R_i$ for every $i$, hence $1\in \cup_{i\geq1}R_i$.
+        Finally let $x,y\in \cup_{i\geq1}R_i$, then there exist $i,j\geq 1$ such that $x\in R_i$ and $y\in R_j$. Let $k=\max(i,j)$, then $R_i\subseteq R_k$ and $R_j\subseteq R_k$. Therefore $x,y\in R_k$ and, since $R_k$ is a subring, $xy\in R_k\subseteq\cup_{i\geq1}R_i.$
+        \item Suppose, by contradiction, that $S\cup T$ is 
+        a subring of $R$ and that there exist $s\in S\setminus T$ and $t\in T\setminus S$.
+        Then $s+t\in S\cup T$, so either $s+t\in S$ or $s+t\in T$. In both cases, we obtain a contradiction since either $t=(s+t)-s\in S$ or $s=(s+t)-t\in T $.
+     \end{enumerate}
+ \end{sol}
 
+ \begin{sol}{xca:units_R[X]}
+     We claim that $\mathcal{U}(\R[X])=\mathcal{U}(\R)=\R\setminus\{0\}$.
+     
+     Let $f(X)\in\mathcal{U}(R[X])$, then there exists $g(X)\in \R[X]$ such that $fg=1=gf$.
+     In particular, since the degree of the product of two polynomials over a field is the sum of their degrees,
+     $0=\deg(fg)=\deg(f)+\deg(g)$.
+     Thus $\deg(f)=\deg(g)=0$, so $f(X)$ is an invertible constant in $\R$, i.e. $f\in \mathcal{U}(\R)=\R\setminus\{0\}$.
+ \end{sol}
+
+ \begin{sol}{xca:Qsqrt2}
+     Let $x+y\sqrt{2}\in \Q[\sqrt{2}]\setminus\{0\}$.
+     Observe that $(x+y\sqrt{2})(x-y\sqrt{2})=x^2-2y^2\in\Q.$
+     Therefore 
+     \[
+     (x+y\sqrt{2})\left(\frac{x}{x^2-2y^2}-\frac{y\sqrt{2}}{x^2-2y^2}\right)=\frac{(x+y\sqrt{2})(x-y\sqrt{2})}{x^2-2y^2}=\frac{x^2-2y^2}{x^2-2y^2}=1
+     \]
+     and so $\frac{x}{x^2-2y^2}-\frac{y\sqrt{2}}{x^2-2y^2}$
+ is the inverse of $x+y\sqrt{2}$ in $\Q[\sqrt{2}]$.
+ \end{sol}
+
+ \begin{sol}{xca:ideals}
+     \begin{enumerate}
+         \item We first note that $(\cap_\alpha I_\alpha,+)$ is a subgroup of $(R,+)$, as 
+         the intersection of subgroups is a subgroup.
+             
+             Let now $r\in R$ and $y\in \cap_\alpha I_\alpha$.
+             Then for every $\alpha$ we have that $y\in I_\alpha$, hence, since $I_\alpha$ is an ideal, $ry,yr\in I_\alpha$ for every $\alpha$.
+             Thus $ry,yr\in \cap_\alpha I_\alpha$.
+         \item    We first note that $(\cup_{i\geq 1} I_i,+)$ is a subgroup of $(R,+)$, as  
+          the union of a sequence of subgroups is a subgroup.
+          
+          Let now $r\in R$ and $y\in \cup_{i\geq 1} I_i$.
+          Then, there exists $i\geq 1$ such that $y\in I_i$
+          and so $ry,yr\in I_i$, since $I_i$ is an ideal of $R$. Thus $ry,yr\in \cup_{i\geq 1} I_i$.
+     \end{enumerate}
+ \end{sol}
+
+ \begin{sol}{xca:ideals_Z}
+     Let $I$ be an ideal of $\Z$, if $I=\{0\}$, then we are done as $I=0\Z$.
+     Suppose now $I\setminus\{0\}\neq \emptyset$, then there is at least an element $i\in I\cap \Z_{>0}$.
+     So we can consider $n=\min(I\cap \Z_{>0})$ and we claim that $I=n\Z$.
+
+     Since $n\in I$ then $nx\in I$ for every $x\in \Z$, hence $n\Z\subseteq I$.
+
+     Vice versa, if $y\in I$ we can divide $y$ by $n$ obtaining $y=nq+r$ for some $q\in \Z$ and $r\in\{0,\dots, n-1\}$.
+     Hence $r=y-nq\in I\cap \Z_{\geq 0}$ and $r<n$, so $r=0$ and thus $y=nq\in n\Z$ proving that $I\subseteq n\Z$.
+ \end{sol}
+
+ \begin{sol}{xca:ideals_Zn}
+     We claim that the ideals of $\Z/n$ are of the form $d\Z/n$ for some $d\in\Z_{\geq 0}$ such that $d$ divides $n$.
+
+     Let $I$ be an ideal of $\Z/n$, if $I=\{0\}$, then we are done as $I=0\Z/n$.
+     Suppose now $I\setminus\{0\}\neq \emptyset$
+     and let $d$ be the minimal in $\{1,\dots, n-1\}$ 
+     such that $d\in I$.
+     We claim that $I=n\Z$ and that $d$ divides $n$.
+
+     If $d$ would not divide $n$,
+     then $n=qd+r$ for some $q,r\in \Z$ with $0<r<d$.
+     But then in $Z/n$ we would have $r=n-qd=-qd\in I$, a contradiction to the minimality of $d$.
+      
+     Since $d\in I$ then $dx\in I$ for every $x\in \Z/n$, hence $d\Z/n\subseteq I$.
+
+     Vice versa, let $y\in I$, then $y=qd+r$ for some $q\in \Z$ and $r\in\{0,\dots, n-1\}$.
+     Hence $r=y-qd\in I$ and $0\leq r<n$, so $r=0$ and thus $y=qd\in d\Z/n$ proving that $I\subseteq d\Z/n$.
+ \end{sol} 
+
+ \begin{sol}{xca:ideals_R}
+     We claim that $\{0\}$ and $\R$ are the only ideals of $\R$.
+     Suppose that $I$ is an ideal of $\R$ and that $I\neq\{0\}$.
+     Then there exists $x\in I\setminus\{0\}$, but then $x$ is invertible and so $1=x^{-1}x\in \R I\subseteq I$.
+     Therefore for every $r\in \R$ we have that $r=r1\in \R I\subseteq I$ and so $\R\subseteq I\subseteq \R$. Hence $I=\R$.
+ \end{sol} 
+
+ \begin{sol}{xca:ideals_matrices}
+ We will denote with $E_{ij}$ the matrix in $M_n(R)$
+ with all zeros and a 1 in position $(i,j)$.
+ 
+Let $J$ be an ideal of $M_n(R)$. We claim that 
+$E(J)=\{r\in R:rE_{11}\in J\}$ is an ideal of $R$ and that $J=M_n(E(J))$.
+
+Using the fact that $(J,+)$ is a subgroup of $(R,+)$ we obtain that
+$(E(J),+)$ is a subgroup of $R$.
+More precisely, $0\in E(J)$ since $0E_{11}=0\in J$. Given $r,s\in E(J)$, i.e.
+$rE_{11},sE_{11}\in J$, then $(r+s)E_{11}=rE_{11}+sE_{11}\in J$ and $(-r)E_{11}=-(rE_{11})\in J$, i.e. $r+s,-r\in E(J)$.
+
+Moreover, since $J$ is an ideal of $R$,
+$xrE_{11}=rxE_{11}=r(xE_{11})\in RJ\subseteq J$
+for every $r\in R$ and $x\in E(J)$. 
+So $E(J)$ is an ideal of $R$.
+
+Finally, we can show that $J=M_n(E(J))$ and for that we are going to use the following property: given a matrix $A=(a_{ij})\in M_n(R)$,
+\begin{equation}
+\label{eq:elementary_matrices}
+    E_{ki}AE_{jl}=a_{ij}E_{kl}\text{ for all }i,j,k,l.
+\end{equation}
+
+
+Consider $A=(a_{ij})\in J$,
+then, by Equation \ref{eq:elementary_matrices},
+$a_{ij}E_{11}=E_{1i}AE_{j1}\in J$ for every $i,j\in\{1,\dots, n\}$.
+Hence $a_{ij}\in E(J)$ for every $i,j\in\{1,\dots, n\}$, i.e. $A\in M_n(E(J))$.
+Thus $J\subseteq M_n(E(J))$.
+
+Conversely, if $A=(a_{ij})\in M_n(E(J))$,
+then $A=\sum_{i,j=1}^n a_{ij}E_{ij}$ with $a_{ij}\in E(J)$,
+i.e. $a_{ij}E_{11}\in J$.
+But using Equation \ref{eq:elementary_matrices} applied for $A=Id$
+we also know that $E_{ki}E_{jl}=E_{kl}$, so
+\[
+a_{ij}E_{ij}=a_{ij}E_{i1}E_{1j}=a_{ij}E_{i1}E_{11}E_{1j}=E_{i1}(a_{ij}E_{11})E_{1j}\in J.
+\]
+Thus $A=\sum_{i,j=1}^n a_{ij}E_{ij}$ is a sum of elements of $J$, so $A\in J$.
+Therefore $M_n(E(J))= J$.
+ \end{sol}
+
+\begin{sol}{xca:R[X]_principal}
+Let $I$ be an ideal of $R[X]$. If $I=\{0\}$, then it is principal generated by $0$.
+
+Suppose now $I\neq \{0\}$, then we can consider a polynomial $g(X)\in I$ 
+such that $\deg(g(X))$ is minimal. We claim that $I=(g(X))$.
+
+Clearly $(g(X))\subseteq I$, since $g(X)\in I$.
+
+Conversely, consider $f(X)\in I$, then there exist 
+$q(X),r(X)\in \R[X]$ with $r(X)=0$ or $\deg(r(X))<\deg(g(X))$
+such that $f(X)=q(X)g(X)+r(X)$. 
+If we assume that $r(X)\neq 0$, since $r(X)=f(X)-q(X)g(X)\in I$,
+and by minimality of the degree of $g$, $\deg(r(X))\geq\deg(g(X))$, a contradiction.
+Therefore $r(X)$ has to be 0, i.e. $f(X)=q(X)g(X)\in (g(X))$ 
+and we proved that $I\subseteq (g(X))$.
+\end{sol}
+ 
 \begin{sol}{xca:x_unit}
 If $x$ is a unit, then $yx=xy=1$ for some $y\in R$ and hence $ryx=r$ for all $r\in R$. Conversely, 
 if $R=(x)$, then, in particular, $1\in R=(x)$ and hence $1=xy$ and $1=zx$ for some $y,z\in R$. Now
@@ -50,6 +188,20 @@ $z=z1=z(xy)=(zx)y=1y=y$ and hence $x$ is a unit.
     0=f(0)=f(6)=f(\underbrace{1+\cdots+1}_{6-\text{times}})=6f(1)=6,
     \]
     a contradiction, as $6\ne 0$ in $\Z/15$. 
+\end{sol}
+
+\begin{sol}{xca:evaluation_map}
+    Let $x_0=f(X)\in \R$, and let $p(X)=\sum_{i=0}^n a_iX^i\in \R[X]$.
+    Since $f$ is a ring homomorphism and $f(a_i)=a_i$ for every $i\in\{0,\dots, n\}$,
+    \[
+    f(p(X))
+    =f\left(\sum_{i=0}^n a_iX^i\right)
+    =\sum_{i=0}^n f(a_i)f(X)^i
+    =\sum_{i=0}^n a_if(X)^i
+    =\sum_{i=0}^n a_ix_0^i
+    =p(x_0).
+    \]
+    So $f$ is the evaluation map at $x_0$
 \end{sol}
 
 \begin{sol}{xca:quotient_ring}
