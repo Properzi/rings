@@ -1,485 +1,787 @@
 \section{Lecture -- Week 7}
+\label{6}
+
+We will dedicate three lectures to the development of the character theory for complex representations 
+of finite groups. Our approach will remain entirely elementary, 
+relying solely on fundamental linear algebra principles over complex numbers.
+
+\subsection{Group algebras}
+
+Fix a field $K$ (for example, $K=\C$). 
+For a finite group $G$, let $K[G]$ be the vector space (over $K$)
+with basis $\{g:g\in G\}$. 
+Thus $K[G]$ is a vector space of dimension $\dim K[G]=|G|$.
+Moreover, $K[G]$ is a ring
+with
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\] 
+Note that $K[G]$ is commutative if and only if $G$ is abelian. 
 
 \begin{example}
-	Let $R=\Z[\sqrt{-3}]$ and $x=1+\sqrt{-3}$. 
-	\begin{enumerate}
-		\item $x$ is irreducible. 
-	If $x=\alpha\beta$ for some $\alpha,\beta\in R$, then 
-	\[
- 4=\norm(x)=\norm(\alpha)\norm(\beta).
- \]
- Thus $\norm(\alpha)\in\{1,2,4\}$. 
-	Write $\alpha=a+b\sqrt{-3}$ for some $a,b\in\Z$. 
-	If $\norm(\alpha)=a^2+3b^2=2$, then $b=0$ and hence
-	$a^2=2$, a contradiction. If $\norm(\alpha)=1$, then $\alpha\in\mathcal{U}(R)$.
-	If $\norm(\alpha)=4$, then $\norm(\beta)=1$ and $\beta\in\mathcal{U}(R)$. 
-%
-%	If $\norm(\alpha)=2$, then $a^2+3b^2=2$ and then $a$ and $b$
-%	both have the same parity. 
-%	
-%	If both $a$ and $b$ are even, say $a=2k$ and $b=2l$ for
-%	some $k,l\in\Z$, then 
-%	\[
-%	2=a^2+3b^2=4k^2+12l^2
-%	\]
-%	is divisible by 4, a contradiction.  
-%	
-%	If both $a$ and $b$ are odd, say $a=2k+1$ and $b=2l+1$ for some $k,l\in\Z$, then
-%	\[
-%	2=a^2+3b^2=4k^2+4k+12l^2+12l+4
-%	\]
-%	is divisible by 4, a contradiction. 
-		\item $x$ is not prime. Note that 
-  \[
-  (1+\sqrt{-3})(1-\sqrt{-3})=4,
-  \]
-  then 
-		$x$ divides $4=2\cdot 2$. But $1+\sqrt{-3}\nmid 2$, as 
-		\[
-		(a-3b)+(a+b)\sqrt{-3}=(1+\sqrt{-3})(a+b\sqrt{-3})=2
-		\]
-		implies that $a-3b=2$ and $a+b=0$, which yields 
-		$a=1/2\not\in\Z$, a contradiction.
-	\end{enumerate}
-\end{example}
-
-\begin{exercise}
-	Let $R=\Z[\sqrt{-5}]$. 
-	\begin{enumerate}
-		\item Prove that $1+\sqrt{-5}$ and $1-\sqrt{-5}$ are irreducible in $R$. 
-		\item Prove that $2,3,1+\sqrt{-5}$ and $1-\sqrt{-5}$ are not associate in $R$.
-	\end{enumerate}
-\end{exercise}
-
-\begin{exercise}
-	Let $R=\Z[\sqrt{5}]$. 
-	Prove that $1+\sqrt{5}$ is irreducible and not prime in $R$. 	
-\end{exercise}
-
-\begin{definition}
-	Let $R$ be an integral domain. Then $R$ is \emph{principal} 
-	(or a principal ideal domain) if
-	every ideal $I$ of $R$ is of the form $I=(x)$ for some $x\in R$.   
-\end{definition}
-
-An ideal $I$ of the form $I=(x)$ for some $x$ is called a \emph{principal ideal}. 
-
-The rings $\Z$ and $\R[X]$ are both principal. 
-
-\begin{example}
-	The ring $\Z[X]$ is not principal. For example, the ideal
-	$I=(2,X)$ is not principal. 
-	
-	First note that $I\ne\Z[X]$. In fact, if $I=\Z[X]$, then 
-	$1=2f(X)+Xg(X)$ for some polynomials $f(X),g(X)\in\Z[X]$. Then 
-	$1=2f(0)$, which implies that $-1/2=f(0)\in\Z$, a contradiction. 
-	
-	If $I=(h(X))$ for some $h(X)\in\Z[X]$, then $2=h(X)g(X)$ for some $g(X)\in\Z[X]$. This
-	implies that $\deg(h(X))=0$, so $h(X)=h(1)\in\Z$. In particular, $2=h(1)g(1)$ and hence
-	$h(1)\in\{-1,1,2,2\}$. Since $I\ne\Z[X]$, it follows that $h(X)=h(1)\not\in\{-1,1\}$. Now      
-	$X=h(X)f(X)$ for some $f(X)\in\Z[X]$. In particular, $\deg(f(X))=1$, so
-	we may assume that $f(X)=a_0+a_1X$ for $a_0,a_1\in\Z$ and $a_1\ne 0$. 	
-	It follows that 
-	\[
-	X=\pm 2f(X)=\pm2(a_0+a_1X)
-	\]
-	and therefore $\pm1/2=a_1\in\Z$, a contradiction.
-\end{example}
-
-\begin{exercise}
-\label{xca:principal=>noetherian}
-    Let $R$ be a principal domain. Prove that $R$ is noetherian.
-\end{exercise}
-
-\begin{example}
-	Let $R=\Z[\sqrt{-5}]$.  
-	The ideal $I=(2,1+\sqrt{-5})$ is not principal, so $R$ is not principal. 
-	
-	We first note that $I\ne R$. If not, there exist $x,y,u,v\in\Z$ such that 
-	\[
-	1=2(x+y\sqrt{-5})+(1+\sqrt{-5})(u+v\sqrt{-5})=(2x+u-5v)+\sqrt{-5}(2y+u+v).
-	\]
-	This implies that $1=2x+u-5v$ and $0=2y+u+v$. These formulas imply that
-	\[
-    1=2(x+y+u-2v),
+    Let 
+    \[
+    \Sym_3=\{\id,(12),(13),(23),(123),(132)\}
     \]
-    a contradiction because $x+y+u-2v\in\Z$. 
-	
-	Now assume that $I=(\alpha)$ for some $\alpha$. Then $\alpha\mid 2$ and $\alpha\mid 1+\sqrt{-5}$. Then
-	$\norm(\alpha)\mid 4$ and $\norm(\alpha)\mid 6$, because $\norm(2)=4$ and $\norm(1+\sqrt{-5})=6$. 
-	Thus $\norm(\alpha)\in\{1,2\}$. If we write
-	$\alpha=a+b\sqrt{-5}$ for $a,b\in\Z$, then it follows that 
-	$a^2+5b^2=\norm(\alpha)$. Clearly, $\norm(\alpha)\ne 2$, as $a^2=2$ has no solution in $\Z$.
-	Now $\norm(\alpha)= 1$ implies that $\alpha\in\mathcal{U}(R)$ and hence 
-	$I=R$, a contradiction.   
+    the symmetric group in three letters. Every element of $\C[\Sym_3]$
+    is of the form 
+    \[
+    a\id+b(12)+c(13)+d(23)+e(123)+f(132)
+    \]
+    for some $a,b,c,d,e,f\in\C$. For example, 
+    \[
+    \alpha=5\id +3(123)\quad\text{ and }\quad 
+    \beta=-4\id+(132)
+    \]
+    are elements of
+    $\C[\Sym_3]$. We compute
+    \begin{align*}
+    \alpha+\beta &=1\id+3(123)+(132)
+    \shortintertext{and}
+    \alpha\beta &=(5\id +3(123))(-4\id+(132))\\
+    &=-20\id +5(132)-12(123)+3(123)(132)\\
+    &=-20\id +5(132)-12(123)+3\id\\
+    &=-17\id+ 5(132)-12(123).
+    \end{align*}
+    Another example:
+    \begin{align*}
+    (\id+5(13))(2\id-(12))
+    &=2\id-(12)+10(13)-5(13)(12)\\
+    &=2\id-(12)+10(13)-5(123),
+    \end{align*}
+    as $(13)(12)=(123)$. 
 \end{example}
 
-Sometimes primes and irreducibles coincide. 
-
-\begin{proposition}
-\label{pro:PID:irreducible=prime}
-	Let $R$ be a principal domain and $x\in R$. 
-	Then $x$ is irreducible if and only if $x$ is prime. 	
-\end{proposition}
-
-\begin{proof}
-	We only need to prove that if $x$ is irreducible, then $x$ is prime. Let us
-	assume that $x\mid yz$. Let $I=(x,y)$. Since $R$ is principal, $I=(a)$ for some $a\in R$. In particular, $x=ab$ for some $b\in R$. Since $x$ is irreducible, $a\in\mathcal{U}(R)$ or
-	$b\in\mathcal{U}(R)$. If $a\in\mathcal{U}(R)$, then $I=R$ and hence 
-	$1=xr+ys$ for some $r,s\in R$. Thus
-	\[
-	z=z1=z(xr+ys)=zxr+zys
-	\]
-	and therefore $x\mid z$. If $b\in\mathcal{U}(R)$, then $x$ and $a$ are associate
-	in $R$. Thus $I=(x)=(a)$ and hence $xt=y$ for some $t\in R$, that is $x\mid y$.  
-\end{proof}
-
-In the integers primes and irreducible coincide. This happens 
-because $\Z$ is a principal domain.
-
-\begin{example}
-	Since $\Z[\sqrt{-3}]$ have irreducible elements that are not prime, 
-	$\Z[\sqrt{-3}]$ is not a principal domain.
-\end{example}
+Note that $K[G]$ is a ring and also a vector space (over $K$) and these structures
+are somewhat compatible, as the formulas 
+\[
+(\lambda a+\mu b)c=\lambda (ac)+\mu (bc),\quad
+a(\lambda b+\mu c)=\lambda (ab)+\mu (ac)
+\]
+hold for all $\lambda,\mu\in K$ and $a,b,c\in K[G]$. 
 
 \begin{definition}
-	Let $R$ be an integral domain. We say that $R$ is an \emph{euclidean domain}
-	if there exists a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$ such that
-	for every $x,y\in R$ with $y\ne 0$ there exist $q,r\in R$ such that 
-	$x=qy+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
+\index{Algebra}
+Let $A$ be a ring and $K$ be a field. Then $A$ is a \emph{$K$-algebra} (or an \emph{algebra} 
+over the field $K$) if $A$ is a vector space (over $K$)
+such that $\lambda(ab)=(\lambda a)b=a(\lambda b)$ for all $\lambda\in K$ and $a,b\in A$. 
 \end{definition}
 
-Note that in the definition of euclidean domains, we do not ask for the uniqueness 
-of the quotient and the remainder. In fact, 
-we will meet important examples of euclidean domains where uniqueness
-in the division algorithm is not achieved. 
+The fields $\R$ and $\C$ are examples of $\R$-algebras. 
+Other examples of $\R$-algebras are the 
+polynomial rings $\R[X]$ and $\R[X,Y]$ and the matrix rings $M_n(\R)$.  
 
 \begin{example}
-	$\Z$ is a euclidean domain with $\varphi(x)=|x|$.
+	If $A$ is an algebra, then $M_n(A)$ is an algebra.	
 \end{example}
 
-Do we have uniqueness in the previous example? 	
-
 \begin{example}
-	$\R[X]$ is a euclidean domain with $\varphi(f(X))=\deg(f(X))$. 	
+    Let $G$ be a finite group and $K$ be a field. Then $K[G]$ is a $K$-algebra. 
 \end{example}
 
-The previous examples suggest why for the definition of a euclidean domain one needs to  
-consider a map $\varphi\colon R\setminus\{0\}\to\Z_{\geq0}$. 
-
 \begin{example}
-	Let $R=\Z[i]$. Then $R$ is a euclidean domain with $\varphi(a+bi)=a^2+b^2$. Note that
- in this case, $\varphi$ is a multiplicative function in $\C$, that is
+	Let $G=\langle g:g^3=1\rangle=\{1,g,g^2\}\simeq C_3$ be the cyclic group of order three. 
+	If $\alpha=a_11+_2g+a_3g^2$ and $\beta=b_11+b_2g+b_3g^2$, then
+	\[
+		\alpha\beta=(a_1b_1+a_2b_3+a_3b_2)1+(a_1b_2+a_2b_1+a_3b_3)g+a_1b_3+a_2b_2+a_3b_1)g^2.
+	\]
+	One can check that $\C[G]\simeq\C[X]/(X^3-1)$. 
+\end{example}
+
+In general, one proves that the group algebra of $C_n$, the cyclic group of order $n\geq2$, 
+is isomorphic to $\C[X]/(X^n-1)$.
+
+\begin{exercise}
+\label{xca:RC3}
+	Prove that $\R[C_3]\simeq\R\times\C$. 	
+\end{exercise}
+
+\begin{exercise}
+	Let $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. The product
+	of $\C[G]$ is 
+	\[
+	(a1+bg)(c1+gd)=(ac+bd)1+(ad+bc)g.
+	\]
+	Prove that the map 
  \[
- \varphi(\alpha\beta)=\varphi(\alpha)\varphi(\beta)
+ \C[G]\to \C\times \C,\quad a1+bg\mapsto (a+b,a-b),
  \]
- for all $\alpha,\beta\in\C$. 
- 
- 	Let $\alpha,\beta\in\Z[i]$ and assume that $\beta\ne0$. 
-	We want to find $\gamma,\delta\in\Z[i]$ such that 
-	\[
-        \alpha=\beta\delta+\gamma,\quad 
-        \varphi(\gamma)<\varphi(\beta).
-	\]
-    So we need to find $\delta\in R$ and $\gamma\in R$ such that 
-    \[
-    \frac{\alpha}{\beta}=\delta+\frac{\gamma}{\beta},
-    \quad 
-    \varphi(\gamma/\beta)<1. 
+	is a linear isomorphism of rings. 
+\end{exercise}
+
+\begin{exercise}
+	Let $K=\Z/2$ and $G=\{1,g\}\simeq C_2$ be the cyclic group of order two. 
+	Prove that the map 
+ \[
+ K[G]\to\begin{pmatrix}
+		K&K\\
+		0&K
+	\end{pmatrix},\quad 
+ a1+bg\mapsto\begin{pmatrix}
+		a+b&b\\
+		0&a+b		
+	\end{pmatrix},
     \]
-    
-    Note that every complex
-	number $z\in\C$ can be written\footnote{For example, 
-    the complex number 
-    \[
-    z=\sqrt{2}+\frac{i}{3}
-    \]
-    can be written as 
-    $z=\xi+\eta$, where 
-    \[
-    \xi=1+i\in\Z[i],\quad 
-    \eta=(\sqrt{2}-1)+\left(\frac13-1\right)i=(\sqrt{2}-1)-\frac23i. 
-    \]
-    A direct calculation shows that $\varphi(\eta)<1$.} 
-    as $z=\xi+\eta$, where $\xi\in\Z[i]$ and $\varphi(\eta)<1$. In fact, 
-    this
-	follows from the fact that 
-	$\C$ is covered by open unit disks of radius one and 
-    centers $\Z[i]$, see the following figure:
+    is a linear isomorphism of rings.
+\end{exercise}
 
-	\begin{figure}[ht]
-		\centering
-	\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick](1,1) circle (1);
-\draw[red,thick](2,1) circle (1);
-\draw[red,thick](1,2) circle (1);
-\draw[red,thick](2,2) circle (1);
-\end{tikzpicture}
-%\caption{$\C$ is covered by open unit disks of radius one and centers in $\Z[i]$.}
-\label{fig:covering}
-\end{figure}
-	
-	Now let $\alpha=a+ib$ and $\beta=c+id$, where $a,b,c,d\in\Z$.  
-	Write 
-	\[
-	\frac{\alpha}{\beta}=\frac{a+ib}{c+id}=r+is
-	\]
-	for some $r,s\in\Q$. We don't need to compute $r$ and $s$ explicitly! 
-        Let $m,n\in\Z$ be such that $|r-m|\leq 1/2$ and 
-	$|s-n|\leq 1/2$. If $\delta=m+in$ and $\gamma=\alpha-\beta\delta$, then 
-	$\gamma\in R$, $\delta\in R$ and $\alpha=\beta\delta+\gamma$. If $\gamma\ne0$, then
-	\begin{align*}
-	\varphi(\gamma)&=\varphi\left(\beta\left(\frac{\alpha}{\beta}-\delta\right)\right)
-	=\varphi(\beta)\varphi\left(\frac{\alpha}{\beta}-\delta\right)\\
-	&=\varphi(\beta)\varphi((r-m)+i(s-n))\\
-	&=\varphi(\beta)((r-m)^2+(s-n)^2)\\
-	&\leq\varphi(\beta)(1/4+1/4)\\
-	&<\varphi(\beta).
-	\end{align*}	
-\end{example}
-
-
-
-In $\Z[i]$ the division algorithm does not have uniqueness. In fact, 
-if $\alpha,\beta\in\Z[i]$ and $\alpha=\beta\delta+\gamma$ 
-for some $\delta,\gamma\in\Z[i]$, 
-then there are up to four possibilities 
-for the remainder $\gamma$.
+The group ring has the following property, which is left as an exercise. 
+Let $A$ be an algebra and
+$G$ be a finite group. If $f\colon G\to\mathcal{U}(A)$ is a group homomorphism, 
+then there exists a unique algebra homomorphism $\varphi\colon K[G]\to A$ such that
+$\varphi|_G=f$. 
 
 \begin{example}
-	Let $R=\Z[i]$ and 
-	$\alpha=-1+i$ and $\beta=1+2i$. Let $I=(\beta)$ be the ideal of $R$ generated by $\beta$. 
-	First, note that
+	Let $\D_3=\langle r,s:r^3=s^2=1,\,srs^{-1}=r^{-1}\rangle$ be the dihedral
+	group of six elements. We claim that 
 	\[
-	I=(\beta)=(1+2i)R=(1+2i)\Z+(1+2i)\Z i=(1+2i)\Z+(-2+i)\Z.
-	\]  
-	This allows us to draw the lattice of elements of $I$, 
-	that is the lattice formed by the multiples of $\beta$, see Figure~\ref{fig:Z[i]}. 
-	Since $\alpha-\gamma\in I=(\beta)$, there are at most four possibilities for writing
-	the division algorithm. 
-	In our particular example, we find three possible cases:
-	\begin{enumerate}
-		\item If $\alpha-\gamma=\beta_0$, where $0=\beta_0=\beta 0$, 
-			then $\gamma=\alpha=-1+i$ and 
-				\[
-				-1+i=(1+2i)0+(-1+i)
-				\]
-				with $\norm(-1+i)=2<\norm(\beta)=5$. 
-		\item If $\alpha-\gamma=\beta_1$, where $-2+i=\beta_1=\beta i$, then 
-			$\gamma=1$ and 
-			\[
-			-1+i=(1+2i)i+1
-            \]
-			with $\norm(-1)=1<\norm(\beta)=5$. 
-		\item If $\alpha-\gamma=\beta_2$, where $-1+3i=\beta_2=\beta (1+i)$, 
-			then $\gamma=-2i$ and  
-			\[
-			-1+i=(1+2i)(1+i)+(-2i)
-			\]
-			and $\norm(-2i)=4<\norm(\beta)=5$. 
-	\end{enumerate}
-%	We note that the case $\alpha-\gamma=\beta$ yields $\gamma=-2-i$ and thus
-%	$\norm(\gamma)=\norm(\beta)=5$.  
+	\C[\D_3]\simeq\C\times\C\times M_2(\C).
+	\]
+	Let $\omega$ be a primitive cubic root of one. Let 
+	\[
+	R=\begin{pmatrix}
+		\omega&0\\
+		0&\omega^2	
+	\end{pmatrix},
+	\quad
+	S=\begin{pmatrix}
+		0&1\\
+		1&0
+	\end{pmatrix}.
+ 	\]
+ 	One easily checks that $SRS^{-1}=R^{-1}$ and $R^3=S^2=\begin{pmatrix}
+		1&0\\
+		0&1	
+	\end{pmatrix}$. It follows that there exists a group homomorphism
+	$G\to\C\times\C\times M_2(\C)$ such that
+	$r\mapsto (1,1,R)$ and $s\mapsto (1,-1,S)$. This group homomorphism
+	is a ring isomorphism.  
 \end{example}
 
-\begin{figure}
-\begin{tikzpicture} 
-\draw[dashed] (0,0) grid (3,3); 
-\foreach \i in {0,...,3}     
-\foreach \j in {0,...,3}         
-\fill (\i,\j) circle (2pt);  
-\draw[red,thick] 
-(2,0)--(0,1) node[anchor=east] {$\beta_1$} 
-(0,1)--(1,3) node[anchor=south] {$\beta_2$} 
-(1,3)--(3,2) node[anchor=west] {$\beta$} 
-(3,2)--(2,0) node[anchor=north] {$\beta_0$} ;
-\fill (1,1) circle (2pt) node[anchor=south west] {$\alpha$}  ;
-\fill (1,0) circle (2pt) node[anchor=north] {$-1$}  ;
-\fill (3,0) circle (2pt) node[anchor=north] {$1$}  ;
-\end{tikzpicture}
-\caption{Division algorithm in $\Z[i]$.}
-\label{fig:Z[i]}
-\end{figure}
 
-We know that $\Z$ and $\R[X]$ are both principal. The proofs 
-are very similar, as both use the division algorithm essentially in the same way. 
-The following result takes advantage of this fact. 
+\subsection{Group representations}
+
+\begin{definition}
+	\index{Representation}
+	A \emph{representation} (over the field $K$) of a group $G$ is a group homomorphism
+	$\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, for some non-zero finite-dimensional 
+        vector space $V$ (over $K$).
+\end{definition}
+
+\index{Representation!degree}
+The \emph{degree} of the representation $\rho\colon G\to\GL(V)$ will be the dimension of $V$. 
+
+Note that a representation $\rho\colon G\to\GL(V)$
+satisfies the following properties:
+\begin{enumerate}
+    \item $\rho_{1_G}=\id$.
+    \item $\rho_{gh}=\rho_g\rho_h$ for all $g,h\in G$.
+    \item $\rho_g(v+w)=\rho_g(v)+\rho_h(w)$ for all $v,w\in V$.
+    \item $\rho_g(\lambda v)=\lambda \rho_g(v)$ for all $v\in V$ and $\lambda\in K$. 
+\end{enumerate}
+
+Since by assumption
+$V$ is finite-dimensional, say $\dim V=n$, after fixing a basis of $V$ we get a \emph{matrix representation} 
+$\rho\colon G\to\GL(V)\simeq\GL_n(K)$ of $G$. Depending on the context, we will use either representations on vector spaces or matrix representations.  
+
+\begin{example}
+	We use group representations to show that the group 
+	\[
+    G=\langle x,y:x^2=y^2=1\rangle
+    \]
+    is infinite. Note that
+	\[
+	\rho\colon G\to\GL_2(\C),
+	\quad
+	x\mapsto\begin{pmatrix}
+		1&0\\
+		0&-1	
+	\end{pmatrix},\quad
+ 	y\mapsto\begin{pmatrix}
+		1&1\\
+		0&-1	
+	\end{pmatrix},
+ 	\]
+ 	is a group homomorphism, as 
+ 	$\rho_x^2=\rho_y^2=\begin{pmatrix}
+		1&0\\
+		0&1	
+	\end{pmatrix}$. We claim that the elements of the form $(xy)^n$ are
+	different for all $n$. It is enough to show that   
+	$(xy)^n=(xy)^m$, then $n=m$. Note that
+	\[
+	\rho_{xy}=\rho_x\rho_y=\begin{pmatrix}
+		1&0\\
+		0&-1	
+	\end{pmatrix}
+	\begin{pmatrix}
+		1&1\\
+		0&-1	
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&1\\
+		0&1	
+	\end{pmatrix}.
+	\]
+	Thus $\rho_{xy}^n=\begin{pmatrix}
+		1&n\\
+		0&1	
+	\end{pmatrix}$ and 
+	$\rho_{xy}^m=\begin{pmatrix}
+		1&m\\
+		0&1	
+	\end{pmatrix}$. Then 
+	\[
+	(xy)^n=(xy)^m\implies\rho_{xy}^n=\rho_{xy}^m\implies n=m.
+	\] 
+\end{example}
+
+The previous example demonstrates the power of group representations, even for infinite groups. 
+However, in this course, we will focus on complex finite-dimensional representations of finite groups.
+
+\begin{convention}
+    In Lectures \ref{6}, \ref{7}, and \ref{8}, we will focus on complex representations of finite groups, unless stated otherwise.
+\end{convention}
+
+\begin{example}
+\index{Representation!trivial}
+	If $G$ is a group, then $\rho\colon G\to\GL_1(\C)=\C^\times$, $g\mapsto 1$, 
+	is a representation. This representation is known as the \emph{trivial (complex) representation} of $G$. 	
+\end{example}
+
+\begin{example}
+	The sign of permutations yields a representation of $\Sym_n$. It is the group homomorphism
+	$\Sym_n\to\C^\times$, $\sigma\mapsto\sgn(\sigma)$.  	
+\end{example}
+
+\begin{example}
+	Let $G=\langle g:g^6=1\rangle$ be the cyclic group of order six. Then
+	\[
+	\rho\colon G\to\GL_2(\C),
+	\quad 
+	g\mapsto\begin{pmatrix}1&1\\-1&0\end{pmatrix}
+	\] 
+	is a group representation of degree two. 
+\end{example}
+
+%To prove the following result we need
+%the \emph{minimal polynomial characterization of diagonazability",  
+%see for example, \cite[Corollary 2.5.12]{zbMATH06049469}.
+%
+%\begin{proposition}
+%    Let $G$ be a finite group and $\rho\colon G\to\GL_n(\C)$ 
+%    be a representation. Then
+%    each $\rho_g$ is diagonalizable.
+%\end{proposition}
+%
+%\begin{proof}
+%    Since $g$ is finite, $g^m=1$ for some $m\in\Z_{>0}$. This means that $\rho_g$ is a root of $X^m-1\in\C[X]$. Since
+%    the roots of the polynomial $X^m-1$ are all different and $X^m-1$ factorizes linearly on $\C[X]$, it follows
+%    that the minimal polynomial of $\rho_g$ also factorizes linearly in $\C[X]$. Hence $\rho_g$ is diagonalizable.
+%\end{proof}
+%
+%In page \pageref{rho_diagonalizable} we will see an alternative  
+%proof of the previous proposition. 
+%
+\begin{definition}
+	\index{Invariant map}
+    Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be
+    representations. A linear map $T\colon V\to W$ is said to be \emph{invariant} 
+    if the diagram
+    \[\begin{tikzcd}
+	V & V \\
+	W & W
+	\arrow["{\rho_g}", from=1-1, to=1-2]
+	\arrow["T"', from=1-1, to=2-1]
+	\arrow["{\psi_g}"', from=2-1, to=2-2]
+	\arrow["T", from=1-2, to=2-2]
+\end{tikzcd}
+\]
+    commutes for all $g\in G$, this means that 
+    $\psi_gT=T\rho_g$ for all $g\in G$.
+\end{definition}
+
+It is convenient to introduce an alternative
+notation for group representations. 
+Let 
+\[ 
+\rho\colon G\to\GL(V),\quad g\mapsto \rho_g,
+\]
+be a representation. For
+$g\in G$ and $v\in V$ write $g\cdot v=\rho_g(v)$. Then the following properties hold: 
+\begin{enumerate}
+	\item $1\cdot v=v$ for all $v\in V$, 
+	\item $g\cdot (h\cdot v)=(gh)\cdot v$ for all $g,h\in G$ and $v\in V$, 
+	\item $g\cdot (v+w)=g\cdot v+g\cdot w$ for all $g\in G$ and $v,w\in V$, and 
+	\item $g\cdot (\lambda v)=\lambda (g\cdot v)$ for all $g\in G$, $\lambda\in\C$ and $v\in V$.  	
+\end{enumerate}
+Using this notation for the representations $\rho\colon G\to\GL(V)$ 
+and $\psi\colon G\to\GL(W)$, a linear
+map $T\colon V\to W$ is invariant if and only if
+\[
+T(g\cdot v)=g\cdot T(v)
+\]
+for all $v\in V$ and $g\in G$. 
+%Although we use the same notation for different representations, there is no risk of confusion. 
+
+\begin{definition}
+	\index{Representations!equivalence}
+    The representations $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are \emph{equivalent}
+    if there exists a bijective linear 
+    map $T\colon V\to W$ invariant. 
+\end{definition}
+
+If the representations $\rho$ and 
+$\psi$ are equivalent, we write 
+$\rho\simeq\psi$. 
+
+\begin{example}
+    Let $G=\Z/n$. The representations
+    \begin{align*}
+    &\rho\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        \cos(2\pi m/n) & -\sin(2\pi m/n)\\
+        \sin(2\pi m/n) & \cos(2\pi m/n)
+    \end{pmatrix},
+    \shortintertext{and}
+    &\psi\colon G\to\GL_2(\C),\quad
+    m\mapsto
+    \begin{pmatrix}
+        e^{2\pi im/n} & 0\\
+        0 & e^{-2\pi im/n}
+    \end{pmatrix},
+    \end{align*}
+    are equivalent, as $\rho_mT=T\psi_m$ for all $m\in G$ if $T=\begin{pmatrix}
+        i&-i\\
+        1&1
+    \end{pmatrix}$.
+\end{example}
+
+The following example explains why we can alternatively use
+representations or matrix representations. 
+
+\begin{example}
+\label{xca:change_of_basis}
+Let $\rho\colon G\to\GL(V)$ be a representation, say, of degree 
+$n=\dim V$. Choose a basis 
+$B=\{v_1,\dots,v_n\}$ of $V$ and let 
+\[
+T\colon V\to\C^n,
+\quad
+\sum_{i=1}^n\lambda_iv_i\mapsto (\lambda_1,\dots,\lambda_n),
+\]
+be the isomorphism that takes coordinates 
+for the basis $B$. For each $g\in G$, 
+the composition of linear maps 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXENebiJdLFsyLDAsIlYiXSxbMSwwLCJWIl0sWzMsMCwiXFxDXm4iXSxbMCwyLCJUXnstMX0iXSxbMiwxLCJcXHJob19nIl0sWzEsMywiVCJdLFswLDMsIiIsMix7ImN1cnZlIjozfV1d
+\[\begin{tikzcd}
+	{\C^n} & V & V & {\C^n}
+	\arrow["{T^{-1}}", from=1-1, to=1-2]
+	\arrow["{\rho_g}", from=1-2, to=1-3]
+	\arrow["T", from=1-3, to=1-4]
+\end{tikzcd}
+\]
+produces a representation 
+$\psi\colon G\to\GL(C^n)$
+of $G$ equivalent to $\rho$.   
+\end{example}
+
+
+
+\begin{definition}
+	\index{Invariant!subspace}
+    Let $\rho\colon G\to\GL(V)$ be a representation. 
+    A subspace $W$ of $V$ is said to be \emph{invariant} (with respect to $\rho$)
+    if $\rho_g(W)\subseteq W$ for all $g\in G$.
+\end{definition}
+
+Let $\rho\colon G\to\GL(V)$ be a representation. Then $\{0\}$ and $V$ are always   
+invariant subspaces of~$V$. Moreover, if $W\subseteq V$ is invariant, then
+the map $\rho|_W\colon G\to\GL(W)$, $g\mapsto (\rho_g)|_W$, is a representation. The
+map $\rho|_W$ is the \emph{restriction} of $\rho$ to $W$. 
+
+\begin{exercise}
+\index{Invariant map!kernel}
+\index{Invariant map!image}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a given group $G$ 
+	and 
+ $T\colon V\to W$ be an invariant map. Prove that the \emph{kernel} 
+	\[
+	\ker T=\{v\in V:T(v)=0\}
+	\]
+	is an invariant subspace of $V$ and that the \emph{image} 
+	\[
+		T(V)=\{T(v):v\in V\}
+	\]
+	is an invariant subspace of $W$. 
+\end{exercise}
+
+
+\begin{definition}
+\index{Subrepresentation}
+    Let $\rho\colon G\to\GL(V)$
+    be a representation. A \emph{subrepresentation} of $\rho$ is a restricted representation 
+    of the form $\rho|_W\colon G\to\GL(W)$ for some invariant subspace $W$ of~$V$.
+\end{definition}
+
+%\begin{example}
+%    Let $G=\langle g:g^3=1\rangle$ be the
+%    cyclic group of order three
+%    and
+%    \[
+%    \rho\colon G\to\GL_3(\R),
+%    \quad
+%    g\mapsto\begin{pmatrix}
+%        0&1&0\\
+%        0&0&1\\
+%        1&0&0
+%    \end{pmatrix}.
+%    \]
+%    The subspace
+%    \[
+%    W=\left\{
+%    \begin{pmatrix}
+%    x\\
+%    y\\
+%    z
+%    \end{pmatrix}\in\R^3:x+y+z=0\right\}
+%    \]
+%    is a invariant subspace of $\R^3$.
+%\end{example}
+
+\begin{definition}
+    \index{Representation!irreducible}
+    A non-zero representation $\rho\colon G\to\GL(V)$ is \emph{irreducible} if
+    $\{0\}$ and $V$ are the only invariant subspaces of $V$.
+\end{definition}
+
+Degree-one representations are irreducible. 
+
+The irreducibility 
+of a representation, of course, depends on the base field. 
+In the following example, it is crucial using real representations.
+
+\begin{example}
+    Let $G=\langle g:g^3=1\rangle$ be the
+    cyclic group of order three
+    and
+    \[
+    \rho\colon G\to\GL_3(\R),
+    \quad
+    g\mapsto\begin{pmatrix}
+        0&1&0\\
+        0&0&1\\
+        1&0&0
+    \end{pmatrix}.
+    \]
+    Note that in this example we work with a real representation! 
+    It is a routine calculation to prove that 
+    \[
+    W=\left\{
+    \begin{pmatrix}
+    x\\
+    y\\
+    z
+    \end{pmatrix}\in\R^3:x+y+z=0\right\}
+    \]
+    is an invariant subspace of $\R^3$. We claim that $W$ 
+    is irreducible. Let $S$ be a non-zero invariant subspace of 
+    $W$ and let $s=\begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}\in S$ be a non-zero element. Then
+    \[
+    t=\begin{pmatrix}y_0\\z_0\\x_0\end{pmatrix}
+    =\begin{pmatrix}
+        0&1&0\\
+        0&0&1\\
+        1&0&0
+    \end{pmatrix}
+    \begin{pmatrix}x_0\\y_0\\z_0\end{pmatrix}\in S.
+    \]
+    We claim that $\{s,t\}$ is linearly independent. If not, there exists $\lambda\in\R$ such that
+    $\lambda s=t$. Thus $\lambda x_0=y_0$, $\lambda y_0=z_0$ and $\lambda z_0=x_0$. This implies that
+    $\lambda^3x_0=x_0$. Since $x_0\ne 0$ (because if $x_0=0$, then $y_0=z_0=0$, a contradiction), it follows that
+    $\lambda=1$ and hence $x_0=y_0=z_0$, a contradiction because $x_0+y_0+z_0=0$.
+    Therefore $\dim S=2$ and hence $S=W$.
+\end{example}
+
+What happens in the previous example if we work over complex numbers?
+
+\begin{exercise}
+    Let $\rho\colon G\to\GL(V)$ be a degree-two representation. Prove that
+    $\rho$ is irreducible if and only if there is no common eigenvector for the $\rho_g$, $g\in G$.
+\end{exercise}
+
+The previous exercise can be used to show that the representation
+$\Sym_3\to\GL_2(\C)$
+of the symmetric group $\Sym_3$
+given by
+\[
+(12)\mapsto\begin{pmatrix}
+-1&-1\\0&1
+\end{pmatrix},
+\quad
+(123)\mapsto\begin{pmatrix}
+-1&-1\\
+1&0
+\end{pmatrix},
+\]
+is irreducible.
+
+\begin{example}
+\label{exa:direct_sum_reps}
+Let $\rho\colon G\to\GL_n(\C)$ and $\psi\colon G\to\GL_m(\C)$ be representations. One defines
+the \emph{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ as 
+\[
+\rho\oplus\psi\colon G\to\GL_{n+m}(\C),\quad
+g\mapsto 
+\begin{pmatrix}
+\rho_g & 0\\
+0 & \psi_g	
+\end{pmatrix}.
+\]
+\end{example}
+
+Let us describe the previous example without using matrix representations. If $V$ and 
+$W$ are complex vector spaces, the (external) direct sum of $V$ and $W$ is defined
+as the set $V\times W$ with the complex vector space structure given by
+\[
+(v,w)+(v_1,w_1)=(v+v_1,w+w_1),\quad
+\lambda (v,w)=(\lambda v,\lambda w)
+\]
+for all $v,v_1\in V$, $w,w_1\in W$ and $\lambda\in\C$. 
+If $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ are representations, 
+the \emph{direct sum} $\rho\oplus\psi$ of $\rho$ and $\psi$ is then 
+\[
+\rho\oplus\psi\colon G\to\GL(V\oplus W),\quad
+g\mapsto (\rho\oplus\psi)_g,
+\]
+where $(\rho\oplus\psi)_g\colon V\oplus W\to V\oplus W$, 
+$(v,w)\mapsto (\rho_g(v),\psi_g(w))$. Note that both 
+$V\simeq V\oplus\{0\}$ and $W\simeq \{0\}\oplus W$ are
+invariant subspaces of $V\oplus W$. 
+
+\begin{definition}
+    \index{Representation!completely reducible}
+    A representation $\rho\colon G\to\GL(V)$ is said to be 
+    \emph{completely reducible}
+    if $\rho$ can be decomposed as
+    $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible
+    representations $\rho_1,\dots,\rho_n$ of $G$. 
+\end{definition}
+
+Note that if $\rho\colon G\to\GL(V)$ is completely reducible and 
+$\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible representations 
+$\rho_i\colon G\to\GL(V_i)$, $i\in\{1,\dots,n\}$, then 
+each $V_i$ is an invariant subspace of $V$ and $V=V_1\oplus \cdots \oplus V_n$. 
+Moreover, on some basis of $V$, the matrix  
+$\rho_g$ can be written as 
+\[
+\rho_g=\begin{pmatrix}
+(\rho_1)_g &  \\
+& (\rho_2)_g  \\
+&&\ddots\\
+&&&(\rho_n)_g	
+\end{pmatrix}.
+\]
+
+\begin{definition}
+\index{Representation!decomposable}
+\index{Representation!indecomposable}
+A representation
+$\rho\colon G\to\GL(V)$ is \emph{decomposable} if $V$ can be decomposed as $V=S\oplus T$
+where $S$ and $T$ are non-zero invariant subspaces of $V$. 
+\end{definition}
+
+A representation is 
+\emph{indecomposable} if it is not decomposable. 
+
+\begin{exercise}
+\label{xca:equivalence}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be equivalent representations.
+	Prove the following facts:
+	\begin{enumerate}
+		\item If $\rho$ is irreducible, then $\psi$ is irreducible.
+		\item If $\rho$ is decomposable, then $\psi$ is decomposable.
+		\item If $\rho$ is completely reducible, then $\psi$ is completely reducible. 
+	\end{enumerate}	
+\end{exercise}
+
+Since we are considering finite-dimensional vector spaces, our vector spaces admit 
+an \emph{inner product}, that is a map $V\times V\to\C$, $(v,w)\mapsto\langle v,w\rangle$, 
+that satisfies the following properties:
+\begin{enumerate}
+    \item $\langle y,x\rangle=\overline{\langle x,y\rangle}$ for all $x,y\in V$, where $\overline{a+bi}=a-bi$ denotes the complex conjugate.
+    \item $\langle ax+by,z\rangle=a\langle x,z\rangle+b\langle y,z\rangle$ for all $x,y,z\in V$ and $a,b\in\C$.
+    \item $\langle x,x\rangle>0$ for all $x\in V$ and $\langle x,x\rangle=0$ if $x=0$. 
+\end{enumerate}
+
+For example, if $V=\C^n$, $v=\colvec{3}{v_1}{\vdots}{v_n}\in V$ and $w=\colvec{3}{w_1}{\vdots}{w_n}\in V$, 
+then the \emph{usual inner product} between $v$ and $w$ 
+is given by
+\begin{equation}
+    \label{eq:inner_product}
+V\times V\to\C,\quad 
+(v,w)\mapsto v_1\overline{w_1}+\cdots+v_n\overline{w_n}=v^T\overline{w},
+\end{equation}
+where 
+\[
+v^T=(v_1,\dots,v_n),\quad 
+\overline{w}=\colvec{3}{\overline{w_1}}{\vdots}{\overline{w_n}}.
+\]
+
+\begin{definition}
+    \index{Representation!unitary}
+    Let $V$ be a finite-dimensional complex vector space with inner product $(v,w)\mapsto\langle v,w\rangle$. 
+    A representation $\rho\colon G\to\GL(V)$ is \emph{unitary} if
+    $\langle \rho_gv,\rho_gw\rangle=\langle v,w\rangle$ for all $g\in G$ and $v,w\in V$.
+\end{definition}
+
+\begin{exercise}
+\index{Left regular representation}
+Let $G$ be a finite group and $V=\C[G]$ be the complex vector space with basis
+$\{g:g\in G\}$. The \emph{left regular representation}
+of $G$ is the representation
+\[
+L\colon G\to\GL(V),
+\quad
+g\mapsto L_g,
+\]
+where $L_g(h)=gh$. With respect to the inner product
+\[
+\left\langle\sum_{g\in G}\lambda_gg,\sum_{g\in G}\mu_gg\right\rangle=\sum_{g\in G}\lambda_g\overline{\mu_g},
+\]
+the representation $L$ is unitary. Prove it! 
+\end{exercise}
+
+
+
+If $V$ is a vector space and $W$ is a subspace of $V$, 
+\[
+W^\perp = \{v\in V:\langle v,w\rangle=0\text{ for all $w\in W$}\}, 
+\]
+is called the 
+\emph{orthogonal complement} of $W$. The following result is extremely important: 
 
 \begin{proposition}
-	Let $R$ be a euclidean domain. Then $R$ is principal.	
+\label{pro:irr_or_dec}
+Let $\rho\colon G\to\GL(V)$ be a unitary representation. Then $\rho$ is either
+irreducible or decomposable.
 \end{proposition}
 
 \begin{proof}
-	Let $I$ be an ideal of $R$. If $I=\{0\}$, then $I=(0)$ and hence 
-	it is principal. So we may
-	assume that $I\ne\{0\}$. Let $y\in I\setminus\{0\}$ be such that
-	$\varphi(y)$ is minimal. We claim that $I=(y)$. 
-	If $z\in I$, then $z=yq+r$, where $r=0$ or $\varphi(r)<\varphi(y)$. 
-	The minimality of $\varphi(y)$ implies that $r=0$. Thus $z=yq\in (y)$ and 
-	it follows that 
-	$I=(y)$. 
+	If $\rho$ is not irreducible, there exists an invariant subspace $W$ of $V$ such that
+	$\{0\}\subsetneq W\subsetneq V$. Can we find an invariant complement? Yes, and this is because 
+        our representation is unitary.  
+	We know that $V=W\oplus W^{\perp}$ as complex vector spaces, where 
+	$W^\perp\ne\{0\}$. So $\rho$ will be decomposable if we can prove that
+	$W^\perp$ is an invariant subspace of $V$. 
+	Let $v\in W^\perp$, $w\in W$ and $g\in G$. Then  
+	\[
+	\langle \rho_g(v),w\rangle=\langle v,\rho_g^{-1}(w)\rangle=0   
+	\]
+	since $\rho_g^{-1}(w)\in W$, as $W$ is an invariant subspace of $V$. This means that 
+	$\rho_g(v)\in W^\perp$ and hence $V=W\oplus W^{\perp}$ is decomposable.  
 \end{proof}
 
-\begin{example}\
-	Since $\Z[i]$ is euclidean, it is principal.
-\end{example}
- 
-\begin{example}
-	The rings $\Z[\sqrt{-5}]$ and $\Z[\sqrt{-3}]$ are
-	not euclidean. Why?
-\end{example}
+The following theorem is known as the \emph{Weyl trick}. 
 
-The ring $\Z[\frac{1+\sqrt{-19}}{2}]$ is an 
-example of a ring that is principal and not euclidean. We will not prove this
-fact in these notes. For a proof 
-see \cite{MR967349}, \cite{MR3665445} or \cite{MR314831}.
-
-\begin{definition}
-	Let $R$ be an integral domain. Then $R$ is a 
-	\emph{unique factorization domain}
-	if the following statements hold:
-	\begin{enumerate}
-	\item Each $x\in R\setminus\{0\}$ that is not a unit can be written as $x=c_1\cdots c_n$ for irreducibles $c_1,\dots,c_n$. 
-	\item If $x=c_1\cdots c_n=d_1\cdots d_m$ for irreducibles $c_1,\dots,c_n$ and $d_1,\dots,d_m$, then $n=m$ and there exists $\sigma\in\Sym_n$ such that $c_i$ and $d_{\sigma(i)}$ are
-		associate for all $i\in\{1,\dots,n\}$. 
-	\end{enumerate}
-\end{definition}
-
-It is important to remark that some rings 
-have factorizations and this factorization is not unique. 
-In fact, if $N$ is a square-free integer, $\Z[\sqrt{N}]$ is noetherian and hence it   
-has factorization. 
-However, not all these rings admit are unique factorization domains. 
-
-\begin{example}
-	The ring $R=\Z[\sqrt{-6}]$ is not a unique factorization domain. In fact,
-	\[
-	10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
-	\]	
-	Note that $\norm(a+b\sqrt{-6})=a^2+6b^2\ne 2$. This implies that $2$ is irreducible, as 
-	if $2=\alpha\beta$, then $4=\norm(2)=\norm(\alpha)\norm(\beta)$. 
-	Similarly, $5$ is irreducible. It is an exercise to prove that 
-	$2+\sqrt{-6}$ and $2-\sqrt{-6}$ are both irreducible. 
-\end{example}
-
-\begin{theorem}
-\label{thm:PID=>UFD}
-	Let $R$ be a principal domain. 
-	Then $R$ is a unique factorization domain.
+\begin{theorem}[Weyl]
+\index{Weyl's!trick}
+\index{Weyl's!theorem}
+    Every representation $\rho\colon G\to\GL_n(\C)$ 
+    of a finite group is unitary.
 \end{theorem}
 
 \begin{proof}
-	We divide the proof into three steps. 
-	\begin{claim}
-		$R$ is noetherian. 	
-	\end{claim}
-	
-	This is trivial, as every ideal is, in particular, finitely generated by assumption.   
-
-	\begin{claim}
-		$R$ admits factorizations. 	
-	\end{claim}
-	
-	Let $x\in R\setminus\{0\}$ be such that $x\not\in\mathcal{U}(R)$. If $x$ is irreducible, 
-	there is nothing to prove. If not, $x=x_1x_2$ with $x_1\not\in\mathcal{U}(R)$ and
-	$x_2\not\in\mathcal{U}(R)$. If $x_1$ and $x_2$ are both irreducibles, 
-	we are done. If not, say $x_1$ can be written as $x_1=x_{11}x_{12}$ with
-	$x_{11}\not\in\mathcal{U}(R)$ and $x_{12}\not\in\mathcal{U}(R)$. If this process
-	does not terminate, it means that there is a sequence of ideals
-	\[
-	(x)\subsetneq (x_1)\subsetneq (x_{11})\subsetneq\cdots 
-	\]
-	that does not stabilize, which contradicts the fact that $R$ is noetherian.  
-	
-	\begin{claim}
-		$R$ admits unique factorization.	
-	\end{claim}
-	
-	Let $x\in R$ be such that $x$ factorizes into irreducibles as 
-	$x=c_1\cdots c_n=d_1\cdots d_m$. 
-	Note that since $R$ is a principal domain, irreducibles and primes coincide by 
-	Proposition \ref{pro:PID:irreducible=prime}. 
-	We may assume that $n\leq m$. We proceed by 
-	induction on $m$. If $m=1$, then 
-	$n=1$ and $c_1=d_1$. If $m>1$, then, since $c_1$ is prime and 
-	$c_1\mid d_1\cdots d_m$, it follows that $c_1\mid d_j$ for some $j$, 
-	say $c_1\mid d_1$ (here is precisely where the permutation $\sigma$ appears). Since
-	$d_1$ is irreducible, $c_1$ and $d_1$ are associate, that is
-	$c_1=ud_1$ for some $u\in\mathcal{U}(R)$. Then
-	\[
-	c_1c_2\cdots c_n=(ud_1)c_2\cdots c_n=d_1d_2\cdots d_m. 
-	\]
-	Since $d_1\ne 0$,  
-	\[
-	d_1(uc_2\cdots c_n-d_2\cdots d_m)=0,
-	\]
-	which implies that $(uc_2)\cdots c_n=d_2\cdots d_m$ because $R$ is an integral domain. Note
-	that $uc_2$ is irreducible and hence 
-	the claim follows from the inductive hypothesis. 
+    Let $V=\C^n$ and 
+    $V\times V\to\C$, $(v,w)\mapsto v\cdot w$, be an\footnote{It does not matter which inner product we have chosen, we can safely use, for example, the usual inner product of \eqref{eq:inner_product}.} inner
+    product on $V$. 
+   
+    A straightforward calculation shows that
+    \[
+    \langle v,w\rangle=\sum_{g\in G}(\rho_gv)\cdot (\rho_gw)
+    \]
+    is an inner product of $V$. For example, 
+    \begin{align*}
+    \langle v,w+w_1\rangle&=\sum_{g\in G}\rho_gv\cdot\rho_g(w+w_1)\\
+    &=\sum_{g\in G}\rho_gv\cdot \left(\rho_gw+\rho_gw_1\right)\\
+    &=\sum_{g\in G}\rho_gv\cdot \rho_gw+\rho_gv\cdot\rho_gw_1\\
+    &=\sum_{g\in G}\rho_gv\cdot \rho_gw+\sum_{g\in G}\rho_gv\cdot \rho_gw_1\\
+    &=\langle v,w\rangle+\langle v,w_1\rangle 
+    \end{align*}
+    holds for all $v,w,w_1\in V$. 
+    
+    Since
+    \begin{align*}
+    \langle\rho_gv,\rho_gw\rangle&=\sum_{h\in G}(\rho_h\rho_gv)\cdot(\rho_h\rho_gw)\\
+    &=\sum_{h\in G}(\rho_{hg}v)\cdot(\rho_{hg}w)=\sum_{x\in G}(\rho_xv)\cdot(\rho_xw)=\langle v,w\rangle,
+    \end{align*}
+    the representation $\rho$ is unitary.
 \end{proof}
 
-It is interesting to remark that the proof 
-of the previous theorem is exactly the proof
-one does for $\Z$. 
-
 \begin{example}
-	The ring $\Z[i]$ is a unique factorization domain. 	
+    Let $A=\begin{pmatrix}
+        -1 & -1\\
+        -1 & 0
+    \end{pmatrix}$. Since $A^3=I$, we can use this matrix to 
+    represent the (multiplicative) cyclic group 
+    \[
+    C_3=\langle g:g^3=1\rangle
+    \]
+    of order three. Note that the map $1\mapsto g$ yields an isomorphism 
+    $C_3\simeq \Z/3$. 
+        
+    The map $C_3\to\GL_2(\C)$, $g\mapsto A$, is a group homomorphism. In particular, we have a representation $\rho\colon C_3\to\GL(V)$, where $V=\C^2$ with the usual inner product given by \eqref{eq:inner_product}, that is 
+    \[
+    v\cdot w=v^T\overline{w}
+    \]
+    for $v,w\in V$. 
+    For example, the inner product between the vectors $\colvec{2}{1}{i}$ and $\colvec{2}{1}{2}$
+    is 
+    \[
+    (1,i)\colvec{2}{1}{2}=1+2i.
+    \]
+    Since $A\in M_2(\R)$, we compute 
+    \[
+    \langle v,w\rangle=v^T\overline{w}+(Av)^T\overline{(Aw)}+(A^2v)^T\overline{(A^2w)}=v^T\left (I+A^TA+(A^2)^TA^2\right)\overline{w}
+    \]
+    and this is an invariant inner product on $V$. Note that 
+    \[
+        B=I+A^TA+(A^2)^TA^2=\begin{pmatrix}
+            4&2\\
+            2&4
+        \end{pmatrix}.
+    \]
 \end{example}
 
-Let us show that the converse of Theorem \ref{thm:PID=>UFD} does not hold. 
+\label{rho_diagonalizable}
+Weyl's trick has several interesting consequences:  
+
+\begin{corollary}
+\label{cor:consequences}
+	Let $\rho\colon G\to\GL(V)$ be a representation of a finite group $G$. 
+ The following properties
+	hold:
+	\begin{enumerate}
+		\item $\rho$ is equivalent to a unitary representation.
+		\item $\rho$ is either irreducible or decomposable.
+		\item Each $\rho_g$ is diagonalizable. 
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	The first claim follows from Example \ref{xca:change_of_basis} and 
+	Weyl's trick. The second claim, from 1) and
+	Proposition \ref{pro:irr_or_dec}. Finally, 3) follows 
+	from Weyl's trick immediately, as unitary matrices are diagonalizable.  
+\end{proof}
 
 \begin{exercise}
-\label{xca:content}
-	A polynomial $f\in\Z[X]$ is \emph{primitive} if
-	the greatest common divisor of its coefficients is equal to one. 
-	Let $f\in\Z[X]$ be a non-constant polynomial. If $f=af_1$ for some $a\in\Z$ and some
-	primitive polynomial $f_1$, then $|a|$ is the greatest common divisor of the coefficients of $f$. 	
+\label{xca:not_decomposable}
+    If $G$ is an infinite group, it is no longer true that every non-zero representation
+    is either irreducible or decomposable. Find an example.
 \end{exercise}
 
-\begin{exercise}
-\label{xca:Gauss}
-Prove the following statements:
-\begin{enumerate}
-    \item Let $f,g\in\Z[X]$ be primitive polynomials. Prove that $fg$ is primitive.
-    \item Let $f\in\Z[X]$ be non-constant. Then
-$f$ is irreducible in $\Z[X]$ if and only if $f$ is primitive and 
-$f$ is irreducible in $\Q[X]$. 
-\end{enumerate}
-\end{exercise}
-
-The first item of Exercise \ref{xca:Gauss} is known as Gauss' lemma.
-The second one is Gauss' theorem. These results should be used to prove
-the following result: 
-
-\begin{exercise}
-\label{xca:Z[X]_UFD}
-    Prove that $\Z[X]$ is a unique factorization domain. 
-\end{exercise}
-
-Finally, the example. 
-
-\begin{example}
-	The ring $\Z[X]$ is a unique factorization 
-	domain that is not a principal domain. 	
-\end{example}
-
-The same technique could be used to prove that if 
-$R$ is a unique factorization domain, then $R[X]$ 
-is a unique factorization domain, see
-for example, \cite[Chapter III, Theorem 6.14]{MR600654}.  
-
-\begin{exercise}
-    Prove that $\R[X,Y]$ is a unique factorization domain 
-    and the ideal $I=(X,Y)$ is not principal. 
-\end{exercise}
-
-% Since $\R[X]$ is a unique factorization domain, $\R[X,Y]=\R[X])[Y]$
-% is a unique factorization domain. Assume that $I$ is principal and let $I=(f(X,Y))$ 
-% for some $f(X,Y)\in\R[X,Y]$. Since $X=f(X,Y)p(X,Y)$ and $Y=f(X,Y)q(X,Y)$
-% for some $p(X,Y)\in\R[X,Y]$ and $q(X,Y)\in\R[X,Y]$, it 
-% follows from comparing degrees that $f(X,Y)$ is constant. Thus $I=\R[X,Y]$,
-% a contradiction
+For the previous exercise. consider the representation $\Z\to\GL_2(\C)$, 
+$1\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}$. 
